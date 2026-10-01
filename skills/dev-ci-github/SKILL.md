@@ -17,8 +17,8 @@ Every check is a `make` target that a workflow step calls rather than re-spells.
 ## Committed output matches its source
 
 - **Generated code**: CI regenerates, then fails on `git diff --exit-code` and on any untracked file.
-- **Modules**: `go mod tidy` leaves every module's `go.mod` and `go.sum` unchanged, integration module included.
-- **Formatting and vet**: `gofmt -l` prints nothing; `go vet` covers integration-tagged code too.
+- **Modules**: `go mod tidy` leaves `go.mod` and `go.sum` unchanged.
+- **Formatting and vet**: `gofmt -l` prints nothing; `go vet` covers `integration`- and `artifact`-tagged code too.
 - **Lint**: golangci-lint runs from a committed config.
 - **Pre-commit hooks reach tools through `make`, check, never rewrite, and exclude generated paths**; installing them is opt-in, and CI is the enforcement.
 
@@ -32,7 +32,7 @@ Every check is a `make` target that a workflow step calls rather than re-spells.
 
 ## Test the artifact CI built
 
-The build job builds the image once with buildx `load: true` under a CI tag and passes that tag to the integration suite as `SERVICE_IMAGE`.
+The build job builds the image once with buildx `load: true` under a CI tag and passes that tag to the artifact suite as `SERVICE_IMAGE`.
 
 ## Secrets
 

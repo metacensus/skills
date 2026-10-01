@@ -18,7 +18,7 @@ Reusable checks behind one required job, with cancellation, read-only permission
 
 ## Test the artifact CI built
 
-The image is built once and the integration suite runs against it.
+The image is built once and the artifact suite runs against it.
 
 ## Secrets
 

@@ -71,16 +71,15 @@ Time, IDs, environment, and outbound calls enter through a field or parameter th
 
 ## Integration tests own their dependencies
 
-- **Tagged and placed by what they import.** Integration tests carry `//go:build integration`. An adapter test sits beside its client as `client_integ_test.go`, next to the unit `client_test.go`; an artifact test speaks only HTTP and lives in an `integration/` module with its own `go.mod`.
+- **Tagged and placed by what they import.** Integration tests carry `//go:build integration`. An adapter test sits beside its client as `client_integ_test.go`, next to the unit `client_test.go`; an artifact test speaks only HTTP, lives in `integration/` within the root module, and carries `//go:build artifact`, so `-tags=integration ./...` leaves it out.
 - **testcontainers starts everything the test needs**, from a pinned image tag, and waits on a readiness strategy — `wait.ForHTTP`, `ForLog`, or `ForExit` for a container that must refuse to boot.
+- **Each test gets a database cloned from one template**, into which migrations ran once. Not a transaction per test: a store method commits its own transaction, which a test cannot wrap. Not a schema per test: it couples the code under test to `search_path` and re-runs migrations each time.
 - **One `start(t, ctx, req)` helper** registers a `t.Cleanup` that prints container logs when the test failed, then terminates.
-- **The artifact suite runs the image `SERVICE_IMAGE` names**, building the Dockerfile itself when unset.
+- **The artifact suite runs the image `SERVICE_IMAGE` names** and fails when it is unset. `make` or CI's buildx step builds the image first, because only Docker supplies the Dockerfile's `$BUILDPLATFORM`.
 - **A live probe** reads a credential under a test-only name (`*_TEST_URL`, never the production variable), prints only the variable's name, skips without it, and fails instead when `REQUIRE_*` is set.
-
-**Hole: database isolation.** How tests share a database container and isolate from each other — transaction per test, schema per test, or template database — is unsettled.
 
 ## Running the test
 
 - **Assertions use standard `testing`**; testify enters as mockery's dependency.
 - **Anything a server calls concurrently runs under `-race -count=1`.**
-- **The commands are `make` targets**: `test`, `test-race`, `test-integration`.
+- **The commands are `make` targets**: `test`, `test-race`, `test-integration`, `test-artifact`.
