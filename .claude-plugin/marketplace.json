@@ -1,0 +1,11 @@
+{
+  "name": "metacensus",
+  "description": "MetaCensus's general-purpose agent skills",
+  "owner": { "name": "MetaCensus" },
+  "plugins": [
+    {
+      "name": "metacensus",
+      "source": "."
+    }
+  ]
+}

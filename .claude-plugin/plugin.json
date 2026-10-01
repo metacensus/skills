@@ -1,0 +1,6 @@
+{
+  "name": "metacensus",
+  "description": "Check-in, issues, elegance, parallelize, and Go testing and CI practice",
+  "author": { "name": "MetaCensus" },
+  "repository": "https://github.com/metacensus/skills"
+}
