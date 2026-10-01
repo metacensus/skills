@@ -30,7 +30,7 @@ Schema, architecture, security properties across every principal, and guards are
 
 ## Integration tests own their dependencies
 
-Tagged; testcontainers from pinned images; live probes fail in CI. Database isolation is open.
+Tagged by suite, all in the root module; testcontainers from pinned images; each test clones a template database; the artifact suite runs an image Docker built; live probes fail in CI.
 
 ## Running the test
 
