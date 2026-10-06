@@ -8,25 +8,32 @@ Installed, they run as `/metacensus:<skill>` and `metacensus:<agent>`. Each AI d
 
 ## Install
 
-Per repository, so the skills load where they are wanted and nowhere else. The repository commits `.claude/settings.json`:
+Per repository, so the skills load where they are wanted and nowhere else. The repository commits `.claude/settings.json` in exactly the form the CLI writes, so an install leaves it unchanged:
 
 ```json
 {
-  "extraKnownMarketplaces": {
-    "metacensus": {
-      "source": { "source": "github", "repo": "metacensus/skills" },
-      "autoUpdate": true
-    }
-  },
   "enabledPlugins": {
     "metacensus@metacensus": true
+  },
+  "extraKnownMarketplaces": {
+    "metacensus": {
+      "source": {
+        "source": "github",
+        "repo": "metacensus/skills"
+      },
+      "autoUpdate": true
+    }
   }
 }
 ```
 
 and ignores `.claude/settings.local.json`, where each developer keeps their own settings.
 
-Each developer then installs once per repository, from its main checkout; its worktrees share the install:
+Each developer then installs once per repository, from its main checkout; its worktrees share the install. The CLI does not register a marketplace that project settings declare, so the first command registers it, in the ignored local file:
+
+```bash
+claude plugin marketplace add metacensus/skills --scope local
+```
 
 ```bash
 claude plugin install metacensus@metacensus --scope project
