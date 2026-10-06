@@ -36,4 +36,4 @@ The skill is a tool, and each file reads top to bottom as abstract/poetic → ta
 - The owner's fixes to the last round's findings land unreviewed.
 - `changedPaths()` in `check-cells.mts` treats a failing `git merge-base` as no committed paths, so a shallow or detached checkout under-reports.
 - A port to a second organization is untried; its inputs are git, the two tables, and that organization's `elegance-mapping.md`.
-- The scope of an elegance pass is unsolved: when everything in range is poor, where the bound comes from. [strategy#47](https://github.com/metacensus/strategy/issues/47).
+- The scope of an elegance pass is unsolved: when everything in range is poor, where the bound comes from.
