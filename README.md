@@ -2,9 +2,9 @@
 
 General-purpose agent skills, distributed as the `metacensus` Claude Code plugin from the `metacensus` marketplace this repository also is. Nothing here names an organization's code.
 
-Each skill is a folder under [`skills/`](skills/), its trigger in its frontmatter; [`elegance-review`](agents/elegance-review.md) is the elegance skill's reviewer.
+Each skill is a folder under [`skills/`](skills/), its trigger in its frontmatter; each agent a file under [`agents/`](agents/), invoked by the skill that names it.
 
-Installed, they run as `/metacensus:<skill>` and `metacensus:elegance-review`. Each AI document has a human twin under [`.human/`](.human/), the same path with `.human.md`.
+Installed, they run as `/metacensus:<skill>` and `metacensus:<agent>`. Each AI document has a human twin under [`.human/`](.human/), the same path with `.human.md`.
 
 ## Install
 
