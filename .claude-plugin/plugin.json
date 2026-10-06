@@ -2,5 +2,6 @@
   "name": "metacensus",
   "description": "Check-in, issues, elegance, parallelize, open-source, and Go testing and CI practice",
   "author": { "name": "MetaCensus" },
-  "repository": "https://github.com/metacensus/skills"
+  "repository": "https://github.com/metacensus/skills",
+  "license": "AGPL-3.0-only"
 }

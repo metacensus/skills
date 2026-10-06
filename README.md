@@ -46,3 +46,7 @@ The plugin works offline from then on. `autoUpdate` brings each new commit on `m
 Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. Every commit is a release: neither manifest sets `version`, so the commit SHA is the version.
 
 [CI](.github/workflows/ci.yml) is the gate. `scripts/check-cells.mts` needs Node 22.18 or later, which runs TypeScript directly.
+
+## License
+
+AGPL-3.0-only ([LICENSE](LICENSE)).
