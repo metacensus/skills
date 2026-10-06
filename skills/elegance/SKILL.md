@@ -57,13 +57,13 @@ The grid says where an element belongs and what settles it; the reader is who de
 - **Is this a summary or an illustration, and is it shorter than what it describes?**
 - **Which element is this, and is there a larger one I should be asking about?**
 - **Where would the reader look for this, and is that here?**
-- **What already holds this?**
 - **Could the artifact carry this instead of a sentence?**
 - **If the thing this describes changed, would anyone fix this?**
 - **Who loads this, and will a better lead let them find it and optionally include it in context when it is needed?** A person reads little; brevity is what gets them to read.
 
 ## Before you finish
 
+- **What does each count say?** Two nodes at one scope holding a fact; one value an argument takes; one field in a type; one caller of an option; no consumer outside an export's package. Each is the finding.
 - **Which cells did you touch?** `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` names them from your paths. An unexpected one is an alteration to undo or a cell to open.
 - **Hand the diff to the `elegance-review` agent**, in [the review loop](#the-review-loop). It holds this skill and nothing of your reasons. Give it no account of why and name no cell. It is instructed to find what you did not, and a review that finds nothing owes its attempts.
 - **What points at what you altered?** Grep the path, symbol, and name you changed, and read what comes back as its reader. A pointer whose target moved, a list you grew, a claim over a set you changed: the defect in a file your diff does not contain.

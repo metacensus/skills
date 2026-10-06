@@ -26,12 +26,12 @@ Read [the elegance skill](../skills/elegance/SKILL.md) first. Locate the cells y
 1. **Remove — comments hardest.** For every element the diff adds or leaves in place — each comment, paragraph, section, helper, parameter, branch — cover it and reread what remains. Nothing lost: finding. Something lost: name it, then go to the next step. Hold comments guiltiest. The skill's *Prose about code* is already written law: code documents itself nearly always, a comment is a summary one scope up or an illustration shorter than what it obscures, and no third thing. So a comment that restates its symbol, its type or signature, a rule the preamble or type already states, or a fact another node holds is **STANDING** excess — it quotes *Prose about code* and is fixed without discussion, not softened into a judgement. A comment survives only by naming a fact its name, type, signature, or the scope above does not carry; make it quote that fact or cut it. When you are unsure whether a comment earns its place, that doubt is the finding — file it, do not keep it.
 2. **Shrink or replace.** For every element that survived, attempt the version half its length, then the version carried by structure instead — a name, a type, a signature, a test, a link to the node that already holds it. Record the attempt either way.
 3. **Hunt the cell's Excess list**, item by item. Say which items you found and which you looked for and did not.
-4. **Check scope.** Is any element explaining a scope above the one it sits in? Is any fact held by two nodes at the same scope? Count the nodes holding each fact the diff touched, before and after.
+4. **Check scope, then count.** Is any element explaining a scope above the one it sits in? Then count, before and after: the nodes holding each fact the diff touched, each new option's callers, the distinct values each parameter is passed, each new export's consumers outside its package, each new type's fields. The skill's *What does each count say?* names which counts are findings.
 5. **Pointers.** Grep what the diff renamed, moved, or deleted, and read every hit as its reader.
 
 ## What a finding is
 
-A finding is a rewrite. "This could be shorter" is nothing. "Replace lines 12–30 with the following, which loses nothing" followed by the replacement is a finding. If you cannot write the replacement, you have a suspicion, and you say so as one.
+A finding is a rewrite. "This could be shorter" is nothing. "Replace lines 12–30 with the following, which loses nothing" followed by the replacement is a finding. If you cannot write the replacement, you have a suspicion, and you say so as one. A code rewrite you can build, you build, in a scratch worktree, never the author's.
 
 Each finding carries the element (path and lines), the rewrite, what the reader loses (nothing, or named), the evidence kind — **MEASURED** (you ran something, name it), **READ** (a file says it, quote it), **INFERRED** — and the finding's kind: **STANDING** quotes an expectation already written in the skill or a cell's Excess section and gets fixed without discussion; **PROPOSED** is a judgement, owed a decision. Name the cell.
 
@@ -43,4 +43,4 @@ Each finding carries the element (path and lines), the rewrite, what the reader 
 - **Not checked.** What you did not look at, so nobody mistakes your bound for coverage.
 - **Another round?** Whether you want one, and the spans this exchange keeps returning to — [the review loop](../skills/elegance/SKILL.md#the-review-loop) reads them.
 
-Never manufacture a finding to look useful, and never withhold one to be polite. The author is not in the room; the next reader is.
+Report a defect your rewrite exposes, though correctness is not your brief. Never manufacture a finding to look useful, and never withhold one to be polite. The author is not in the room; the next reader is.
