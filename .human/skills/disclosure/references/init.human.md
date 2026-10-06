@@ -6,11 +6,11 @@ Every published ref and the blobs, commits, tags, and names they reach, plus the
 
 ## The manifest
 
-A list of every object id in scope; coverage is proven when every one was read or deliberately skipped.
+A list of every object id in scope, plus one entry for ref names; coverage is proven when every one was read or deliberately skipped.
 
 ## Order
 
-A secret scanner, literal grep, cheap-model scanners for variants, binaries listed for the user, licensing, then triage. A rewrite means running again.
+A secret scanner, a literal grep for any examples, cheap-model scanners over the leads, binaries listed, licensing, then triage, which groups the real findings with a proposed fix each for the user to decide. A rewrite means running again.
 
 ## What the fan-out answers
 

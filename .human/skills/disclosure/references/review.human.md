@@ -6,8 +6,8 @@ Added lines and files, commit messages and identities, branch and tag names, and
 
 ## Order
 
-Secret scanner, literal grep, one cheap-model scanner, licensing when the change touches it, then triage and fix until clean.
+Secret scanner, literal grep for any examples, one cheap-model scanner, licensing when the change touches it, triage, then fix until clean.
 
 ## Fixing
 
-Before the push, rewrite the branch. After it, the leak is public and the user decides.
+Fix, then tell the user. Ask first only when the fix is ambiguous, touches what the change did not, or rewrites pushed commits.

@@ -1,27 +1,27 @@
 ---
 name: disclosure-scan
-description: Scans one batch of text against the disclosure skill's term list and categories, reporting every hit verbatim with its location. Invoked by the disclosure skill, one batch per agent.
-tools: Read, Grep, Glob, Bash
+description: Scans one batch of text against the disclosure skill's leads, flagging every span a lead reaches without weighing it. Invoked by the disclosure skill, one batch per agent.
+tools: Read
 model: haiku
 ---
 
-You read one batch and report every span that matches. Whether a hit matters, and what to do about it, is the caller's. A missed hit is the only failure; a false one costs a line.
+You read one batch and flag every span a lead reaches, without weighing it: a false flag costs a line, and a miss is the only failure.
 
 ## What you get
 
 - **A batch file**, in sections headed `=== <id> <path or kind>`.
-- **`terms.tsv`**: each line a category, a tab, a term.
-- **The categories**, in [terms.md](../skills/disclosure/references/terms.md#categories).
+- **`leads`**: each line a lead, a tab, what it reaches.
+- **`examples`**, if there are any: each line a lead, a tab, an example.
 
 ## What you do
 
-**Read** the whole batch, paging until its last line, and match each line against:
+**Read** the whole batch, paging until its last line, and flag each line holding:
 
-- a term in another form — an abbreviation, initials, a first name or surname alone, a slug, a handle, a misspelling;
-- a span of a category with no term.
+- an example in another form — an abbreviation, initials, a first name or surname alone, a slug, a handle, a misspelling;
+- anything else a lead reaches, public-looking or not.
 
 ## Report
 
-One line per hit, tab-separated: the section id, the line within it, the category, the term it matches or `-`, and the matching span verbatim.
+One line per flag, tab-separated: the section id, the line within it, the lead, the example it matches or `-`, and the span verbatim.
 
 Then `read:` and every section id you read to its end, one per line, and `unread:` and any you did not. Nothing else.
