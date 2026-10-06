@@ -8,24 +8,33 @@ Installed, they run as `/metacensus:<skill>` and `metacensus:<agent>`. Each AI d
 
 ## Install
 
-Once per machine. Claude Code fetches this private repository with non-interactive git, so store a credential first:
-
-```bash
-gh auth login && gh auth setup-git
-```
-
-Then add to `~/.claude/settings.json`:
+Per repository, so the skills load where they are wanted and nowhere else. The repository commits `.claude/settings.json`:
 
 ```json
 {
   "extraKnownMarketplaces": {
-    "metacensus": { "source": { "source": "github", "repo": "metacensus/skills" }, "autoUpdate": true }
+    "metacensus": {
+      "source": { "source": "github", "repo": "metacensus/skills" },
+      "autoUpdate": true
+    }
   },
-  "enabledPlugins": { "metacensus@metacensus": true }
+  "enabledPlugins": {
+    "metacensus@metacensus": true
+  }
 }
 ```
 
-The plugin installs at the next session start and works offline from then on. `autoUpdate` brings each new commit on `main` in the background; run `/reload-plugins` or restart to load it.
+and ignores `.claude/settings.local.json`, where each developer keeps their own settings.
+
+Each developer then installs once per repository, from its main checkout; its worktrees share the install:
+
+```bash
+claude plugin install metacensus@metacensus --scope project
+```
+
+Claude Code fetches this private repository with non-interactive git; if the install cannot reach it, store a credential with `gh auth login && gh auth setup-git`.
+
+The plugin works offline from then on. `autoUpdate` brings each new commit on `main` in the background; run `/reload-plugins` or restart to load it.
 
 ## Changing a skill
 
