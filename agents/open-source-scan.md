@@ -1,6 +1,6 @@
 ---
-name: disclosure-scan
-description: Scans one batch of text against the disclosure skill's leads, flagging every span a lead reaches without weighing it. Invoked by the disclosure skill, one batch per agent.
+name: open-source-scan
+description: Scans one batch of text against the open-source skill's leads, flagging every span a lead reaches without weighing it. Invoked by the open-source skill, one batch per agent.
 tools: Read
 model: haiku
 ---

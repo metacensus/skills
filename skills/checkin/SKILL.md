@@ -33,6 +33,8 @@ Run the repository's gate locally even when CI repeats it: finding the break bef
 
 Where the repository has an `elegance-mapping.md`, `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` maps changed paths to the review they need; run it and do what it prints, even when sure. It is computed from paths because that is the judgement an author makes worst about their own work.
 
+Where the repository is public (`gh repo view --json visibility`), run the [`open-source`](../open-source/SKILL.md) skill's review over the change.
+
 ## 8. Read your own diff
 
 `git --no-pager diff`, every line, as if reviewing someone else:

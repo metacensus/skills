@@ -22,10 +22,10 @@ Coverage is proven when `comm -23 objects <(sort -u read skipped)` prints nothin
 
 1. **Secrets** — `gitleaks git --log-opts="--all"`, complete over history and cheap.
 2. **Examples**, where there are any — every text blob through `git cat-file --batch`, every message through `git log <refs>`, every tag through `git for-each-ref refs/tags --format='%(objectname) %(contents)'`, each piped to `grep -F -i -f <(cut -f2 examples)`.
-3. **Leads** — the [`disclosure-scan`](../../../agents/disclosure-scan.md) agent over every blob and message not in `skipped`, fanned out under [`parallelize`](../../parallelize/SKILL.md).
+3. **Leads** — the [`open-source-scan`](../../../agents/open-source-scan.md) agent over every blob and message not in `skipped`, fanned out under [`parallelize`](../../parallelize/SKILL.md).
 4. **Binaries** — images, PDFs, archives, listed with path and size; no scan reads them, and they carry text and metadata.
 5. **Licensing** — the tree each published ref points at, against [licensing.md](licensing.md).
-6. **Triage** — the [`disclosure-triage`](../../../agents/disclosure-triage.md) agent over every flag, the binaries, and the licensing findings.
+6. **Triage** — the [`open-source-triage`](../../../agents/open-source-triage.md) agent over every flag, the binaries, and the licensing findings.
 7. **Propose** — the triage's groups go to the user, who decides each fix.
 
 A rewrite produces new objects, so init runs again on the result.

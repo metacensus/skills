@@ -28,6 +28,8 @@ Locally too.
 
 Obey `check-cells.mts --diff`, the path-to-review map, even when sure; authors judge their own work worst.
 
+In a public repository, the `open-source` review too.
+
 ## 8. Read your own diff
 
 As a reviewer: proportional, nothing moved, no stray files.

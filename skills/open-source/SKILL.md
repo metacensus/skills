@@ -1,15 +1,15 @@
 ---
-name: disclosure
-description: Keep internal information out of a repository that is or will be public, and its licensing as the organization intends. Trigger when making a repository public or open source, when auditing one that is, before anything lands in a public repository — a diff, branch, commit, pull request, issue, or their text — and whenever the user asks whether something is safe to publish.
+name: open-source
+description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, before any commit, push, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, and whenever the user asks whether something is safe to push or publish.
 ---
 
 **Publishing cannot be undone**: copies spread within minutes of a push and no rewrite reaches them, so the check runs before the push.
 
-**What is internal is a kind of information, not a list.** The check follows [leads](references/leads.md); examples help and never bound it. Cheap scanners flag whatever a lead reaches, and the [`disclosure-triage`](../../agents/disclosure-triage.md) agent decides which flags are real, judging text it did not write and keeping the flags out of the orchestrator's context.
+**What is internal is a kind of information, not a list.** The check follows [leads](references/leads.md); examples help and never bound it. Cheap scanners flag whatever a lead reaches, and the [`open-source-triage`](../../agents/open-source-triage.md) agent decides which flags are real, judging text it did not write and keeping the flags out of the orchestrator's context.
 
 ## The mapping
 
-`disclosure-mapping.md` binds the skill to an organization. The organization keeps one, in a private repository. A project may keep its own at its root, linking to the organization's, and the link is what makes it a project's.
+`open-source-mapping.md` binds the skill to an organization. The organization keeps one, in a private repository. A project may keep its own at its root, linking to the organization's, and the link is what makes it a project's.
 
 - **`## Licenses`** — rows of a repository (backticked `owner/name`, or `forks` for every fork of another project), path globs (`**` the whole repository), and an SPDX id (or `upstream`, the parent's). Lines under it state contributor terms and patent stance.
 - **`## Leads`** — rows of a lead, either one of the [defaults](references/leads.md#defaults) or the organization's own in a few words, and where its examples live, if anywhere: an MCP server's tools, or paths, in the mapping's repository unless prefixed `owner/name:`.

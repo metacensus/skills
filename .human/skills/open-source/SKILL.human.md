@@ -2,7 +2,7 @@ Publishing cannot be undone, so the check runs before the push. What is internal
 
 ## The mapping
 
-`disclosure-mapping.md` holds an organization's intended licenses, its own leads and where examples of them live, and its exceptions, in a private repository. A project may keep its own, linking to the organization's; it adds leads, narrows with exceptions, and wins where both speak. In a public repository it names no examples. A missing section has no rows.
+`open-source-mapping.md` holds an organization's intended licenses, its own leads and where examples of them live, and its exceptions, in a private repository. A project may keep its own, linking to the organization's; it adds leads, narrows with exceptions, and wins where both speak. In a public repository it names no examples. A missing section has no rows.
 
 ## Two modes
 

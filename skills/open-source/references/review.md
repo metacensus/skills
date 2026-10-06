@@ -13,9 +13,9 @@ A change fits one context, so review needs no fan-out.
 
 1. **Secrets** — `gitleaks git --log-opts="<base>..HEAD"`, and `gitleaks dir` over what is not yet committed.
 2. **Examples**, where there are any — the same text through `grep -F -i -f <(cut -f2 examples)`.
-3. **Leads** — one [`disclosure-scan`](../../../agents/disclosure-scan.md) over the same text, in one batch file, and its `unread:` is empty.
+3. **Leads** — one [`open-source-scan`](../../../agents/open-source-scan.md) over the same text, in one batch file, and its `unread:` is empty.
 4. **Licensing** — when the change adds a dependency, a license file, a manifest, or code from elsewhere, against [licensing.md](licensing.md).
-5. **Triage** — the [`disclosure-triage`](../../../agents/disclosure-triage.md) agent over the flags, any binaries the change adds, and the licensing findings.
+5. **Triage** — the [`open-source-triage`](../../../agents/open-source-triage.md) agent over the flags, any binaries the change adds, and the licensing findings.
 6. **Fix**, then run again until nothing real is found.
 
 ## Fixing

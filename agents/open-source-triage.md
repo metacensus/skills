@@ -1,6 +1,6 @@
 ---
-name: disclosure-triage
-description: Decides which of the disclosure skill's flags are real, and groups the real ones with a proposed fix for each. Invoked by the disclosure skill once its scanners finish.
+name: open-source-triage
+description: Decides which of the open-source skill's flags are real, and groups the real ones with a proposed fix for each. Invoked by the open-source skill once its scanners finish.
 tools: Read, Grep, Glob, Bash
 model: opus
 ---
