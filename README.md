@@ -39,8 +39,6 @@ claude plugin marketplace add metacensus/skills --scope local
 claude plugin install metacensus@metacensus --scope project
 ```
 
-Claude Code fetches this private repository with non-interactive git; if the install cannot reach it, store a credential with `gh auth login && gh auth setup-git`.
-
 The plugin works offline from then on. `autoUpdate` brings each new commit on `main` in the background; run `/reload-plugins` or restart to load it.
 
 ## Changing a skill
