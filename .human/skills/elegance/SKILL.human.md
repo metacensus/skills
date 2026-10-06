@@ -22,7 +22,7 @@ An element's scope (how fast reality exposes it as wrong) and time (plan, curren
 
 ## Before you finish
 
-Run `check-cells.mts --diff` to see which cells were touched, hand the diff to the `elegance-review` agent without explaining it, and grep for whatever points at what changed.
+Count: a fact held twice at one scope, an argument with one value, a type with one field, an option with one caller, or an export nothing outside consumes is a finding. Run `check-cells.mts --diff` to see which cells were touched, hand the diff to the `elegance-review` agent without explaining it, and grep for whatever points at what changed.
 
 ## The review loop
 
