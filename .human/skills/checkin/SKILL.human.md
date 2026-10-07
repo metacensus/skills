@@ -20,6 +20,8 @@ Re-read siblings: their prose can turn false while everything passes.
 
 Only the lines the change needs.
 
+On someone's branch, only your edits; offer a rebase or merge separately.
+
 ## 6. Run the gate
 
 Locally too.

@@ -25,6 +25,8 @@ Changing one record can falsify prose on a sibling while every check passes. Aft
 
 Change the lines the change needs and no others. Never reformat or re-serialize a whole file to change a few lines; if an editor or script rewrites encoding, line endings, or order, restore them before committing.
 
+A pull request onto someone else's branch carries only your edits; offer a rebase or merge of their base as a branch of its own.
+
 ## 6. Run the gate
 
 Run the repository's gate locally even when CI repeats it: finding the break before the push is the point. Where the gate validates content, a failure names the rule it holds; read that rule before working around it.
