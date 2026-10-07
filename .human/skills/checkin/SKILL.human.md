@@ -20,6 +20,8 @@ Re-read siblings: their prose can turn false while everything passes.
 
 Only the lines the change needs.
 
+A proposal on someone's branch carries only the proposal; a rebase goes on a branch of its own.
+
 ## 6. Run the gate
 
 Locally too.
