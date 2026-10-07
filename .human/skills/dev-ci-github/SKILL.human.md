@@ -27,7 +27,3 @@ Secret-reading jobs skip forks and fail loudly when a secret is missing.
 ## Release from a tag
 
 A guarded `make release` tags; a semver-only trigger re-runs CI, then publishes.
-
-## Scheduled checks
-
-Nightly `govulncheck` or `npm audit` and a weekly build.
