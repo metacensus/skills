@@ -7,7 +7,7 @@ description: Decide, memory by memory, whether an agent's persistent memory reti
 
 ## The audience names the destination
 
-Of each fact — one memory often holds several — ask who it would serve, and choose the broadest audience whose vast majority would be better for loading it. A fact most of them would skip costs all of them context to help a few. The destination is wherever that audience reads — another repository, the person's own settings — not where the memory was found, and the claim is checked there.
+Of each fact — one memory often holds several — ask who it would serve, and choose the broadest audience whose vast majority would be better for loading it. A fact most of them would skip costs all of them context to help a few. The destination is wherever that audience reads, not where the memory was found — often another repository, or the person's user-level instructions.
 
 | Audience | Destination |
 |---|---|

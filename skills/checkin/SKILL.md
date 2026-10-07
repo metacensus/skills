@@ -25,7 +25,7 @@ Changing one record can falsify prose on a sibling while every check passes. Aft
 
 Change the lines the change needs and no others. Never reformat or re-serialize a whole file to change a few lines; if an editor or script rewrites encoding, line endings, or order, restore them before committing.
 
-A pull request that proposes edits to someone else's branch carries the proposal and nothing else: base it wherever its diff is smallest — the default branch, when no edit depends on their work — and when their branch is stale, offer the rebase as a branch of its own. Feedback on their work goes in their pull request's thread.
+A pull request onto someone else's branch carries only your edits; offer a rebase or merge of their base as a branch of its own.
 
 ## 6. Run the gate
 
