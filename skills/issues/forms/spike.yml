@@ -9,7 +9,7 @@ body:
       value: |
         Conventions: [the `issues` skill](https://github.com/metacensus/skills/blob/main/skills/issues/SKILL.md).
 
-        Done is a decision written where the work reads it — usually the parent's body — and a closing comment beginning `Decision:`. Attach this to its parent after filing (`gh issue edit THIS --parent EPIC`).
+        Attach this to its parent after filing (`gh issue edit THIS --parent EPIC`).
 
   - type: textarea
     id: question
@@ -23,15 +23,6 @@ body:
     id: options
     attributes:
       label: Options
-      description: What the answer chooses between, and the evidence that would decide.
-      placeholder: |
-        - …
+      description: Each with the evidence that would decide it.
     validations:
       required: true
-
-  - type: textarea
-    id: verification
-    attributes:
-      label: Verification
-      description: Optional — a command that demonstrates the evidence.
-      render: shell

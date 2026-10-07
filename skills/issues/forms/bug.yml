@@ -26,12 +26,10 @@ body:
     id: reproduce
     attributes:
       label: Steps to reproduce
-      placeholder: |
-        1. …
 
   - type: textarea
     id: verification
     attributes:
       label: Verification
-      description: Optional — the command that fails now and passes once this is fixed.
+      description: The command that fails now and passes once this is fixed.
       render: shell

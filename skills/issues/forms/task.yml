@@ -8,7 +8,7 @@ body:
       value: |
         Conventions: [the `issues` skill](https://github.com/metacensus/skills/blob/main/skills/issues/SKILL.md).
 
-        **There is no sub-task** — if this wants children, file an Epic instead. Attach this to its parent after filing (`gh issue edit THIS --parent EPIC`).
+        If this wants children, file an Epic instead. Attach this to its parent after filing (`gh issue edit THIS --parent EPIC`). A blocker is a dependency (`gh issue edit THIS --add-blocked-by N`), not prose.
 
   - type: textarea
     id: goal
@@ -32,13 +32,7 @@ body:
     id: verification
     attributes:
       label: Verification
-      description: One command whose exit code settles the criteria, at least the repository's gate. If it runs in another repository, name it.
+      description: One command whose exit code settles the criteria; the repository's gate at minimum. Name the repository if it is not this one.
       render: shell
     validations:
       required: true
-
-  - type: textarea
-    id: notes
-    attributes:
-      label: Notes
-      description: "Constraints. A blocker is a dependency (`gh issue edit THIS --add-blocked-by N`), not prose."

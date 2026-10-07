@@ -1,5 +1,5 @@
 name: Epic
-description: Weeks of work, held as Tasks. Jira's Epic.
+description: Weeks of work, held as Tasks.
 labels: ["needs-triage"]
 type: Epic
 body:
@@ -8,7 +8,7 @@ body:
       value: |
         Conventions: [the `issues` skill](https://github.com/metacensus/skills/blob/main/skills/issues/SKILL.md).
 
-        An Epic is judged by whether its children can finish without reaching back up. Children are the **linked sub-issues** (`gh issue edit N --parent THIS`), not a list in the body.
+        Children are sub-issues (`gh issue edit N --parent THIS`), not a list in the body.
 
   - type: textarea
     id: goal
@@ -22,8 +22,5 @@ body:
     id: non-goals
     attributes:
       label: Non-goals
-      description: What is out of scope, so creep across children is visible.
-      placeholder: |
-        - …
     validations:
       required: true

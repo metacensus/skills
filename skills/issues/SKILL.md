@@ -41,12 +41,7 @@ The forms are [forms/](forms/), kept once in the organization's `.github` reposi
 
 ## Filing
 
-One issue form per type plus Spike, blank issues off, and every form applies `needs-triage`. The forms carry this convention inline. Set the parent after filing (`gh issue edit N --parent P`), or file from the CLI with `gh issue create --type T --parent P --label needs-triage`.
-
-- **Epic** requires goal and non-goals. Children are the linked sub-issues, never a body list.
-- **Task** requires goal, binary acceptance criteria, and a **Verification** command whose exit code settles done.
-- **Spike** requires the question and the options it decides between; verification optional.
-- **Bug** requires observed and expected; verification optional.
+Set the parent after filing (`gh issue edit N --parent P`), or file from the CLI with `gh issue create --type T --parent P --label needs-triage`.
 
 Leads file Epics; engineers file Tasks under them.
 

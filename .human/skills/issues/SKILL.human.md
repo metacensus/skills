@@ -14,7 +14,7 @@ A script turns issues on and creates the labels; the forms live once in the orga
 
 ## Filing
 
-One form per type, plus Spike. Epics need goal and non-goals; Tasks need binary acceptance criteria and a verification command whose exit code settles done; Spikes need a question and its options; Bugs need observed and expected. The parent is linked after filing, never typed into the body.
+Each form's required fields are the bar. The parent is linked after filing, never typed into the body.
 
 ## Triage
 

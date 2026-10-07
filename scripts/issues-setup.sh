@@ -8,6 +8,7 @@ todo=0
 
 gh api -X PATCH "repos/$repo" -F has_issues=true --silent
 echo "ok    issues on"
+[[ $(gh api "repos/$repo" --jq .visibility) == public ]] || echo "ok    $repo is private, so forms cannot require fields; triage does"
 
 while IFS=' ' read -r label color description; do
   gh label create "$label" -R "$repo" --color "$color" --description "$description" --force >/dev/null
