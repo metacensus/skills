@@ -18,4 +18,4 @@ Run `sdlc-setup.sh`, move stray cards but no Epic's, adding none, propose the re
 
 ## Report
 
-A `Read: pause` comment of questions per Epic, a count by class; pause while any wait.
+A `Read: pause` comment of questions per Epic, a count by class kept private where it names private repositories; pause while any wait.
