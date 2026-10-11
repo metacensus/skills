@@ -1,12 +1,12 @@
-The author's stages, from pickup to an open pull request, in the `sdlc` hub's protocol. A stage fixes what it can before it reports.
+The author's stages, pickup to open pull request, in the `sdlc` protocol. A stage fixes what it can before it reports.
 
 ## Precheck
 
-A Ready issue, or one already yours, under an open parent. Pause on a fix only the owner can make; stop if another's or blocked.
+A Ready issue, or one already yours, under an open parent; with `designed`, skip to Implement. Pause on a fix only the owner can make; stop if another's or blocked.
 
 ## Design
 
-Settle and list open choices, and hold the bar; passing applies `designed`. Pause on the user's choice.
+Body for a person, design in a comment, held to the bar; pause, even delegated, for `designed`.
 
 ## Implement
 

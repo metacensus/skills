@@ -14,14 +14,15 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Every `blocked by` is closed, and its parent is open.
 - Its card, if any, sits in its status's column.
 
-**Pause** on a fix the author can only [propose](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
+**Pass** goes to Design, or to Implement on an issue carrying `designed`. **Pause** on a fix the author can only [propose](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
 
 ## Design
 
-- Each choice the issue leaves open is settled, and the comment lists it.
+- The body is written for a person: scoped, summarized, explained.
+- The comment proposes a design for what the body leaves open.
 - The issue meets the bar [the ladder](../sdlc/SKILL.md#the-ladder) names for its type.
 
-**Pass** applies `designed`; an issue already carrying it skips this stage. **Pause** on a choice that is the user's. **Stop** when the issue fails its bar.
+**Pause**, even when delegated, until a person confirms and `designed` is applied. **Stop** when the issue fails its bar.
 
 ## Implement
 

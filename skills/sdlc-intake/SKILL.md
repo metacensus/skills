@@ -29,7 +29,7 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the `owner` or `lead` applies `ready` and moves its card to Ready's column; anyone else posts the pass as a proposal.
+- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card to Ready's column; anyone else posts the pass as a proposal.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.

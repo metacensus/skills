@@ -10,4 +10,4 @@ Pick type, parent, and repository, fill the form, meet the type's bar. Epics are
 
 ## Curate
 
-Rerun Compose's checks: on a pass, the owner or lead applies `ready` and anyone else proposes it; otherwise, comment.
+Rerun Compose's checks: a pass lets the owner or lead apply `ready`, `designed` too if nothing is open; others propose. Otherwise, comment.
