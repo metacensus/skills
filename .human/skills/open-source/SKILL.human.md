@@ -1,4 +1,4 @@
-Publishing cannot be undone, so the check runs before the push. What is internal is a kind of information, not a list: cheap scanners flag anything a lead reaches, and a separate, stronger agent decides which flags are real.
+Publishing cannot be undone, so the check runs before the push. What is internal is a kind of information, not a list: cheap scanners flag anything a lead reaches, and a separate agent decides which flags are real.
 
 ## The mapping
 
@@ -6,7 +6,7 @@ Publishing cannot be undone, so the check runs before the push. What is internal
 
 ## Two modes
 
-init covers every object a repository has held, with proof, and proposes fixes for the user to decide; review covers one change before it lands, fixes, and says what it changed. Neither gives license advice.
+init covers every object a repository has held, with proof, and proposes fixes for the user to decide; review covers one change before it lands, fixes, and tells. Neither gives license advice.
 
 ## What a finding is
 

@@ -6,7 +6,7 @@ A pre-flight against drift a build misses: reformatting, duplicated derived stat
 
 ## 2. Match precedent before you invent
 
-The highest-value habit: copy siblings' shape key by key; schema-valid is not conventional.
+Copy siblings' shape key by key; schema-valid is not conventional.
 
 ## 3. Never author derived state
 
@@ -14,7 +14,7 @@ No computed facts or claims a later edit would falsify.
 
 ## 4. Check what else your edit made false
 
-Re-read siblings: their prose can turn false while everything passes.
+Re-read siblings: prose can turn false while everything passes.
 
 ## 5. Keep the diff surgical
 
@@ -28,7 +28,7 @@ Locally too.
 
 ## 7. Ask what settles what you altered
 
-Obey `check-cells.mts --diff`, the path-to-review map, even when sure; authors judge their own work worst.
+Obey `check-cells.mts --diff` even when sure; authors judge their own work worst.
 
 In a public repository, the `open-source` review too.
 

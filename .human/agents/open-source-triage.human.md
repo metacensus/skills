@@ -1,4 +1,4 @@
-A stronger model that decides which flags are real, dropping only what has a public meaning: a dependency, upstream, the project's own name, or a mapping exception.
+A stronger model deciding which flags are real, dropping only what has a public meaning: a dependency, upstream, the project's own name, or a mapping exception.
 
 ## What you get
 
@@ -10,4 +10,4 @@ Judge each flag in context, locate the real ones in history, group them by lead 
 
 ## Report
 
-The groups with their fixes, and the dropped flags counted by reason.
+The groups with fixes, and dropped flags counted by reason.
