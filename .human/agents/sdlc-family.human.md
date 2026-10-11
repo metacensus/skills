@@ -6,8 +6,8 @@ The Epic.
 
 ## What you do
 
-Judge the family against the plan bar: gaps, overlap, stray children, unstated non-goals.
+Judge the family against the plan bar: only gaps, overlap, stray children, unstated non-goals.
 
 ## Report
 
-Each question, its issue, a direction.
+Each question, its issue or pair, a direction; else `none`.
