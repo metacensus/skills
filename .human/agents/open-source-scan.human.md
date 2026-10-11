@@ -1,13 +1,13 @@
-A cheap scanner that flags everything a lead reaches in one batch and judges nothing; only a miss is a failure.
+A cheap scanner flags everything a lead reaches and judges nothing; only a miss fails.
 
 ## What you get
 
-A batch file, the leads, and any examples.
+A batch, the leads, any examples.
 
 ## What you do
 
-Read everything, flagging examples in other forms and anything else a lead reaches.
+Read it all, flagging variant examples and anything a lead reaches.
 
 ## Report
 
-Each flag with its location, then which sections it read and which it did not.
+Each flag located, then sections read and unread.

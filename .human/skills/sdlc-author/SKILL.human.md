@@ -1,21 +1,21 @@
-The author's stages, from picking up an issue to an open pull request, each run in the `sdlc` hub's protocol. A stage fixes what it can, even in an earlier stage's work, before it reports.
+The author's stages, from pickup to an open pull request, in the `sdlc` hub's protocol. A stage fixes what it can before it reports.
 
 ## Precheck
 
-Pick up a Ready issue, or resume one already yours; its parent is open and its board card, if any, current. Pause on a fix only the owner can make; stop on work that is another's, blocked, or under a closed parent.
+A Ready issue, or one already yours, under an open parent. Pause on a fix only the owner can make; stop if another's or blocked.
 
 ## Design
 
-Settle and list the open choices, and hold the issue to its bar. Passing applies `designed`. Pause on the user's choice; stop on an issue below its bar.
+Settle and list open choices, and hold the bar; passing applies `designed`. Pause on the user's choice.
 
 ## Implement
 
-Assign yourself and move the card; branch and link. `elegance` throughout, `parallelize` for work too large for one agent. Pause when the design or requirements shift; stop when a criterion cannot be met or the parent must change.
+Assign yourself, branch, and link; `elegance` throughout, `parallelize` when too large. Pause when the design shifts; stop when a criterion cannot be met.
 
 ## Self-review
 
-Draft the PR body; run the `elegance-review` agent, and in a public repository the `open-source` review; run the issue's Verification and the gate. Pause on a disputed span or a leak already pushed; stop when the Verification cannot pass.
+Run `elegance-review`, `open-source` if public, the Verification, and the gate. Pause on a disputed span or a pushed leak.
 
 ## Publish
 
-`checkin`, push once the user agrees or has handed over the branch, open the PR closing the issue, request the mapping's reviewers, and move to In review.
+`checkin`, push once the branch is handed over, open the PR, request reviewers, and move to In review.
