@@ -13,7 +13,7 @@ You read one family as a plan, and ask what only the Epic's `owner` can decide.
 
 ## What you do
 
-**Read** the Epic, `gh issue view N -R OWNER/REPO --json title,body,subIssues,comments`, and each child the same way, wherever it lives. Judge the family against [4A plan](../skills/elegance/references/cells/4A-plan.md), and find:
+**Read** the Epic, `gh issue view N -R OWNER/REPO --json title,body,comments`, its children through `gh api repos/OWNER/REPO/issues/N/sub_issues --paginate`, and each child the same way, wherever it lives. Judge the family against [4A plan](../skills/elegance/references/cells/4A-plan.md), and find only these:
 
 - **gaps**: what the Epic's goal needs that no child holds;
 - **overlap**: work two children both hold;
@@ -24,4 +24,4 @@ You change nothing.
 
 ## Report
 
-Each finding: the issue it concerns, `OWNER/REPO#N`, a question only the `owner` can answer, and the direction you propose. Nothing else.
+Each finding: the issue it concerns, `OWNER/REPO#N`, or both of a pair of children, a question only the `owner` can answer, and the direction you propose; `none` when there is none. Nothing else.

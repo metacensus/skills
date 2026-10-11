@@ -7,34 +7,34 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The repositories in scope are those the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows; the thresholds are its Cadence rows.
-- Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, yield each type's required fields.
+- The repositories in scope are those the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows; the thresholds are its Cadence rows. With no mapping, ask the user where the organization's is, as the hub says, and take boards and forms from the answer.
+- Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
 **Pause** without it, for the user to refresh. **Stop** when no repository is in scope.
 
 ## Sweep
 
-- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue and every card is read.
+- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue and its cards are read.
 
-**Stop** when a repository cannot be read.
+**Pause** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic`, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
 
 **Stop** when an Epic cannot be read.
 
 ## Act
 
-- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows.
-- Every other flag is a proposal to its issue's `owner`: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `setup`'s go to the `lead`, in the summary. It closes nothing.
+- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows, but no Epic's (its status derives to Backlog whenever unassigned), nor one whose issue awaits its `owner` on a `mislabeled` proposal.
+- Every other flag is a proposal to its issue's `owner`: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `setup`'s, and each `root` issue as a question, go to the `lead`, in the summary. It closes nothing.
 
 **Stop** when GitHub refuses a write.
 
 ## Report
 
-- Each Epic with questions carries one comment, in the hub's shape, each question an unchecked line ending in its proposed direction.
+- Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: pause`, a line `- [ ] <issue>: <question> → <direction>` per question.
 - The stage's comment counts by class what was fixed, proposed and asked.
 
 **Pause** while a proposal or question waits on its `owner`.
