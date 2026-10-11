@@ -26,7 +26,7 @@ Done differently is completed plus `deviated`; `reached-up` marks a Task that re
 
 ## Linking an issue to its branch and PR
 
-The PR closes the issue by number; `checkin` names the branch, linked at publishing.
+The PR closes the issue by number; `checkin` names the branch, linked at publishing, before the push.
 
 ## The mapping
 

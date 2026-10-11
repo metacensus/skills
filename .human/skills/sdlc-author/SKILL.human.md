@@ -10,7 +10,7 @@ Settle and list open choices, and hold the bar; passing applies `designed`. Paus
 
 ## Implement
 
-Assign yourself, branch, and link; `elegance` throughout, `parallelize` when too large. Pause when the design shifts; stop when a criterion cannot be met.
+Assign yourself and branch; `elegance` throughout, `parallelize` when too large. Pause when the design shifts; stop when a criterion cannot be met.
 
 ## Self-review
 
@@ -18,4 +18,4 @@ Run `elegance-review`, `open-source` if public, the Verification, and the gate. 
 
 ## Publish
 
-`checkin`, push once the branch is handed over, open the PR, request reviewers, and move to In review.
+`checkin`, link and push once handed over, open the PR, request reviewers, and move to In review.

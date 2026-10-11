@@ -91,7 +91,7 @@ Each stage belongs to a skill. It runs its own checks and the mapping's Checks r
 ## Linking an issue to its branch and PR
 
 - `Closes #N` in the PR body, `Closes OWNER/REPO#N` across repositories.
-- `gh issue develop N --name <branch>`, at Publish after [`checkin`](../checkin/SKILL.md)'s pause since it creates the remote branch, under `checkin`'s name; **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
+- `gh issue develop N --name <branch>`, under [`checkin`](../checkin/SKILL.md)'s name, at Publish before the push: it creates the remote branch, and fails once one exists. **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
 
 ## The mapping
 
