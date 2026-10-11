@@ -1,13 +1,13 @@
-Files an issue and curates it until it carries `ready`, in the `sdlc` protocol, under the mapping's names.
+Files an issue and curates it to `ready`, in the `sdlc` protocol.
 
 ## Compose
 
-Pick the type, parent, and repository, fill the form's required fields, and meet the type's elegance bar. Epics are the lead's. With no issue yet, Compose reports to the user.
+Pick type, parent, and repository, fill the form, meet the type's bar. Epics are the lead's. Compose reports to the user.
 
 ## File
 
-`gh issue create --type --parent`, with no label, onto the board when the mapping names one.
+`gh issue create`, unlabeled, onto the mapping's board.
 
 ## Curate
 
-Anyone curating an issue without `ready` reruns Compose's checks on it: a pass gets `ready`; otherwise a comment says what is missing. The owner or the lead applies the label; anyone else proposes it.
+Rerun Compose's checks: on a pass, the owner or lead applies `ready` and anyone else proposes it; otherwise, comment.
