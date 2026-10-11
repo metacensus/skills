@@ -6,7 +6,7 @@ An Epic takes weeks and holds Tasks; a Task is one PR; a Spike is a Task that de
 
 ## Mechanisms
 
-Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviated`, `reached-up`. Boards only where the mapping names them.
+Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviated`, `reached-up`; `designed` marks an issue a person can read alone and know what will be built. Boards only where the mapping names them.
 
 ## Status
 
@@ -14,7 +14,7 @@ Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In rev
 
 ## Roles
 
-The `owner`, by default the assignee, sets scope and takes proposals; the `lead`, by default the user, takes stops and files Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready`, and links; otherwise it proposes, and asking it to pick an issue up lets it assign itself.
+The `owner`, by default the assignee, sets scope and takes proposals; the `lead`, by default the user, takes stops and files Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes, and asking it to pick an issue up lets it assign itself.
 
 ## Stages
 

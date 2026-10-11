@@ -27,7 +27,7 @@ Bars come from `elegance`: [4A plan](../elegance/references/cells/4A-plan.md) fo
 | **Type** | Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
 | **Parent / sub-issue** | Composition and rollup, cross-repo within one account: `gh issue edit N --parent P`. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
-| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (its design stage passed), `deviated` and `reached-up` (see [Closing](#closing)). |
+| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built: its body, and any further design in the Design comment), `deviated` and `reached-up` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status), only where the mapping names boards; stages move a card on whichever holds it, which needs the `project` scope. |
 
 ## Status
@@ -58,7 +58,7 @@ An agent may act, or proposes to the `owner` in a comment:
 
 | Action | Task / Bug | Epic |
 |---|---|---|
-| Type, and labels but [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
+| Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
 | Parent or stated `blocked by` | may | propose |
 | Assign, close, edit another's body | propose | propose |
 

@@ -63,7 +63,7 @@ while IFS=$'\t' read -r role label description; do
   echo "ok    label $label"
 done < <(printf '%s\t%s\n' \
   ready 'Meets its form; may be picked up' \
-  designed 'Design stage passed' \
+  designed 'A person can read the issue alone and know what will be built' \
   deviated 'Done differently than planned; see the closing comment' \
   reached-up 'Its work rewrote the parent' | merged Labels)
 
