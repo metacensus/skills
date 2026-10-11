@@ -1,21 +1,21 @@
-Sweeps repositories for drift from `sdlc`, each stage reporting to the session.
+Sweeps repositories for drift from `sdlc`.
 
 ## Precheck
 
-Read the repositories in scope, the cadence, and each type's required fields. Pause without the `project` scope; stop with no repository.
+Read the repositories, cadence and required fields. Pause without the `project` scope; stop with no repository.
 
 ## Sweep
 
-A cheap `sdlc-sweep` agent per repository flags each drift by class. Stop on a repository it cannot read.
+A `sdlc-sweep` agent per repository flags drift by class.
 
 ## Read
 
-An `sdlc-family` agent per open Epic asks the project manager, its owner, what the family leaves open, proposing a direction. Stop on an Epic it cannot read.
+An `sdlc-family` agent per open Epic asks its `owner` what the family leaves open.
 
 ## Act
 
-Run `sdlc-setup.sh` and move stray cards; propose the rest, close nothing. Stop when GitHub refuses.
+Run `sdlc-setup.sh`, move stray cards, propose the rest. Close nothing.
 
 ## Report
 
-One comment of questions per Epic, one summary by class; pause while any wait.
+A comment of questions per Epic, a count by class; pause while any wait.
