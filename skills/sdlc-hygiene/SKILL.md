@@ -35,6 +35,6 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 ## Report
 
 - Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: pause`, a line `- [ ] <issue>: <question> → <direction>` per question.
-- The stage's comment counts by class what was fixed, proposed and asked.
+- The stage's comment counts by class what was fixed, proposed and asked; where it names a private repository, it lands in a private one, never a public issue.
 
 **Pause** while a proposal or question waits on its `owner`.
