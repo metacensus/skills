@@ -2,7 +2,7 @@
 # Fixes what a repository admin can; prints TODO for the rest and exits 1.
 set -euo pipefail
 
-repo=${1:?usage: issues-setup.sh OWNER/REPO}
+repo=${1:?usage: sdlc-setup.sh OWNER/REPO}
 owner=${repo%%/*}
 todo=0
 
@@ -14,8 +14,8 @@ while IFS=' ' read -r label color description; do
   gh label create "$label" -R "$repo" --color "$color" --description "$description" --force >/dev/null
   echo "ok    label $label"
 done <<'LABELS'
-needs-triage d93f0b Filed; not yet checked against its form
-agent-ready 0e8a16 Triaged; may be picked up
+ready 0e8a16 Meets its form; may be picked up
+designed 1d76db Design stage passed
 deviated fbca04 Done differently than planned; see the closing comment
 reached-up c5def5 Its work rewrote the parent
 LABELS
@@ -40,7 +40,7 @@ elif [[ $(gh api "repos/$owner/.github" --jq .visibility 2>/dev/null) == public 
   gh api "repos/$owner/.github/contents/.github/ISSUE_TEMPLATE" --silent 2>/dev/null; then
   echo "ok    forms inherited from $owner/.github"
 else
-  echo "TODO  no forms; copy $(dirname "$0")/../skills/issues/forms/ to .github/ISSUE_TEMPLATE/ in $owner/.github, a public repository"
+  echo "TODO  no forms; copy $(dirname "$0")/../skills/sdlc/forms/ to .github/ISSUE_TEMPLATE/ in $owner/.github, a public repository"
   todo=1
 fi
 
