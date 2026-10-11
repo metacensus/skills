@@ -1,4 +1,4 @@
-Files an issue and curates it until it carries `ready`, in the `sdlc` protocol, reading labels, board, and roles from the mapping.
+Files an issue and curates it until it carries `ready`, in the `sdlc` protocol, under the mapping's names.
 
 ## Compose
 

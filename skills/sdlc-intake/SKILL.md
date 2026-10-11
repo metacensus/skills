@@ -15,7 +15,7 @@ Draft the issue against these checks:
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
 
-No issue exists yet, so Compose's comment goes to the user; a pause is their confirming the draft.
+No issue exists yet, so Compose's comment goes to the user.
 
 ## File
 
@@ -27,7 +27,7 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 ## Curate
 
-Anyone curating an issue without `ready` runs this stage alone: Compose's checks, against the issue as filed.
+Anyone curating an issue without `ready` reruns Compose's checks on it.
 
 - **Pass**: the `owner` or `lead` applies `ready` and moves its card to Ready's column; anyone else posts the pass as a proposal.
 - **Otherwise**: post the comment.
