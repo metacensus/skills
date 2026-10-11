@@ -6,7 +6,7 @@ An Epic takes weeks and holds Tasks; a Task is one PR; a Spike is a Task that de
 
 ## Mechanisms
 
-Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviated`, `reached-up`; `designed` marks an issue a person can read alone and know what will be built. Boards only where the mapping names them.
+Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviated`, `reached-up`; `designed` marks an issue a person can read alone and know what will be built. A card goes only on a board the mapping names whose description the issue serves.
 
 ## Status
 
