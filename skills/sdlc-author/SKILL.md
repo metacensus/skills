@@ -7,7 +7,7 @@ The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) s
 
 ## Precheck
 
-Ready work: `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'`.
+Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - Its body carries its form's required fields.
 - Its [derived status](../sdlc/SKILL.md#status) is Ready, or In progress assigned to the acting identity, `gh api user --jq .login`.
@@ -26,7 +26,7 @@ Ready work: `gh issue list --search 'label:<ready> no:assignee -is:blocked type:
 ## Implement
 
 - Status is In progress: assign the acting identity, and move the card.
-- The branch is [`checkin`'s](../checkin/SKILL.md), linked as [the hub](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr) says.
+- The branch is [`checkin`'s](../checkin/SKILL.md).
 - [`elegance`](../elegance/SKILL.md) governs every line written.
 - Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, review is `elegance`.
 
@@ -43,9 +43,9 @@ Ready work: `gh issue list --search 'label:<ready> no:assignee -is:blocked type:
 
 ## Publish
 
-- [`checkin`](../checkin/SKILL.md) holds, and the branch is pushed.
+- [`checkin`](../checkin/SKILL.md) holds, and the branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`.
 - The reviewers the mapping's Roles name are requested.
 - Status is In review, and the card moves.
 
-**Pause** before the push, unless the user handed over the branch.
+**Pause** before linking, unless the user handed over the branch.
