@@ -38,19 +38,20 @@ rows() {
 
 merged() {
   local stated key rest
-  stated=$(rows "$1" <<<"$mapping")
+  stated=$(rows "$1" <<<"$mapping" | grep -v Hole || true)
   [[ -z $stated ]] || echo "$stated"
   while IFS=$'\t' read -r key rest; do
     case $'\n'$stated in *$'\n'"$key"$'\t'*) ;; *) printf '%s\t%s\t%s\n' "$key" "$key" "$rest" ;; esac
   done
 }
 
+grep '^|.*Hole' <<<"$mapping" | sed 's/^/ok    Hole, so its default holds: /' || true
+
 gh api -X PATCH "repos/$repo" -F has_issues=true --silent
 echo "ok    issues on"
 [[ $(gh api "repos/$repo" --jq .visibility) == public ]] || echo "ok    $repo is private, so forms cannot require fields; curation does"
 
 while IFS=$'\t' read -r role label description; do
-  [[ $label == *Hole* ]] && { echo "ok    label for $role is a Hole"; continue; }
   case $role in
   ready) color=0e8a16 ;;
   designed) color=1d76db ;;
@@ -66,24 +67,24 @@ done < <(printf '%s\t%s\n' \
   deviated 'Done differently than planned; see the closing comment' \
   reached-up 'Its work rewrote the parent' | merged Labels)
 
-board=$(rows Repositories <<<"$mapping" | grep "^$repo"$'\t' | cut -f2 || true)
-if [[ -z $board || $board == — ]]; then
-  echo "ok    no board"
-elif [[ $board == *Hole* ]]; then
-  echo "ok    board is a Hole"
-elif ! [[ $board =~ ^([^/]+)/([0-9]+)$ ]]; then
-  echo "TODO  board $board is not OWNER/N"
-  todo=1
-elif columns=$(gh project field-list "${BASH_REMATCH[2]}" --owner "${BASH_REMATCH[1]}" --format json \
-  --jq '.fields[] | select(.name == "Status") | .options[].name'); then
-  while IFS=$'\t' read -r status column _; do
-    [[ $column == *Hole* ]] && { echo "ok    column for $status is a Hole"; continue; }
-    grep -qxF "$column" <<<"$columns" || { echo "TODO  board $board has no column $column"; todo=1; }
-  done < <(rows Status <"$hub/SKILL.md" | merged Status)
-else
-  echo "TODO  cannot read board $board; gh auth refresh -s read:project"
-  todo=1
-fi
+boards=$(rows Repositories <<<"$mapping" | grep -v Hole | grep "^$repo"$'\t' | cut -f2 || true)
+[[ $boards == — ]] && boards=
+[[ $boards ]] || echo "ok    no board"
+for board in $boards; do
+  if ! [[ $board =~ ^([^/]+)/([0-9]+)$ ]]; then
+    echo "TODO  board $board is not OWNER/N"
+    todo=1
+  elif columns=$(gh project field-list "${BASH_REMATCH[2]}" --owner "${BASH_REMATCH[1]}" --format json \
+    --jq '.fields[] | select(.name == "Status") | .options[].name'); then
+    while IFS=$'\t' read -r status column _; do
+      [[ $column == — ]] && { echo "ok    no column for $status"; continue; }
+      grep -qxF "$column" <<<"$columns" || { echo "TODO  board $board has no column $column"; todo=1; }
+    done < <(rows Status <"$hub/SKILL.md" | merged Status)
+  else
+    echo "TODO  cannot read board $board; gh auth refresh -s read:project"
+    todo=1
+  fi
+done
 
 if types=$(gh api "orgs/$owner/issue-types" --jq '.[].name' 2>/dev/null); then
   for want in Epic Task Bug; do
