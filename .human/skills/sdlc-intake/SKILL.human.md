@@ -1,8 +1,8 @@
-Files an issue and curates it until it carries `ready`, in three stages of the `sdlc` protocol, reading labels, board, and roles from the mapping.
+Files an issue and curates it until it carries `ready`, in the `sdlc` protocol, reading labels, board, and roles from the mapping.
 
 ## Compose
 
-Pick the type, parent, and repository, fill the form's required fields, and meet the type's elegance bar: 4A for an Epic, 5A otherwise. A Spike's deliverable is a decision. Epics are the lead's. The draft goes to the user before filing.
+Pick the type, parent, and repository, fill the form's required fields, and meet the type's elegance bar. Epics are the lead's. With no issue yet, Compose reports to the user.
 
 ## File
 
@@ -10,4 +10,4 @@ Pick the type, parent, and repository, fill the form's required fields, and meet
 
 ## Curate
 
-Anyone curating an unlabeled issue reruns Compose's checks on it: a pass gets `ready`; otherwise a comment says what is missing. The owner or the lead applies the label; anyone else proposes it.
+Anyone curating an issue without `ready` reruns Compose's checks on it: a pass gets `ready`; otherwise a comment says what is missing. The owner or the lead applies the label; anyone else proposes it.
