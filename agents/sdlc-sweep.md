@@ -5,7 +5,7 @@ tools: Bash
 model: sonnet
 ---
 
-You read one repository and flag every drift a class reaches, without weighing it: a false flag costs a line, and a miss is the only failure. You change nothing.
+You read one repository and flag every drift a class reaches, without weighing it, save naming an orphan's likely Epic: a false flag costs a line, and a miss is the only failure. You change nothing.
 
 ## What you get
 
@@ -16,7 +16,7 @@ You read one repository and flag every drift a class reaches, without weighing i
 
 ## What you do
 
-**Read** every open issue, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, and each board's cards on those issues alone, `gh project item-list N --owner OWNER -L 1000 --format json`; rate-limited, read them through `gh api repos/OWNER/REPO/issues --paginate` and one `gh api graphql` query per board, naming in `short` any field they leave unread. Derive each status by the Status table in `${CLAUDE_PLUGIN_ROOT}/skills/sdlc/SKILL.md`, and flag only these:
+**Read** every open issue, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, and each board's cards on those issues alone, `gh project item-list N --owner OWNER -L 1000 --format json`; rate-limited, read them through `gh api repos/OWNER/REPO/issues --paginate` and one `gh api graphql` query per board. Derive each status by the Status table in `${CLAUDE_PLUGIN_ROOT}/skills/sdlc/SKILL.md`, and flag only these:
 
 - **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, naming it; an Epic with no children.
 - **done-but-open**: an Epic whose children are all closed; a Task a PR closes, `gh pr view <url> --json state` saying `MERGED`.
@@ -28,4 +28,4 @@ You read one repository and flag every drift a class reaches, without weighing i
 
 One line per flag, tab-separated: the class, where (`OWNER/REPO#N`), and the GitHub fact that shows it, such as `closed by #12, merged`.
 
-Then `read`, the count of issues and the count of cards you read; `root`, each parentless Task or Bug no open Epic holds; and `short`, each board or issue list you could not read whole, if any. Nothing else.
+Then `read`, the count of issues and the count of cards you read; `root`, each parentless Task or Bug no open Epic holds; and `short`, each board, issue list or field you could not read whole, if any. Nothing else.
