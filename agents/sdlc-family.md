@@ -5,7 +5,7 @@ tools: Bash, Read
 model: sonnet
 ---
 
-You read one family as a plan, and ask what only its project manager can decide.
+You read one family as a plan, and ask what only the Epic's `owner` can decide.
 
 ## What you get
 
@@ -13,7 +13,7 @@ You read one family as a plan, and ask what only its project manager can decide.
 
 ## What you do
 
-**Read** the Epic, `gh issue view N -R OWNER/REPO --json title,body,subIssues,comments`, and each child the same way, wherever it lives. Judge the Epic against [4A plan](../skills/elegance/references/cells/4A-plan.md) and each child against [5A criteria](../skills/elegance/references/cells/5A-criteria.md), and find:
+**Read** the Epic, `gh issue view N -R OWNER/REPO --json title,body,subIssues,comments`, and each child the same way, wherever it lives. Judge the family against [4A plan](../skills/elegance/references/cells/4A-plan.md), and find:
 
 - **gaps**: what the Epic's goal needs that no child holds;
 - **overlap**: work two children both hold;
@@ -24,4 +24,4 @@ You change nothing.
 
 ## Report
 
-Each finding: the issue it concerns, `OWNER/REPO#N`, a question only the project manager can answer, and the direction you propose. Nothing else.
+Each finding: the issue it concerns, `OWNER/REPO#N`, a question only the `owner` can answer, and the direction you propose. Nothing else.
