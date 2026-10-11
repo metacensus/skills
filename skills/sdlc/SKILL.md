@@ -28,7 +28,7 @@ Bars come from `elegance`: [4A plan](../elegance/references/cells/4A-plan.md) fo
 | **Parent / sub-issue** | Composition and rollup, cross-repo within one account: `gh issue edit N --parent P`. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
 | **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built: its body, and any further design in the Design comment), `deviated` and `reached-up` (see [Closing](#closing)). |
-| **Board** | A projection of [status](#status), only where the mapping names boards; stages move a card on whichever holds it, which needs the `project` scope. |
+| **Board** | A projection of [status](#status), holding only issues that serve its purpose: its `shortDescription`, with its items where that leaves doubt; stages move a card on whichever holds it, which needs the `project` scope. |
 
 ## Status
 
@@ -66,7 +66,7 @@ A request to pick an issue up is its `owner`'s yes to assigning.
 
 ## Stages
 
-Each stage belongs to a skill. It runs its own checks and the mapping's Checks rows for its stage and paths, then posts one comment, on the PR for a reviewer and on the issue otherwise, unless what it leaves on GitHub, a filed issue or an applied label, already says it:
+Each stage belongs to a skill. It runs its own checks and the mapping's Checks rows for its stage and paths, then posts one comment, on the PR for a reviewer and on the issue otherwise, unless a filed issue or a label it applies already says it:
 
 ```markdown
 ### <skill> · <Stage>: pass|pause|stop
@@ -100,7 +100,7 @@ Each stage belongs to a skill. It runs its own checks and the mapping's Checks r
 | Section | Columns | Where absent |
 |---|---|---|
 | `## Labels` | Role, Label, Description | each [role](#mechanisms) under its own name, described as there |
-| `## Repositories` | Repository as `OWNER/REPO`, Board as space-separated `OWNER/N`, Epics | no board; Epics file in the repository itself |
+| `## Repositories` | Repository as `OWNER/REPO`, Board as space-separated `OWNER/N` open to its issues, Epics | no board; Epics file in the repository itself |
 | `## Status` | Status, Column (`—`: no card move) | each column named for its status |
 | `## Roles` | Role, Who | the [defaults](#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |

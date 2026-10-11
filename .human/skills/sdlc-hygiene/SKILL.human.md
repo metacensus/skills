@@ -14,7 +14,7 @@ An `sdlc-family` agent per open Epic asks its `owner` what the family leaves ope
 
 ## Act
 
-Run `sdlc-setup.sh`, move stray cards but no Epic's, propose the rest, ask the `lead` about root issues. Close nothing.
+Run `sdlc-setup.sh`, move stray cards but no Epic's, adding none, propose the rest, ask the `lead` about root issues. Close nothing.
 
 ## Report
 

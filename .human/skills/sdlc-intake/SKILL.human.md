@@ -6,7 +6,7 @@ Pick type, parent, and repository, fill the form, meet the type's bar. Epics are
 
 ## File
 
-`gh issue create`, unlabeled, onto the mapping's board.
+`gh issue create`, unlabeled, carded only where a board's purpose fits.
 
 ## Curate
 

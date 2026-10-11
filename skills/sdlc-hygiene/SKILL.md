@@ -27,7 +27,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Act
 
-- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows, but no Epic's, nor one whose issue awaits its `owner` on a `mislabeled` proposal.
+- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows, adding none and moving no Epic's, nor one whose issue awaits its `owner` on a `mislabeled` proposal.
 - Every other flag is a proposal to its issue's `owner`: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `setup`'s, and each `root` issue as a question, go to the `lead`, in the summary. It closes nothing.
 
 **Stop** when GitHub refuses a write.

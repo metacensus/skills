@@ -26,7 +26,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Implement
 
-- Status is In progress: assign the acting identity, and move the card.
+- Status is In progress: assign the acting identity, and move its card, if any, adding none.
 - The branch is [`checkin`'s](../checkin/SKILL.md).
 - [`elegance`](../elegance/SKILL.md) governs every line written.
 - Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, review is `elegance`.

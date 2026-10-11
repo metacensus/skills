@@ -23,13 +23,13 @@ No issue exists yet, so Compose's comment goes to the user.
 gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 ```
 
-`--type` only inside an organization. Add `--blocked-by N` for a stated blocker and `--project` for the mapping's board, its card in Backlog's column. No label. A new Epic's existing children attach with `gh issue edit EPIC --add-sub-issue N`. File posts no comment: the issue is its record.
+`--type` only inside an organization. Add `--blocked-by N` for a stated blocker and `--project` for a mapping's board whose [purpose](../sdlc/SKILL.md#mechanisms) the issue serves, its card in Backlog's column. No label. A new Epic's existing children attach with `gh issue edit EPIC --add-sub-issue N`. Where the mapping names a board, File's comment says which fits and why, or that none does.
 
 ## Curate
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card to Ready's column; anyone else posts the pass as a proposal.
+- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; anyone else posts the pass as a proposal.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.
