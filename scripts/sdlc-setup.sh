@@ -86,7 +86,7 @@ for board in $boards; do
   fi
 done
 
-if types=$(gh api "orgs/$owner/issue-types" --jq '.[].name' 2>/dev/null); then
+if types=$(gh api "orgs/$owner/issue-types" --jq '.[] | select(.is_enabled) | .name' 2>/dev/null); then
   for want in Epic Task Bug; do
     grep -qx "$want" <<<"$types" || { echo "TODO  org issue type $want is missing"; todo=1; }
   done
