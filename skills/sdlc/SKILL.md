@@ -102,7 +102,7 @@ Each stage is a skill. It runs its own checks and the mapping's Checks rows for 
 | Section | Columns | Where absent |
 |---|---|---|
 | `## Labels` | Role, Label, Description | each [role](#mechanisms) under its own name, described as there |
-| `## Repositories` | Repository, Board, Epics | no board; Epics file in the repository itself |
+| `## Repositories` | Repository as `OWNER/REPO`, Board as `OWNER/N`, Epics | no board; Epics file in the repository itself |
 | `## Status` | Status, Column | each column named for its status |
 | `## Roles` | Role, Who | the [defaults](#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
@@ -114,6 +114,6 @@ Each stage is a skill. It runs its own checks and the mapping's Checks rows for 
 
 ## Setup
 
-Once per repository, before filing there, run `${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-setup.sh OWNER/REPO` and act on each `TODO` it prints; rerunning is safe.
+Once per repository, before filing there, run `${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-setup.sh OWNER/REPO [PATH | OWNER/NAME:PATH]` with the mapping, if any, and act on each `TODO` it prints; rerunning is safe.
 
 The forms are [forms/](forms/), kept once in the organization's `.github` repository; a repository's own `.github/ISSUE_TEMPLATE/` replaces them whole.
