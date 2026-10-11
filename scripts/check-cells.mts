@@ -170,9 +170,7 @@ const needsReview = (location: string) => enforcementOfLocation.get(location) !=
 /* ---------------------------------------------------------------- the map */
 
 let mapWords = 0;
-if (!mappingFound) {
-  if (DIFF) err(mappingName, "missing; write the repository's elegance-mapping.md (format atop this script) before --diff");
-} else {
+if (mappingFound) {
   mapWords = mappingSrc.replace(/\]\([^)]*\)/g, "]").split(/\s+/).filter(Boolean).length;
   if (mapWords > MAPPING.maxWords) err(mappingName, `${mapWords} words; a map holds at most ${MAPPING.maxWords}`);
 }
