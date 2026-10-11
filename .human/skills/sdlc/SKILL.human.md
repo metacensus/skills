@@ -34,4 +34,4 @@ The PR closes the issue by number, across repositories when they differ; `checki
 
 ## Setup
 
-A script turns issues on and creates the labels; the forms live once in the organization's `.github` repository.
+A script turns issues on, creates the labels, and checks the board's columns; the forms live once in the organization's `.github` repository.
