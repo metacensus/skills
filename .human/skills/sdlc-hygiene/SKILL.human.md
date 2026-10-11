@@ -2,7 +2,7 @@ Sweeps repositories for drift from `sdlc`, each stage reporting to the session.
 
 ## Precheck
 
-Read the repositories in scope, the cadence, and each type's required fields. Pause without `read:project`; stop with no repository.
+Read the repositories in scope, the cadence, and each type's required fields. Pause without the `project` scope; stop with no repository.
 
 ## Sweep
 
@@ -14,7 +14,7 @@ An `sdlc-family` agent per open Epic asks the project manager, its owner, what t
 
 ## Act
 
-Remove `ready` where the form fails and move stray cards; propose the rest, close nothing. Stop when GitHub refuses.
+Run `sdlc-setup.sh` and move stray cards; propose the rest, close nothing. Stop when GitHub refuses.
 
 ## Report
 

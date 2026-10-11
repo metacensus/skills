@@ -7,11 +7,11 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The repositories in scope are those the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows, each with its board, if any; the mapping's Cadence rows give the thresholds, the hub's defaults where absent.
+- The repositories in scope are those the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows, each with its boards, if any; the mapping's Cadence rows give the thresholds, the hub's defaults where absent.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, yield each type's required fields.
-- `gh auth status` holds `read:project` where a board is named.
+- `gh auth status` holds the `project` scope where a board is named.
 
-**Pause** without `read:project`, for the user to refresh. **Stop** when no repository is in scope.
+**Pause** without it, for the user to refresh. **Stop** when no repository is in scope.
 
 ## Sweep
 
@@ -28,7 +28,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Act
 
-Act removes `ready` from an issue a `mislabeled` flag finds failing its form, where [the hub's table](../sdlc/SKILL.md#roles) says may, and moves the card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows. Every other flag is a proposal to its issue's `owner`: a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); and `setup`'s go to the `lead`, in the summary. It closes nothing.
+Act runs [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and moves the card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows. Every other flag is a proposal to its issue's `owner`: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); and `setup`'s go to the `lead`, in the summary. It closes nothing.
 
 **Stop** when GitHub refuses a write.
 

@@ -1,12 +1,12 @@
-A cheap scanner that flags one repository's drift by class and judges nothing; only a miss is a failure.
+A cheap scanner that flags one repository's drift by class, judging and changing nothing; only a miss is a failure.
 
 ## What you get
 
-The repository, its board, the label names, required fields, cadence and setup command.
+The repository, its boards, the label names, required fields and cadence.
 
 ## What you do
 
-Read every open issue and card; flag orphans, done-but-open, stale, mislabeled, board and setup drift.
+Read every open issue and every card on each board; flag orphans, done-but-open, stale, mislabeled and board drift.
 
 ## Report
 
