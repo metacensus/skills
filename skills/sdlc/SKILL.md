@@ -1,33 +1,31 @@
 ---
 name: sdlc
-description: The software development lifecycle every organization on the Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, or asking how issues, labels, boards, or status work here.
+description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, or asking how issues, labels, boards, or status work here.
 ---
 
 ## The ladder
 
 | Jira | GitHub | Notes |
 |---|---|---|
-| **Initiative** | an Effort on the [Roadmap](../elegance/references/grid.md#location-key) | Quarter-scale. **Not** an issue type. |
+| **Initiative** | Issue `type: Initiative` | Quarter-scale. Holds Epics; the only parent an Epic takes. Body: one paragraph, linking the [roadmap](../elegance/references/cells/2A-roadmap.md) entry that owns its narrative. |
 | **Epic** | Issue `type: Epic` | Weeks. Holds Tasks. |
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
 | **Bug** | Issue `type: Bug` | Same size as Task. |
 | **Sub-task** | *none* | A Task wanting children is an Epic. |
 
-Bars come from `elegance`: [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug, [3A design](../elegance/references/cells/3A-design.md) for Effort.
+Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
 
-**Nest Epic under Epic** only when one root must group cross-repo epics.
-
-**Repo follows the PR.** A Task files where its PR lands, unless the Epic's owner keeps it beside the Epic; then its Verification names the repo it runs in.
+A Task files where its PR lands, unless the Epic's owner keeps it beside the Epic; then its Verification names the repo it runs in.
 
 ## Mechanisms
 
 | Mechanism | Carries |
 |---|---|
-| **Type** | Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
-| **Parent / sub-issue** | Composition and rollup, cross-repo within one account: `gh issue edit N --parent P`. |
+| **Type** | Initiative / Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
+| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
-| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built: its body, and any further design in the Design comment), `deviated` and `reached-up` (see [Closing](#closing)). |
+| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status), holding only issues that serve its purpose: its `shortDescription`, with its items where that leaves doubt; stages move a card on whichever holds it, which needs the `project` scope. |
 
 ## Status
@@ -44,19 +42,19 @@ Derived from GitHub facts alone, never written: `gh issue view N --json issueTyp
 | Done | closed **completed** |
 | Dropped | closed **not planned** |
 
-Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity. Pickup claims it by assigning that identity.
+Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity.
 
 ## Roles
 
 | Role | Takes | Default |
 |---|---|---|
 | `owner` | an issue's scope, a cross-owner conflict surfaced in the issue itself, and its proposals | its assignee, else its parent's `owner`, else the `lead` |
-| `lead` | a stage's stop; filing Epics; curating root issues, by the `owner` chain | the user |
+| `lead` | a stage's stop; filing Initiatives and Epics; curating root issues, by the `owner` chain | the user |
 | `reviewer` | a PR's review | `CODEOWNERS`, else none |
 
 An agent may act, or proposes to the `owner` in a comment:
 
-| Action | Task / Bug | Epic |
+| Action | Task / Bug | Epic / Initiative |
 |---|---|---|
 | Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
 | Parent or stated `blocked by` | may | propose |
