@@ -10,7 +10,7 @@ Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviat
 
 ## Status
 
-Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Work starts on a Ready Task or Bug.
+Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Picking up a Ready Task or Bug assigns the acting identity.
 
 ## Roles
 

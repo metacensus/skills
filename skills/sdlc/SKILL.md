@@ -23,9 +23,9 @@ A Task files where its PR lands, unless the Epic's owner keeps it beside the Epi
 | Mechanism | Carries |
 |---|---|
 | **Type** | Initiative / Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
-| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
+| **Parent / sub-issue** | An Epic's parent is an Initiative or none; a Task's or Bug's, an Epic or none: `gh issue edit N --parent P`, cross-repo within one account. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
-| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
+| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person reading the issue alone knows what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status), holding only issues that serve its purpose: its `shortDescription`, with its items where that leaves doubt; stages move a card on whichever holds it, which needs the `project` scope. |
 
 ## Status
@@ -42,7 +42,7 @@ Derived from GitHub facts alone, never written: `gh issue view N --json issueTyp
 | Done | closed **completed** |
 | Dropped | closed **not planned** |
 
-Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity.
+Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity; pickup assigns it.
 
 ## Roles
 
@@ -54,7 +54,7 @@ Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<read
 
 An agent may act, or proposes to the `owner` in a comment:
 
-| Action | Task / Bug | Epic / Initiative |
+| Action | Task / Bug | Initiative / Epic |
 |---|---|---|
 | Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
 | Parent or stated `blocked by` | may | propose |
