@@ -7,13 +7,13 @@ body:
       value: |
         Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
 
-        Children are Epics, attached as sub-issues (`gh issue edit EPIC --parent THIS`), not a list in the body.
+        Children are sub-issues (`gh issue edit N --parent THIS`), not a list in the body.
 
   - type: input
     id: roadmap
     attributes:
       label: Roadmap
-      description: Link to the roadmap entry that owns this Initiative's narrative.
+      description: The roadmap entry that owns its narrative.
     validations:
       required: true
 
