@@ -10,7 +10,7 @@ Each stage follows the [`sdlc`](../sdlc/SKILL.md) hub's [protocol](../sdlc/SKILL
 Draft the issue against these checks:
 
 - **Type** on the [ladder](../sdlc/SKILL.md#the-ladder). Initiatives and Epics are the `lead`'s to file.
-- **Parent**, if any: an Epic's is an Initiative; a Task's or Bug's, an Epic.
+- **Parent**, if any: an Epic's is an Initiative; a Task's or Bug's, an Epic; an Initiative takes none.
 - **Repository**: as the ladder says; an Epic's is the mapping's Epics column; an Initiative's, any the `lead` names, else the home the mapping suggests.
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
