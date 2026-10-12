@@ -1,8 +1,8 @@
-The part of the lifecycle every organization on the Epic/Task/Bug ladder shares. Each stage belongs to a skill; what an organization decides is in its mapping.
+The part of the lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares. Each stage belongs to a skill; what an organization decides is in its mapping.
 
 ## The ladder
 
-An Epic takes weeks and holds Tasks; a Task is one PR; a Spike is a Task that delivers a decision; a Bug is held to a Task's bar. Quarter-scale outcomes are Efforts on the roadmap. A Task files where its PR lands.
+An Initiative takes a quarter, holds Epics, and is the only parent an Epic takes. An Epic takes weeks and holds Tasks; a Task is one PR; a Spike is a Task that delivers a decision; a Bug is held to a Task's bar. A Task files where its PR lands.
 
 ## Mechanisms
 
@@ -10,11 +10,11 @@ Type, parent, dependency, and labels in four roles: `ready`, `designed`, `deviat
 
 ## Status
 
-Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Picking up a Ready Task or Bug assigns the acting identity.
+Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Work starts on a Ready Task or Bug.
 
 ## Roles
 
-The `owner`, by default the assignee, sets scope and takes proposals; the `lead`, by default the user, takes stops and files Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes, and asking it to pick an issue up lets it assign itself.
+The `owner`, by default the assignee, sets scope and takes proposals; the `lead`, by default the user, takes stops and files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes, and asking it to pick an issue up lets it assign itself.
 
 ## Stages
 
