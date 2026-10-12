@@ -87,11 +87,11 @@ for board in $boards; do
 done
 
 if types=$(gh api "orgs/$owner/issue-types" --jq '.[] | select(.is_enabled) | .name' 2>/dev/null); then
-  for want in Epic Task Bug; do
+  for want in Initiative Epic Task Bug; do
     grep -qx "$want" <<<"$types" || { echo "TODO  org issue type $want is missing"; todo=1; }
   done
   while read -r have; do
-    case $have in Epic | Task | Bug) ;; *) echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1 ;; esac
+    case $have in Initiative | Epic | Task | Bug) ;; *) echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1 ;; esac
   done <<<"$types"
 elif [[ $(gh api "users/$owner" --jq .type) == User ]]; then
   echo "ok    $owner is not an organization; titles state the type"
@@ -106,7 +106,7 @@ elif [[ $(gh api "repos/$owner/.github" --jq .visibility 2>/dev/null) == public 
   gh api "repos/$owner/.github/contents/.github/ISSUE_TEMPLATE" --silent 2>/dev/null; then
   echo "ok    forms inherited from $owner/.github"
 else
-  echo "TODO  no forms; copy $hub/forms/ to .github/ISSUE_TEMPLATE/ in $owner/.github, a public repository"
+  echo "TODO  no forms; copy $hub/forms/ ($(cd "$hub/forms" && echo *.yml)) to .github/ISSUE_TEMPLATE/ in $owner/.github, a public repository"
   todo=1
 fi
 
