@@ -1,6 +1,6 @@
 ---
 name: temporal
-description: Guides writing and testing Temporal workflows and activities in Go so they respect the PFI structure (proto → generated → implementation) and the ownership model (P1-P4), and are tested at each layer. Use when adding or modifying a workflow, activity, service, or Nexus operation, when a change touches owner configs, Vault paths, Kubernetes namespaces, or Nexus boundaries, or when asked to write, plan, or improve tests for a workflow, activity, or client.
+description: Guides writing and testing Temporal workflows and activities in Go so they respect the PFI structure (proto → generated → implementation) and its security context (P1-P4), and are tested at each layer. Use when adding or modifying a workflow, activity, service, or Nexus operation, when a change derives credentials, resource paths, or access policies, or crosses a Nexus boundary, or when asked to write, plan, or improve tests for a workflow, activity, or client.
 ---
 
 # Temporal
@@ -15,10 +15,10 @@ Copy and track:
 
 ```
 - [ ] 1. Structure follows PFI (proto → generated → implementation)
-- [ ] 2. Ownership is a typed identity, never a bare string (P1)
-- [ ] 3. Cross-owner access goes through Nexus, never a direct child (P2)
-- [ ] 4. Variants branch on structure/data, not labels; no shared workflow types across owners (P3)
-- [ ] 5. Vault policy is composed from the same config path methods (P4)
+- [ ] 2. The security context is a typed identity, never a bare string (P1)
+- [ ] 3. Crossing to another security context goes through Nexus, never a direct child (P2)
+- [ ] 4. Variants branch on structure/data, not labels; no workflow type shared across security contexts (P3)
+- [ ] 5. Access policies are composed from the same methods that build the paths (P4)
 - [ ] 6. Registered in workflows.go + fx.go + the worker's workflows.go
 - [ ] 7. Tests planned (Testing, below)
 ```
@@ -29,16 +29,14 @@ Edit proto and implementation only; never edit generated code. Confirm the targe
 
 Canonical, with package layout, registration, and code generation: [pfi-pattern.md](references/pfi-pattern.md).
 
-### Step 2: Ownership (P1-P4)
+### Step 2: Security context (P1-P4)
 
-Any workflow that derives owner configs, Vault paths, K8s namespaces, or Vault policies must satisfy all four principles. Read the canonical doc and check each one against your diff:
+A workflow runs with its worker's credentials. Any workflow that derives credentials, resource paths, or access policies from an identity must satisfy all four principles; check each one against your diff:
 
-- **P1** — worker identity is the security context; use the injected owner, never `NewOrgConfig(input.Org)` on an owner's worker; provisioning workflows take a typed `Owner`.
-- **P2** — local child = my resources; cross-owner access is Nexus only.
-- **P3** — branch on structure, not labels; never share a workflow type across security contexts.
-- **P4** — compose Vault policies from the component configs' own path methods, in the same package.
-
-Canonical (with do/don't code and the 403 case study): [ownership.md](references/ownership.md).
+- **P1** — worker identity is the security context. A worker dedicated to one tenant has that identity injected at startup, and its inputs carry none; a workflow acting for a tenant takes a typed identity (a proto `oneof`, never a string, nor a string and a flag) and resolves it once, at the top.
+- **P2** — local child = my resources: a direct child runs with the caller's credentials. Crossing to another security context is a Nexus operation, never a child workflow or a widened policy.
+- **P3** — branch on structure, not labels: `parent == nil` or "is this resource mine?", never `if kind == "primary"`. Share plain functions, called with the caller's resolved identity; never share a workflow type that re-decides identity per call.
+- **P4** — compose access policies from the same methods that build the paths, in the same package. Test: change one path method, and both the write and the policy rule move.
 
 ### Step 3: Register
 

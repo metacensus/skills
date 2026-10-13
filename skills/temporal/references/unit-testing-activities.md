@@ -8,8 +8,8 @@ Each test case name clearly describes **what** is being tested and **why it shou
 
 ```go
 // ✅ Good: intent is crystal clear
-{name: "success - creates role with multiple policies"},
-{name: "error - missing role name"},
+{name: "success - reserves multiple skus"},
+{name: "error - missing order id"},
 {name: "error - client connection refused"},
 
 // ❌ Bad: no information
@@ -34,8 +34,8 @@ Mock **only the direct dependency** of the activity (the client). Don't mock dat
 
 ```go
 // ✅ GOOD: mock only the client
-mockClient := NewMockVaultClient(t)
-mockClient.EXPECT().Write(mock.Anything, mock.Anything, mock.Anything).Return(nil)
+mockClient := NewMockInventoryClient(t)
+mockClient.EXPECT().Reserve(mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 // ❌ BAD: don't mock the client's internal dependencies
 env.OnCall(httpClient.Do).Return(...)
@@ -50,7 +50,7 @@ for _, tt := range tests {
     t.Run(tt.name, func(t *testing.T) {
         // Fresh setup for every case
         env := (&testsuite.WorkflowTestSuite{}).NewTestActivityEnvironment()
-        mockClient := NewMockVaultClient(t)
+        mockClient := NewMockInventoryClient(t)
         // ...
     })
 }
@@ -65,8 +65,8 @@ Define **sentinel errors** for test-specific scenarios; use **real client errors
 var errConnectionRefused = errors.New("connection refused")
 
 // ✅ Real error: from actual client
-if !errors.Is(err, vault.ErrNotFound) {
-    t.Error("should handle vault not found")
+if !errors.Is(err, inventory.ErrNotFound) {
+    t.Error("should handle sku not found")
 }
 ```
 
@@ -90,41 +90,41 @@ This pattern prevents "unexpected call" failures and makes tests self-documentin
 ```go
 var errClientNotFound = errors.New("not found")
 
-func TestCreateAuthRoleActivity(t *testing.T) {
+func TestReserveStockActivity(t *testing.T) {
     tests := []struct {
         name      string
-        input     *pb.CreateAuthRoleInput
+        input     *pb.ReserveStockInput
         clientErr error
         expectErr bool
     }{
         // Layer 1: Validation errors (caught before client calls)
-        {name: "error - missing role name", input: &pb.CreateAuthRoleInput{}, expectErr: true},
-        {name: "error - missing service account", input: &pb.CreateAuthRoleInput{RoleName: "role"}, expectErr: true},
-        {name: "error - invalid policy format", input: &pb.CreateAuthRoleInput{RoleName: "role", ServiceAccountName: "sa", Policies: []string{""}}, expectErr: true},
+        {name: "error - missing order id", input: &pb.ReserveStockInput{}, expectErr: true},
+        {name: "error - missing warehouse", input: &pb.ReserveStockInput{OrderId: "order1"}, expectErr: true},
+        {name: "error - empty sku", input: &pb.ReserveStockInput{OrderId: "order1", Warehouse: "wh1", Skus: []string{""}}, expectErr: true},
 
         // Layer 2: Happy path
-        {name: "success - creates role", input: &pb.CreateAuthRoleInput{RoleName: "role", ServiceAccountName: "sa"}, expectErr: false},
-        {name: "success - creates role with multiple policies", input: &pb.CreateAuthRoleInput{RoleName: "role", ServiceAccountName: "sa", Policies: []string{"p1", "p2"}}, expectErr: false},
+        {name: "success - reserves one sku", input: &pb.ReserveStockInput{OrderId: "order1", Warehouse: "wh1", Skus: []string{"sku1"}}, expectErr: false},
+        {name: "success - reserves multiple skus", input: &pb.ReserveStockInput{OrderId: "order1", Warehouse: "wh1", Skus: []string{"sku1", "sku2"}}, expectErr: false},
 
         // Layer 3: Client errors
-        {name: "error - client not found", input: &pb.CreateAuthRoleInput{RoleName: "role", ServiceAccountName: "sa"}, clientErr: errClientNotFound, expectErr: true},
-        {name: "error - client connection refused", input: &pb.CreateAuthRoleInput{RoleName: "role", ServiceAccountName: "sa"}, clientErr: errConnectionRefused, expectErr: true},
+        {name: "error - client not found", input: &pb.ReserveStockInput{OrderId: "order1", Warehouse: "wh1", Skus: []string{"sku1"}}, clientErr: errClientNotFound, expectErr: true},
+        {name: "error - client connection refused", input: &pb.ReserveStockInput{OrderId: "order1", Warehouse: "wh1", Skus: []string{"sku1"}}, clientErr: errConnectionRefused, expectErr: true},
     }
 
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
             env := (&testsuite.WorkflowTestSuite{}).NewTestActivityEnvironment()
-            mockClient := NewMockVaultClient(t)
+            mockClient := NewMockInventoryClient(t)
 
             // Conditional mock: only expect client call if input is valid (validation happens first)
-            if tt.input.RoleName != "" && tt.input.ServiceAccountName != "" {
-                mockClient.EXPECT().Write(mock.Anything, mock.Anything, mock.Anything).Return(tt.clientErr)
+            if tt.input.OrderId != "" && tt.input.Warehouse != "" && !slices.Contains(tt.input.Skus, "") {
+                mockClient.EXPECT().Reserve(mock.Anything, mock.Anything, mock.Anything).Return(tt.clientErr)
             }
 
             activities := NewActivities(mockClient)
-            env.RegisterActivity(activities.CreateAuthRole)
+            env.RegisterActivity(activities.ReserveStock)
 
-            val, err := env.ExecuteActivity(activities.CreateAuthRole, tt.input)
+            val, err := env.ExecuteActivity(activities.ReserveStock, tt.input)
 
             if tt.expectErr && err == nil {
                 t.Fatal("expected error")
@@ -135,9 +135,12 @@ func TestCreateAuthRoleActivity(t *testing.T) {
 
             // Verify output for success cases
             if !tt.expectErr {
-                output := val.Get().(*pb.CreateAuthRoleOutput)
-                if output == nil {
-                    t.Fatal("expected non-nil output")
+                var output pb.ReserveStockOutput
+                if err := val.Get(&output); err != nil {
+                    t.Fatalf("decode output: %v", err)
+                }
+                if output.ReservationId == "" {
+                    t.Fatal("expected a reservation id")
                 }
             }
         })
@@ -211,82 +214,82 @@ if tt.input.Name != "" && tt.clientErr != nil {
 ### Pattern 1: Create and Return Resource
 
 ```go
-func (a *Activities) CreateRole(ctx context.Context, req *pb.CreateRoleInput) (*pb.CreateRoleOutput, error) {
+func (a *Activities) CreateReservation(ctx context.Context, req *pb.CreateReservationInput) (*pb.CreateReservationOutput, error) {
     // Validate
-    if req.RoleName == "" {
-        return nil, errors.New("role name required")
+    if req.OrderId == "" {
+        return nil, errors.New("order id required")
     }
 
     // Call client
-    result, err := a.client.Create(ctx, req.RoleName)
+    result, err := a.client.Create(ctx, req.OrderId)
     if err != nil {
-        return nil, fmt.Errorf("create role: %w", err)
+        return nil, fmt.Errorf("create reservation: %w", err)
     }
 
     // Return
-    return &pb.CreateRoleOutput{RoleId: result.ID}, nil
+    return &pb.CreateReservationOutput{ReservationId: result.ID}, nil
 }
 ```
 
 **Tests needed:**
-- Validation: empty role name → error
+- Validation: empty order id → error
 - Success: valid input → output
 - Client error: client fails → error
 
 ### Pattern 2: Get and Transform
 
 ```go
-func (a *Activities) GetPolicy(ctx context.Context, req *pb.GetPolicyInput) (*pb.GetPolicyOutput, error) {
+func (a *Activities) GetStock(ctx context.Context, req *pb.GetStockInput) (*pb.GetStockOutput, error) {
     // Validate
-    if req.PolicyId == "" {
-        return nil, errors.New("policy id required")
+    if req.Sku == "" {
+        return nil, errors.New("sku required")
     }
 
     // Call client
-    policy, err := a.client.GetPolicy(ctx, req.PolicyId)
+    stock, err := a.client.GetStock(ctx, req.Sku)
     if err != nil {
-        return nil, fmt.Errorf("get policy: %w", err)
+        return nil, fmt.Errorf("get stock: %w", err)
     }
 
     // Transform
-    return &pb.GetPolicyOutput{
-        Name:    policy.Name,
-        Rules:   policy.Rules,
-        Version: policy.Version,
+    return &pb.GetStockOutput{
+        Sku:       stock.Sku,
+        Available: stock.Available,
+        Warehouse: stock.Warehouse,
     }, nil
 }
 ```
 
 **Tests needed:**
-- Validation: empty policy ID → error
+- Validation: empty sku → error
 - Success: valid ID → transformed output
 - Client errors: not found, forbidden, timeout
 
 ### Pattern 3: List and Filter
 
 ```go
-func (a *Activities) ListRoles(ctx context.Context, req *pb.ListRolesInput) (*pb.ListRolesOutput, error) {
+func (a *Activities) ListReservations(ctx context.Context, req *pb.ListReservationsInput) (*pb.ListReservationsOutput, error) {
     // Validate
     if req.Limit < 1 {
         return nil, errors.New("limit must be >= 1")
     }
 
     // Call client
-    roles, err := a.client.ListRoles(ctx, req.Namespace, req.Limit)
+    reservations, err := a.client.ListReservations(ctx, req.Warehouse, req.Limit)
     if err != nil {
-        return nil, fmt.Errorf("list roles: %w", err)
+        return nil, fmt.Errorf("list reservations: %w", err)
     }
 
     // Transform
-    var protoRoles []*pb.Role
-    for _, role := range roles {
-        protoRoles = append(protoRoles, &pb.Role{
-            Name: role.Name,
-            ID:   role.ID,
+    var protoReservations []*pb.Reservation
+    for _, r := range reservations {
+        protoReservations = append(protoReservations, &pb.Reservation{
+            OrderId: r.OrderID,
+            Id:      r.ID,
         })
     }
 
-    return &pb.ListRolesOutput{Roles: protoRoles}, nil
+    return &pb.ListReservationsOutput{Reservations: protoReservations}, nil
 }
 ```
 
@@ -294,7 +297,7 @@ func (a *Activities) ListRoles(ctx context.Context, req *pb.ListRolesInput) (*pb
 - Validation: limit < 1 → error
 - Success: valid request → populated output
 - Success: empty list → empty output
-- Client error: namespace not found
+- Client error: warehouse not found
 
 ---
 
@@ -333,7 +336,7 @@ if !errors.Is(err, ErrNotFound) {
 }
 
 // Extract wrapped error for inspection
-var clientErr *vault.ClientError
+var clientErr *inventory.ClientError
 if errors.As(err, &clientErr) {
     t.Logf("client error code: %d", clientErr.Code)
 }

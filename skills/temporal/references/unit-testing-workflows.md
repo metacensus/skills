@@ -45,29 +45,29 @@ Workflow tests are organized into two categories:
 Test validation logic directly without a workflow environment:
 
 ```go
-func TestNewCreateNamespaceWorkflow(t *testing.T) {
+func TestNewFulfillOrderWorkflow(t *testing.T) {
     tests := []struct {
         name      string
-        input     *pb.CreateNamespaceInput
+        input     *pb.FulfillOrderInput
         wantErr   bool
         errSubstr string
     }{
         {
             name:    "success - valid input",
-            input:   &pb.CreateNamespaceInput{Org: "org1"},
+            input:   &pb.FulfillOrderInput{OrderId: "order1"},
             wantErr: false,
         },
         {
-            name:      "error - empty org",
-            input:     &pb.CreateNamespaceInput{Org: ""},
+            name:      "error - empty order id",
+            input:     &pb.FulfillOrderInput{OrderId: ""},
             wantErr:   true,
-            errSubstr: "org is required",
+            errSubstr: "order_id is required",
         },
     }
 
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
-            wf, err := newCreateNamespaceWorkflow(tt.input)
+            wf, err := newFulfillOrderWorkflow(tt.input)
 
             if tt.wantErr {
                 if err == nil {
@@ -103,28 +103,28 @@ func TestNewCreateNamespaceWorkflow(t *testing.T) {
 Test orchestration logic with mocked activities and child workflows:
 
 ```go
-func TestCreateNamespaceWorkflow_Execute(t *testing.T) {
+func TestFulfillOrderWorkflow_Execute(t *testing.T) {
     tests := []struct {
-        name          string
-        org           string
-        renderErr     error
-        applyErr      error
-        wantErr       bool
-        errSubstr     string
-        wantNamespace string
+        name         string
+        orderId      string
+        reserveErr   error
+        shipErr      error
+        wantErr      bool
+        errSubstr    string
+        wantTracking string
     }{
         {
-            name:          "success - namespace created",
-            org:           "testorg",
-            wantErr:       false,
-            wantNamespace: "ns-testorg",
+            name:         "success - order shipped",
+            orderId:      "order1",
+            wantErr:      false,
+            wantTracking: "trk-order1",
         },
         {
-            name:      "error - render chart fails",
-            org:       "testorg",
-            renderErr: errors.New("helm rendering failed"),
-            wantErr:   true,
-            errSubstr: "render chart",
+            name:       "error - reserve stock fails",
+            orderId:    "order1",
+            reserveErr: errors.New("inventory unavailable"),
+            wantErr:    true,
+            errSubstr:  "reserve stock",
         },
     }
 
@@ -134,13 +134,13 @@ func TestCreateNamespaceWorkflow_Execute(t *testing.T) {
 
             // Register and mock activities...
             // Execute workflow with VALID input (validation tested separately)
-            env.ExecuteWorkflow(func(ctx workflow.Context, input *pb.CreateNamespaceInput) (*pb.CreateNamespaceOutput, error) {
-                wf, err := workflows.CreateNamespace(ctx, &pb.CreateNamespaceWorkflowInput{Req: input})
+            env.ExecuteWorkflow(func(ctx workflow.Context, input *pb.FulfillOrderInput) (*pb.FulfillOrderOutput, error) {
+                wf, err := workflows.FulfillOrder(ctx, &pb.FulfillOrderWorkflowInput{Req: input})
                 if err != nil {
                     return nil, err
                 }
                 return wf.Execute(ctx)
-            }, &pb.CreateNamespaceInput{Org: tt.org})
+            }, &pb.FulfillOrderInput{OrderId: tt.orderId})
 
             // Verify results...
         })
@@ -177,11 +177,11 @@ Mock only the direct dependencies of the workflow (activities and child workflow
 
 ```go
 // ✅ GOOD: mock only direct dependencies
-env.OnActivity("CreateDeployment", mock.Anything, mock.Anything).Return(nil, nil)
-env.OnWorkflow("ValidateConfiguration", mock.Anything, mock.Anything).Return(nil)
+env.OnActivity("CreateShipment", mock.Anything, mock.Anything).Return(nil, nil)
+env.OnWorkflow("ValidateOrder", mock.Anything, mock.Anything).Return(nil)
 
 // ❌ BAD: don't mock the internal structures activities use
-env.OnCall(kubeClient.Create).Return(nil)
+env.OnCall(inventoryClient.Reserve).Return(nil)
 ```
 
 ### 3. Each Test Case Is Completely Independent
@@ -215,7 +215,7 @@ Workflows orchestrate complex sequences. Test that branching logic routes execut
 
 ### In Constructor Tests
 - Required field validation (empty strings, nil values)
-- Field format validation (e.g., cert_type must be "tls" or "org")
+- Field format validation (e.g., shipping_speed must be "standard" or "express")
 - Cross-field validation (if field A requires field B)
 - All validation error messages are clear
 

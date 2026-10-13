@@ -33,22 +33,22 @@ This keeps interfaces and code from drifting apart and makes refactoring safe.
 
 **1. Define the interface (proto)**
 ```protobuf
-// proto/workflows/vault/v1/vault.proto
-service VaultService {
-  rpc CreateAuthRole(CreateAuthRoleInput) returns (CreateAuthRoleOutput);
+// proto/orders/v1/orders.proto
+service OrderService {
+  rpc ReserveStock(ReserveStockInput) returns (ReserveStockOutput);
 }
 ```
 
 **2. Generate (automatic, via `make gen`)**
 The generated code provides:
-- `CreateAuthRoleActivity` interface to implement
-- `VaultServiceWorkflowClient` for calling workflows
+- `ReserveStockActivity` interface to implement
+- `OrderServiceWorkflowClient` for calling workflows
 - Request/response types
 
 **3. Implement (your code)**
 ```go
-// lib/workflows/vault/v1/activities.go
-func (a *Activities) CreateAuthRole(ctx context.Context, req *pb.CreateAuthRoleInput) (*pb.CreateAuthRoleOutput, error) {
+// lib/workflows/orders/v1/activities.go
+func (a *Activities) ReserveStock(ctx context.Context, req *pb.ReserveStockInput) (*pb.ReserveStockOutput, error) {
     // Your logic here
 }
 ```

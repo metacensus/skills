@@ -2,7 +2,7 @@ How to write and test Temporal workflows in Go.
 
 ## Authoring
 
-A checklist and four steps: structure by PFI, check ownership P1–P4, register every module, plan tests.
+A checklist and four steps: structure by PFI, check the security context, P1–P4, register every module, plan tests.
 
 ## Testing
 

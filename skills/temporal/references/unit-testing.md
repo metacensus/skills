@@ -25,7 +25,7 @@ Temporal code takes a three-layer testing approach:
 
 - Activity Unit Tests (middle):
   - Test: Activity input validation, error handling, output construction
-  - Mocks: External system clients (Vault, Kubernetes, etc.)
+  - Mocks: External system clients (databases, payment gateways, etc.)
 
 - Client Tests (top, integration tests):
   - Test: Real client behavior against live systems
@@ -54,7 +54,7 @@ Temporal code takes a three-layer testing approach:
 **See:** [unit-testing-workflows.md](unit-testing-workflows.md)
 
 ### Activity Tests
-- **Mock:** External system clients (Vault, Kubernetes, etc.)
+- **Mock:** External system clients (databases, payment gateways, etc.)
 - **Test:** Input validation, client error handling, output transformation
 - **Example:** "Does the activity validate empty inputs? Does it propagate client errors?"
 - **Layers:** Validation → Client Call → Output Construction
@@ -64,7 +64,7 @@ Temporal code takes a three-layer testing approach:
 ### Client Tests (Integration Testing)
 - **Mock:** Nothing (tests real systems)
 - **Test:** Real client behavior against containerized services
-- **Example:** "Does the Vault client actually read/write secrets correctly?"
+- **Example:** "Does the inventory client actually read and write stock correctly?"
 - **Tag:** `//go:build integration`
 
 **See:** [unit-testing-clients.md](unit-testing-clients.md)
@@ -130,8 +130,8 @@ go test -short ./...
 
 1. **Make Intent Explicit** — Test names describe what and why
    ```go
-   {name: "success - creates role with multiple policies"},
-   {name: "error - missing role name"},
+   {name: "success - reserves multiple skus"},
+   {name: "error - missing order id"},
    {name: "error - client connection refused"},
    ```
 

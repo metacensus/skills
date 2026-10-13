@@ -2,7 +2,7 @@
 
 ## Overview
 
-Client tests verify **real system behavior** using testcontainers to run actual services (Vault, PostgreSQL, etc.). Testing real systems catches bugs that mocks hide and validates that client abstractions match actual system behavior.
+Client tests verify **real system behavior** using testcontainers to run actual services (Redis, PostgreSQL, etc.). Testing real systems catches bugs that mocks hide and validates that client abstractions match actual system behavior.
 
 ---
 
@@ -14,19 +14,18 @@ Test real system interaction using containerized services. No mocks.
 //go:build integration
 // +build integration
 
-func TestVaultClient_GenericOperations(t *testing.T) {
+func TestInventoryClient_GenericOperations(t *testing.T) {
     if testing.Short() {
         t.Skip("skipping client test in short mode")
     }
 
     ctx := context.Background()
 
-    // Start real Vault container
+    // Start real Redis container
     req := testcontainers.ContainerRequest{
-        Image:        "hashicorp/vault:1.15",
-        ExposedPorts: []string{"8200/tcp"},
-        Env:          map[string]string{"VAULT_DEV_ROOT_TOKEN_ID": "root"},
-        WaitingFor:   wait.ForHTTP("/v1/sys/health").WithPort("8200/tcp").WithStartupTimeout(30 * time.Second),
+        Image:        "redis:7.2",
+        ExposedPorts: []string{"6379/tcp"},
+        WaitingFor:   wait.ForLog("Ready to accept connections").WithStartupTimeout(30 * time.Second),
     }
 
     container, err := testcontainers.GenericContainer(ctx, testcontainers.GenericContainerRequest{
@@ -34,32 +33,32 @@ func TestVaultClient_GenericOperations(t *testing.T) {
         Started:          true,
     })
     if err != nil {
-        t.Fatalf("failed to start vault: %v", err)
+        t.Fatalf("failed to start redis: %v", err)
     }
     defer container.Terminate(ctx)
 
     host, _ := container.Host(ctx)
-    port, _ := container.MappedPort(ctx, "8200")
-    client := NewVaultClient(fmt.Sprintf("http://%s:%s", host, port.Port()))
+    port, _ := container.MappedPort(ctx, "6379")
+    client := NewInventoryClient(fmt.Sprintf("%s:%s", host, port.Port()))
 
     // Test real operations
-    t.Run("write and read secret", func(t *testing.T) {
-        if err := client.Write(ctx, "secret/data/test", map[string]any{"data": "value"}); err != nil {
-            t.Fatalf("write failed: %v", err)
+    t.Run("set and get stock", func(t *testing.T) {
+        if err := client.SetStock(ctx, "sku1", 5); err != nil {
+            t.Fatalf("set failed: %v", err)
         }
-        result, err := client.Read(ctx, "secret/data/test")
+        result, err := client.GetStock(ctx, "sku1")
         if err != nil {
-            t.Fatalf("read failed: %v", err)
+            t.Fatalf("get failed: %v", err)
         }
         if result == nil {
             t.Fatal("result is nil")
         }
     })
 
-    t.Run("read nonexistent secret returns not found", func(t *testing.T) {
-        _, err := client.Read(ctx, "secret/data/does-not-exist")
+    t.Run("get unknown sku returns not found", func(t *testing.T) {
+        _, err := client.GetStock(ctx, "does-not-exist")
         if err == nil {
-            t.Fatal("expected error for nonexistent secret")
+            t.Fatal("expected error for unknown sku")
         }
         if !errors.Is(err, ErrNotFound) {
             t.Errorf("expected ErrNotFound, got: %v", err)
@@ -83,7 +82,7 @@ All client tests must include the build tag:
 //go:build integration
 // +build integration
 
-package vault
+package inventory
 ```
 
 This allows:
@@ -98,11 +97,9 @@ This allows:
 
 ```go
 req := testcontainers.ContainerRequest{
-    Image:        "hashicorp/vault:1.15",
-    ExposedPorts: []string{"8200/tcp"},
-    Env:          map[string]string{"VAULT_DEV_ROOT_TOKEN_ID": "root"},
-    WaitingFor:   wait.ForHTTP("/v1/sys/health").
-        WithPort("8200/tcp").
+    Image:        "redis:7.2",
+    ExposedPorts: []string{"6379/tcp"},
+    WaitingFor:   wait.ForLog("Ready to accept connections").
         WithStartupTimeout(30 * time.Second),
 }
 
@@ -127,8 +124,8 @@ defer container.Terminate(ctx)
 
 ```go
 host, err := container.Host(ctx)
-port, err := container.MappedPort(ctx, "8200")
-address := fmt.Sprintf("http://%s:%s", host, port.Port())
+port, err := container.MappedPort(ctx, "6379")
+address := fmt.Sprintf("%s:%s", host, port.Port())
 ```
 
 ---
@@ -179,8 +176,8 @@ var errNotFound = errors.New("not found")
 if err == errNotFound { ... }
 
 // ✅ Good: using real client error
-if !errors.Is(err, vault.ErrNotFound) {
-    t.Errorf("expected vault.ErrNotFound, got: %v", err)
+if !errors.Is(err, inventory.ErrNotFound) {
+    t.Errorf("expected inventory.ErrNotFound, got: %v", err)
 }
 ```
 
