@@ -10,4 +10,4 @@ The PR's significant choices for a non-author, structure first: each element, or
 
 ## Focus
 
-Fixed questions rate risk, say where to look; then `elegance` and its agent, the mapping's review checks, `open-source` if public, the host's reviewer, and the Verification. Once every check finishes, the comment is the verdict, input to the carrier's Land: pass when findings apply as written, escalate on a choice beyond the author, stop on a reopened design. Sharing the author's identity, a comment headed with it.
+Fixed questions rate risk, say where to look; then `elegance` and its agent, the mapping's review checks, `open-source` if public, the host's reviewer, and the Verification. Once every check finishes, the comment is the verdict, input to the carrier's Land: pass when findings apply as written, escalate on a choice beyond the author, stop on a reopened design. Sharing the author's identity, the heading is the verdict.

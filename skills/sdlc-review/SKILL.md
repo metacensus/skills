@@ -50,8 +50,8 @@ Then the checks, hardest where the answers point:
 
 The comment is the verdict, posted once every check finishes, to the issue's carrier, whose Land takes it as input. A check that cannot finish is unchecked with its reason, and the verdict cannot pass.
 
-- **Pass** when every check holds, findings the author can apply as written among them.
-- **Escalate** on a finding whose fix is a choice outside the author's remit.
+- **Pass** when no finding needs a choice, findings the author can apply as written among them.
+- **Escalate** on a finding whose fix is a choice neither the author nor this review's remit owns.
 - **Stop** on a finding that reopens the design or a criterion.
 
 Post it with `gh pr review N --body-file <comment>`: `--approve` on pass, `--request-changes` on stop, else `--comment`. Reviewer and author often share one GitHub identity, as in a crew, and GitHub allows only a comment on one's own PR; there the heading is the verdict, so a pass reads as a `COMMENT` review headed `pass`.
