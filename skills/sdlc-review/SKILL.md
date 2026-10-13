@@ -15,7 +15,7 @@ The reviewer's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages)
 - CI has passed.
 - It is current with its base, or no section it links to changed there since.
 
-**Pause** while CI runs, on a review request or closing link the user or author can add, and on a linked section its base has since changed. **Stop** on a draft, an undelegated review of one's own PR, a closed issue, or failing CI.
+**Escalate** while CI runs, on a review request or closing link the user or author can add, and on a linked section its base has since changed. **Stop** on a draft, an undelegated review of one's own PR, a closed issue, or failing CI.
 
 ## Summarize
 
@@ -27,7 +27,7 @@ For a reader who did not write the PR, from its diff and body alone: each signif
 
 with one change or a list; an added file's existing element is the nearest one it joins. The author corrects it in reply, reopening Focus, which does not wait.
 
-**Pause** on a choice the diff and body do not explain, a finding against the body's [4C](../elegance/references/cells/4C-merges.md). **Stop** on a PR too large to summarize, which 4C splits.
+**Escalate** on a choice the diff and body do not explain, a finding against the body's [4C](../elegance/references/cells/4C-merges.md). **Stop** on a PR too large to summarize, which 4C splits.
 
 ## Focus
 
@@ -48,4 +48,4 @@ Then the checks, hardest where the answers point:
 - The host's reviewer, `/code-review` where one exists.
 - The issue's Verification block exits 0 on the PR's head.
 
-The comment is the verdict, posted once every check finishes: `gh pr review N --body-file <comment>` with `--approve` on pass, `--comment` on pause, `--request-changes` on stop, or `--comment` for all on one's own PR, where GitHub allows nothing else. A check that cannot finish is unchecked with its reason and caps the verdict at pause. **Pause** on findings the author can apply as written. **Stop** on a finding that reopens the design or a criterion.
+The comment is the verdict, posted once every check finishes: `gh pr review N --body-file <comment>` with `--approve` on pass, `--comment` on escalate, `--request-changes` on stop, or `--comment` for all on one's own PR, where GitHub allows nothing else. A check that cannot finish is unchecked with its reason and caps the verdict at escalate. **Escalate** on findings the author can apply as written. **Stop** on a finding that reopens the design or a criterion.

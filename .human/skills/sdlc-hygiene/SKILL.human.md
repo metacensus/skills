@@ -2,11 +2,11 @@ Sweeps repositories for drift from `sdlc`.
 
 ## Precheck
 
-Read the repositories, cadence and required fields, asking the user for the mapping when none is found. Pause without the `project` scope; stop with no repository.
+Read the repositories, cadence and required fields, asking the user for the mapping when none is found. Escalate without the `project` scope; stop with no repository.
 
 ## Sweep
 
-A `sdlc-sweep` agent per repository flags drift by class; pause on a short read.
+A `sdlc-sweep` agent per repository flags drift by class; escalate on a short read.
 
 ## Read
 
@@ -18,4 +18,4 @@ Run `sdlc-setup.sh`, move stray cards but no parent's, adding none, propose the 
 
 ## Report
 
-A `Read: pause` comment of questions per Epic, a count by class kept private where it names private repositories; pause while any wait.
+A `Read: escalate` comment of questions per Epic, a count by class; escalate while any wait.

@@ -49,8 +49,11 @@ Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<read
 | Role | Takes | Default |
 |---|---|---|
 | `owner` | an issue's scope, a cross-owner conflict surfaced in the issue itself, and its proposals | its assignee, else its parent's `owner`, else the `lead` |
-| `lead` | a stage's stop; filing Initiatives and Epics; curating root issues, by the `owner` chain | the user |
+| `delegator` | a stage's escalation or stop | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
+| `lead` | filing Initiatives and Epics; curating root issues, by the `owner` chain | the user |
 | `reviewer` | a PR's review | `CODEOWNERS`, else none |
+
+A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates.
 
 An agent may act, or proposes to the `owner` in a comment:
 
@@ -67,16 +70,18 @@ A request to pick an issue up is its `owner`'s yes to assigning.
 Each stage belongs to a skill. It runs its own checks and the mapping's Checks rows for its stage and paths, then posts one comment, on the PR for a reviewer and on the issue otherwise, unless a filed issue or a label it applies already says it:
 
 ```markdown
-### <skill> · <Stage>: pass|pause|stop
+### <skill> · <Stage>: pass|escalate|stop
 - [x] <check>
 - [ ] <check>: <what failed>
 ```
 
 | Ends in | When | Then |
 |---|---|---|
-| pass | every check holds | proceed |
-| pause | minor tweaks would pass it | wait for the user to confirm them; when delegated, also carry them into the PR body as a decision before merge, and continue if the branch was handed over |
-| stop | the failures are too many or too severe | raise them to the `lead` |
+| pass | every check holds, a finding applied as written among them | proceed |
+| escalate | a choice that is not the delegate's would pass it | the `delegator` takes it, climbing until it reaches an actor whose context covers it |
+| stop | there is no way forward | the same climb |
+
+A comment naming a private repository lands only in a private one.
 
 ## Closing
 
