@@ -9,4 +9,4 @@ The world the organization wants, in Org Docs. Clear when outsiders would call i
 
 ## Moves
 
-Rewrite rarely and whole. Every roadmap effort traces to a claim here.
+Rewrite rarely and whole. Every roadmap initiative traces to a claim here.

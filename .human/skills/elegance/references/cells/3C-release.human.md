@@ -1,4 +1,4 @@
-What an effort landed and dropped, in the Changelog, derived from merges rather than memory. Without it, design and system diverge unnoticed.
+What an initiative landed and dropped, in the Changelog, derived from merges rather than memory. Without it, design and system diverge unnoticed.
 
 ## Excess
 

@@ -11,9 +11,9 @@ Scope is a node's position on the ladder of feedback latency ([theory §1.2](the
 | 0 | Principles | a decade or more; learned only through the failure of tiers derived from it | almost never, deliberately | none | everyone | generativity: do the tiers below keep passing their own checks |
 | 1 | Field | years to decades | rarely | none | the field | contact with the world: stakeholders, literature, users |
 | 2 | Organization | years | yearly | none | the organization | periodic review of the solution against the problem |
-| 3 | System | a quarter to a year | quarterly | Effort: a chunk of the solution with an owner and an appetite | a team, and whoever is on the other side of a seam | design-versus-system reconciliation; boundary and contract review |
+| 3 | System | a quarter to a year | quarterly | Initiative: a chunk of the solution with an owner and an appetite | a team, and whoever is on the other side of a seam | design-versus-system reconciliation; boundary and contract review |
 | 4 | Module | weeks | weekly | Epic: a parent work item holding children | a pair, and the module's callers | the plan closed at checkin as done, not done, or deviated |
-| 5 | File | minutes to days | daily | Issue: a leaf work item and its change | one individual, increasingly an agent | continuous integration; the acceptance criteria; the diff |
+| 5 | File | minutes to days | daily | Task or Bug: a leaf work item and its change | one individual, increasingly an agent | continuous integration; the acceptance criteria; the diff |
 
 *Pair means a lead and an individual contributor working one module together.*
 

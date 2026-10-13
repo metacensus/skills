@@ -1,10 +1,10 @@
-The next efforts. Clear when each is one line, in agreed order: its appetite and the vision or problem claim it serves. A wrong order costs a year.
+The next initiatives. Clear when each is one line, in agreed order: its appetite and the vision or problem claim it serves. A wrong order costs a year.
 
 ## Excess
 
-- An effort described instead of named.
+- An initiative described instead of named.
 - Justification for the order.
-- Landed efforts still listed.
+- Landed initiatives still listed.
 - A roadmap that is really a vision.
 
 ## Moves

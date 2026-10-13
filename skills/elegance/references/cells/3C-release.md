@@ -4,7 +4,7 @@ Tier 3 [**System**](../scope.md) · [**Past**](../time.md) · above [2C org hist
 
 ## Example
 
-What the effort landed this quarter, and what it dropped.
+What the initiative landed this quarter, and what it dropped.
 
 ## Location
 
