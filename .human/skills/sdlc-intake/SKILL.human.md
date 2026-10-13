@@ -6,7 +6,7 @@ Pick type, parent, and repository, fill the form, meet the type's bar. Initiativ
 
 ## Decompose
 
-File an Epic's children against the plan: each through its form, parented, with its stated blockers, all before any is curated. Work found later files under the Epic it serves.
+File an Epic's children against the plan, each blocker first, all before any is curated. Work found later files under its Epic.
 
 ## File
 
