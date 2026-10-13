@@ -11,13 +11,13 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
-**Pause** without it, for the user to refresh. **Stop** when no repository is in scope.
+**Escalate** without it, for the user to refresh. **Stop** when no repository is in scope.
 
 ## Sweep
 
 - One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue and its cards are read.
 
-**Pause** on a `short` line. **Stop** when a repository cannot be read.
+**Escalate** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
@@ -34,7 +34,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Report
 
-- Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: pause`, a line `- [ ] <issue>: <question> → <direction>` per question.
-- The stage's comment counts by class what was fixed, proposed and asked; where it names a private repository, it lands in a private one, never a public issue.
+- Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: escalate`, a line `- [ ] <issue>: <question> → <direction>` per question.
+- The stage's comment counts by class what was fixed, proposed and asked.
 
-**Pause** while a proposal or question waits on its `owner`.
+**Escalate** while a proposal or question waits on its `owner`.

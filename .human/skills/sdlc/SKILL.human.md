@@ -14,11 +14,11 @@ Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In rev
 
 ## Roles
 
-The `owner`, by default the assignee, sets scope and takes proposals; the `lead`, by default the user, takes stops and files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes.
+The `owner`, by default the assignee, sets scope and takes proposals; the `delegator`, whoever handed the work over, takes escalations and writes the remit, the choices the delegate owns; the `lead`, by default the user, files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes.
 
 ## Stages
 
-A stage posts one comment headed `### <skill> · <Stage>: pass|pause|stop`, unless GitHub already says as much. Pass proceeds, pause waits for the user, stop goes to the lead. Delegated work carries its pauses into the PR body.
+A stage posts one comment headed `### <skill> · <Stage>: pass|escalate|stop`, unless GitHub already says as much. Pass proceeds; escalate goes to the delegator and climbs; stop does the same with no way forward. A comment naming a private repository stays private.
 
 ## Closing
 

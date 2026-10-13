@@ -14,7 +14,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Every `blocked by` is closed, and its parent is open.
 - Its card, if any, sits in its status's column.
 
-**Pass** goes to Design, or to Implement on an issue carrying `designed`. **Pause** on a fix the author can only [propose](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
+**Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author can only [propose](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
 
 ## Design
 
@@ -22,7 +22,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The comment proposes a design for what the body leaves open.
 - The issue meets the bar [the ladder](../sdlc/SKILL.md#the-ladder) names for its type.
 
-**Pause**, even when delegated, until a person confirms and `designed` is applied. **Stop** when the issue fails its bar.
+**Escalate**, even when delegated, until a person confirms and `designed` is applied. **Stop** when the issue fails its bar.
 
 ## Implement
 
@@ -31,7 +31,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - [`elegance`](../elegance/SKILL.md) governs every line written.
 - Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, review is `elegance`.
 
-**Pause** when the design or requirements shift, or new context calls the work into question. **Stop** when a criterion cannot be met, or the parent must change.
+**Escalate** when the design or requirements shift, or new context calls the work into question. **Stop** when a criterion cannot be met, or the parent must change.
 
 ## Self-review
 
@@ -40,7 +40,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - In a public repository, [`open-source`'s review](../open-source/references/review.md) has run.
 - The issue's Verification block exits 0, and so does the repository's gate.
 
-**Pause** on a span disputed at the loop's cap, or a finding in pushed history. **Stop** when the Verification block cannot pass as written.
+**Escalate** on a span disputed at the loop's cap, or a finding in pushed history. **Stop** when the Verification block cannot pass as written.
 
 ## Publish
 
@@ -49,4 +49,4 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The reviewers the mapping's Roles name are requested.
 - Status is In review, and the card moves.
 
-**Pause** before linking, unless the user handed over the branch.
+**Escalate** before linking, unless the user handed over the branch.

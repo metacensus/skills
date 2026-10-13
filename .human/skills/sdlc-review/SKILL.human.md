@@ -2,11 +2,11 @@ The reviewer's stages, in the `sdlc` hub's protocol, posted on the pull request.
 
 ## Precheck
 
-Asked to review a PR, yours only by written delegation, not a draft, closing an open issue, passing CI, current with its base. Pause while CI runs, on a missing request or closing link, or on a linked section its base changed; stop otherwise.
+Asked to review a PR, yours only by written delegation, not a draft, closing an open issue, passing CI, current with its base. Escalate while CI runs, on a missing request or closing link, or on a linked section its base changed; stop otherwise.
 
 ## Summarize
 
-The PR's significant choices for a non-author, structure first: each element, or the nearest one an added file joins, its role, and what changed for what purpose. Pause on an unexplained choice; stop on one too large to summarize.
+The PR's significant choices for a non-author, structure first: each element, or the nearest one an added file joins, its role, and what changed for what purpose. Escalate on an unexplained choice; stop on one too large to summarize.
 
 ## Focus
 
