@@ -21,7 +21,7 @@ No issue exists yet, so Compose's comment goes to the user.
 
 An Epic's children are filed against [`elegance`'s 4A plan](../elegance/references/cells/4A-plan.md).
 
-Compose each child, then File it, each blocker before what it blocks: `--parent` the Epic, `--blocked-by` each stated blocker, which is filed first. File every child before Curating any, so Curate reads the whole set.
+Compose each child, then File it, each blocker before what it blocks: `--parent` the Epic, `--blocked-by` each stated blocker. File every child before Curating any, so Curate reads the whole set.
 
 Work found during execution files through Compose, under the Epic it serves; it is not folded into a sibling.
 
