@@ -2,7 +2,7 @@ How the skill ranks an element by how long reality takes to show it is wrong.
 
 ## Table 1 — Scope (the tier ladder)
 
-Six tiers — principles, field, organization, system, module, file — from decades of latency down to minutes; the bottom three each own a work object: initiative, epic, task.
+Six tiers — principles, field, organization, system, module, file — from decades of latency down to minutes; the bottom three each own a work object: initiative, epic, task or bug.
 
 ## Which tier is this?
 
