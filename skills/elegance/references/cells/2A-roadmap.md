@@ -4,7 +4,7 @@ Tier 2 [**Organization**](../scope.md) · [**Future**](../time.md) · above [1A 
 
 ## Example
 
-The next efforts in order, each with an appetite, and the outcome they add up to.
+The next initiatives in order, each with an appetite, and the outcome they add up to.
 
 ## Location
 
@@ -12,19 +12,19 @@ The next efforts in order, each with an appetite, and the outcome they add up to
 
 ## Clear when
 
-The efforts listed are the ones agreed, in the order agreed, each with its appetite and the claim in [1A](1A-vision.md) or [1B](1B-problem.md) it traces to; confidence is the standing of that agreement.
+The initiatives listed are the ones agreed, in the order agreed, each with its appetite and the claim in [1A](1A-vision.md) or [1B](1B-problem.md) it traces to; confidence is the standing of that agreement.
 
 ## Excess
 
-- **An effort described rather than named.** One line: the effort, its appetite, its claim. The design is [3A](3A-design.md). Test: reduce the effort to that one line — if you cannot, the design has leaked in and belongs in 3A.
+- **An initiative described rather than named.** One line: the initiative, its appetite, its claim. The design is [3A](3A-design.md). Test: reduce the initiative to that one line — if you cannot, the design has leaked in and belongs in 3A.
 - **Justification for the order.** The order is the decision; the reasoning was the proposal's.
-- **Efforts that have landed, still listed.** They leave for [3C](3C-release.md). Test: check each effort's status — a landed one leaves for 3C.
+- **Initiatives that have landed, still listed.** They leave for [3C](3C-release.md). Test: check each initiative's status — a landed one leaves for 3C.
 - **A roadmap that is really a vision.** The world is [1A](1A-vision.md); this is the next few steps toward it.
 
 ## Cost
 
-A year of efforts in the wrong order or at the wrong claims.
+A year of initiatives in the wrong order or at the wrong claims.
 
 ## Moves
 
-Reorder, re-scope, or retire. Extend with one effort carrying its appetite and claim; a claim deliberately unaddressed gets a one-line deferral. Until a roadmap exists, the honest form is a hole named as a hole.
+Reorder, re-scope, or retire. Extend with one initiative carrying its appetite and claim; a claim deliberately unaddressed gets a one-line deferral. Until a roadmap exists, the honest form is a hole named as a hole.
