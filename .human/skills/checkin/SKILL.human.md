@@ -34,7 +34,7 @@ In a public repository, the `open-source` review too.
 
 ## 8. Read your own diff
 
-As a reviewer: proportional, nothing moved, no stray files.
+As a reviewer: proportional, nothing moved, no stray files, every behavior change tested.
 
 ## 9. Commit and PR text
 

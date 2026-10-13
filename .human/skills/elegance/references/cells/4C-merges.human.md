@@ -9,7 +9,7 @@ A pull request: open, the reviewer can decide from it — why, what approving co
 - Asks scattered rather than numbered in one place.
 - Follow-ups that belong in an issue.
 - The author's receipts.
-- Length standing in for scope.
+- Length standing in for scope; split where each half merges alone.
 
 ## Moves
 
