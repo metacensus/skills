@@ -105,7 +105,7 @@ form_types() {
   local file
   while read -r file; do
     gh api -H 'Accept: application/vnd.github.raw' "repos/$1/contents/.github/ISSUE_TEMPLATE/$file" |
-      sed -n 's/^type:[[:space:]]*//p' | tr -d "\"'"
+      sed -n 's/^type:[[:space:]]*["'"'"']\{0,1\}\([A-Za-z]*\).*/\1/p'
   done < <(gh api "repos/$1/contents/.github/ISSUE_TEMPLATE" --jq '.[] | select(.name | test("[.]ya?ml$")) | .name')
 }
 

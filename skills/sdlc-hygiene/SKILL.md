@@ -15,13 +15,13 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Sweep
 
-- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with an Epic's family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue in scope and its cards are read.
+- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with an Epic's family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no checks, done when every open issue in scope and its cards are read.
 
 **Escalate** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, the one Epic when it is the scope, `gh issue list -R OWNER/REPO --search type:Epic`, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
 
 **Stop** when an Epic cannot be read.
 
