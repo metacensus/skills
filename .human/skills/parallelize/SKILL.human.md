@@ -2,7 +2,7 @@ Coordination is the price of an executor's limits: memory forces a split, bandwi
 
 ## What the work answers
 
-The work — one skill's, several skills', or a bare request — supplies units, edges, the action, a done check, and a review standard; what it omits is derived and said. The review loop itself belongs to elegance.
+The work — one skill's, several skills', or a bare request — supplies units, edges, the action, a done check, and the checks that judge a unit; what it omits is derived and said. The review loop itself belongs to elegance.
 
 ## Edges decide the cut
 
@@ -16,6 +16,10 @@ Writes are exclusive; context is shared, and shared context is coordination nobo
 
 A question spanning units is settled once, with the user where it is theirs, before any author starts.
 
+## The brief
+
+A brief opens with the agent's remit: the choices it owns, and where the rest escalate. The work names its checks; the runner picks agent or inline, and a delegated runner runs them inline.
+
 ## Integrate and land
 
-The orchestrator decides what reaches it and owns git, committing unit by unit only when handed the branch.
+The orchestrator decides what reaches it and owns git unless a remit hands it down, committing unit by unit only when handed the branch.
