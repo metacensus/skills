@@ -13,10 +13,11 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **The labels**: each role's name.
 - **The required fields** of each type's form.
 - **The cadence**: `stale` and `backlog`, in days.
+- **The scope**: the issue numbers to read, when only one Epic's family is; otherwise every open issue.
 
 ## What you do
 
-**Read** every open issue, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type, `gh issue view <url> --json issueType`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's cards on those issues alone, `gh project item-list N --owner OWNER -L 1000 --format json`; rate-limited, read them through `gh api repos/OWNER/REPO/issues --paginate` and one `gh api graphql` query per board. Derive each status by the Status table in `${CLAUDE_PLUGIN_ROOT}/skills/sdlc/SKILL.md`, and flag only these:
+**Read** every open issue in scope, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type, `gh issue view <url> --json issueType`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's cards on those issues alone, `gh project item-list N --owner OWNER -L 1000 --format json`; rate-limited, read them through `gh api repos/OWNER/REPO/issues --paginate` and one `gh api graphql` query per board. Derive each status by the Status table in `${CLAUDE_PLUGIN_ROOT}/skills/sdlc/SKILL.md`, and flag only these:
 
 - **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative or Epic with no children.
 - **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, an Initiative with a parent.

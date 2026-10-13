@@ -1,4 +1,4 @@
-Sweeps repositories for drift from `sdlc`.
+Sweeps repositories, or one Epic's family, for drift from `sdlc`.
 
 ## Precheck
 

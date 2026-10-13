@@ -7,21 +7,21 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The repositories in scope are those the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows; the thresholds are its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
+- The scope is the user's Epic, else the repositories the user names, else the [mapping's](../sdlc/SKILL.md#the-mapping) Repositories rows. An Epic's scope is its family, the Epic and its sub-issues, `gh api repos/OWNER/REPO/issues/N/sub_issues --paginate`, and the repositories they live in. The thresholds are the mapping's Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
-**Escalate** without it, for the user to refresh. **Stop** when no repository is in scope.
+**Escalate** without it: only the person at the keyboard can refresh it. **Stop** when no repository is in scope or the Epic cannot be read.
 
 ## Sweep
 
-- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue and its cards are read.
+- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with an Epic's family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no review, done when every open issue in scope and its cards are read.
 
 **Escalate** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic`, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, the one Epic when it is the scope, `gh issue list -R OWNER/REPO --search type:Epic`, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
 
 **Stop** when an Epic cannot be read.
 

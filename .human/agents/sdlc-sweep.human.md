@@ -6,7 +6,7 @@ The repository, its boards, the label names, required fields and cadence.
 
 ## What you do
 
-Read every open issue and its cards; flag only orphans, misparented, done-but-open, stale, mislabeled and board drift.
+Read every open issue in scope and its cards; flag only orphans, misparented, done-but-open, stale, mislabeled and board drift.
 
 ## Report
 
