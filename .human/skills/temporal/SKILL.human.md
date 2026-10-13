@@ -1,9 +1,9 @@
 How to write and test Temporal workflows in Go.
 
-## Proto is the contract
+## Authoring
 
-Proto declares, a generator types, the implementation fulfils. Never edit generated code or docs; register every module, or it fails at runtime.
+A checklist and four steps: structure by PFI, check ownership P1–P4, register every module, plan tests.
 
-## Read what the task touches
+## Testing
 
-Workflow bodies, ownership, test planning, and testing workflows or activities each have a reference; `dev-testing-go` holds beneath them all.
+Six steps: find the file, classify it, list its gaps, read its reference, ask what is unclear, and confirm a per-function plan before writing.
