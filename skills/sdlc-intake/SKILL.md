@@ -17,6 +17,14 @@ Draft the issue against these checks:
 
 No issue exists yet, so Compose's comment goes to the user.
 
+## Decompose
+
+An Epic's children are filed against [`elegance`'s 4A plan](../elegance/references/cells/4A-plan.md).
+
+Compose each child, then File it, each blocker before what it blocks: `--parent` the Epic, `--blocked-by` each stated blocker. File every child before Curating any, so Curate reads the whole set.
+
+Work found during execution files through Compose, under the Epic it serves; it is not folded into a sibling.
+
 ## File
 
 ```bash
@@ -29,7 +37,7 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; anyone else posts the pass as a proposal.
+- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; a `delegator` does so under a [remit](../sdlc/SKILL.md#roles) naming it; anyone else posts the pass as a proposal.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.
