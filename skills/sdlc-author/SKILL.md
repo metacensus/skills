@@ -1,6 +1,6 @@
 ---
 name: sdlc-author
-description: Carry an issue from pickup to an open pull request. Trigger when picking up, starting, working, or finishing an issue, and when asking what work is ready to start.
+description: Carry an issue from pickup to closed. Trigger when picking up, starting, working, finishing, or landing an issue, when answering its review, and when asking what work is ready to start.
 ---
 
 The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, the mapping's Checks rows included. A stage fixes what it can before it reports, in an earlier stage's work if that is where the fix lies.
@@ -22,7 +22,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The comment proposes a design for what the body leaves open.
 - The issue meets the bar [the ladder](../sdlc/SKILL.md#the-ladder) names for its type.
 
-**Escalate**, even when delegated, until a person confirms and `designed` is applied. **Stop** when the issue fails its bar.
+**Escalate** until `designed` is applied: by a person, or within a remit that covers Design. **Stop** when the issue fails its bar.
 
 ## Implement
 
@@ -49,4 +49,25 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The reviewers the mapping's Roles name are requested.
 - Status is In review, and the card moves.
 
-**Escalate** before linking, unless the user handed over the branch.
+**Escalate** before linking, unless the remit hands over the branch.
+
+## Respond
+
+- Each finding of [the review](../sdlc-review/SKILL.md) is applied or declined, in [the review loop](../elegance/SKILL.md#the-review-loop).
+- The reply on the PR lists which, and why.
+- The Verification block and the gate exit 0 on the new head.
+
+**Escalate** on a span disputed at the loop's cap. **Stop** on a finding that reopens the design or a criterion.
+
+## Land
+
+- The PR is merged where the mapping's Roles or the remit allow.
+- The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
+- Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
+- Status is Done, and the card moves.
+
+**Escalate** the merge or the close where neither the Roles nor the remit reach it: the run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
+
+## Without a pull request
+
+A Spike goes from Design to Land, and ends at its confirmed `Decision:`. An action Task, a step only a role can take, hands that role the command and its expected output in place of Implement through Respond; its Verification closes it at Land.
