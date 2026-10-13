@@ -22,7 +22,7 @@ Run `elegance-review`, `open-source` if public, the Verification, and the gate. 
 
 ## Respond
 
-Apply or decline each finding, listing which and why on the PR; rerun the Verification and gate.
+Apply or decline each finding, listing which and why on the PR; rerun Verification and gate.
 
 ## Land
 

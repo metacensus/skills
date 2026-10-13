@@ -29,7 +29,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Status is In progress: assign the acting identity, and move its card, if any, adding none.
 - The branch is [`checkin`'s](../checkin/SKILL.md).
 - [`elegance`](../elegance/SKILL.md) governs every line written.
-- Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, review is `elegance`.
+- Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, checks are `elegance`.
 
 **Escalate** when the design or requirements shift, or new context calls the work into question. **Stop** when a criterion cannot be met, or the parent must change.
 
@@ -61,12 +61,12 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Land
 
-- The PR is merged where the mapping's Roles or the remit allow.
+- The PR is merged on the review's pass.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
 - Status is Done, and the card moves.
 
-**Escalate** the merge or the close where neither the Roles nor the remit reach it: the run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
+**Escalate** the merge or the close where neither the mapping's Roles nor the remit reach it: the run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
 
 ## Without a pull request
 
