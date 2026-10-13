@@ -49,7 +49,7 @@ Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<read
 | Role | Takes | Default |
 |---|---|---|
 | `owner` | an issue's scope, a cross-owner conflict surfaced in the issue itself, and its proposals | its assignee, else its parent's `owner`, else the `lead` |
-| `delegator` | a stage's escalation | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
+| `delegator` | a stage's escalation or stop | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
 | `lead` | filing Initiatives and Epics; curating root issues, by the `owner` chain | the user |
 | `reviewer` | a PR's review | `CODEOWNERS`, else none |
 
