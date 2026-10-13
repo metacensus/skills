@@ -38,4 +38,4 @@ The [`parallelize`](../../parallelize/SKILL.md#what-the-work-answers) questions,
 - **Edges** — none between units; the leads are the contract each reads, pinned before the fan-out.
 - **Action** — step 3.
 - **Done** — every id its batch holds is on its `read:` list.
-- **Review** — none per unit; step 6 is the check.
+- **Checks** — none per unit; step 6 is the check.
