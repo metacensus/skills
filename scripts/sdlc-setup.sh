@@ -100,14 +100,34 @@ else
   todo=1
 fi
 
+# The type each form in $1's .github/ISSUE_TEMPLATE sets, one per line.
+form_types() {
+  local file
+  while read -r file; do
+    gh api -H 'Accept: application/vnd.github.raw' "repos/$1/contents/.github/ISSUE_TEMPLATE/$file" |
+      sed -n 's/^type:[[:space:]]*["'"'"']\{0,1\}\([A-Za-z]*\).*/\1/p'
+  done < <(gh api "repos/$1/contents/.github/ISSUE_TEMPLATE" --jq '.[] | select(.name | test("[.]ya?ml$")) | .name')
+}
+
 if gh api "repos/$repo/contents/.github/ISSUE_TEMPLATE" --silent 2>/dev/null; then
-  echo "ok    forms in $repo, shadowing any the organization sets"
+  where=$repo note="shadowing any the organization sets"
 elif [[ $(gh api "repos/$owner/.github" --jq .visibility 2>/dev/null) == public ]] &&
   gh api "repos/$owner/.github/contents/.github/ISSUE_TEMPLATE" --silent 2>/dev/null; then
-  echo "ok    forms inherited from $owner/.github"
+  where=$owner/.github note="inherited by $repo"
 else
+  where=
   echo "TODO  no forms; copy $hub/forms/ ($(cd "$hub/forms" && echo *.yml)) to .github/ISSUE_TEMPLATE/ in $owner/.github, a public repository"
   todo=1
+fi
+if [[ $where ]]; then
+  have=$(form_types "$where")
+  lacking=
+  for want in $(sed -n 's/^type:[[:space:]]*//p' "$hub"/forms/*.yml | sort -u); do
+    grep -qx "$want" <<<"$have" && continue
+    echo "TODO  forms in $where lack a form of type $want; copy one from $hub/forms/ to its .github/ISSUE_TEMPLATE/"
+    lacking=1 todo=1
+  done
+  [[ $lacking ]] || echo "ok    forms in $where, $note"
 fi
 
 exit $todo
