@@ -23,7 +23,7 @@ Before merge, the reviewer can decide without asking: the body says why, or link
 - **Asks scattered through narrative.** Number every decision in one place and mark which block the merge. Test: could the reviewer list what is asked of them without reading the rest?
 - **What outlives the merge.** Follow-ups, known gaps, and work asked of someone else go to an item the body links; the body freezes at merge and nothing tracks it.
 - **The author's receipts.** Self-review findings, provenance, conventions followed. A convention knowingly bent gets one line, where the reviewer would otherwise read it as a mistake.
-- **Length standing in for scope.** A body that must be long to be understood marks a change too big to review; split the change.
+- **Length standing in for scope.** A body that must be long to be understood marks a change too big to review; split it where each half merges alone.
 
 ## Cost
 

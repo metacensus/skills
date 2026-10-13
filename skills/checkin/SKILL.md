@@ -44,6 +44,7 @@ Where the repository is public (`gh repo view --json visibility`), run the [`ope
 - Is the line count proportional to the change described?
 - Did anything move that did not need to?
 - Is any file in it one you did not mean to touch?
+- Is every behavior change tested?
 
 ## 9. Commit and PR text
 
