@@ -14,7 +14,7 @@ Only Ready children are briefed, and no escalation is guessed. A brief per autho
 
 ## Review
 
-A fresh `sdlc-review` per PR, run by the delegator, never nested; unrun checks pass only where the remit says so.
+A fresh `sdlc-review` per PR, run by the delegator, never nested; unrun checks escalate to the delegator, who takes them where the remit says so.
 
 ## Land
 
@@ -22,4 +22,4 @@ Each child lands through its author; the delegator takes what escalates within i
 
 ## Close
 
-Rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, or not planned on a Spike's dead end, which escalates to its owner.
+Every child closed, the rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, or not planned on a Spike's dead end, which escalates to its owner.

@@ -32,14 +32,14 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
 - Every author is split at Design: one agent runs Precheck and Design, then returns; its Design is confirmed, `designed` applied, within the delegator's remit, else escalated; a second, briefed with the confirmed Design, runs Implement through Land. A child already `designed` skips the first.
-- Authors spawn nothing; the checks their brief names run inline, and a brief assumes no tool the agent lacks.
+- Authors spawn nothing.
 
 **Escalate** a Design outside the remit. **Stop** when an author stops.
 
 ## Review
 
 - A fresh `sdlc-review` per PR, run by the delegator, never inside an author, its remit cited in the verdict.
-- A check the environment cannot run stays unchecked; its verdict passes only where the remit accepts that check unchecked.
+- A check the environment cannot run stays unchecked, so the verdict escalates; the delegator takes it where its remit accepts that check unchecked.
 - Findings go to the author's [Respond](../sdlc-author/SKILL.md#respond), in [the review loop](../elegance/SKILL.md#the-review-loop).
 
 **Escalate** a finding whose choice is not the delegator's, and the loop's cap.
@@ -47,15 +47,16 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Land
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
-- A Spike's decision, or work found in execution, files new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, and Plan re-runs over the children unblocked at that moment. A gap that changes the Epic's goal re-plans within the remit, else escalates.
+- A Spike's decision, or work found in execution, files new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, curated as Precheck says, and Plan re-runs over the children unblocked at that moment. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 
 **Escalate** a merge the environment refuses. **Stop** when a child's stop reopens the Epic's plan.
 
 ## Close
 
+- Every child is closed, completed or, past a dead end, not planned.
 - The rollout record is on the Epic: each child, its PR, who landed it, and what was accepted unchecked.
 - Each Spike's `Decision:` is in the Epic's body, the Spike `reached-up`.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
-**Escalate** the close where the remit does not reach the Epic, a dead end always, and any question the sweep leaves.
+**Escalate** the close where the remit does not reach the Epic, a dead end always to its `owner`, and any question the sweep leaves.
