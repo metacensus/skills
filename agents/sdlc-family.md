@@ -1,6 +1,6 @@
 ---
 name: sdlc-family
-description: Reads one Epic and its children as a plan and returns the questions only its project manager can answer, each with a proposed direction. Invoked by the sdlc-hygiene skill, one Epic per agent.
+description: Reads one Epic and its children as a plan and returns the questions only its project manager can answer, each with a proposed direction. Invoked by the sdlc-hygiene and sdlc-crew skills, one Epic per agent.
 tools: Bash, Read
 model: sonnet
 ---
