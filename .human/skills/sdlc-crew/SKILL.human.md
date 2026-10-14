@@ -22,4 +22,4 @@ Each child lands through its author; the delegator takes what escalates within i
 
 ## Close
 
-Every child closed, the rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, or not planned on a Spike's dead end, which escalates to its owner.
+Every child closed, the rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, unescalated; a deviation escalates, and a Spike's dead end closes it not planned, escalated to its owner.

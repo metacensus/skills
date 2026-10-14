@@ -14,7 +14,7 @@ Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In rev
 
 ## Roles
 
-The `owner`, by default the assignee, sets scope and takes proposals; the `delegator`, whoever handed the work over, else whoever started it, takes escalations and writes the remit, the choices the delegate owns; the `lead`, by default the user, files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links; otherwise it proposes.
+The `owner`, by default the assignee, sets scope and takes proposals; the `delegator`, whoever handed the work over, else whoever started it, takes escalations and writes the remit, the choices the delegate owns; the `lead`, by default the user, files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links, and close what it completes; otherwise it proposes.
 
 ## Stages
 
@@ -22,7 +22,7 @@ A stage posts one comment headed `### <skill> · <Stage>: pass|escalate|stop`, u
 
 ## Closing
 
-Done differently is completed plus `deviated`; `reached-up` marks a Task that rewrote its parent. A Spike closes once its decision is written where the work reads it.
+Done as planned closes completed, unescalated; done differently adds `deviated`, which, like not planned, escalates. `reached-up` marks a Task that rewrote its parent. A Spike closes once its decision is written where the work reads it.
 
 ## Linking an issue to its branch and PR
 

@@ -26,6 +26,6 @@ Apply or decline each finding, listing which and why on the PR; rerun Verificati
 
 ## Land
 
-Merge where the roles or your remit allow, else escalate, ending your run; close per the hub's Closing table; file follow-ups through `sdlc-intake`.
+Merge where the roles or your remit allow, else escalate, ending your run; close per the hub's Closing table, escalating only deviated or dropped closes; file follow-ups through `sdlc-intake`.
 
 A Spike ends at its confirmed decision; an action Task hands its role the command, and its Verification closes it.
