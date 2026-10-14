@@ -59,4 +59,4 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
-**Escalate** the close where the remit does not reach the Epic, a dead end always to its `owner`, and any question the sweep leaves.
+**Escalate** the close only on a dead end, always to the Epic's `owner`, or a deviation; an Epic completed as planned closes with no escalation. Escalate any question the sweep leaves.

@@ -61,7 +61,8 @@ An agent may act, or proposes to the `owner` in a comment:
 |---|---|---|
 | Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
 | Parent or stated `blocked by` | may | propose |
-| Assign, close, edit another's body | propose | propose |
+| Close an issue it carries, completed as planned | may | may |
+| Assign; close another's issue or edit its body | propose | propose |
 
 A request to pick an issue up is its `owner`'s yes to assigning.
 
@@ -87,9 +88,12 @@ A comment naming a private repository lands only in a private one.
 
 | Outcome | Close |
 |---|---|
+| Done as planned | **completed** |
 | Done differently | **completed** + `deviated` + comment |
 | Child needed a parent rewrite | `reached-up` on the Task |
 | Spike answered | **completed** + a `Decision:` comment, once the decision is in the body that reads it (usually the parent's: `reached-up`) |
+
+Completion is not deviation: a plain **completed** closes with no escalation. `deviated` and **not planned** escalate to the `delegator`.
 
 ## Linking an issue to its branch and PR
 

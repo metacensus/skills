@@ -66,7 +66,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
 - Status is Done, and the card moves.
 
-**Escalate** the merge or the close where neither the mapping's Roles nor the remit reach it: the run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
+**Escalate** the merge where neither the mapping's Roles nor the remit reach it, and the close only when `deviated` or **not planned**, before a merge would close it; a plain completion never escalates. The run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
 
 ## Without a pull request
 
