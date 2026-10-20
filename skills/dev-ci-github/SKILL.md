@@ -44,7 +44,8 @@ A job that reads a secret runs on pushes and same-repository pull requests only.
 - **`make release TYPE=patch|minor|major`** derives the next semver, refuses an empty result, and refuses a tag that exists on `origin`.
 - **The release trigger matches semver only**: `v[0-9]+.[0-9]+.[0-9]+`.
 - **The release re-runs CI at the tagged commit** through `workflow_call` and gates every publish on it.
-- **Images** publish multi-arch, tagged by ref, short sha, and `latest`, with a registry token scoped to the organization; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.
+- **Images** publish multi-arch, tagged by ref, short sha, and `latest`; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.
+- **Docker Hub login is OIDC**: `docker/login-action` with the organization as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in its env, and `id-token: write`. Each repository has its own connection, its subject GitHub's immutable `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`).
 - **Packages** publish through npm trusted publishing (OIDC) with provenance; a job holding `id-token: write` installs with `--ignore-scripts`.
 
 **Hole:** vulnerability and license checks — metacensus/skills#13.
