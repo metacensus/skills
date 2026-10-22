@@ -18,7 +18,7 @@ Re-read siblings: prose can turn false while everything passes.
 
 ## 5. Keep the diff surgical
 
-Only the lines the change needs.
+Only lines the change needs.
 
 On someone's branch, only your edits; offer a rebase or merge separately.
 
