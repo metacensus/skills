@@ -1,3 +1,1 @@
-# The mapping
-
 `sdlc-mapping.md` binds the lifecycle to an organization; a project's own is read first. Its tables name labels, repositories and boards, status columns, roles, checks, and cadence; each row omitted, or holding a `Hole`, keeps its default and is reported, never filled. Agents read both whole, within 600 words each.

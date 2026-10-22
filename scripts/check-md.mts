@@ -9,16 +9,15 @@
  *   (default)  Rewrite every tracked markdown file in place.
  *   --check    Exit 1 if any tracked markdown file still has wrapped prose. This is the CI gate.
  *
- * The transform is a line state machine, not a parser round-trip: only lines that actually join are
+ * Importing it runs nothing: a repository that walks its own files imports `transform` instead.
+ *
+ * The transform is a line state machine, not a parser round-trip. A round-trip through a markdown
+ * stringifier would also repad every table, rewrite emphasis characters and renumber lists — turning
+ * a mechanically checkable diff into unreviewable churn. Only lines that actually join are
  * rewritten; every other byte is passed through untouched. */
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-
-const ROOT = join(import.meta.dirname, "..");
-const CHECK = process.argv.includes("--check");
-
-const files = execFileSync("git", ["ls-files", "*.md"], { cwd: ROOT, encoding: "utf8" }).split("\n").filter(Boolean);
 
 /* ---------------------------------------------------------------- line classes */
 const BLANK = /^[ \t]*$/;
@@ -172,7 +171,7 @@ function block(lines: string[], warn: (line: string) => void): string[] {
   return out;
 }
 
-function transform(src: string, where: string): { out: string; warnings: string[] } {
+export function transform(src: string, where: string): { out: string; warnings: string[] } {
   if (src.includes("\r\n") && /(?<!\r)\n/.test(src)) {
     throw new Error(`${where}: mixed LF and CRLF line endings; normalize them before unwrapping.`);
   }
@@ -190,32 +189,39 @@ function transform(src: string, where: string): { out: string; warnings: string[
 }
 
 /* ---------------------------------------------------------------- run */
-const warned: string[] = [];
-let changed = 0;
+function run() {
+  const ROOT = join(import.meta.dirname, "..");
+  const CHECK = process.argv.includes("--check");
+  const files = execFileSync("git", ["ls-files", "*.md"], { cwd: ROOT, encoding: "utf8" }).split("\n").filter(Boolean);
+  const warned: string[] = [];
+  let changed = 0;
 
-for (const file of files) {
-  const path = join(ROOT, file);
-  const src = readFileSync(path, "utf8");
-  const { out, warnings } = transform(src, file);
-  for (const w of warnings) warned.push(`${file}  ${w.trim().slice(0, 60)}`);
-  if (out === src) continue;
-  changed++;
-  if (CHECK) console.error(`  WRAPPED  ${file}`);
-  else writeFileSync(path, out);
+  for (const file of files) {
+    const path = join(ROOT, file);
+    const src = readFileSync(path, "utf8");
+    const { out, warnings } = transform(src, file);
+    for (const w of warnings) warned.push(`${file}  ${w.trim().slice(0, 60)}`);
+    if (out === src) continue;
+    changed++;
+    if (CHECK) console.error(`  WRAPPED  ${file}`);
+    else writeFileSync(path, out);
+  }
+
+  /* Lazy continuations are stable and intentional — they describe lines the pass leaves alone, so
+   * they report without gating. */
+  if (warned.length) {
+    console.log(`\n${warned.length} lazy continuation(s) left as authored:`);
+    for (const w of warned) console.log(`  ${w}`);
+  }
+
+  if (CHECK) {
+    console.log(
+      `\n${files.length} files · ${changed} with wrapped prose` +
+        (changed ? "\nProse is one line per paragraph here. Run: node scripts/check-md.mts" : ""),
+    );
+    process.exit(changed ? 1 : 0);
+  }
+  console.log(`\n${files.length} files · ${changed} rewritten`);
 }
 
-/* Lazy continuations are stable and intentional — they describe lines the pass leaves alone, so
- * they report without gating. */
-if (warned.length) {
-  console.log(`\n${warned.length} lazy continuation(s) left as authored:`);
-  for (const w of warned) console.log(`  ${w}`);
-}
-
-if (CHECK) {
-  console.log(
-    `\n${files.length} files · ${changed} with wrapped prose` +
-      (changed ? "\nProse is one line per paragraph here. Run: node scripts/check-md.mts" : ""),
-  );
-  process.exit(changed ? 1 : 0);
-}
-console.log(`\n${files.length} files · ${changed} rewritten`);
+if (process.argv[1] && realpathSync(process.argv[1]) === import.meta.filename) run();
