@@ -2,7 +2,7 @@ Files an issue and curates it to `ready`, in the `sdlc` protocol.
 
 ## Compose
 
-Pick type, parent, and repository, fill the form, meet the type's bar. Initiatives and Epics are the lead's. Compose reports to the user.
+Pick type, parent, and repository, fill the form, meet the type's bar. Initiatives and Epics escalate to the delegator. Compose reports to the user.
 
 ## Decompose
 
@@ -14,4 +14,4 @@ File an Epic's children against the plan, each blocker first, all before any is 
 
 ## Curate
 
-Rerun Compose's checks: a pass lets the owner, lead, or a delegator under its remit apply `ready`, `designed` too if nothing is open; others propose. Otherwise, comment.
+Rerun Compose's checks: a pass lets the delegator, or a delegate under its remit, apply `ready`, `designed` too if nothing is open; others escalate. Otherwise, comment.

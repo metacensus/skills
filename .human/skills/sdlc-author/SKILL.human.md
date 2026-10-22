@@ -2,7 +2,7 @@ The author's stages, pickup to closed, in the `sdlc` protocol. A stage fixes wha
 
 ## Precheck
 
-A Ready issue, or one already yours, under an open parent; with `designed`, skip to Implement. Escalate on a fix only the owner can make; stop if another's or blocked.
+A Ready issue, or one already yours, under an open parent; with `designed`, skip to Implement. Escalate on a fix only the delegator can make; stop if another's or blocked.
 
 ## Design
 

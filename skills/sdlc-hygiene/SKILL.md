@@ -1,6 +1,6 @@
 ---
 name: sdlc-hygiene
-description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may, propose the rest, and put each family's open questions to the project manager. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what the project manager should decide.
+description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may, and escalate the rest, each family's open questions among them, to its delegator. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what is left to decide.
 ---
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments to the session.
@@ -21,20 +21,20 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep, its questions for the Epic's [`owner`](../sdlc/SKILL.md#roles).
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep, its questions for the sweep's [`delegator`](../sdlc/SKILL.md#roles).
 
 **Stop** when an Epic cannot be read.
 
 ## Act
 
-- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows, adding none and moving no Initiative's or Epic's, nor one whose issue awaits its `owner` on a `mislabeled` proposal.
-- Every other flag is a proposal to its issue's `owner`, a `misparented` one to its parent's: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `setup`'s, and each `root` issue as a question, go to the `lead`, in the summary. It closes nothing.
+- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and move each card a `board` flag names, as [Board](../sdlc/SKILL.md#mechanisms) allows, adding none and moving no Initiative's or Epic's, nor one whose issue awaits an answer on a `mislabeled` flag.
+- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, or a label no role names, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `setup`'s, and each `root` issue, as a question. It closes nothing.
 
 **Stop** when GitHub refuses a write.
 
 ## Report
 
 - Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: escalate`, a line `- [ ] <issue>: <question> → <direction>` per question.
-- The stage's comment counts by class what was fixed, proposed and asked.
+- The stage's comment counts by class what was fixed and escalated.
 
-**Escalate** while a proposal or question waits on its `owner`.
+**Escalate** while a flag or question waits on the delegator.

@@ -1,4 +1,4 @@
-Reads an Epic and its children as a plan, asking its `owner` what they leave open.
+Reads an Epic and its children as a plan, asking its delegator what they leave open.
 
 ## What you get
 

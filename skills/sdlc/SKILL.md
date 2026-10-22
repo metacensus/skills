@@ -16,7 +16,7 @@ description: The software development lifecycle every organization on the Initia
 
 Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
 
-A Task files where its PR lands, unless the Epic's owner keeps it beside the Epic; then its Verification names the repo it runs in.
+A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in.
 
 ## Mechanisms
 
@@ -48,23 +48,32 @@ Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<read
 
 | Role | Takes | Default |
 |---|---|---|
-| `owner` | an issue's scope, a cross-owner conflict surfaced in the issue itself, and its proposals | its assignee, else its parent's `owner`, else the `lead` |
-| `delegator` | a stage's escalation or stop | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
-| `lead` | filing Initiatives and Epics; curating root issues, by the `owner` chain | the user |
+| `delegator` | what the delegate cannot own: a stage's escalation or stop, filing an Initiative or Epic, a root issue | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
 | `reviewer` | a PR's review | `CODEOWNERS`, else none |
 
 A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates.
 
-An agent may act, or proposes to the `owner` in a comment:
+| Direction | Channel | Carries |
+|---|---|---|
+| Up, unprompted | **escalate** | a choice the delegate cannot own, to its delegator |
+| | **consult** | a question for a person, the choice staying the delegate's |
+| | **report** | what the delegator should know and need not answer |
+| Down, unprompted | **steer** | a change of direction mid-run |
+| | **stop** | a halt |
+| | **query** | a request for the delegate's state |
+
+What goes up is sized to the receiver's scope: the choice, its options and a recommendation, in outline, never the work behind them. A delegator buried in detail decides slower than the work it holds.
+
+An agent may act, or escalates in a comment:
 
 | Action | Task / Bug | Epic / Initiative |
 |---|---|---|
-| Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | propose |
-| Parent or stated `blocked by` | may | propose |
+| Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | escalate |
+| Parent or stated `blocked by` | may | escalate |
 | Close an issue it carries, completed as planned | may | may |
-| Assign; close another's issue or edit its body | propose | propose |
+| Assign; close another's issue or edit its body | escalate | escalate |
 
-A request to pick an issue up is its `owner`'s yes to assigning.
+A request to pick an issue up is the delegator's yes to assigning.
 
 ## Stages
 

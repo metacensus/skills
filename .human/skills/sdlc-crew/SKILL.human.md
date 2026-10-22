@@ -2,7 +2,7 @@ The delegator's stages for carrying an Epic with a crew, in the `sdlc` protocol,
 
 ## Precheck
 
-A `designed` Epic with at least one child, each carrying `ready`, blocked only within the Epic, no cycle; the mapping read, the delegator's own remit cited, `sdlc-family`'s questions put to the owner.
+A `designed` Epic with at least one child, each carrying `ready`, blocked only within the Epic, no cycle; the mapping read, the delegator's own remit cited, `sdlc-family`'s questions escalated.
 
 ## Plan
 
@@ -18,8 +18,8 @@ A fresh `sdlc-review` per PR, run by the delegator, never nested; unrun checks e
 
 ## Land
 
-Each child lands through its author; the delegator takes what escalates within its remit. A Spike's decision or found work files new children through `sdlc-intake`, and Plan re-runs; a gap in the goal re-plans or escalates.
+Each child lands through its author; the delegator takes what escalates within its remit. A Spike's decision or found work files new children through `sdlc-intake`, and Plan re-runs; a gap in the goal re-plans or escalates, and each landing may re-estimate what is not yet briefed.
 
 ## Close
 
-Every child closed, the rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, unescalated; a deviation escalates, and a Spike's dead end closes it not planned, escalated to its owner.
+Every child closed, the rollout record, Spike decisions in the Epic, a clean sweep scoped to it, then the Epic closes completed, unescalated; a deviation escalates, and a Spike's dead end closes it not planned, escalated.
