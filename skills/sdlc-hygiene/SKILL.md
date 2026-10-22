@@ -1,6 +1,6 @@
 ---
 name: sdlc-hygiene
-description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may, and escalate the rest, each family's open questions among them, to its delegator. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what is left to decide.
+description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what is left to decide.
 ---
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments to the session.
@@ -21,7 +21,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep, its questions for the sweep's [`delegator`](../sdlc/SKILL.md#roles).
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 

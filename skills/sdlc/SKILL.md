@@ -53,18 +53,11 @@ Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<read
 
 A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates.
 
-| Direction | Channel | Carries |
-|---|---|---|
-| Up, unprompted | **escalate** | a choice the delegate cannot own, to its delegator |
-| | **consult** | a question for a person, the choice staying the delegate's |
-| | **report** | what the delegator should know and need not answer |
-| Down, unprompted | **steer** | a change of direction mid-run |
-| | **stop** | a halt |
-| | **query** | a request for the delegate's state |
+A delegate **escalates** a choice it cannot own, **consults** a person on a question whose choice stays its own, and **reports** what its delegator should know and need not answer. A delegator may **steer**, **halt** or **query** its delegate unprompted.
 
-What goes up is sized to the receiver's scope: the choice, its options and a recommendation, in outline, never the work behind them. A delegator buried in detail decides slower than the work it holds.
+What goes up is sized to the receiver's scope: the choice, its options and a recommendation, never the work behind them.
 
-An agent may act, or escalates in a comment:
+An agent acts, or escalates in a comment:
 
 | Action | Task / Bug | Epic / Initiative |
 |---|---|---|

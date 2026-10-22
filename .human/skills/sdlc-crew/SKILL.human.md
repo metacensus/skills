@@ -18,7 +18,7 @@ A fresh `sdlc-review` per PR, run by the delegator, never nested; unrun checks e
 
 ## Land
 
-Each child lands through its author; the delegator takes what escalates within its remit. A Spike's decision or found work files new children through `sdlc-intake`, and Plan re-runs; a gap in the goal re-plans or escalates, and each landing may re-estimate what is not yet briefed.
+Each child lands through its author; the delegator takes what escalates within its remit. A Spike's decision or found work files new children through `sdlc-intake`, and Plan re-runs; a gap in the goal re-plans or escalates; each landing may re-estimate what is unbriefed.
 
 ## Close
 
