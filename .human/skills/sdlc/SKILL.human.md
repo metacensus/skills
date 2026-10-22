@@ -14,7 +14,7 @@ Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In rev
 
 ## Roles
 
-The `owner`, by default the assignee, sets scope and takes proposals; the `delegator`, whoever handed the work over, else whoever started it, takes escalations and writes the remit, the choices the delegate owns; the `lead`, by default the user, files Initiatives and Epics; `CODEOWNERS` names the `reviewer`. An agent may change a Task's type, labels but `ready` and `designed`, and links, and close what it completes; otherwise it proposes.
+The `delegator`, whoever handed the work over, else whoever started it, writes the remit, the choices the delegate owns, and takes the rest, Initiatives and Epics to file among them; `CODEOWNERS` names the `reviewer`. Up, a delegate escalates, consults a person, or reports, in outline; down, a delegator steers, halts, or queries. An agent may change a Task's type, labels but `ready` and `designed`, and links, and close what it completes; otherwise it escalates.
 
 ## Stages
 

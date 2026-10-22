@@ -9,9 +9,9 @@ Each stage follows the [`sdlc`](../sdlc/SKILL.md) hub's [protocol](../sdlc/SKILL
 
 Draft the issue against these checks:
 
-- **Type** on the [ladder](../sdlc/SKILL.md#the-ladder). Initiatives and Epics are the `lead`'s to file.
+- **Type** on the [ladder](../sdlc/SKILL.md#the-ladder). Filing an Initiative or Epic escalates to the [`delegator`](../sdlc/SKILL.md#roles), unless the remit hands it down.
 - **Parent**, if any: an Epic's is an Initiative; a Task's or Bug's, an Epic; an Initiative takes none.
-- **Repository**: as the ladder says; an Epic's is the mapping's Epics column; an Initiative's, any the `lead` names, else the home the mapping suggests.
+- **Repository**: as the ladder says; an Epic's is the mapping's Epics column; an Initiative's, any the delegator names, else the home the mapping suggests.
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
 
@@ -37,7 +37,7 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the `owner` or `lead` applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; a `delegator` does so under a [remit](../sdlc/SKILL.md#roles) naming it; anyone else posts the pass as a proposal.
+- **Pass**: the delegator, or a delegate whose [remit](../sdlc/SKILL.md#roles) names it, applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; anyone else escalates the pass.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.

@@ -12,9 +12,9 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - The `blocked by` graph has no cycle.
 - The [mapping](../sdlc/SKILL.md#the-mapping) is read whole.
 - The comment cites the delegator's own remit: which labels, merges, closes and branches it was handed, which checks its environment cannot run that it accepts unchecked, and that the rest escalate.
-- [`sdlc-family`](../../agents/sdlc-family.md) has read the family, run inline when the delegator is itself delegated; its questions go to the Epic's `owner`.
+- [`sdlc-family`](../../agents/sdlc-family.md) has read the family, run inline when the delegator is itself delegated.
 
-**Escalate** on a question of `sdlc-family`'s, or a fix the delegator may only [propose](../sdlc/SKILL.md#roles). **Stop** on a cycle, or an Epic closed or without `designed`.
+**Escalate** on a question of `sdlc-family`'s, or a fix the delegator may not [make](../sdlc/SKILL.md#roles). **Stop** on a cycle, or an Epic closed or without `designed`.
 
 ## Plan
 
@@ -48,6 +48,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
 - A Spike's decision, or work found in execution, files new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, curated as Precheck says, and Plan re-runs over the children unblocked at that moment. A gap that changes the Epic's goal re-plans within the remit, else escalates.
+- After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
 **Escalate** a merge the environment refuses. **Stop** when a child's stop reopens the Epic's plan.
 
@@ -59,4 +60,4 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
-**Escalate** the close only on a dead end, always to the Epic's `owner`, or a deviation; an Epic completed as planned closes with no escalation. Escalate any question the sweep leaves.
+**Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation. Escalate any question the sweep leaves.

@@ -14,7 +14,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Every `blocked by` is closed, and its parent is open.
 - Its card, if any, sits in its status's column.
 
-**Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author can only [propose](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
+**Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author may not [make](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
 
 ## Design
 

@@ -10,11 +10,11 @@ A `sdlc-sweep` agent per repository flags drift by class; escalate on a short re
 
 ## Read
 
-An `sdlc-family` agent per open Epic asks its `owner` what the family leaves open.
+An `sdlc-family` agent per open Epic asks what the family leaves open.
 
 ## Act
 
-Run `sdlc-setup.sh`, move stray cards but no parent's, adding none, propose the rest, misparented to the parent's owner, ask the `lead` about root issues. Close nothing.
+Run `sdlc-setup.sh`, move stray cards but no parent's, adding none, escalate the rest, root issues among them, to the sweep's delegator. Close nothing.
 
 ## Report
 
