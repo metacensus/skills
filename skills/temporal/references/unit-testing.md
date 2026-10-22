@@ -109,16 +109,16 @@ go test -short ./...
 ## Why Two Layers of Unit Tests?
 
 ### Workflow Tests: "Am I orchestrating correctly?"
-✅ Fast
-✅ Validates determinism for replay
-✅ Tests orchestration order and branching
-❌ Can't catch activity bugs
+- ✅ Fast
+- ✅ Validates determinism for replay
+- ✅ Tests orchestration order and branching
+- ❌ Can't catch activity bugs
 
 ### Activity Tests: "Am I validating and handling errors?"
-✅ Fast
-✅ Tests validation logic
-✅ Tests error handling from clients
-❌ Can't catch real client API changes
+- ✅ Fast
+- ✅ Tests validation logic
+- ✅ Tests error handling from clients
+- ❌ Can't catch real client API changes
 
 **Together:** They catch bugs in orchestration logic and error handling before they reach production.
 

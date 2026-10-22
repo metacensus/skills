@@ -39,8 +39,7 @@ service OrderService {
 }
 ```
 
-**2. Generate (automatic, via `make gen`)**
-The generated code provides:
+**2. Generate (automatic, via `make gen`)** The generated code provides:
 - `ReserveStockActivity` interface to implement
 - `OrderServiceWorkflowClient` for calling workflows
 - Request/response types

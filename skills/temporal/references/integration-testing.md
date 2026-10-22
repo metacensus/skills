@@ -39,22 +39,22 @@ This creates clear separation of concerns. Each layer tests one thing:
 ## Why All Three Layers?
 
 ### Layer 1: Workflow Tests (Unit)
-✅ Fast (no Docker)
-✅ Validates orchestration order (determinism for replay)
-✅ Tests conditional branching
-❌ Can't catch activity implementation bugs
+- ✅ Fast (no Docker)
+- ✅ Validates orchestration order (determinism for replay)
+- ✅ Tests conditional branching
+- ❌ Can't catch activity implementation bugs
 
 ### Layer 2: Activity Tests (Unit)
-✅ Fast (no Docker, mock clients)
-✅ Tests validation logic
-✅ Tests error handling from clients
-❌ Can't catch real client API changes
+- ✅ Fast (no Docker, mock clients)
+- ✅ Tests validation logic
+- ✅ Tests error handling from clients
+- ❌ Can't catch real client API changes
 
 ### Layer 3: Client Tests (Integration)
-✅ Tests real system behavior
-✅ Catches API changes before production
-✅ Validates error types and messages
-❌ Slower (requires Docker)
+- ✅ Tests real system behavior
+- ✅ Catches API changes before production
+- ✅ Validates error types and messages
+- ❌ Slower (requires Docker)
 
 **The combination:** You get fast feedback (unit tests) plus production confidence (client tests).
 

@@ -22,3 +22,5 @@ jobs:
         run: npx -y @anthropic-ai/claude-code plugin validate .
       - name: Check the elegance skill
         run: node scripts/check-cells.mts
+      - name: Check markdown prose is one line per paragraph
+        run: node scripts/check-md.mts --check
