@@ -7,7 +7,7 @@ description: The software development lifecycle every organization on the Initia
 
 | Jira | GitHub | Notes |
 |---|---|---|
-| **Initiative** | Issue `type: Initiative` | Quarter-scale. Holds Epics; the only parent an Epic takes. Body: one paragraph, linking the [roadmap](../elegance/references/cells/2A-roadmap.md) entry that owns its narrative. |
+| **Initiative** | Issue `type: Initiative` | Quarter-scale. Holds Epics; the only parent an Epic takes. One held for a later stage holds only work that waits for it. Body: one paragraph, linking the [roadmap](../elegance/references/cells/2A-roadmap.md) entry that owns its narrative. |
 | **Epic** | Issue `type: Epic` | Weeks. Holds Tasks. |
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
@@ -27,7 +27,7 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
 | **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status) and Priority, holding the Initiatives the mapping's Boards rows give it and everything under them, the default board holding the rest. [Setup](#setup) gives it a view per type, Status columns by Priority rows, and the Auto-add sub-issues workflow, which carries a child onto its parent's board. Writing to it needs the `project` scope. |
-| **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks. The mapping's Priority rows say what each value means on each board. |
+| **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
 
 ## Status
 

@@ -14,7 +14,7 @@ An `sdlc-family` agent per open Epic asks what the family leaves open.
 
 ## Adopt
 
-Each orphan gets an existing parent, a parent to file, or none, checked against the Initiative's non-goals and the board it would join, and goes to the delegator as one outline before anything attaches.
+Each orphan, and each child outside its parent's goal, gets an existing parent, a parent to file, or none, checked against the Initiative's non-goals and the board it would join, and goes to the delegator as one keyed outline before anything attaches; moved subtrees are re-ranked.
 
 ## Act
 

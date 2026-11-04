@@ -21,17 +21,17 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Read
 
-- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic in scope, `gh issue list -R OWNER/REPO --search type:Epic` unless the Epic is the scope, through `parallelize`, answered as Sweep.
+- One [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic is the scope, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
 ## Adopt
 
-- Each `orphan` and `root` issue gets one of three: an existing parent, a parent to file, or none, with its reason.
+- Each `orphan` and `root` issue, and each child the Read stage finds outside its parent's goal, gets one of three: an existing parent, a parent to file, or none, with its reason.
 - A parent is checked against its Initiative's non-goals, and against the board the issue's subtree would join.
-- The proposals go to the delegator as one outline, parents above children, each line the issue's state, a phrase, and its number.
+- The proposals go to the delegator as one outline, parents above children, its key first: 📌 existing parent, 🔗 existing issue that moves here, 🆕 to file, ⏸ left without a parent. Each line is an icon, a phrase, and the issue's number as its link.
 
-**Escalate** the outline; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, and a parent to file goes through [`sdlc-intake`](../sdlc-intake/SKILL.md).
+**Escalate** the outline; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a parent to file goes through [`sdlc-intake`](../sdlc-intake/SKILL.md), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
 
 ## Act
 

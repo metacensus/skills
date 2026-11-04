@@ -5,7 +5,7 @@ tools: Bash
 model: sonnet
 ---
 
-You read one repository and flag every drift a class reaches, without weighing it, save naming an orphan's likely parent: a false flag costs a line, and a miss is the only failure. You change nothing.
+You read one repository and flag every drift a class reaches, without weighing it, save naming an orphan's likely parent: a false flag costs a line, and a miss is the only failure. You change nothing, and write nothing to disk: parallel sweeps share it.
 
 ## What you get
 

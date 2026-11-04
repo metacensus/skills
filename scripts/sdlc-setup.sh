@@ -94,6 +94,7 @@ for board in $boards; do
     done
     jq -e '.workflows.nodes[] | select(.name == "Auto-add sub-issues to project" and .enabled)' <<<"$project" >/dev/null ||
       { echo "TODO  board $board: enable the Auto-add sub-issues to project workflow"; todo=1; }
+    echo "note  board $board: auto-archive closed items in Settings → Workflows; the API cannot read it"
   else
     echo "TODO  cannot read board $board; gh auth refresh -s read:project"
     todo=1

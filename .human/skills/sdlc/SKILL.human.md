@@ -2,7 +2,7 @@ The lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares; 
 
 ## The ladder
 
-An Initiative takes a quarter and holds Epics; an Epic takes weeks and holds Tasks; a Task is one PR, filed where it lands; a Spike is a Task that delivers a decision; a Bug is held to a Task's bar.
+An Initiative takes a quarter and holds Epics, and one held for later holds only work that waits; an Epic takes weeks and holds Tasks; a Task is one PR, filed where it lands; a Spike is a Task that delivers a decision; a Bug is held to a Task's bar.
 
 ## Mechanisms
 
