@@ -33,10 +33,11 @@ const gql = (query: string, vars: Record<string, string> = {}) => {
 
 const argv = process.argv.slice(2);
 const apply = argv.includes("--apply");
+const reset = argv.includes("--reset");
 const mappingAt = argv.indexOf("--mapping");
 const targets = argv.filter((a, i) => !a.startsWith("--") && (mappingAt < 0 || i !== mappingAt + 1));
 if (!targets.length) {
-  console.error("usage: sdlc-status.mts OWNER/N | OWNER/REPO#N... [--mapping PATH | OWNER/NAME:PATH] [--apply]");
+  console.error("usage: sdlc-status.mts OWNER/N | OWNER/REPO#N... [--mapping PATH | OWNER/NAME:PATH] [--apply] [--reset]");
   process.exit(2);
 }
 
@@ -87,6 +88,10 @@ if (board1) {
   }
 } else scope = targets.map((t) => fetchIssue(toUrl(t)).url);
 
+// `--reset`: every issue under the targets drops its own Priority and inherits again.
+const below = new Set<string>();
+if (reset) for (const url of scope) for (const c of fetchIssue(url).subIssues.nodes) if (!below.has(c.url)) { below.add(c.url); scope.push(c.url); }
+
 const isParent = (i: Issue) => i.issueType?.name === "Epic" || i.issueType?.name === "Initiative";
 const status = (url: string): string => {
   const i = fetchIssue(url);
@@ -103,7 +108,8 @@ const org = board1 ? board1.split("/")[0] : new URL(scope[0]).pathname.split("/"
 const field = (gql(`query($o:String!){organization(login:$o){issueFields(first:50){nodes{... on IssueFieldSingleSelect{id name options{id name priority}}}}}}`, { o: org })
   .organization?.issueFields.nodes ?? []).find((f: { name?: string }) => f.name === "Priority");
 const rank = new Map<string, number>((field?.options ?? []).map((o: { name: string; priority: number }) => [o.name, o.priority]));
-const own = (i: Issue) => i.issueFieldValues.nodes.find((v) => v.field?.name === "Priority")?.name ?? null;
+const stored = (i: Issue) => i.issueFieldValues.nodes.find((v) => v.field?.name === "Priority")?.name ?? null;
+const own = (i: Issue) => (below.has(i.url) ? null : stored(i));
 const higher = (a: string | null, b: string | null) => (!a ? b : !b ? a : rank.get(a)! <= rank.get(b)! ? a : b);
 const inherited = new Map<string, string | null>();
 const inherit = (url: string, seen = new Set<string>()): string | null => {
@@ -155,7 +161,7 @@ for (const url of scope) {
           { p: b.id, i: item.id, f: b.field, o: option });
     }
   }
-  if (field && p && !own(i)) {
+  if (field && p && !own(i) && stored(i) !== p) {
     notes.push(`priority → ${p}`);
     if (apply)
       gql(`mutation($i:ID!,$f:ID!,$o:ID!){setIssueFieldValue(input:{issueId:$i,issueFields:[{fieldId:$f,singleSelectOptionId:$o}]}){clientMutationId}}`,

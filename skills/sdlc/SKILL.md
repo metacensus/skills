@@ -31,7 +31,7 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 
 ## Status
 
-Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --mapping PATH`, which prints each issue's status, taking `ready` as curated, its Priority and its Initiative; `--apply` moves its cards, archives one whose status has no column, and fills a blank Priority. The last row that holds names it.
+Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --mapping PATH`, which prints each issue's status, taking `ready` as curated, its Priority and its Initiative; `--apply` moves its cards, archives one whose status has no column, and fills a blank Priority; `--reset` makes everything under the issues it names inherit again, which is how a subtree is re-ranked. The last row that holds names it.
 
 | Status | Holds when |
 |---|---|
