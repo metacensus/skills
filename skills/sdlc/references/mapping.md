@@ -5,7 +5,6 @@
 | Section | Columns | Where absent |
 |---|---|---|
 | `## Labels` | Role, Label, Description | each [role](../SKILL.md#mechanisms) under its own name, described as there |
-| `## Repositories` | Repository as `OWNER/REPO`, Epics | Epics file in the repository itself |
 | `## Boards` | Board as `OWNER/N`, Initiatives as space-separated `OWNER/REPO#N`, `—` for the default board, Purpose | no board |
 | `## Priority` | Board, Value, Meaning | each value means only its place in the field's order |
 | `## Status` | Status, Column (`—`: card archived) | each column named for its status |
