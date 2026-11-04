@@ -30,14 +30,14 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 
 ## Status
 
-Derived from GitHub facts alone, never written: `gh issue view N --json issueType,state,stateReason,labels,assignees,blockedBy,closedByPullRequestsReferences,body`. The last row that holds names it.
+Derived from GitHub facts alone, never written: `gh issue view N --json issueType,state,stateReason,labels,assignees,blockedBy,closedByPullRequestsReferences,body`, and a parent's children's, `gh api repos/OWNER/REPO/issues/N/sub_issues`. The last row that holds names it.
 
 | Status | Holds when |
 |---|---|
 | Backlog | open |
 | Blocked | open, with an open `blocked by` |
 | Ready | open, `ready`, unassigned, no open `blocked by`, and the body carries its form's required fields |
-| In progress | open and assigned |
+| In progress | open and assigned; an Initiative or Epic, also once a child is In progress, In review or Done |
 | In review | an open PR closes it |
 | Done | closed **completed** |
 | Dropped | closed **not planned** |
