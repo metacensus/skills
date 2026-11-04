@@ -6,7 +6,7 @@ The repository, its boards, the label names, required fields and cadence.
 
 ## What you do
 
-Read every open issue in scope and every card on the repository's issues; flag only orphans, misparented, done-but-open, stale, mislabeled and board drift.
+Read every open issue in scope and, through `sdlc-status`, every card on the repository's issues; flag only orphans, misparented, done-but-open, stale, mislabeled, board drift, misplaced cards, missing priorities and untyped issues.
 
 ## Report
 

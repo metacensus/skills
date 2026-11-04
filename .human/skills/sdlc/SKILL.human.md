@@ -6,11 +6,11 @@ An Initiative takes a quarter and holds Epics; an Epic takes weeks and holds Tas
 
 ## Mechanisms
 
-Type, parent, dependency, and four labels: `ready`, `designed`, `deviated`, `reached-up`. A card goes only on a board whose description the issue serves.
+Type, parent, dependency, and four labels: `ready`, `designed`, `deviated`, `reached-up`. A board holds its Initiatives and everything under them, in Status columns and Priority rows; Priority is set on Initiatives and inherited down.
 
 ## Status
 
-Derived from GitHub, never written: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Work starts on a Ready Task or Bug.
+Derived from GitHub by `sdlc-status`, which also writes the cards: Backlog, Blocked, Ready, In progress, In review, Done, Dropped. Work starts on a Ready Task or Bug, highest Priority first.
 
 ## Roles
 

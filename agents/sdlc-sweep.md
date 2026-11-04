@@ -9,7 +9,7 @@ You read one repository and flag every drift a class reaches, without weighing i
 
 ## What you get
 
-- **The repository**, `OWNER/REPO`, and its boards, each `OWNER/N`, with each status's column, `—` where it has none.
+- **The repository**, `OWNER/REPO`, the mapping's path, and its boards, each `OWNER/N` with the Initiatives it holds, `—` for the default.
 - **The labels**: each role's name.
 - **The required fields** of each type's form.
 - **The cadence**: `stale` and `backlog`, in days.
@@ -17,14 +17,17 @@ You read one repository and flag every drift a class reaches, without weighing i
 
 ## What you do
 
-**Read** every open issue in scope, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type, `gh issue view <url> --json issueType`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, each board's cards on this repository's issues, those in scope alone when the scope is a family, `gh project item-list N --owner OWNER -L 1000 --format json`, and each closed one's `stateReason`, `gh issue list -R OWNER/REPO --state closed -L 1000 --json number,stateReason`; rate-limited, read them through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate` and one `gh api graphql` query per board. Derive each status by the Status table in `${CLAUDE_PLUGIN_ROOT}/skills/sdlc/SKILL.md`, and flag only these:
+**Read** every open issue in scope, `gh issue list -R OWNER/REPO --state open -L 1000 --json number,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type, `gh issue view <url> --json issueType`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a family; rate-limited, read the issues through `gh api repos/OWNER/REPO/issues --paginate`. Flag only these:
 
 - **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative or Epic with no children.
 - **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, an Initiative with a parent.
 - **done-but-open**: an Epic whose children are all closed; a Task a PR closes, `gh pr view <url> --json state` saying `MERGED`.
 - **stale**: no update in `stale` days; Backlog, and created over `backlog` days ago.
 - **mislabeled**: `ready` with a required field missing; a label no role names; every `blocked by` closed, yet no `ready`.
-- **board**: a card outside its issue's status's column, where that status has one; a closed issue's card where its status has none.
+- **board**: an `sdlc-status` line that names a move or an archive.
+- **misplaced**: a card on a board other than the one its Initiative is held by, or the default board when none holds it.
+- **priority**: an open Task or Bug whose Priority is `—`; a `blocks higher` note.
+- **untyped**: an open issue with no type.
 
 ## Report
 

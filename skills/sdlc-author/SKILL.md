@@ -12,7 +12,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Its body carries its form's required fields.
 - Its [derived status](../sdlc/SKILL.md#status) is Ready, or In progress assigned to the acting identity, `gh api user --jq .login`.
 - Every `blocked by` is closed, and its parent is open.
-- Its card, if any, sits in its status's column.
+- Its card, if any, sits in its status's column, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author may not [make](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked, under a closed parent, or past In progress.
 
@@ -26,7 +26,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Implement
 
-- Status is In progress: assign the acting identity, and move its card, if any, adding none.
+- Status is In progress: assign the acting identity, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 - The branch is [`checkin`'s](../checkin/SKILL.md).
 - [`elegance`](../elegance/SKILL.md) governs every line written.
 - Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, checks are `elegance`.
@@ -47,7 +47,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - [`checkin`](../checkin/SKILL.md) holds, and the branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`.
 - The reviewers the mapping's Roles name are requested.
-- Status is In review, and the card moves.
+- Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** before linking, unless the remit hands over the branch.
 
@@ -64,7 +64,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The PR is merged on the review's pass.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
-- Status is Done, and the card moves.
+- Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** the merge where neither the mapping's Roles nor the remit reach it, and the close only when `deviated` or **not planned**, before a merge would close it; a plain completion never escalates. The run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
 
