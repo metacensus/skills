@@ -14,7 +14,7 @@ An `sdlc-family` agent per open Epic asks what the family leaves open.
 
 ## Act
 
-Run `sdlc-setup.sh`, move stray cards but no parent's, adding none, escalate the rest, root issues among them, to the sweep's delegator. Close nothing.
+Run `sdlc-setup.sh`, move stray cards but no parent's, archiving closed issues' cards with no column, adding none, escalate the rest, root issues among them, to the sweep's delegator. Close nothing.
 
 ## Report
 
