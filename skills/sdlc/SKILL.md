@@ -7,7 +7,7 @@ description: The software development lifecycle every organization on the Initia
 
 | Jira | GitHub | Notes |
 |---|---|---|
-| **Initiative** | Issue `type: Initiative` | Quarter-scale. Holds Epics; the only parent an Epic takes. Body: one paragraph, linking the [roadmap](../elegance/references/cells/2A-roadmap.md) entry that owns its narrative. |
+| **Initiative** | Issue `type: Initiative` | Quarter-scale. Holds Epics; the only parent an Epic takes. One held for a later stage holds only work that waits for it. Body: one paragraph, linking the [roadmap](../elegance/references/cells/2A-roadmap.md) entry that owns its narrative. |
 | **Epic** | Issue `type: Epic` | Weeks. Holds Tasks. |
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
@@ -26,23 +26,24 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 | **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
 | **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
-| **Board** | A projection of [status](#status), holding only issues that serve its purpose: its `shortDescription`, with its items where that leaves doubt; stages move a card on whichever holds it, which needs the `project` scope. |
+| **Board** | A projection of [status](#status) and Priority, holding the Initiatives the mapping's Boards rows give it and everything under them, the default board holding the rest. [Setup](#setup) gives it a view per type, Status columns by Priority rows, and the Auto-add sub-issues workflow, which carries a child onto its parent's board. Writing to it needs the `project` scope. |
+| **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
 
 ## Status
 
-Derived from GitHub facts alone, never written: `gh issue view N --json issueType,state,stateReason,labels,assignees,blockedBy,closedByPullRequestsReferences,body`. The last row that holds names it.
+Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --mapping PATH`, which prints each issue's status, taking `ready` as curated, its Priority and its Initiative; `--apply` moves its cards, archives one whose status has no column, and fills a blank Priority; `--reset` makes everything under the issues it names inherit again, which is how a subtree is re-ranked. The last row that holds names it.
 
 | Status | Holds when |
 |---|---|
 | Backlog | open |
 | Blocked | open, with an open `blocked by` |
 | Ready | open, `ready`, unassigned, no open `blocked by`, and the body carries its form's required fields |
-| In progress | open and assigned |
+| In progress | open and assigned; an Initiative or Epic, also once a child is In progress, In review or Done |
 | In review | an open PR closes it |
 | Done | closed **completed** |
 | Dropped | closed **not planned** |
 
-Work starts only on a Task or Bug in Ready, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity.
+Work starts only on a Task or Bug in Ready, highest Priority first, `gh issue list --search 'label:<ready> no:assignee -is:blocked type:Task,Bug'` with the type in the title outside an organization, or on one assigned to the acting identity.
 
 ## Roles
 

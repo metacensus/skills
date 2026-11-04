@@ -31,13 +31,13 @@ Work found during execution files through Compose, under the Epic it serves; it 
 gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 ```
 
-`--type` only inside an organization. Add `--blocked-by N` for a stated blocker and `--project` for a mapping's board whose [purpose](../sdlc/SKILL.md#mechanisms) the issue serves, its card in Backlog's column. No label. A new parent's existing children attach with `gh issue edit P --add-sub-issue N`. Where the mapping names a board, File's comment says which fits and why, or that none does.
+`--type` only inside an organization. Add `--blocked-by N` for a stated blocker and `--project` for the [board](../sdlc/SKILL.md#mechanisms) that holds its Initiative, then [`sdlc-status --apply`](../sdlc/SKILL.md#status). No label. A new parent's existing children attach with `gh issue edit P --add-sub-issue N`.
 
 ## Curate
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the delegator, or a delegate whose [remit](../sdlc/SKILL.md#roles) names it, applies `ready`, with `designed` when the body already settles every choice, and moves its card, if any, to Ready's column; anyone else escalates the pass.
+- **Pass**: the delegator, or a delegate whose [remit](../sdlc/SKILL.md#roles) names it, applies `ready`, with `designed` when the body already settles every choice, then [`sdlc-status --apply`](../sdlc/SKILL.md#status); anyone else escalates the pass.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.

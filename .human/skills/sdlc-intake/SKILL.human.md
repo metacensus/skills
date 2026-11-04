@@ -10,7 +10,7 @@ File an Epic's children against the plan, each blocker first, all before any is 
 
 ## File
 
-`gh issue create`, unlabeled, carded only where a board's purpose fits.
+`gh issue create`, unlabeled, carded on the board that holds its Initiative.
 
 ## Curate
 

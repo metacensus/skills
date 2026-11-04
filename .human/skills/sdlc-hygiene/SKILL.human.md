@@ -2,7 +2,7 @@ Sweeps repositories, or one Epic's family, for drift from `sdlc`.
 
 ## Precheck
 
-Read the repositories, cadence and required fields, asking the user for the mapping when none is found. Escalate without the `project` scope; stop with no repository.
+Read the repositories, boards, cadence and required fields, asking the user for the mapping when none is found. Escalate without the `project` scope; stop with no repository.
 
 ## Sweep
 
@@ -12,9 +12,13 @@ A `sdlc-sweep` agent per repository flags drift by class; escalate on a short re
 
 An `sdlc-family` agent per open Epic asks what the family leaves open.
 
+## Adopt
+
+Each orphan, and each child outside its parent's goal, gets an existing parent, a parent to file, or none, checked against the Initiative's non-goals and the board it would join, and goes to the delegator as one keyed outline before anything attaches; moved subtrees are re-ranked.
+
 ## Act
 
-Run `sdlc-setup.sh`, move stray cards but no parent's, adding none, escalate the rest, root issues among them, to the sweep's delegator. Close nothing.
+Run `sdlc-setup.sh`, and `sdlc-status --apply` on each board to settle its columns; escalate the rest, root issues among them, to the sweep's delegator. Close nothing.
 
 ## Report
 
