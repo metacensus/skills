@@ -2,7 +2,7 @@ How to test a Go service.
 
 ## Names run from scope to detail
 
-The strictest convention: `TestMyThing_ItsMethod`, detail added only as a name grows. Success and error cases share a table, unless errors take enough setup to earn a `…Fails` function.
+The strictest convention: `TestMyThing_ItsMethod`, detail added only as a name grows; an e2e test names a feature and a behavior. Success and error cases share a table, unless errors take enough setup to earn a `…Fails` function.
 
 ## Every test is a table
 
@@ -18,7 +18,7 @@ Typed mockery mocks assert their own expectations, follow the code path, and mat
 
 ## Choose the layer by what a failure would mean
 
-Unit, handler, adapter, built image, live third party, and cross-language parity.
+Unit, handler, adapter, built image, assembled system, live third party, and cross-language parity.
 
 ## Every source of nondeterminism is a seam
 
@@ -30,7 +30,7 @@ Schema, architecture, security properties across every principal, and guards are
 
 ## Integration tests own their dependencies
 
-Tagged by suite, all in the root module; testcontainers from pinned images; each test clones a template database; the artifact suite runs an image Docker built; live probes fail in CI.
+Tagged by suite, all in the root module; each `e2e` directory a suite of feature-named files around a harness package; testcontainers from pinned images; each test clones a template database, or shares what cannot be cloned; the artifact suite runs an image Docker built; live probes fail in CI.
 
 ## Running the test
 

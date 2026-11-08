@@ -11,6 +11,7 @@ The test name is the convention held most strictly. It opens with the unit under
 func TestMyThing_ItsMethod(t *testing.T)      // success and error cases, one table
 func TestMyThing_ItsMethodFails(t *testing.T) // error cases, once evoking them takes more setup than the features
 func TestMyThing_OtherMethod(t *testing.T)
+func TestMyFeature_ItsBehavior(t *testing.T)  // an e2e test
 ```
 
 Cases are named `"success - …"` or `"error - …"`.
@@ -51,6 +52,7 @@ A double that must hold state across many calls — a store enforcing uniqueness
 | Handler | routing, middleware, or a status code is wrong | `httptest.NewServer`, a real socket |
 | Adapter | our client disagrees with the real system | the dependency in a container |
 | Artifact | the image that ships does not boot, serve, or stop | the built image |
+| End-to-end | the parts disagree once assembled | our code in-process, its dependencies in containers, our built images |
 | Live probe | a third party rejects what we send | the real third party, opt-in |
 | Parity | two generated halves disagree on the wire | our server, driven by our other-language client |
 
@@ -71,10 +73,13 @@ Time, IDs, environment, and outbound calls enter through a field or parameter th
 
 ## Integration tests own their dependencies
 
-- **Tagged and placed by what they import.** Integration tests carry `//go:build integration`. An adapter test sits beside its client as `client_integ_test.go`, next to the unit `client_test.go`; an artifact test speaks only HTTP, lives in `integration/` within the root module, and carries `//go:build artifact`, so `-tags=integration ./...` leaves it out.
+- **Tagged and placed by what they import.** Integration tests carry `//go:build integration`. An adapter test sits beside its client as `client_integ_test.go`, next to the unit `client_test.go`; an e2e suite is a directory named `e2e` at the root of what it assembles, and a repository may hold several; an artifact test speaks only HTTP, lives in `integration/` within the root module, and carries `//go:build artifact`, so `-tags=integration ./...` leaves it out.
 - **testcontainers starts everything the test needs**, from a pinned image tag, and waits on a readiness strategy — `wait.ForHTTP`, `ForLog`, or `ForExit` for a container that must refuse to boot.
 - **Each test gets a database cloned from one template**, into which migrations ran once. Not a transaction per test: a store method commits its own transaction, which a test cannot wrap. Not a schema per test: it couples the code under test to `search_path` and re-runs migrations each time.
-- **One `start(t, ctx, req)` helper** registers a `t.Cleanup` that prints container logs when the test failed, then terminates.
+- **What cannot be cloned is shared.** A dependency too slow to start per test starts once in `TestMain`; each test takes a cheap handle from it, runs in parallel, and keeps apart by the IDs it names, creating nothing per test that the code under test would not create itself.
+- **One `start(t, ctx, req)` helper** registers a `t.Cleanup` that prints container logs when the test failed, then terminates; `TestMain` does the same for a shared container when any test failed.
+- **An e2e suite's shared environment and per-test handle live in a package of their own**, `e2e/harness`, so scenario files see a small exported API.
+- **An e2e suite's files drop `_integ` and are named for the feature they cover** — `sandbox_test.go`, `lease_test.go` — so parallel branches add files rather than edit one. Every file, the harness's too, still carries `//go:build integration`: Go has no tag for a directory.
 - **The artifact suite runs the image `SERVICE_IMAGE` names** and fails when it is unset. `make` or CI's buildx step builds the image first, because only Docker supplies the Dockerfile's `$BUILDPLATFORM`.
 - **A live probe** reads a credential under a test-only name (`*_TEST_URL`, never the production variable), prints only the variable's name, skips without it, and fails instead when `REQUIRE_*` is set.
 
