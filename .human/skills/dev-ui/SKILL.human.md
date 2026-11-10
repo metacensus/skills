@@ -19,3 +19,7 @@ Hydrate where marked, when visible; reach the API through the proxy.
 ## Sharing with a sibling UI
 
 Same framework majors, no shared package before a second consumer; a copy names its source.
+
+## Aligning a surface to a design system
+
+Baseline from the base ref, review each page on style, messaging and nav, check a known list of defects, and verify by computed style and a route walk, not by eye.
