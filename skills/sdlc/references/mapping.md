@@ -7,6 +7,7 @@
 | `## Labels` | Role, Label, Description | each [role](../SKILL.md#mechanisms) under its own name, described as there |
 | `## Boards` | Board as `OWNER/N`, Initiatives as space-separated `OWNER/REPO#N`, `—` for the default board, Purpose | no board |
 | `## Priority` | Board, Value, Meaning | each value means only its place in the field's order |
+| `## Inherited fields` | Field, Boards as space-separated `OWNER/N` | no board field inherits |
 | `## Status` | Status, Column (`—`: card archived) | each column named for its status |
 | `## Roles` | Role, Who | the [defaults](../SKILL.md#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
