@@ -24,7 +24,7 @@ const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} la
   issueFieldValues(first:10){nodes{... on IssueFieldSingleSelectValue{name field{... on IssueFieldSingleSelect{name}}}}}
   parent{url} subIssues(first:50){nodes{url}}
   projectItems(first:10,includeArchived:false){nodes{id project{number owner{... on Organization{login} ... on User{login}}}
-    fields:fieldValues(first:20){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}}}}}}`;
+    fields:fieldValues(first:50){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}}}}}}`;
 
 const gql = (query: string, vars: Record<string, string> = {}) => {
   const args = ["api", "graphql", "-f", `query=${query}`, ...Object.entries(vars).flatMap(([k, v]) => ["-F", `${k}=${v}`])];
@@ -172,7 +172,8 @@ for (const url of scope) {
       notes.push(`${key}: archive`);
       if (apply) execFileSync("gh", ["project", "item-archive", String(item.project.number), "--owner", item.project.owner.login, "--id", item.id]);
       continue;
-    } else if (now !== want) {
+    }
+    if (now !== want) {
       const exists = board(item).fields.get("Status")?.options.has(want);
       notes.push(exists ? `${key}: ${now ?? "no column"} → ${want}` : `${key}: no column ${want}`);
       if (apply && exists) setCard(item, "Status", want);
@@ -180,7 +181,7 @@ for (const url of scope) {
     for (const name of carried(key)) {
       const wants = inheritCard(url, key, name);
       if (wants && wants !== pick(item.fields, name)) { notes.push(`${key}: ${name} → ${wants}`); if (apply) setCard(item, name, wants); }
-      else if (!wants && i.state === "OPEN" && i.issueType?.name !== "Initiative") notes.push(`${key}: no ${name}`);
+      else if (!wants && i.state === "OPEN" && ["Epic", "Task", "Bug"].includes(i.issueType?.name ?? "")) notes.push(`${key}: no ${name}`);
     }
   }
   if (field && p && !own(i) && stored(i) !== p) {
