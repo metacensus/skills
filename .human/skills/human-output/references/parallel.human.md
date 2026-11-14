@@ -12,8 +12,10 @@ Every `##` copied word for word, in order.
 
 ## Sections
 
-Source tables stay tables; draw the views the source implies; number what is cited.
+- Source tables stay tables
+- Draw the views the source implies
+- Number what is cited
 
 ## Length
 
-A third of the prose outside tables and code.
+At most a third of the source's prose, outside tables and code.

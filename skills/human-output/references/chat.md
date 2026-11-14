@@ -15,8 +15,8 @@ Your queue
 
 **Shortcuts**
 - ✅ #40 keymap v2
-  - ⛔ #41 binding renames · list drafted
-  - ⬜ #43 import old keymaps · after #41
+- ⛔ #41 binding renames · list drafted
+- ⬜ #43 import old keymaps · after #41
 
 **Printing**
 - 🟢 #52 print view · checks green
@@ -29,7 +29,7 @@ Your queue
 4. **The tree**, nested as the real hierarchy nests.
 5. **Questions**, at most three, each answerable cold: the quoted span, the stakes, a recommendation, and the default taken on silence.
 
-Each line is one item: status mark, number, then terms and phrases. The number is its issue's, else an outline number (`1`, `1.1`). An item of mixed kind leads with two marks, kind then status (📄 issue · 🔀 pull request). A proposal shares one tree with what exists, told apart by the default marks, each edit inline on the line it changes; what already holds and what is left out get a group each. The outline reports the state of the product, what is done and what is not, and leaves the running of the work out. Two subjects get an outline each.
+Each line is one item: status mark, number, then terms and phrases. The number is its issue's, else an outline number (`1`, `1.1`). In an outline of mixed kinds, each item leads with two marks, kind then status (📄 issue · 🔀 pull request). A proposal shares one tree with what exists, told apart by the default marks, each edit inline on the line it changes; what already holds and what is left out get a group each. The outline reports the state of the product, what is done and what is not, and leaves the running of the work out. Two subjects get an outline each.
 
 ## Tables
 
@@ -39,4 +39,4 @@ Each line is one item: status mark, number, then terms and phrases. The number i
 
 ## Cadence
 
-Speak when something changed. A status outline goes out when the person asks for one, or when nothing can proceed without them, and keeps its shape from one to the next.
+Unprompted, speak only when something changed. A status outline goes out when the person asks for one, or when nothing can proceed without them, and keeps its shape from one to the next.

@@ -16,14 +16,14 @@ Request → Read → Run → Findings → Verdict
 
 ## Headings
 
-Each `##` heading copies the source's, word for word and in order, so the two pages align section by section. A section with nothing to add keeps its heading over one line.
+Each `##` heading copies the source's, word for word and in order; a section with nothing to carry keeps its heading over one line.
 
 ## Sections
 
 - A table the source holds usually stays a table, one attribute per column and one value per cell; a column that never varies can go, and tables that share a key can merge.
 - Facts the source scatters often form a view it never draws, a matrix or a path grid; drawing that view adds no fact, and is often the page's biggest gain.
 - Number what a reader cites: stages, questions, options. Lists of facts usually read better bulleted.
-- Links go to sibling pages.
+- A link goes to its target's parallel page.
 
 ## Length
 

@@ -31,19 +31,3 @@ One per draft, each a different whole-page bet:
 | Stance | a minimal edit · constructive · adversarial · rebuild from the source |
 | Scope | the first screen · the whole page · one section · across sections |
 
-## Curation
-
-Line-level lenses, for prose that stays prose; they seldom move a page already drawn for the eye.
-
-- what the reader loses if this line goes
-- a rule stated, explained and illustrated, where the rule and one example usually suffice
-- reasons sitting inside a rule
-- a line restating what the layout already shows
-- a line that would go stale unnoticed if what it describes changed
-- a count or list typed by hand that something could compute
-- a rule that forbids nothing
-- wording that negates an old shape instead of stating the new one
-- an absolute wider than its truth, or a hedge on a firm claim
-- a summary as long as what it summarizes
-- a term used two ways, or before it is defined
-- fluency standing in for a checked claim

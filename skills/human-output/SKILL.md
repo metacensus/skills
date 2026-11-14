@@ -19,7 +19,7 @@ Classify each piece of what is to be said, give it its family's form, and carry 
 
 ## What survives compression
 
-Keep what the reader needs to act, move detail down a layer, and drop what nobody would miss. A rule rarely survives losing its condition (`when X → Y` is not `Y`); defaults, tests, and examples usually earn their place; reasons are usually the first to go. Every term is one the reader already uses, or one defined where it first appears. An item that carries a surprise (its size, its cost, anything irreversible) says so on its line. One idea per line, at most about 25 words. A link's text is the number or coordinate it names.
+Keep what the reader needs to act, move detail down a layer, and drop what nobody would miss. A rule rarely survives losing its condition (`when X → Y` is not `Y`); defaults, tests, and examples usually earn their place; reasons are usually the first to go. Every term is one the reader already uses, or one defined where it first appears. An item that carries a surprise (its size, its cost, anything irreversible) says so on its line. One idea per item or outline line, at most about 25 words. A link to a numbered thing takes the number or coordinate as its text.
 
 ## Marks
 

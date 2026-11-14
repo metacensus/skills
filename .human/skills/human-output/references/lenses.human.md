@@ -4,7 +4,7 @@ Pellet: 2–3 values across dimensions · blast: one dimension, every value
 
 ## Organizing ideas
 
-Decisions · one map · the reader's questions · change, cost, risk · states · example first · options side by side · the reader's path.
+Decisions · map first · reader's questions · change and risk · states · example first · options side by side · reader's path.
 
 ## Dimensions
 
@@ -21,7 +21,3 @@ Decisions · one map · the reader's questions · change, cost, risk · states �
 | Probe | the one thing? · draw it |
 | Stance | minimal · adversarial · rebuild |
 | Scope | first screen · one section |
-
-## Curation
-
-Line-level, for prose that stays prose: lines nobody would miss, reasons inside rules, restated layout, hand-typed counts, wide absolutes.

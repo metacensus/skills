@@ -10,13 +10,15 @@ Classify → form → highest device → draw for the medium
 |---|---|---|---|
 | Status | state, change, ask | mark | keyed mark lines |
 | Structure | hierarchy, comparison, coverage | position | tree, table, matrix |
-| Flow | sequence, lifecycle, cycle | direction | strip, state line, loop |
+| Flow | sequence, lifecycle, cycle | direction | `A → B → C`, state line, loop |
 | Logic | rule, decision | branch | `when X → Y`, decision table |
 | Meaning | definition, example, reason | words | terms, sample, prose |
 
 ## What survives compression
 
-Keep what the reader acts on; layer detail; drop what nobody misses. One idea per line; links named by number.
+- Keep what the reader acts on · layer detail · drop what nobody misses
+- One idea per item or outline line
+- A link to a numbered thing: its number as text
 
 ## Marks
 

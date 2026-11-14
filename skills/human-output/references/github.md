@@ -1,10 +1,10 @@
 # GitHub bodies
 
-An issue or pull request body, read by the team in lists, notifications, and the page itself, and shown to the person in conversation before it posts.
+An issue or pull request body, shown to the person in conversation before it posts.
 
 ## The human version
 
-The body opens with a human version above the detail an agent works from: `### Human version` in an issue, `## Human version` in a pull request. Three to seven bullets, one fact each, fragments joined by `→`, `=`, `·`, or `:`. Its slots, as they apply: what changes, `Done =`, `Blocked by #N` and `Blocks #N`, `Not doing:`, `Risk:`, and on a pull request `Live:` with the proof. It is plain text without marks and states claims; reasons go to the detail below.
+The body opens with a human version above the detail an agent works from: three to seven plain bullets without marks, in the slots below that apply; reasons go to the detail. A pull request heads it `## Human version` and adds `Live:` with the proof.
 
 ```
 ### Human version

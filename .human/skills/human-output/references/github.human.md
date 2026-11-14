@@ -1,7 +1,5 @@
-> A plain human version opens every issue and PR body.
-
-Draft in conversation → post
+> Plain human version first; drafted in chat.
 
 ## The human version
 
-Three to seven bullets: what changes · `Done =` · blockers · `Not doing:` · `Risk:` · `Live:` on a PR. No marks, no reasons.
+3–7 plain bullets in the example's slots; PRs add `Live:`.
