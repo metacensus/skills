@@ -61,4 +61,4 @@ Each brief opens with the agent's **remit**: the choices it owns, and where the 
 
 ## Integrate and land
 
-The orchestrator decides what reaches it at a cap and applies proposals to the files it stewards, then runs the whole-system check. When the user has handed it the branch, it commits each unit as it lands, following [`checkin`](../checkin/SKILL.md), so the pull request is a live view of the work in dependency order.
+The orchestrator decides what reaches it at a cap and applies proposals to the files it stewards, then runs the whole-system check. What it relays to a person goes as [`sdlc`'s Reporting](../sdlc/SKILL.md#reporting) says: each item once, the outline only on request or when all work waits on them. When the user has handed it the branch, it commits each unit as it lands, following [`checkin`](../checkin/SKILL.md), so the pull request is a live view of the work in dependency order.

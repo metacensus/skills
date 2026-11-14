@@ -14,7 +14,7 @@ Each stage runs as [the hub's protocol](../sdlc/SKILL.human.md#stages) says, wit
 | Whoever handed it the Epic | the delegator's own `delegator` |
 | The brief | one environment's tools, worktrees, refusals, and each child's model |
 
-It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.human.md).
+It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.human.md), and reports up as [the hub's Reporting](../sdlc/SKILL.human.md#reporting) says.
 
 ## Precheck
 

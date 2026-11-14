@@ -1,6 +1,6 @@
 ---
 name: sdlc
-description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, or asking how issues, labels, boards, or status work here.
+description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here, or reporting up to a person.
 ---
 
 ## The ladder
@@ -31,7 +31,7 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 
 ## Status
 
-Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --mapping PATH`, which prints each issue's status, taking `ready` as curated, its Priority and its Initiative; `--apply` moves its cards, archives one whose status has no column, and fills a blank Priority; `--reset` makes everything under the issues it names inherit again, which is how a subtree is re-ranked. The last row that holds names it.
+Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --mapping PATH`, which prints each issue's status, taking `ready` as curated, its Priority and its Initiative; `--apply` moves its cards, archives one whose status has no column, and fills a blank Priority or [inherited field](references/mapping.md); `--reset` makes everything under the issues it names inherit Priority again, which is how a subtree is re-ranked. The last row that holds names it.
 
 | Status | Holds when |
 |---|---|
@@ -56,7 +56,7 @@ A **remit** is what a delegator writes when handing work down: the choices the d
 
 A delegate **escalates** a choice it cannot own, **consults** a person on a question whose choice stays its own, and **reports** what its delegator should know and need not answer. A delegator may **steer**, **halt** or **query** its delegate unprompted.
 
-What goes up is sized to the receiver's scope: the choice, its options and a recommendation, never the work behind them.
+What goes up is sized to the receiver's scope: the choice, its options and a recommendation, never the work behind them. To a person it goes as [Reporting](#reporting) says.
 
 An agent acts, or escalates in a comment:
 
@@ -68,6 +68,16 @@ An agent acts, or escalates in a comment:
 | Assign; close another's issue or edit its body | escalate | escalate |
 
 A request to pick an issue up is the delegator's yes to assigning.
+
+## Reporting
+
+**A person's attention is spent once per item.** What goes up to a person — an escalation, a consult, a report — names each item once, in the turn it arises or changes, on a line of its own led by a loud marker: ⛔ waits on them, 🟢 ready for them, ✅ done. A later turn repeats nothing unchanged: no rolling "still for you" or "still to do".
+
+**The status outline** is printed only when the person asks for status, or when all work waits on them:
+
+- **Your queue** first: their acts alone, ordered by what each unblocks, each a link and a few words.
+- Then a block per area, one line per item, icon first: ✅ done · 🟢 ready for them · ⛔ waits on them · ⬜ next · ⏸ parked.
+- Terms and phrases, never sentences. The product's state, never the orchestration's: no agent names, PR churn or process narration.
 
 ## Stages
 

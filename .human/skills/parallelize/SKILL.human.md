@@ -94,4 +94,5 @@ Rules: assume no tool the agent type lacks. A runner that is itself delegated ru
 ## Integrate and land
 
 - The orchestrator decides what reaches the cap, applies proposals to files it stewards, then runs the whole-system check.
+- What it relays to a person goes as [`sdlc`'s Reporting](../sdlc/SKILL.human.md#reporting) says: each item once, the outline only on request or when all work waits on them.
 - Branch handed over → commits each unit as it lands, per [`checkin`](../checkin/SKILL.human.md), so the PR shows the work in dependency order.

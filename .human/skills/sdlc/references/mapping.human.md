@@ -28,6 +28,7 @@ Project root mapping → organization's, filling gaps → defaults
 | `## Labels` | Role, Label, Description | each [role](../SKILL.human.md#mechanisms) under its own name |
 | `## Boards` | Board `OWNER/N`; Initiatives `OWNER/REPO#N` spaced, `—` = default board; Purpose | no board |
 | `## Priority` | Board, Value, Meaning | value means only its order |
+| `## Inherited fields` | Field (single-select), Boards `OWNER/N` spaced | no board field inherits |
 | `## Status` | Status, Column (`—` archives the card) | column named for its [status](../SKILL.human.md#status) |
 | `## Roles` | Role, Who | the [defaults](../SKILL.human.md#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |

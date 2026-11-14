@@ -1,6 +1,6 @@
 > Every organization on the Initiative / Epic / Task / Bug ladder shares one lifecycle; its `sdlc-mapping.md` binds it ([mapping](references/mapping.human.md)).
 
-Fires: setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here. Setup runs once per repository, first.
+Fires: setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here, reporting up to a person. Setup runs once per repository, first.
 
 ```
 Backlog → Ready → In progress → In review → Done
@@ -46,7 +46,7 @@ node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --m
 ```
 
 - Prints status, Priority, Initiative; `ready` is taken as curated.
-- `--apply` moves cards, archives one with no column, fills a blank Priority.
+- `--apply` moves cards, archives one with no column, fills a blank Priority or [inherited field](references/mapping.human.md).
 - `--reset` makes everything under the named issues inherit again.
 
 | Status | Holds when | Moved by |
@@ -79,7 +79,7 @@ node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N | OWNER/REPO#N... --m
 | report | what the delegator should know and need not answer |
 
 - A delegator may steer, halt, or query unprompted.
-- Going up carries the choice, options, and a recommendation, never the work behind them.
+- Going up carries the choice, options, and a recommendation, never the work behind them; to a person it goes as [Reporting](#reporting) says.
 
 Agent action: ✅ may · ⛔ escalate, in a comment.
 
@@ -91,6 +91,20 @@ Agent action: ✅ may · ⛔ escalate, in a comment.
 | Assign; close another's issue or edit its body | ⛔ | ⛔ |
 
 - A request to pick an issue up is the delegator's yes to assigning.
+
+## Reporting
+
+A person's attention is spent once per item: each item named once, in the turn it arises or changes, on a line of its own led by ⛔ waits on them · 🟢 ready for them · ✅ done.
+
+- A later turn repeats nothing unchanged: no rolling "still for you" or "still to do".
+- The status outline is printed only on request, or when all work waits on them.
+
+| Outline part | Holds |
+|---|---|
+| Your queue | first: their acts alone, ordered by what each unblocks, each a link and a few words |
+| A block per area | one line per item, icon first: ✅ done · 🟢 ready for them · ⛔ waits on them · ⬜ next · ⏸ parked |
+
+- Terms and phrases, never sentences; the product's state, never the orchestration's: no agent names, PR churn or process narration.
 
 ## Stages
 
