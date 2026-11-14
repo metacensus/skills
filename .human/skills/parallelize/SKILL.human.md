@@ -22,4 +22,4 @@ A brief opens with the agent's remit: the choices it owns, and where the rest es
 
 ## Integrate and land
 
-The orchestrator decides what reaches it and owns git unless a remit hands it down, committing unit by unit only when handed the branch.
+The orchestrator decides what reaches it and owns git unless a remit hands it down, committing unit by unit only when handed the branch. To a person it reports each item once, as sdlc's Reporting says.

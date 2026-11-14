@@ -14,7 +14,11 @@ Derived from GitHub by `sdlc-status`, which also writes the cards: Backlog, Bloc
 
 ## Roles
 
-The `delegator`, whoever handed the work over, else whoever started it, writes the remit, the choices the delegate owns, and takes the rest, Initiatives and Epics to file among them; `CODEOWNERS` names the `reviewer`. Up, a delegate escalates, consults a person, or reports, in outline; down, a delegator steers, halts, or queries. An agent may change a Task's type, labels but `ready` and `designed`, and links, and close what it completes; otherwise it escalates.
+The `delegator`, whoever handed the work over, else whoever started it, writes the remit, the choices the delegate owns, and takes the rest, Initiatives and Epics to file among them; `CODEOWNERS` names the `reviewer`. Up, a delegate escalates, consults a person, or reports; down, a delegator steers, halts, or queries. An agent may change a Task's type, labels but `ready` and `designed`, and links, and close what it completes; otherwise it escalates.
+
+## Reporting
+
+To a person, each item once, when it arises or changes, behind a loud ⛔, 🟢 or ✅; nothing unchanged is repeated. The full status outline — their queue first, then one icon-led line per item per area — only when they ask, or when everything waits on them.
 
 ## Stages
 
