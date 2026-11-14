@@ -1,6 +1,6 @@
 ---
 name: human-output
-description: Shape what a person reads so its layout carries the information before its words do. Trigger before reporting status, proposing work or edits, laying out options, or summarizing for a person; before writing an issue or pull request body, or a document a person reads beside one an agent reads; and whenever the user asks for an outline, a table, a key, icons, an "austere" or "brutish" form, "terms and phrases", "at a glance", or a "human version", or calls a reply a wall of text.
+description: Shape what a person reads so its layout carries the information before its words do. Trigger before reporting status, proposing work or edits, laying out options, or summarizing for a person; before writing an issue or pull request body, or a document a person reads beside one an agent reads; and whenever the user asks for an outline, a table, a key, icons, an "austere" or "brutish" form, "terms and phrases", "at a glance", or a "human version", or calls a reply a wall of text; and when a page is worth revising with cold reviewers, or the user asks to wake a page up or critique it for a reader.
 ---
 
 **A person sees the shape before reading the words.**
@@ -38,3 +38,5 @@ A key adds marks, each colored and distinct in shape. Between items `·` joins l
 | Issue or pull request body | what changes, and when it is done | tables, task lists, diagrams | [github](references/github.md) |
 
 Where a medium cannot draw a family's form, use the nearest form it can: a loop becomes a numbered list that returns to its first step.
+
+A page read often or by many earns [the loop](references/loop.md): cold agents drafting, critiquing, and ranking it.

@@ -29,3 +29,5 @@ Keep what the reader acts on; layer detail; drop what nobody misses. One idea pe
 | Conversation | outcome, queue | marks, tables | [chat](references/chat.human.md) |
 | Parallel document | a map | headings, tables, marks | [parallel](references/parallel.human.md) |
 | Issue or PR body | changes, done | tables, lists, diagrams | [github](references/github.human.md) |
+
+Pages read often: [the loop](references/loop.human.md).
