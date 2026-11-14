@@ -2,15 +2,15 @@ Files an issue and curates it to `ready`, in the `sdlc` protocol.
 
 ## Compose
 
-Pick type, parent, and repository, fill the form, meet the type's bar. Initiatives and Epics escalate to the delegator. Compose reports to the user.
+Pick type, parent, and repository, fill the form, meet the type's bar. Initiatives and Epics escalate. Compose reports to the user.
 
 ## Decompose
 
-File an Epic's children against the plan, each blocker first, all before any is curated. Work found later files under its Epic.
+File an Epic's children against the plan, blockers first, all before curating any. Work found later files under its Epic.
 
 ## File
 
-`gh issue create`, unlabeled, carded on the board that holds its Initiative.
+`gh issue create`, unlabeled, on its Initiative's board.
 
 ## Curate
 
