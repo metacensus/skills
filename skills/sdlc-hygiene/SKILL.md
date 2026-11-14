@@ -29,7 +29,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 - Each `orphan` and `root` issue, and each child the Read stage finds outside its parent's goal, gets one of three: an existing parent, a parent to file, or none, with its reason.
 - A parent is checked against its Initiative's non-goals, and against the board the issue's subtree would join.
-- The proposals go to the delegator as one [outline](../human-output/SKILL.md#the-outline), keyed 📌 existing parent · 🔗 existing issue that moves here · 🆕 to file · ⏸️ left without a parent.
+- The proposals go to the delegator as one [outline](../human-output/SKILL.md), keyed 📌 existing parent · 🔗 existing issue that moves here · 🆕 to file · ⏸️ left without a parent.
 
 **Escalate** the outline; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a parent to file goes through [`sdlc-intake`](../sdlc-intake/SKILL.md), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
 

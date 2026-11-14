@@ -1,25 +1,31 @@
-A person reads the shape before the words: state at a glance, answered by number.
+> The shape is seen before the words are read.
 
-## The form
+Fires: reports, proposals, options, summaries, issue or PR bodies, parallel documents.
 
-Outline by default; one table for like items; prose to discuss.
+Classify → form → highest device → draw for the medium
 
-## The outline
+## Families
 
-Outcome · key of colored emoji · your queue · tree, parents above children · at most three cold-answerable questions. Each line: icon, bare-number link, terms and phrases.
+| Family | Members | Device | Form |
+|---|---|---|---|
+| Status | state, change, ask | mark | keyed mark lines |
+| Structure | hierarchy, comparison, coverage | position | tree, table, matrix |
+| Flow | sequence, lifecycle, cycle | direction | strip, state line, loop |
+| Logic | rule, decision | branch | `when X → Y`, decision table |
+| Meaning | definition, example, reason | words | terms, sample, prose |
 
-## Terse, not private
+## What survives compression
 
-The person's words; surprises stated; product state, not process.
+Conditions, defaults, tests, examples; reasons go first. One idea per line; links named by number.
 
-## The table
+## Marks
 
-Two text columns at most, the rest icons; numbered rows; header rows for groups; a tally; key agreed first.
+✅ done · ⛔ waits on you · 🟢 ready · ⬜ next · ⏸️ parked · 🆕 new · 📌 exists · ✏️ edit · ⚠️ risk; one meaning each; negatives `·`.
 
-## The human version
+## Media
 
-Tops every issue and pull request body: three to seven plain bullets, one fact each, claims without reasons.
-
-## Cadence
-
-Speak on change; a status outline when asked, or when nothing proceeds without the person.
+| Medium | Leads with | Draws | Route |
+|---|---|---|---|
+| Conversation | outcome, queue | marks, tables | [chat](references/chat.human.md) |
+| Parallel document | a map | headings, tables, marks | [parallel](references/parallel.human.md) |
+| Issue or PR body | changes, done | tables, lists, diagrams | [github](references/github.human.md) |
