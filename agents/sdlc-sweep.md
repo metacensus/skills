@@ -26,7 +26,7 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **mislabeled**: `ready` with a required field missing; a label no role names; every `blocked by` closed, yet no `ready`.
 - **board**: an `sdlc-status` line that names a move or an archive.
 - **misplaced**: a card on a board other than the one its Initiative is held by, or the default board when none holds it.
-- **priority**: an open Task or Bug whose Priority is `—`; a `blocks higher` note.
+- **priority**: an open Task or Bug whose Priority is `—`; a `blocks higher` note, or a `no <field>` note naming an inherited field.
 - **untyped**: an open issue with no type.
 
 ## Report

@@ -6,7 +6,7 @@ An Initiative takes a quarter and holds Epics, and one held for later holds only
 
 ## Mechanisms
 
-Type, parent, dependency, and four labels: `ready`, `designed`, `deviated`, `reached-up`. A board holds its Initiatives and everything under them, in Status columns and Priority rows; Priority is set on Initiatives and inherited down.
+Type, parent, dependency, and four labels: `ready`, `designed`, `deviated`, `reached-up`. A board holds its Initiatives and everything under them, in Status columns and Priority rows; Priority is set on Initiatives and inherited down; the mapping's inherited fields pass down too.
 
 ## Status
 

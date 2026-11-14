@@ -5,15 +5,17 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
 type Ref = { url: string; state: string };
+type Values = { nodes: { name?: string; field?: { name: string } }[] };
+type Item = { id: string; project: { number: number; owner: { login: string } }; fields: Values };
 type Issue = {
   id: string; url: string; state: string; stateReason: string | null;
   issueType: { name: string } | null; assignees: { totalCount: number };
   labels: { nodes: { name: string }[] };
   blockedBy: { nodes: Ref[] }; blocking: { nodes: Ref[] };
   closedByPullRequestsReferences: { nodes: { state: string }[] };
-  issueFieldValues: { nodes: { name?: string; field?: { name: string } }[] };
+  issueFieldValues: Values;
   parent: { url: string } | null; subIssues: { nodes: { url: string }[] };
-  projectItems: { nodes: { id: string; project: { number: number; owner: { login: string } }; status: { name: string } | null }[] };
+  projectItems: { nodes: Item[] };
 };
 
 const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} labels(first:20){nodes{name}}
@@ -22,7 +24,7 @@ const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} la
   issueFieldValues(first:10){nodes{... on IssueFieldSingleSelectValue{name field{... on IssueFieldSingleSelect{name}}}}}
   parent{url} subIssues(first:50){nodes{url}}
   projectItems(first:10,includeArchived:false){nodes{id project{number owner{... on Organization{login} ... on User{login}}}
-    status:fieldValueByName(name:"Status"){... on ProjectV2ItemFieldSingleSelectValue{name}}}}`;
+    fields:fieldValues(first:50){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}}}}}}`;
 
 const gql = (query: string, vars: Record<string, string> = {}) => {
   const args = ["api", "graphql", "-f", `query=${query}`, ...Object.entries(vars).flatMap(([k, v]) => ["-F", `${k}=${v}`])];
@@ -108,7 +110,8 @@ const org = board1 ? board1.split("/")[0] : new URL(scope[0]).pathname.split("/"
 const field = (gql(`query($o:String!){organization(login:$o){issueFields(first:50){nodes{... on IssueFieldSingleSelect{id name options{id name priority}}}}}}`, { o: org })
   .organization?.issueFields.nodes ?? []).find((f: { name?: string }) => f.name === "Priority");
 const rank = new Map<string, number>((field?.options ?? []).map((o: { name: string; priority: number }) => [o.name, o.priority]));
-const stored = (i: Issue) => i.issueFieldValues.nodes.find((v) => v.field?.name === "Priority")?.name ?? null;
+const pick = (v: Values, name: string) => v.nodes.find((n) => n.field?.name === name)?.name ?? null;
+const stored = (i: Issue) => pick(i.issueFieldValues, "Priority");
 const own = (i: Issue) => (below.has(i.url) ? null : stored(i));
 const higher = (a: string | null, b: string | null) => (!a ? b : !b ? a : rank.get(a)! <= rank.get(b)! ? a : b);
 const inherited = new Map<string, string | null>();
@@ -128,15 +131,31 @@ const initiative = (url: string): string | null => {
   return i.issueType?.name === "Initiative" ? url : i.parent ? initiative(i.parent.url) : null;
 };
 
-const boards = new Map<string, { id: string; field: string; options: Map<string, string> }>();
-const board = (owner: string, number: number) => {
-  const key = `${owner}/${number}`;
+type Select = { id: string; options: Map<string, string> };
+const boards = new Map<string, { id: string; fields: Map<string, Select> }>();
+const keyOf = (item: Item) => `${item.project.owner.login}/${item.project.number}`;
+const board = (item: Item) => {
+  const key = keyOf(item);
   if (!boards.has(key)) {
     const p = gql(`query($o:String!,$n:Int!){repositoryOwner(login:$o){... on ProjectV2Owner{projectV2(number:$n){id
-      field(name:"Status"){... on ProjectV2SingleSelectField{id options{id name}}}}}}}`, { o: owner, n: String(number) }).repositoryOwner.projectV2;
-    boards.set(key, { id: p.id, field: p.field.id, options: new Map(p.field.options.map((o: { id: string; name: string }) => [o.name, o.id])) });
+      fields(first:50){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}}`,
+      { o: item.project.owner.login, n: String(item.project.number) }).repositoryOwner.projectV2;
+    const fields = new Map<string, Select>();
+    for (const f of p.fields.nodes) if (f.options) fields.set(f.name, { id: f.id, options: new Map(f.options.map((o: { id: string; name: string }) => [o.name, o.id])) });
+    boards.set(key, { id: p.id, fields });
   }
   return boards.get(key)!;
+};
+const setCard = (item: Item, name: string, value: string) => {
+  const b = board(item), f = b.fields.get(name)!;
+  gql(`mutation($p:ID!,$i:ID!,$f:ID!,$o:String!){updateProjectV2ItemFieldValue(input:{projectId:$p,itemId:$i,fieldId:$f,value:{singleSelectOptionId:$o}}){clientMutationId}}`,
+    { p: b.id, i: item.id, f: f.id, o: f.options.get(value)! });
+};
+
+const carried = (key: string) => [...(table.get("Inherited fields") ?? [])].filter(([, b]) => b.split(/\s+/).includes(key)).map(([f]) => f);
+const inheritCard = (url: string, key: string, name: string): string | null => {
+  const i = fetchIssue(url), item = i.projectItems.nodes.find((n) => keyOf(n) === key);
+  return (item ? pick(item.fields, name) : null) ?? (i.parent ? inheritCard(i.parent.url, key, name) : null);
 };
 
 for (const url of scope) {
@@ -146,19 +165,23 @@ for (const url of scope) {
   const notes: string[] = [];
   const want = column(s);
   for (const item of i.projectItems.nodes) {
-    const key = `${item.project.owner.login}/${item.project.number}`;
+    const key = keyOf(item);
     if (board1 && key !== board1) continue;
-    const now = item.status?.name ?? null;
+    const now = pick(item.fields, "Status");
     if (want === "—") {
       notes.push(`${key}: archive`);
       if (apply) execFileSync("gh", ["project", "item-archive", String(item.project.number), "--owner", item.project.owner.login, "--id", item.id]);
-    } else if (now !== want) {
-      const b = board(item.project.owner.login, item.project.number);
-      const option = b.options.get(want);
-      notes.push(option ? `${key}: ${now ?? "no column"} → ${want}` : `${key}: no column ${want}`);
-      if (apply && option)
-        gql(`mutation($p:ID!,$i:ID!,$f:ID!,$o:String!){updateProjectV2ItemFieldValue(input:{projectId:$p,itemId:$i,fieldId:$f,value:{singleSelectOptionId:$o}}){clientMutationId}}`,
-          { p: b.id, i: item.id, f: b.field, o: option });
+      continue;
+    }
+    if (now !== want) {
+      const exists = board(item).fields.get("Status")?.options.has(want);
+      notes.push(exists ? `${key}: ${now ?? "no column"} → ${want}` : `${key}: no column ${want}`);
+      if (apply && exists) setCard(item, "Status", want);
+    }
+    for (const name of carried(key)) {
+      const wants = inheritCard(url, key, name);
+      if (wants && wants !== pick(item.fields, name)) { notes.push(`${key}: ${name} → ${wants}`); if (apply) setCard(item, name, wants); }
+      else if (!wants && i.state === "OPEN" && ["Epic", "Task", "Bug"].includes(i.issueType?.name ?? "")) notes.push(`${key}: no ${name}`);
     }
   }
   if (field && p && !own(i) && stored(i) !== p) {
