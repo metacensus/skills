@@ -3,7 +3,7 @@ name: sdlc-crew
 description: Carry a `designed` Epic to closed with a crew of agents: an author per child, a fresh reviewer per pull request, and a delegator holding the plan. Trigger when running, orchestrating, or delegating an Epic's children across agents, and when asking what the crew's delegator does next.
 ---
 
-The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. The brief carries what one environment needs, its tools, worktrees and refusals, and the model each child runs on.
+The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says. The brief carries what one environment needs, its tools, worktrees and refusals, and the model each child runs on.
 
 ## Precheck
 

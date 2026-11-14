@@ -1,4 +1,4 @@
-The delegator's stages for carrying an Epic with a crew, in the `sdlc` protocol, commented on the Epic. It composes the sdlc flows and `parallelize`; the brief carries the environment and the model.
+The delegator's stages for carrying an Epic with a crew, in the `sdlc` protocol, commented on the Epic. It composes the sdlc flows and `parallelize`, and reports up as sdlc's Reporting says; the brief carries the environment and the model.
 
 ## Precheck
 
