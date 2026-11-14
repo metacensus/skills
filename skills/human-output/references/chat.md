@@ -33,7 +33,7 @@ Each line is one item: status mark, number, then terms and phrases. The number i
 
 ## Tables
 
-- Two text columns at most, title and summary; every other column holds a single mark. A cell that wants a mark and text means the columns need re-cutting.
+- Text usually sits in one or two columns, title and summary, with a single mark in each other column; a cell that wants a mark and text usually means the columns want re-cutting.
 - Rows numbered, groups as bold header rows inside the one table, a tally line beneath.
 - A new key for a large table is proposed, self-critiqued, and agreed with the person before the table is filled.
 

@@ -8,7 +8,7 @@ Each line: mark, number, terms and phrases. Proposals share the tree. Product st
 
 ## Tables
 
-Two text columns, the rest marks; numbered rows; a tally; key agreed first.
+Text in one or two columns, marks in the rest; numbered rows; a tally; key agreed first.
 
 ## Cadence
 

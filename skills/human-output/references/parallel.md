@@ -20,8 +20,9 @@ Each `##` heading copies the source's, word for word and in order, so the two pa
 
 ## Sections
 
-- A table the source holds stays a table: one attribute per column, one value per cell. Trim the cells, never the columns.
-- Number only what a reader cites: stages, questions, options. Lists of facts stay bulleted.
+- A table the source holds usually stays a table, one attribute per column and one value per cell; a column that never varies can go, and tables that share a key can merge.
+- Facts the source scatters often form a view it never draws, a matrix or a path grid; drawing that view adds no fact, and is often the page's biggest gain.
+- Number what a reader cites: stages, questions, options. Lists of facts usually read better bulleted.
 - Links go to sibling pages.
 
 ## Length

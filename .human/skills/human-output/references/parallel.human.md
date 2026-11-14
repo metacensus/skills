@@ -12,7 +12,7 @@ Every `##` copied word for word, in order.
 
 ## Sections
 
-Source tables keep their columns; number only what is cited.
+Source tables stay tables; draw the views the source implies; number what is cited.
 
 ## Length
 

@@ -16,7 +16,7 @@ Classify → form → highest device → draw for the medium
 
 ## What survives compression
 
-Conditions, defaults, tests, examples; reasons go first. One idea per line; links named by number.
+Keep what the reader acts on; layer detail; drop what nobody misses. One idea per line; links named by number.
 
 ## Marks
 
