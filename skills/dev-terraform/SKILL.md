@@ -16,23 +16,25 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 
 ## One file names the environment
 
-- **The backend file selects everything else.** `envs/<env>.s3.tfbackend` derives the tfvars file, `var.environment`, and the kube context.
-- **A guard refuses before anything runs** when they disagree: a state key other than `<root>/<env>.tfstate`, the wrong kube context, or any `terraform.tfvars` or `*.auto.tfvars`, which every run — `terraform test` included — loads silently. Per-environment values go in `envs/<env>.tfvars`, personal ones in `TF_VAR_*`.
+- **The backend file selects everything else.** `envs/<env>.<backend>.tfbackend` (for example `.s3.tfbackend`) derives the tfvars file, `var.environment`, and the kube context, which reaches the Kubernetes and Helm providers as a variable; they ignore `KUBECONFIG`. `<env>` is an app environment such as staging, or the cluster for a cluster-scoped root.
+- **A guard refuses before anything runs** when they disagree: a state key other than `<root>/<env>.tfstate`, the wrong kube context, or, in a shared environment's run, any `terraform.tfvars` or `*.auto.tfvars`, which every run — `terraform test` included — loads silently. Per-environment values go in `envs/<env>.tfvars`, personal ones in `TF_VAR_*`.
 - **The guard runs in every mode.** A run with no backend configured refuses a production context outright rather than skipping the check.
 
 ## Apply the plan that was reviewed
 
 `plan -out=tfplan`, then `apply tfplan`. Never `-auto-approve` a fresh plan. Every root applies the same way; a root that prompts while another auto-approves trains operators to stop reading.
 
-**Hole:** where applies run (a laptop or CI against real state) and how drift is detected.
+`tfplan` is as secret as state — every variable's value in cleartext, `sensitive` ones included — and is deleted after its apply. A change to a sensitive value waits for a person's go-ahead for that apply. A read-only plan of shared state takes `-lock=false`.
+
+**Hole:** where applies run (a laptop or CI against real state) and how drift is detected — metacensus/skills#119.
 
 ## One source per version
 
 - **Terraform and tflint versions come from committed files** (`.terraform-version`, `.tflint-version`), read by make and CI; a run whose version reads empty refuses to start.
-- **Modules declare floors, roots lock.** A reusable module states `>=` for Terraform and each provider; only a root pins, through its committed `.terraform.lock.hcl`, and tests run under that lock. A module's `required_version` floor covers every feature its tests use — `mock_provider` needs 1.7.
+- **Modules declare floors, roots lock.** A reusable module states `>=` for Terraform and each provider; only a root pins, through its committed `.terraform.lock.hcl` holding every platform's hashes, and tests run under that lock. A module's `required_version` floor covers every feature it and its tests use — cross-variable validation needs 1.9, `mock_provider` 1.7, `override_during` 1.11.
 - **Each image tag and chart version lives once, in the root.** A module default that duplicates it, or a script that hard-codes it, drifts. A value make or a script reads out of HCL is pinned by a test that fails when it moves.
 - **Images are pinned to immutable tags.** A moving tag runs only with `image_pull_policy = "Always"`, and a test keeps it out of production.
-- **One generation of each resource type.** Use the `_v1` Kubernetes resources only; never mix `kubernetes_deployment` and `kubernetes_deployment_v1`.
+- **One generation of each resource type.** New resources use the versioned types (`_v1`, or `_v2` where that is the current API); never mix `kubernetes_deployment` and `kubernetes_deployment_v1`. The provider supports no cross-type `moved`, so migrating an existing resource takes a `removed` block with `destroy = false` plus an `import`, and a plan showing no replacement.
 
 ## A module's interface is its contract
 
@@ -40,7 +42,7 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 - **Preconditions check live state** a variable describes — a StorageClass's reclaim policy against the stated one.
 - **Anything another module must match is an output.** Labels, namespace names, and selectors a caller must carry are exported, never repeated as string literals in two modules.
 - **No dead inputs.** An attribute the module ignores is removed; tflint cannot see unused object attributes.
-- **Swappable implementations share one output type.** Each profile module emits the same typed object; the root selects with `count` and `one(module.x[*].out)`.
+- **Swappable implementations share one output type.** Each profile module emits the same typed object; the root selects with `count` and `one(module.x[*].out)`, and Terraform configures every profile's provider even at `count = 0`.
 - **`depends_on` only for edges Terraform cannot see**, each with a comment. Never on a module that reads data sources: it defers every read to apply.
 
 ## Know everything at plan time
@@ -52,8 +54,9 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 
 ## Stateful things survive mistakes
 
-- **Anything holding data, an audit trail, or an address referenced outside the repository** gets `prevent_destroy` or the provider's deletion protection, and the variable's description names the command that unlocks it.
+- **Anything holding data, an audit trail, or an address referenced outside the repository** gets the provider's deletion protection where one exists, because the API enforces it even after its block is deleted. Otherwise it gets `lifecycle { prevent_destroy = true }`, a literal that only a code change unlocks and that stops guarding once the block is removed. A protection set from a variable names, in the variable's description, the command that unlocks it, which runs on a person's go-ahead for that apply.
 - **Replaceable things replace before destroying**: `name_prefix` plus `create_before_destroy` on node groups, parameter groups, and content-hashed ConfigMaps.
+- **A rename ships with `moved` blocks**, so the plan shows a move, not a destroy and a create.
 - **`replace_triggered_by` where a binding follows an instance**, not a name — an access entry bound to a role's unique ID.
 - **Pin only the version that must not move.** A managed database takes its major version, so automatic minor upgrades never plan a downgrade.
 - **Audit logs are versioned, retained for a stated period, and locked** against deletion.
@@ -61,18 +64,19 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 ## Secrets stay out of state and logs
 
 - **Prefer provider-managed secrets** (`manage_master_user_password`) so the value never enters state; old state versions expire, because they hold whatever did.
+- **The state store is private, versioned, encrypted, and readable only by operators**: created once by hand, then imported.
 - **A credential is stored alone and composed at runtime**: `DATABASE_PASSWORD` from a Secret, then `DATABASE_URL` built from `$(DATABASE_PASSWORD)`.
 - **An env var named like a credential comes from a Secret**, never a literal `value`, and a test walks every container to hold it.
-- **Scripts read single fields** (`-field=username`), never print a whole credential response; kept Job logs ship to the log store. A lint enforces it, and an exemption carries `# lint: allow <reason>`.
+- **Scripts read single fields** (`-field=username`), never print a whole credential response; kept Job logs ship to the log store. A lint enforces it, and an exemption carries the lint's own marker with a reason (`# <lint>: allow <reason>`).
 - **Generated passwords substituted unencoded into a URL** use `special = false`.
 - **Shell lives in `.sh` or `.tftpl` files**, not heredocs, so shellcheck and the lint can read it.
 
 ## Least privilege, stated in the trust
 
-- **CI trust pins the immutable subject** (`repo:<owner>@<id>/<repo>@<id>`), the audience, and the ref, validated by regex; two roles a workflow can assume differ by a claim (`job_workflow_ref`, `environment`), never share one subject.
+- **CI trust pins the immutable subject** (`repo:<owner>@<id>/<repo>@<id>`), the audience, and the ref, validated by regex: the ref sits in `sub` for a branch job, and in the `ref` claim for a job that declares an `environment`, whose `sub` names the environment instead. Stricter still, two roles a workflow can assume differ by a claim (`job_workflow_ref`, `environment`) rather than share one subject.
 - **A permission split by resource carries the condition each needs** — instances by tag, documents by name.
 - **No wildcard roles.** A `*/*/*` ClusterRole or a policy that can rewrite its own ACLs is root by another name.
-- **IMDS hop limit 1** keeps pods off the node's role.
+- **Every argument whose default costs money or weakens security is set**: on AWS, IMDSv2 required with hop limit 1 (`http_tokens = "required"`, `http_put_response_hop_limit = 1`) keeps pods off the node's role; the hop limit alone leaves IMDSv1 open, and hostNetwork pods reach it either way.
 
 ## Kubernetes through Terraform
 
@@ -85,14 +89,18 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 
 ## terraform test
 
-- **`mock_provider` by default**; the real provider with fake credentials only where rendering needs it (`aws_iam_policy_document`), with every remote call overridden.
+- **`mock_provider` by default**; the real provider with fake credentials only where rendering needs it (`aws_iam_policy_document`), with `skip_credentials_validation`, `skip_requesting_account_id` and `skip_metadata_api_check` set and every remote call overridden.
 - **`command = apply` to reach computed values**, and `override_resource` to pin random values so a test asserts the literal appears in no pod spec, ConfigMap, or output.
+- **A test pins each default it relies on** with `nullable = false` and `variable = null`, since `TF_VAR_*` reaches `terraform test`.
 - **Every validation has an `expect_failures` run**; fixtures for malformed inputs live in their own file.
+- **A run that stays at `command = plan` sets `override_during = plan`** on the overrides it needs; without it, an `expect_failures` on a condition unknown at plan fails with no hint.
 - **Run names are sentences and `error_message` says why**, so a failure reads as the broken rule.
 - **Assert properties, not defaults.** A test that restates a default is a change detector. Prefer a structured output over regex-parsing HCL.
 - **Tests hold repository invariants** too: production never on a moving tag, roots agree on the state bucket, a root's lock never gains a provider.
 - **A bug fix starts with a commit whose test reproduces it.**
-- **Offline checks use their own `TF_DATA_DIR`**, so an initialized remote backend never makes `validate` or `test` need credentials. CI runs them through `make`, per dev-ci-github.
+- **Hand mutants prove the tests** — a flipped condition, a changed value or count — under a budget set before starting.
+- **Checks that need no credentials use their own `TF_DATA_DIR`**, so an initialized remote backend never makes `validate` or `test` need credentials. CI runs them through `make`, per dev-ci-github.
+- **`fmt -check -recursive`, and `tflint --recursive` with `--config` at an absolute path**: without `-recursive`, fmt skips subdirectories; without `--config`, each module lints on tflint's defaults.
 
 ## Teardown fails closed
 

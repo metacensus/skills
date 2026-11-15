@@ -14,7 +14,7 @@ CI fails on stale generated code or build output, untidy modules, formatting, ve
 
 ## Workflow shape
 
-Reusable checks behind one required job that fails on any non-success, with cancellation, read-only permissions, timeouts, and path filters.
+Reusable checks behind one required job that fails on any non-success, with cancellation outside workflows that apply infrastructure, read-only permissions, timeouts, and path filters.
 
 ## Test the artifact CI built
 

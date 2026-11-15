@@ -27,7 +27,7 @@ Every check is a `make` target that a workflow step calls rather than re-spells.
 
 - **An orchestrator per trigger** calls reusable `workflow_call` checks.
 - **One aggregate job**, the only required status check, depends on every check under `if: always()` and fails unless each result is `success`, since a skipped required job reports as passing.
-- **`concurrency` with `cancel-in-progress`**, grouped by workflow and ref.
+- **`concurrency` with `cancel-in-progress`**, grouped by workflow and ref, except in a workflow that applies infrastructure.
 - **`permissions: contents: read`** at the top; a job that needs more grants it to itself.
 - **`timeout-minutes`** on every job; **path filters** where a repository holds several deployables.
 

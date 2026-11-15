@@ -14,11 +14,11 @@ The backend file selects tfvars, environment, and context; a guard refuses any d
 
 ## Apply the plan that was reviewed
 
-`plan -out`, then apply that file; never auto-approve.
+`plan -out`, then apply that file; never auto-approve. The plan file holds secrets and outlives no apply.
 
 ## One source per version
 
-Committed tool versions; modules state floors, roots lock; each tag lives once; images pinned; `_v1` resources only.
+Committed tool versions; modules state floors, roots lock; each tag lives once; images pinned; one generation of each resource type.
 
 ## A module's interface is its contract
 
@@ -30,7 +30,7 @@ Identifiers built from names, imports by the same names, server IDs looked up, C
 
 ## Stateful things survive mistakes
 
-Deletion protection on data and audit; create before destroy; audit logs retained and locked.
+Provider deletion protection on data and audit, `prevent_destroy` where none exists; create before destroy; renames through `moved`; audit logs retained and locked.
 
 ## Secrets stay out of state and logs
 
@@ -38,7 +38,7 @@ Provider-managed secrets, credentials stored alone, env credentials from Secrets
 
 ## Least privilege, stated in the trust
 
-Immutable CI subjects, conditioned permissions, no wildcard roles.
+Immutable CI subjects, conditioned permissions, no wildcard roles, IMDSv2 required.
 
 ## Kubernetes through Terraform
 
@@ -46,7 +46,7 @@ Policies by namespace, pod, and port; restarts on config change; kept, re-runnab
 
 ## terraform test
 
-Mocked providers, pinned randoms, a failure case per validation, properties over defaults, a reproducing test first.
+Mocked providers, pinned randoms, a failure case per validation, properties over defaults, a reproducing test first, mutants to prove the tests.
 
 ## Teardown fails closed
 
