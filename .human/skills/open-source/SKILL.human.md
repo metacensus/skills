@@ -48,3 +48,4 @@ A flag triage judged real: location, lead, and the span only where the reader ne
 
 1. Did anything in this session come from somewhere private? A name read earlier gets written into a public commit unnoticed.
 2. What else carries text here? Commit messages · branch and tag names · author identities · fixtures · filenames · images.
+3. Where else did this text go? A finding in a file copied from a template is in the template and every repository it seeded.

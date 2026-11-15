@@ -38,3 +38,4 @@ A flag the triage judged real: its location, its lead, and the span only where t
 
 - **Did anything in this session come from somewhere private?** A name read an hour ago in a private record is the one an agent writes into a public commit without noticing.
 - **What else carries text here?** Commit messages, branch and tag names, author identities, fixtures, filenames, images.
+- **Where else did this text go?** A finding in a file copied from a template is in the template and every repository it seeded.

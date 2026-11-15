@@ -14,6 +14,7 @@ Draft the issue against these checks:
 - **Repository**: as the ladder says; an Epic's, the repository most of its work lands in; an Initiative's, any the delegator names, else the home the mapping suggests.
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
+- **Irreversible step**: everything that must hold before [one](../sdlc-review/SKILL.md#focus), each its own criterion.
 
 No issue exists yet, so Compose's comment goes to the user.
 
