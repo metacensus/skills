@@ -1,44 +1,15 @@
-> Identity is what the organization is today and who it is talking to, from one fresh source.
+Organization, Current, **Org Docs**. ↓[1B](1B-problem.human.md) ↑[3B](3B-contract.human.md)
 
-```
-            1B problem
-                ↑
-2A roadmap ↔ 2B identity ↔ 2C org history
-                ↓
-            3B contract
-```
+**Clear when** One fresh source, matching how the field sees the organization and what the last releases changed; a build gate where the fact is data.
 
-[1B](1B-problem.human.md) · [2A](2A-roadmap.human.md) · [2C](2C-org-history.human.md) · [3B](3B-contract.human.md)
-
-Tier 2 · scope Organization · time Current
-
-## Example
-
-What the organization is today · who it is talking to.
-
-## Location
-
-**Org Docs**, in the location key (grid).
-
-## Clear when
-
-one source · fresh · matches how the field sees the organization · reflects what the last releases changed → a build gate holds it where the fact is data; review for freshness otherwise
-
-## Excess
-
-| Excess | Test or move |
+|Excess|Move|
 |---|---|
-| **Two descriptions of what the organization is** | Grep for where the org describes itself; a second source is one to retire, not merge. |
-| **Identity written as aspiration** | Read each sentence in the present tense; one that holds only in the future belongs in [1A](1A-vision.human.md) or [2A](2A-roadmap.human.md). |
-| **Identity written as a change record** | One that says what changed rather than what the organization is belongs in [2C](2C-org-history.human.md). |
-| **Prose where data would do** | Who it is talking to is a record the system reads and validates, not a paragraph. |
-| **The brand explained in words beside the tokens that define it** | The tokens are the source. |
+|**Two descriptions**|Retire one; do not merge.|
+|**Aspiration**|To [1A](1A-vision.human.md) or [2A](2A-roadmap.human.md).|
+|**A change record**|To [2C](2C-org-history.human.md).|
+|**Prose where data would do**|A validated record.|
+|**Brand beside its tokens**|Tokens are the source.|
 
-## Cost
+**Cost** A roadmap from a stale self-image.
 
-A roadmap derived from a stale self-image.
-
-## Moves
-
-1. A release ships ([3C](3C-release.human.md)) → rewrite in the present tense → retire any second description
-2. The missing fact is data → strengthen the artifact → hold it as a validated record
+**Moves** After a release ([3C](3C-release.human.md)), rewrite in the present tense.
