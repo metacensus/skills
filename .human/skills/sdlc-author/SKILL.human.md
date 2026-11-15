@@ -10,11 +10,11 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 |---|---|---|---|
 |Precheck|Design (Implement if `designed`)|fix not the author's|assigned elsewhere|
 |Design|`designed` applied|until `designed`|fails its bar|
-|Implement|Self-review|design shifts; large: `parallelize`|criterion unmeetable|
+|Implement|Self-review; large: `parallelize`|design shifts|criterion unmeetable|
 |Self-review|Publish|dispute at loop cap|Verification cannot pass|
 |Publish|review|before linking|·|
 |Respond|Land|dispute at loop cap|finding reopens design|
-|Land|closed|merge or close, unless remit reaches|PR cannot merge|
+|Land|closed|a merge no Role or remit reaches; a `deviated` or not-planned close|PR cannot merge|
 
 ## Land
 

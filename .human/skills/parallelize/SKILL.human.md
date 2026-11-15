@@ -14,7 +14,7 @@ Units · Edges · Action · Done · Checks ([`elegance`'s loop](../elegance/SKIL
 
 | Edge | Test | Cut? |
 |---|---|---|
-| Tight | one needs the other's insides | ⛔ one unit |
+| Tight | one needs the other's insides | → one unit |
 | Contract | small, statable surface | ✅ clean |
 | Loose | awareness only | ✅ note what crosses |
 

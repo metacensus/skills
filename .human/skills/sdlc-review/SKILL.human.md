@@ -21,8 +21,9 @@ From diff and body alone, each choice. ⛔ unexplained · 🛑 too large.
 1. What breaks, for whom?
 2. What is irreversible?
 3. What is the author likeliest wrong about?
-4. Would Verification catch a failed criterion?
-5. Does the PR do what the issue asked, nothing else?
+4. Which location doesn't gate, per `check-cells --diff`?
+5. Would Verification catch a failed criterion?
+6. Does the PR do what the issue asked, nothing else?
 
 Then `elegance`, the mapping's Checks, Verification; unfinished blocks a pass.
 
