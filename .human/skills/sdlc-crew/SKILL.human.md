@@ -88,7 +88,7 @@ A child already `designed` skips Author 1.
 |---|---|
 | Each child | lands through its author's [Land](../sdlc-author/SKILL.human.md#land) as its remit allows |
 | Escalated merge or close | the delegator's where its remit reaches; a shared identity's approval never counts as one |
-| Spike decision, or work found in execution | files new children via [`sdlc-intake`](../sdlc-intake/SKILL.human.md#decompose) under the Epic, curated as Precheck says; Plan re-runs over children unblocked at that moment |
+| A child's ruling (a Spike's decision among them), or work found in execution | written into the criteria of each child it rules on, and sent to its author once briefed; the rest filed as new children via [`sdlc-intake`](../sdlc-intake/SKILL.human.md#decompose) under the Epic, curated as Precheck says; Plan re-runs over children unblocked at that moment |
 | Gap that changes the Epic's goal | re-plan within the remit, else ⛔ |
 | After a child lands | delegator may re-estimate unbriefed children: add, drop, reorder, redefine, within the remit |
 

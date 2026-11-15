@@ -40,7 +40,7 @@ Input: the diff and body alone, for a reader who did not write the PR. Output: e
 The comment answers each:
 
 1. What breaks, and for whom, if this is wrong?
-2. What is irreversible: pushed history, a published name, a migration, data written?
+2. What is irreversible: pushed history, a published name or tag, a visibility change, an archive, a migration, data written?
 3. What is the one thing the author is most likely wrong about?
 4. Where does the diff touch a location that does not gate (`node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff`, or paths with no mapping)? Moot for prose alone.
 5. Would the Verification block fail if a criterion did?

@@ -34,7 +34,7 @@ with one change or a list; an added file's existing element is the nearest one i
 The comment answers each question:
 
 1. What breaks, and for whom, if this is wrong?
-2. What is irreversible: pushed history, a published name, a migration, data written?
+2. What is irreversible: pushed history, a published name or tag, a visibility change, an archive, a migration, data written?
 3. What is the one thing the author is most likely wrong about?
 4. Where does the diff touch a location that does not gate, per `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff`, or from the paths without a mapping? Moot for prose alone, which never gates.
 5. Would the Verification block fail if a criterion did?

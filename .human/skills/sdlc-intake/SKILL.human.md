@@ -19,6 +19,7 @@ Stage names follow the [`sdlc`](../sdlc/SKILL.human.md) hub's [protocol](../sdlc
 | Repository | Epic → where most of its work lands; Initiative → one the delegator names, else the mapping's suggested home |
 | Form | the required fields of its type's form |
 | Bar | the ladder's, per type; a Spike's decision is its criterion |
+| Irreversible step | everything that must hold before [one](../sdlc-review/SKILL.human.md#focus), each its own criterion |
 
 No issue exists yet, so the comment goes to the user.
 
