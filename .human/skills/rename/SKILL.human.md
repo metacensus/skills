@@ -1,21 +1,66 @@
-A rename is per concept, not per string.
+> A rename is per concept, not per string.
+
+Fires: a rename; any rename across files.
+
+```
+Anchor → Search → Discover → The map → ⛔ Confirm → Apply
+```
 
 ## Anchor
 
-One exact string and the intent; targets come later.
+| Kind | Example |
+|---|---|
+| symbol | name plus its package |
+| path | path and line |
+| literal | a quoted string |
+
+No anchor → ask. Targets wait for the map.
 
 ## Search
 
-Case-sensitive, the whole repository; report the scope.
+```
+case-sensitive · whole repo · anchor exactly → report count and files, by kind, before widening
+```
 
 ## Discover
 
-Casings, derived terms, and file names, each confirmed by search; occurrences grouped by meaning, doubt listed as doubt.
+| Look for | Example |
+|---|---|
+| casings, separators | `UserAccount`, `user_account`, `user-account`, `USER_ACCOUNT` |
+| derived terms | plurals, abbreviations, anchor inside a longer identifier |
+| file and directory names | |
+
+Confirm each by search; group by meaning:
+
+```
+when renaming one must rename the other → one concept
+same string in two packages            → maybe two
+doubt                                  → listed as doubt
+```
 
 ## The map
 
-One row per concept with its spellings, context, count, and target; converging, parallel, and diverging rows all allowed; external names flagged. The person confirms it.
+One row per concept: spellings, context, count, target.
+
+| Shape | Strings → targets |
+|---|---|
+| converge | two → one |
+| parallel | two → two, difference kept |
+| diverge | one → two, by context |
+
+A derived row says so and follows its source row.
+
+⚠️ Flag names that leave the repo: images, resources, endpoints, URLs, tables, columns, env vars.
+
+⛔ Pause: the person adjusts, drops, adds rows, confirms.
 
 ## Apply
 
-From the confirmed map, files then paths; report counts and what the person changes by hand.
+| Step | Detail |
+|---|---|
+| 1 | a string with two targets: one context at a time |
+| 2 | files, then paths |
+| 3 | report a line per replacement with its count |
+| 4 | ⚠️ list the external names the person still changes by hand |
+
+A concept found midway → back to the map.

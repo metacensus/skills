@@ -1,13 +1,44 @@
-Memory is a proposal nobody else can read; an audit decides whether each becomes shared, stays personal, or goes.
+> Memory is a proposal nobody else can read; the audit gives each memory a verdict.
+
+Fires: asked to review, clean up, dedupe, or migrate memories, or whether something remembered belongs elsewhere.
+
+```
+Memory → split into facts → verdict per fact → ⛔ person decides → land → retire the memory
+```
 
 ## The audience names the destination
 
-The broadest audience most of whom would be better for a fact, wherever it reads rather than where the memory was found: project memory, user-level memory, a repository, the organization's skills, or a general skill. Within it, the skill or contract for the act it governs.
+Per fact, pick the broadest audience whose vast majority gains from loading it. The destination is where that audience reads, not where the memory sits.
+
+| Audience | Destination |
+|---|---|
+| this person, this project | project memory |
+| this person, all work | user-level memory or instructions |
+| one repository | that repository, where the fact governs |
+| the organization | shared skills or rules; its own choices in a mapping beside them |
+| anyone | a general skill |
+
+A rule for one act goes in that act's skill or contract, in the strongest form [`elegance`'s moves](../elegance/SKILL.human.md#moves) allow.
 
 ## Verdicts
 
-Retire what is already said, landed, or stale; migrate what serves others; keep what is about the person; split mixed memories. Open work goes to the tracker.
+| Verdict | When | Check |
+|---|---|---|
+| Retire | destination says it · work landed · names things gone | grep the facts, open the paths; the claim, not the title |
+| Migrate | serves an audience beyond this person | · |
+| Keep | about how this person works | · |
+| Split | facts take different verdicts | one verdict per fact |
+
+Open work never stays in memory → it goes to the tracker.
 
 ## Landing
 
-The person decides. Migrations land through review, or as a proposal where you cannot write; the memory retires only once its destination has merged.
+⛔ The person decides: memory is theirs, and deletion is not in version control.
+
+| Give | Via |
+|---|---|
+| one verdict per memory, with its destination | the proposal |
+| evidence for each retire | the proposal |
+| each migration | the destination's own path, per [`checkin`](../checkin/SKILL.human.md); a proposal to its owner where you cannot write |
+
+⚠️ Retire a migrated memory only after its destination merges; until then it is the only copy.
