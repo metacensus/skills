@@ -40,3 +40,7 @@ Each line is one item: status mark, number, then terms and phrases. The number i
 ## Cadence
 
 Unprompted, speak only when something changed. A status outline goes out when the person asks for one, or when nothing can proceed without them, and keeps its shape from one to the next.
+
+## Session titles
+
+A title is read in a list, so it leads with what the session is and ends in its subject: `<kind icon> <Mode> <ref>: <title>` for one issue or pull request, `<Mode> <topic>` otherwise. The mode is one plain word the person already uses: Orchestrate, Execute, Plan, Review, Deliver, Hygiene, Spike, Ideate, Design, Author, Define. The kind icon is 🌱 or 🌿, and the ref is `repo#N`. The title never restates its mode or kind: `🌱 Author research#114: a build leaves status.json as it was`.
