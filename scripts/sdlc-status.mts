@@ -26,8 +26,9 @@ const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} la
   projectItems(first:10,includeArchived:false){nodes{id project{number owner{... on Organization{login} ... on User{login}}}
     fields:fieldValues(first:50){nodes{... on ProjectV2ItemFieldSingleSelectValue{name field{... on ProjectV2SingleSelectField{name}}}}}}}`;
 
-const gql = (query: string, vars: Record<string, string> = {}) => {
-  const args = ["api", "graphql", "-f", `query=${query}`, ...Object.entries(vars).flatMap(([k, v]) => ["-F", `${k}=${v}`])];
+// -F would read an all-digit string, such as an option id, as a number.
+const gql = (query: string, vars: Record<string, string | number> = {}) => {
+  const args = ["api", "graphql", "-f", `query=${query}`, ...Object.entries(vars).flatMap(([k, v]) => [typeof v === "number" ? "-F" : "-f", `${k}=${v}`])];
   const out = JSON.parse(execFileSync("gh", args, { encoding: "utf8", maxBuffer: 1 << 28 }));
   if (out.errors) throw new Error(JSON.stringify(out.errors));
   return out.data;
@@ -81,7 +82,7 @@ if (board1) {
     const page = gql(
       `query($o:String!,$n:Int!,$c:String){repositoryOwner(login:$o){... on ProjectV2Owner{projectV2(number:$n){items(first:25,after:$c){
         pageInfo{endCursor hasNextPage} nodes{content{... on Issue{${ISSUE}}}}}}}}}`,
-      { o: owner, n: number, ...(after ? { c: after } : {}) },
+      { o: owner, n: Number(number), ...(after ? { c: after } : {}) },
     );
     const items = page.repositoryOwner.projectV2.items;
     for (const node of items.nodes) if (node.content?.url) { issues.set(node.content.url, node.content); scope.push(node.content.url); }
@@ -139,7 +140,7 @@ const board = (item: Item) => {
   if (!boards.has(key)) {
     const p = gql(`query($o:String!,$n:Int!){repositoryOwner(login:$o){... on ProjectV2Owner{projectV2(number:$n){id
       fields(first:50){nodes{... on ProjectV2SingleSelectField{id name options{id name}}}}}}}}`,
-      { o: item.project.owner.login, n: String(item.project.number) }).repositoryOwner.projectV2;
+      { o: item.project.owner.login, n: item.project.number }).repositoryOwner.projectV2;
     const fields = new Map<string, Select>();
     for (const f of p.fields.nodes) if (f.options) fields.set(f.name, { id: f.id, options: new Map(f.options.map((o: { id: string; name: string }) => [o.name, o.id])) });
     boards.set(key, { id: p.id, fields });
