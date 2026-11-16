@@ -10,7 +10,9 @@ Fires: reports, proposals, options, summaries, issue or PR bodies.
 | Logic | branch | `when X → Y` |
 | Meaning | words | terms, prose |
 
-✅ done · ⛔ waits on you · 🟢 ready · ⬜ next · ⏸️ parked · 🆕 new · 📌 exists · ✏️ edit · ⚠️ risk
+✅ done · ⛔ waits on you · 🔷 ready · 🔶 next · ⏳ waiting · 🌙 deferred · ⭐ new · 🩷 needs a person's hands · 📌 exists · 🟣 edit · ⚠️ risk
+
+Icons: plain, colored, distinct in color or shape; no grey, white, black, detailed, or look-alike ones. They lead the line as tags, then the title; text never repeats them.
 
 Media: [chat](references/chat.human.md) · [parallel](references/parallel.human.md) · [github](references/github.human.md)
 

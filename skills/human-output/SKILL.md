@@ -25,7 +25,15 @@ Keep what the reader needs to act, move detail down a layer, and drop what nobod
 
 A mark keeps one meaning within what the reader sees together. The defaults:
 
-✅ done · ⛔ waits on the reader · 🟢 ready for the reader · ⬜ next · ⏸️ parked · 🆕 new · 📌 exists, unchanged · ✏️ edit · ⚠️ risk
+✅ done · ⛔ waits on the reader · 🔷 ready for the reader · 🔶 next · ⏳ waiting · 🌙 deferred · ⭐ new · 🩷 needs a person's hands (deep design, staging, production) · 📌 exists, unchanged · 🟣 edit · ⚠️ risk
+
+Marks are read at a glance, so prefer plain icons that differ in color and shape (circle 🟣, diamond 🔶, hourglass ⏳). Avoid:
+
+- Icons that are mostly grey, white, or black (⬜ ⏸️ 📄): they fade into text.
+- Detailed icons: the signal is lost at a glance.
+- Look-alikes: text on one background color (🆕), similar hues (two greens, two yellow points), or a family of arrow icons (🔀).
+
+Icons lead the line, never inline or trailing. Up to three stack as categories and tags for the larger thing, then the title, then a rare note: `🔷 🌱 ⚠️ title · note`. Text never repeats what an icon already says.
 
 A key adds marks, each colored and distinct in shape. Between items `·` joins like ones and `→` means "then"; alone in a cell, `·` is a negative or "does not apply", so color marks the exception.
 

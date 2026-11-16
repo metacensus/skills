@@ -7,20 +7,20 @@ A reply the person reads now and answers by number. A request to discuss gets pr
 ```
 Shortcuts are two tasks from done; one waits on you.
 
-✅ done · 🟢 ready for you · ⛔ waits on you · ⬜ next · ⏸️ parked
+✅ done · 🔷 ready for you · ⛔ waits on you · 🔶 next · ⏳ waiting · 🌙 deferred
 
 Your queue
 - ⛔ #41 approve binding renames → unblocks #43
-- 🟢 #52 merge print view
+- 🔷 #52 merge print view
 
 **Shortcuts**
 - ✅ #40 keymap v2
 - ⛔ #41 binding renames · list drafted
-- ⬜ #43 import old keymaps · after #41
+- 🔶 #43 import old keymaps · after #41
 
 **Printing**
-- 🟢 #52 print view · checks green
-  - ⏸️ #55 page headers · after launch
+- 🔷 #52 print view · checks green
+  - 🌙 #55 page headers · after launch
 ```
 
 1. **Outcome**, one line.
@@ -29,7 +29,7 @@ Your queue
 4. **The tree**, nested as the real hierarchy nests.
 5. **Questions**, at most three, each answerable cold: the quoted span, the stakes, a recommendation, and the default taken on silence.
 
-Each line is one item: status mark, number, then terms and phrases. The number is its issue's, else an outline number (`1`, `1.1`). In an outline of mixed kinds, each item leads with two marks, kind then status (📄 issue · 🔀 pull request). A proposal shares one tree with what exists, told apart by the default marks, each edit inline on the line it changes; what already holds and what is left out get a group each. The outline reports the state of the product, what is done and what is not, and leaves the running of the work out. Two subjects get an outline each.
+Each line is one item: status mark, number, then terms and phrases. The number is its issue's, else an outline number (`1`, `1.1`). In an outline of mixed kinds, each item leads with two marks, kind then status (🌱 issue · 🌿 pull request). A proposal shares one tree with what exists, told apart by the default marks, each edit inline on the line it changes; what already holds and what is left out get a group each. The outline reports the state of the product, what is done and what is not, and leaves the running of the work out. Two subjects get an outline each.
 
 ## Tables
 
