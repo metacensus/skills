@@ -51,6 +51,8 @@ gh api -X PATCH "repos/$repo" -F has_issues=true --silent
 echo "ok    issues on"
 [[ $(gh api "repos/$repo" --jq .visibility) == public ]] || echo "ok    $repo is private, so forms cannot require fields; curation does"
 
+labels=$(gh label list -R "$repo" -L 1000 --json name,color,description --jq '.[] | [.name, .color, .description] | @tsv')
+named=
 while IFS=$'\t' read -r role label description; do
   case $role in
   ready) color=0e8a16 ;;
@@ -59,13 +61,19 @@ while IFS=$'\t' read -r role label description; do
   reached-up) color=c5def5 ;;
   *) color=ededed ;;
   esac
-  gh label create "$label" -R "$repo" --color "$color" --description "$description" --force >/dev/null
+  named+=$label$'\n'
+  grep -qxF "$label"$'\t'"$color"$'\t'"$description" <<<"$labels" ||
+    gh label create "$label" -R "$repo" --color "$color" --description "$description" --force >/dev/null
   echo "ok    label $label"
 done < <(printf '%s\t%s\n' \
   ready 'Meets its form; may be picked up' \
   designed 'A person can read the issue alone and know what will be built' \
   deviated 'Done differently than planned; see the closing comment' \
   reached-up 'Its work rewrote the parent' | merged Labels)
+while IFS=$'\t' read -r label _; do
+  [[ -z $label ]] || grep -qxF "$label" <<<"$named" ||
+    { echo "TODO  label $label: no role names it; delete it, or give it a role in the mapping"; todo=1; }
+done <<<"$labels"
 
 boards=$(rows Boards <<<"$mapping" | grep -v Hole | cut -f1 || true)
 [[ $boards ]] || echo "ok    no board"
@@ -96,7 +104,7 @@ for board in $boards; do
       { echo "TODO  board $board: enable the Auto-add sub-issues to project workflow"; todo=1; }
     echo "note  board $board: auto-archive closed items in Settings → Workflows; the API cannot read it"
   else
-    echo "TODO  cannot read board $board; gh auth refresh -s read:project"
+    echo "TODO  cannot read board $board; lacking the project scope, gh auth refresh -s read:project"
     todo=1
   fi
 done
