@@ -13,7 +13,7 @@ Fires: grooming, sweeping; what is stale or undecided.
 
 ## Adopt
 
-Each orphan or root issue is proposed: 📌 existing parent · 🔗 issue that moves here · 🆕 parent to file · ⏸️ none. Nothing attaches unanswered.
+Each orphan or root issue is proposed: 📌 existing parent · 🔗 issue that moves here · ⭐ parent to file · 🌙 none. Nothing attaches unanswered.
 
 ## Act
 

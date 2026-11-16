@@ -15,3 +15,7 @@ Text in one or two columns, marks in the rest; numbered rows; a tally; key agree
 ## Cadence
 
 Unprompted, only on change; a status outline when asked, or when nothing proceeds without the person.
+
+## Session titles
+
+`🌱 Mode repo#N: title` for one issue or PR; `Mode topic` otherwise. Mode is one plain word.
