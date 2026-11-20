@@ -15,7 +15,7 @@ Every check is a `make` target that a workflow step calls rather than re-spells.
 - **A tool that is slow to build is cached** on the files that pin it — `go.sum`, `go.mod`, `Makefile`.
 - **Node** comes from `node-version-file: .nvmrc`, and the Dockerfile's `node` base carries the same major; dependencies install with `npm ci` from the committed lockfile, and tools run from `node_modules`, never a global install.
 - **The lockfile is written on Linux**, in a `node` container of that major: one written on macOS can drop other platforms' nested optional dependencies, which `npm ci` refuses.
-- **Third-party images a workflow runs** — service containers, `container:` jobs, images a step runs — are pinned by digest.
+- **Third-party images a workflow runs**, service containers and `container:` jobs included, are pinned by digest.
 
 ## Committed output matches its source
 
@@ -52,7 +52,7 @@ An image build that fetches private packages receives the credential as a BuildK
 - **A second registry receives the image by digest**: `docker buildx imagetools create --tag <second>:<tag> <first>@<digest>`.
 - **Docker Hub login is OIDC**: `docker/login-action` with the organization as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in its env, and `id-token: write`. Each repository has its own connection, its subject GitHub's immutable `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`).
 - **Packages** publish through npm trusted publishing (OIDC) with provenance, from npm 11.5.1 or later; a job holding `id-token: write` installs with `--ignore-scripts`, and `repository.url` in `package.json` names the publishing repository, which provenance checks.
-- **Before the first release**, an owner creates the Docker Hub repository at its visibility and publishes the first npm version by hand, then registers the repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
+- **Before the first release**, an owner creates the Docker Hub repository at its visibility and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
 
 ## Where CI stops
 
