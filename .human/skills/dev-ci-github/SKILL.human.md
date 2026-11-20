@@ -16,7 +16,8 @@ Each check is a `make` target; `make check` is CI minus the freshness diff.
 |---|---|
 | Go, tools | `go.mod` |
 | Generation | `GOWORK=off` + `GOTOOLCHAIN`; ⚠️ empty passes silently |
-| Node | `.nvmrc` |
+| Node | `.nvmrc`; lockfile written on Linux |
+| Third-party images | digest |
 
 ## Output matches source
 
@@ -29,5 +30,14 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 ## Release from a tag
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.
+
+- 🩷 Before the first OIDC publish: create the Docker Hub repository; publish the npm package by hand.
+- A second registry copies by digest.
+
+## Where CI stops
+
+- `gh pr merge --auto` fails where auto-merge is off.
+- ⚠️ A run with no step output: check the spending limit first.
+- 🩷 Terraform: plan on the PR; a person applies.
 
 ⚠️ Hole: vulnerability and license checks — metacensus/skills#13.
