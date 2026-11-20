@@ -27,6 +27,10 @@ Generated files: `git diff --exit-code` clean. Modules: `go mod tidy` changes no
 
 The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ skipped reads as passing.
 
+## Secrets
+
+- Private packages reach an image build as a BuildKit secret.
+
 ## Release from a tag
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.

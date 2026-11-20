@@ -51,8 +51,8 @@ An image build that fetches private packages receives the credential as a BuildK
 - **Images** publish multi-arch, tagged by ref, short sha, and `latest`; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.
 - **A second registry receives the image by digest**: `docker buildx imagetools create --tag <second>:<tag> <first>@<digest>`.
 - **Docker Hub login is OIDC**: `docker/login-action` with the organization as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in its env, and `id-token: write`. Each repository has its own connection, its subject GitHub's immutable `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`).
-- **Packages** publish through npm trusted publishing (OIDC) with provenance, from npm 11.5.1 or later; a job holding `id-token: write` installs with `--ignore-scripts`, and `repository.url` in `package.json` names the publishing repository, which provenance checks.
-- **Before the first release**, an owner creates the Docker Hub repository at its visibility and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
+- **Packages** publish through npm trusted publishing (OIDC) with provenance, from npm 11.5.1 and Node 22.14 or later; a job holding `id-token: write` installs with `--ignore-scripts`, and `repository.url` in `package.json` names the publishing repository, which publishing checks.
+- **Before the first release**, an owner creates the Docker Hub repository, public or private as intended, and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
 
 ## Where CI stops
 
