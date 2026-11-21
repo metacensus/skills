@@ -7,7 +7,7 @@ A sloppy check-in rarely breaks the build — the gate catches that. It causes *
 
 ## 1. Branch — never the default branch
 
-If `git rev-parse --abbrev-ref HEAD` names the default branch, branch first, named per [`checkout`](../checkout/SKILL.md). Rename (`git branch -m`) a branch off that shape before pushing.
+If `git rev-parse --abbrev-ref HEAD` names the default branch, branch first, named per [`checkout`](../checkout/SKILL.md#2-name-the-branch). Rename (`git branch -m`) a branch off that shape before pushing.
 
 ## 2. Match precedent before you invent
 

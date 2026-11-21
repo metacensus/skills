@@ -9,13 +9,13 @@ A change cut from a stale base is reviewed against code that no longer exists, a
 
 `git fetch origin`, then cut from `origin/<default>` (`gh repo view --json defaultBranchRef`), never the local default branch: it is as old as its last pull. A branch resumed rather than cut syncs per [`checkin`'s Sync](../checkin/SKILL.md#6-sync-with-main) before the first edit.
 
-## 2. A worktree per change
-
-`git worktree add <path> -b <branch> origin/<default>`. A worktree the harness made is yours, but check its base: `git rev-list --count HEAD..origin/<default>` is 0, or it syncs.
-
-## 3. Name the branch
+## 2. Name the branch
 
 **`<your-name>/<topic>`**, `alex/retry-backoff`: the owner prefix says whom to ask about a stale branch, and the topic names the change's subject rather than a ticket or the tool that made it. An environment that pushes only under a fixed prefix (`claude/…`) keeps that prefix, the topic after it. Rename (`git branch -m`) a harness-assigned name before the first push.
+
+## 3. A worktree per change
+
+`git worktree add <path> -b <branch> origin/<default>`. A worktree the harness made is yours, but check its base: `git rev-list --count HEAD..origin/<default>` is 0, or it syncs.
 
 ## 4. Stay inside
 

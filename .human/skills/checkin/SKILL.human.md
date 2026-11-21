@@ -1,4 +1,4 @@
-> Eleven checks before anything goes back into a shared repo, so the diff causes no structural drift.
+> Checks before anything goes back into a shared repo, so the diff causes no structural drift.
 
 Fires: before any commit, push, or PR; "check in", "put this back".
 
