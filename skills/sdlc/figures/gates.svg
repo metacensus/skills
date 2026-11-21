@@ -1,30 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="352" viewBox="0 0 800 352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#1f2328">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="352" viewBox="0 0 800 352" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
   <title>Gates mirrored around the work</title>
+  <style>
+    .bg { fill: var(--bg, #fff) }
+    .ink { fill: var(--ink, #444A5A) }
+    .soft { fill: var(--ink, #444A5A); fill-opacity: .8 }
+    .accent { fill: var(--accent, #3B0E75) }
+    .edge { fill: none; stroke: var(--ink, #444A5A) }
+    .mirror { fill: none; stroke: var(--accent, #3B0E75) }
+    .panel { fill: var(--ink, #444A5A); fill-opacity: .05; stroke: var(--muted, #8A90A2); stroke-opacity: .5 }
+    .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+  </style>
   <defs>
-    <marker id="then" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#1f2328"/></marker>
-    <marker id="mirror" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#8250df"/></marker>
+    <marker id="then" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
+    <marker id="mirror" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" class="accent"/></marker>
   </defs>
-  <rect x="0" y="0" width="800" height="352" fill="#ffffff"/>
+  <rect x="0" y="0" width="800" height="352" class="bg"/>
 
-  <g fill="#f6f8fa" stroke="#d1d9e0">
+  <g class="panel">
     <rect x="16" y="16" width="288" height="32" rx="8"/>
     <rect x="336" y="16" width="288" height="32" rx="8"/>
     <rect x="656" y="16" width="128" height="32" rx="8"/>
   </g>
-  <g font-size="13" font-weight="600" fill="#59636e" text-anchor="middle" dominant-baseline="central">
+  <g font-size="13" font-weight="600" class="soft" text-anchor="middle" dominant-baseline="central">
     <text x="160" y="32">Design</text>
     <text x="480" y="32">Delivery</text>
     <text x="720" y="32">Record</text>
   </g>
 
-  <g fill="#ddf4ff" stroke="#0969da">
+  <g class="blue">
     <rect x="16" y="64" width="128" height="128" rx="8"/>
     <rect x="176" y="64" width="128" height="128" rx="8"/>
     <rect x="336" y="64" width="128" height="128" rx="8"/>
     <rect x="496" y="64" width="128" height="128" rx="8"/>
     <rect x="656" y="64" width="128" height="128" rx="8"/>
   </g>
-  <g stroke="#54aeff">
+  <g class="blue">
     <line x1="32" y1="144" x2="128" y2="144"/>
     <line x1="192" y1="144" x2="288" y2="144"/>
     <line x1="352" y1="144" x2="448" y2="144"/>
@@ -39,7 +49,7 @@
       <text x="560" y="88">Review</text>
       <text x="720" y="88">Accept</text>
     </g>
-    <g fill="#59636e">
+    <g class="soft">
       <text x="80" y="112">delegator, via</text>
       <text x="80" y="128">sdlc-intake</text>
       <text x="240" y="120">the carrier</text>
@@ -59,27 +69,27 @@
     <text x="720" y="176">or reopened</text>
   </g>
 
-  <g stroke="#1f2328" stroke-width="1.5">
+  <g class="edge" stroke-width="1.5">
     <line x1="144" y1="128" x2="176" y2="128" marker-end="url(#then)"/>
     <line x1="304" y1="128" x2="336" y2="128" marker-end="url(#then)"/>
     <line x1="464" y1="128" x2="496" y2="128" marker-end="url(#then)"/>
     <line x1="624" y1="128" x2="656" y2="128" marker-end="url(#then)"/>
   </g>
 
-  <g stroke="#8250df" stroke-width="1.5" fill="none">
+  <g class="mirror" stroke-width="1.5">
     <polyline points="240,192 240,224 560,224 560,192" marker-start="url(#mirror)" marker-end="url(#mirror)"/>
     <polyline points="80,192 80,272 720,272 720,192" marker-start="url(#mirror)" marker-end="url(#mirror)"/>
   </g>
-  <g fill="#8250df" text-anchor="middle" dominant-baseline="central">
+  <g class="accent" text-anchor="middle" dominant-baseline="central">
     <text x="400" y="240">how · did we do what we said</text>
     <text x="400" y="288">what should we do · did we achieve it</text>
   </g>
 
   <g dominant-baseline="central">
-    <text x="16" y="328"><tspan font-weight="600">step</tspan> · <tspan fill="#59636e">owner</tspan> · closed by</text>
-    <line x1="208" y1="328" x2="240" y2="328" stroke="#1f2328" stroke-width="1.5" marker-end="url(#then)"/>
+    <text x="16" y="328"><tspan font-weight="600">step</tspan> · <tspan class="soft">owner</tspan> · closed by</text>
+    <line x1="208" y1="328" x2="240" y2="328" class="edge" stroke-width="1.5" marker-end="url(#then)"/>
     <text x="248" y="328">then</text>
-    <line x1="336" y1="328" x2="368" y2="328" stroke="#8250df" stroke-width="1.5" marker-start="url(#mirror)" marker-end="url(#mirror)"/>
+    <line x1="336" y1="328" x2="368" y2="328" class="mirror" stroke-width="1.5" marker-start="url(#mirror)" marker-end="url(#mirror)"/>
     <text x="376" y="328">mirrored gates and their questions</text>
   </g>
 </svg>
