@@ -22,7 +22,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The comment proposes a design for what the body leaves open.
 - The issue meets the bar [the ladder](../sdlc/SKILL.md#the-ladder) names for its type.
 
-**Escalate** until `designed` is applied: by a person, or within a remit that covers Design. **Stop** when the issue fails its bar.
+**Escalate** until the delegator applies `designed`. **Stop** when the issue fails its bar.
 
 ## Implement
 

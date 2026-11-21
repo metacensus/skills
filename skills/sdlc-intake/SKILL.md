@@ -43,7 +43,7 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 Anyone curating an issue without `ready` reruns Compose's checks on it.
 
-- **Pass**: the delegator, or a delegate whose [remit](../sdlc/SKILL.md#roles) names it, applies `ready`, with `designed` when the body already settles every choice, then [`sdlc-status --apply`](../sdlc/SKILL.md#status); anyone else escalates the pass.
+- **Pass**: the delegator, or a delegate whose [remit](../sdlc/SKILL.md#roles) names it, applies `ready`, with `designed` when the body already settles every choice and none is one of the remit's [stops](../sdlc/SKILL.md#roles), then [`sdlc-status --apply`](../sdlc/SKILL.md#status); anyone else escalates the pass.
 - **Otherwise**: post the comment.
 
 Pickup is the hub's [Ready](../sdlc/SKILL.md#status) row.
