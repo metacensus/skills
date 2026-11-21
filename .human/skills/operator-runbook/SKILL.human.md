@@ -1,6 +1,6 @@
 > The person runs; the agent reads.
 
-Fires: `terraform apply`, AWS, Cloudflare, DNS, GitHub App, `gh secret set`, a classifier refusal.
+Fires: `terraform apply`, AWS, Cloudflare, DNS, GitHub App, `gh secret set`, a classifier refusal, "one at a time".
 
 ```
 Identity → Command → ⛔ Paste → Check → Next

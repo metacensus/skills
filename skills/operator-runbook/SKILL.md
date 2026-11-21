@@ -1,6 +1,6 @@
 ---
 name: operator-runbook
-description: Walk a person through steps only their hands run, one command per turn, each checked against its pasted output. Trigger on `terraform apply`; a change in AWS, Cloudflare or DNS; registering a GitHub App; `gh secret set`; and anything the permission classifier refuses.
+description: Walk a person through steps only their hands run, one command per turn, each checked against its pasted output. Trigger on `terraform apply`; a change in AWS, Cloudflare or DNS; registering a GitHub App; `gh secret set`; anything the permission classifier refuses; and a person asking to run commands one at a time.
 ---
 
 **The person runs; the agent reads.**
@@ -11,13 +11,13 @@ A step is the person's when the agent lacks the credential, the change is shared
 
 ## First command
 
-An identity check for whatever the steps touch: `aws sts get-caller-identity`, `kubectl config current-context`, `terraform workspace show`. It catches an expired session or a wrong context before either costs a step.
+An identity check for whatever the steps touch: `aws sts get-caller-identity`, `gh auth status`, `kubectl config current-context`, `terraform workspace show`. It catches an expired session or a wrong context before either costs a step.
 
 ## Each turn
 
-One command in a fence, ready to paste. Values the agent knows are filled in; one only the person knows is asked once, then filled in. No `&&` chains: one output answers one action.
+One command in a fence, ready to paste. Values the agent knows are filled in; one only the person knows, a secret aside, is asked once, then filled in. No `&&` chains: one output answers one action.
 
-Then what it changes and what success prints, and stop. A paste that matches gets the next command; one that differs gets a diagnosis.
+Then what it changes and what success prints, and stop. A paste that matches gets the next command; one that differs gets a diagnosis. A step in a web console goes the same way: one action, then what the page should show.
 
 A change goes plan first: `terraform plan -out=tfplan`, then `terraform apply tfplan`.
 
