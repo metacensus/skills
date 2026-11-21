@@ -77,6 +77,7 @@ done <<<"$labels"
 
 boards=$(rows Boards <<<"$mapping" | grep -v Hole | cut -f1 || true)
 [[ $boards ]] || echo "ok    no board"
+views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative')
 for board in $boards; do
   if ! [[ $board =~ ^([^/]+)/([0-9]+)$ ]]; then
     echo "TODO  board $board is not OWNER/N"
@@ -90,12 +91,22 @@ for board in $boards; do
     project=$(gh api graphql -F o="${BASH_REMATCH[1]}" -F n="${BASH_REMATCH[2]}" -f query='query($o:String!,$n:Int!){repositoryOwner(login:$o){... on ProjectV2Owner{projectV2(number:$n){id
       views(first:50){nodes{name groupByFields(first:1){nodes{... on ProjectV2FieldCommon{name}}}}}
       workflows(first:20){nodes{name enabled}}}}}}' --jq .data.repositoryOwner.projectV2)
-    for view in 'Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative'; do
+    jq -r --args '.views.nodes[].name | select(IN($ARGS.positional[]) | not)' "${views[@]%% *}" <<<"$project" |
+      while IFS= read -r name; do echo "note  board $board view $name: not one of Setup's three; left as set"; done
+    for view in "${views[@]}"; do
       name=${view%% *}
       if ! jq -e --arg n "$name" '.views.nodes[] | select(.name == $n)' <<<"$project" >/dev/null; then
-        id=$(gh api graphql -F p="$(jq -r .id <<<"$project")" -F n="$name" -f query='mutation($p:ID!,$n:String!){createProjectV2View(input:{projectId:$p,name:$n,layout:BOARD_LAYOUT}){projectV2View{id}}}' --jq .data.createProjectV2View.projectV2View.id)
-        gh api graphql -F v="$id" -F f="${view#* }" -f query='mutation($v:ID!,$f:String!){updateProjectV2View(input:{viewId:$v,filter:$f}){clientMutationId}}' --silent
-        echo "ok    board $board view $name"
+        if ! id=$(gh api graphql -F p="$(jq -r .id <<<"$project")" -F n="$name" -f query='mutation($p:ID!,$n:String!){createProjectV2View(input:{projectId:$p,name:$n,layout:BOARD_LAYOUT}){projectV2View{id}}}' --jq .data.createProjectV2View.projectV2View.id); then
+          echo "TODO  board $board view $name: cannot create it; lacking the project scope, gh auth refresh -s project"
+          todo=1
+          continue
+        fi
+        if gh api graphql -F v="$id" -F f="${view#* }" -f query='mutation($v:ID!,$f:String!){updateProjectV2View(input:{viewId:$v,filter:$f}){clientMutationId}}' --silent; then
+          echo "ok    board $board view $name"
+        else
+          echo "TODO  board $board view $name: set its filter to ${view#* }"
+          todo=1
+        fi
       fi
       jq -e --arg n "$name" '.views.nodes[] | select(.name == $n) | .groupByFields.nodes[] | select(.name == "Priority")' <<<"$project" >/dev/null ||
         { echo "TODO  board $board view $name: Group by Priority, then Save"; todo=1; }
@@ -105,6 +116,17 @@ for board in $boards; do
     echo "note  board $board: auto-archive closed items in Settings → Workflows; the API cannot read it"
   else
     echo "TODO  cannot read board $board; lacking the project scope, gh auth refresh -s project"
+    todo=1
+  fi
+done
+for o in $(sed -n 's|^\([^/]*\)/[0-9][0-9]*$|\1|p' <<<"$boards" | sort -u); do
+  if numbers=$(gh project list --owner "$o" -L 1000 --format json --jq '.projects[].number'); then
+    for n in $numbers; do
+      grep -qxF "$o/$n" <<<"$boards" ||
+        { echo "TODO  board $o/$n: no Boards row names it; close it, or give it a row in the mapping"; todo=1; }
+    done
+  else
+    echo "TODO  cannot list $o's boards; lacking the project scope, gh auth refresh -s project"
     todo=1
   fi
 done
