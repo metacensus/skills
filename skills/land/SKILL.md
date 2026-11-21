@@ -27,7 +27,7 @@ Bottom first: a child merges after its parent, never into the parent's branch.
 |---|---|---|
 | a required check is pending or failing | CI is not green | wait, or fix |
 | the head branch is behind | protection requires an up-to-date branch | [`checkin`'s Sync](../checkin/SKILL.md#6-sync-with-main), then wait |
-| a review is required | protection requires an approval | the mapping's `reviewer`; never self-approve |
+| a review is required | protection requires an approval | the [`reviewer`](../sdlc/SKILL.md#roles); never self-approve |
 | auto-merge is not allowed | the repository turned it off | merge once green, per [Where CI stops](../dev-ci-github/SKILL.md#where-ci-stops) |
 | the merge method is not allowed | the repository allows others | `gh api repos/O/R --jq '[.allow_squash_merge,.allow_merge_commit,.allow_rebase_merge]'`, then an allowed one |
 | a repository rule is violated | a ruleset | `gh api repos/O/R/rules/branches/<default>` names it: meet it, or hand it to an admin |
