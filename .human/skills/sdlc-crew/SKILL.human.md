@@ -1,6 +1,6 @@
-> A delegator carries a `designed` Epic to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child. Starts from a [handoff](../sdlc/SKILL.human.md#handoff).
+> A delegator carries an Epic from Design to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child. Starts from a [handoff](../sdlc/SKILL.human.md#handoff).
 
-Fires: orchestrating or delegating an Epic's children across agents; asking what the delegator does next.
+Fires: orchestrating or delegating an Epic's children across agents; designing an Epic's children; asking what the delegator does next.
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Epic, composing [`parallelize`](../parallelize/SKILL.human.md).
 
@@ -8,8 +8,9 @@ A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL
 
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
-|Precheck|Epic `designed`; children `ready`, acyclic; remit and stops cited|a family question|cycle|
-|Plan|contracts land first; no write-sets overlap|contract not the delegator's|cannot cut|
+|Precheck|Epic open; remit and stops cited; family read|a fix not the delegator's, a family question Design skips|Epic closed|
+|Design|plan proposed: children, non-goals, contracts|until `designed`|fails its bar|
+|Plan|children filed, `ready`, acyclic; contracts land first; no write-sets overlap|contract not the delegator's|cycle; cannot cut|
 |Delegate|a child briefed only when Ready or stacked, in its own tree|Design settles a stop|an author stops|
 |Review|fresh `sdlc-review` per PR|a choice not the delegator's|·|
 |Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on|merge refused|a stop reopens the plan|
