@@ -7,7 +7,7 @@ description: The software development lifecycle every organization on the Initia
 
 | Jira | GitHub | Notes |
 |---|---|---|
-| **Initiative** | Issue `type: Initiative` | A finish line: one outcome. Holds the Epics that exist for it, two or more by preference; the only parent an Epic takes. Work it shares with another Initiative is a `blocked by` on the Epic or Initiative that needs it, never on a Task, and never a second parent. One held for a later stage holds only work that waits for it. Body: [its form](forms/initiative.yml). |
+| **Initiative** | Issue `type: Initiative` | A finish line: one outcome. Holds the Epics that exist for it, two or more by preference; the only parent an Epic takes. Work it shares with another Initiative is a `blocked by`. One held for a later stage holds only work that waits for it. Body: [its form](forms/initiative.yml). |
 | **Epic** | Issue `type: Epic` | Weeks. Holds Tasks. |
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |

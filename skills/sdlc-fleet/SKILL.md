@@ -46,7 +46,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Close
 
-- The finish line is checked directly: each Measure at target, each Owed step done.
+- The Goal's finish line is checked directly, and each Owed step is done; Measures, where any exist, inform the check and never replace it.
 - Each child's state is read from GitHub, not from PR text.
 - A criterion met under another Epic closes **completed** with a link to where.
 - Open children move back to the parent that owns their blocker, or to one [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) proposes.
