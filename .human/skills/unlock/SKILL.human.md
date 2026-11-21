@@ -1,4 +1,4 @@
-> Anchored work is fixed at the problem, not with another option.
+> Anchored work goes back to the problem, not to another option.
 
 Fires: "context-locked", "jumping ahead", "isn't that the whole point of…".
 

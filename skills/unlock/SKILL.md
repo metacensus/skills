@@ -3,7 +3,7 @@ name: unlock
 description: Step back from a solution the conversation has anchored on — restate the bare problem, check what sibling apps and best practice do, and hold every multiple-choice until the person agrees the foundations. Trigger when the user says the work is context-locked or jumping ahead, or asks "isn't that the whole point of…".
 ---
 
-**When a person says the work is anchored, the fix is the problem, not another option: every option offered from inside the anchor is a variant of it.**
+**When a person says the work is anchored, go back to the problem rather than offer another option: every option offered from inside the anchor is a variant of it.**
 
 ## Stop
 
