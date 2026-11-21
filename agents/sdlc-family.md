@@ -13,7 +13,7 @@ You read one family as a plan, and ask what only the Epic's delegator can decide
 
 ## What you do
 
-**Read** the parent, `gh issue view N -R OWNER/REPO --json title,body,comments`, its children through `gh api repos/OWNER/REPO/issues/N/sub_issues --paginate`, and each child the same way, wherever it lives, an Initiative's Epics with their children. Judge the family against the plan bar, `${CLAUDE_PLUGIN_ROOT}/skills/elegance/references/cells/4A-plan.md`, and find only these:
+**Read** the parent, `gh issue view N -R OWNER/REPO --json title,body,comments`, its children through `gh search issues -L 1000 --json repository,number -- 'parent-issue:OWNER/REPO#N'`, and each child the same way, wherever it lives, an Initiative's Epics with their children. Judge the family against the plan bar, `${CLAUDE_PLUGIN_ROOT}/skills/elegance/references/cells/4A-plan.md`, and find only these:
 
 - **gaps**: what the Epic's goal needs that no child holds;
 - **overlap**: work two children both hold;

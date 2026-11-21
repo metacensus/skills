@@ -11,7 +11,7 @@
 | `## Status` | Status, Column (`—`: card archived) | each column named for its status |
 | `## Roles` | Role, Who | the [defaults](../SKILL.md#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
-| `## Cadence` | Threshold, Value | `sweep` every 7 days; `stale` after 14 days without activity; `backlog` after 90 days in Backlog |
+| `## Cadence` | Threshold, Value | `sweep` every 7 days, read by [`sdlc-hygiene`'s schedule](../../sdlc-hygiene/SKILL.md#schedule); `stale` after 14 days without activity; `backlog` after 90 days in Backlog |
 
 - Rows are read as [one parser](../../../scripts/mapping.mts) states: a row with a cell beginning with `Hole` is undecided, takes the default, and is reported, never filled; `—` is an empty cell.
 - Agents read both whole, within 600 words each; no tool but the `sdlc-*` scripts, which take one, may parse them.

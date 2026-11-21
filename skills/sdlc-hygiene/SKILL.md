@@ -1,13 +1,13 @@
 ---
 name: sdlc-hygiene
-description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what is left to decide.
+description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, after a pivot, when asking what is left to decide, and when scheduling the sweep.
 ---
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments to the session.
 
 ## Precheck
 
-- The scope is the user's Epic, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh api repos/OWNER/REPO/issues/N/sub_issues --paginate`, and the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
+- The scope is the user's Epic, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'`, and the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
 - The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, else all.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
@@ -50,3 +50,38 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 - The stage's comment counts by class what was fixed and escalated.
 
 **Escalate** while a flag or question waits on the delegator.
+
+## Schedule
+
+- The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended: a script on the delegator's machine, where `gh` holds the `project` scope, run by cron.
+- The script reads the mapping and each board's `sdlc-status` lines, then runs the stages in a sandbox that reaches only GitHub, on tools that only read, with none of the delegator's own settings. It posts the summary they print, or the step that failed, as one comment on an issue in a private repository.
+- Sweep's briefs carry each repository's board lines, and say they stand in for `sdlc-status`, which the run cannot call. A check needing a command the run does not hold, such as the rate-limit fallback or a repository's own forms, is marked `not run` in the summary.
+- Adopt, Act and Report wait for the delegator, in a session opened on that comment.
+- The delegator runs the script once by hand, and reads the comment it posts, before the cron line goes in: that run is the check that `gh` keeps its login in the sandbox and the plugin loads.
+
+```sh
+PATH=/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin
+plugin=PATH/TO/PLUGIN
+post() { gh issue comment N -R OWNER/PRIVATE "$@"; }
+fail() { post --body "The scheduled sdlc-hygiene run failed: $1."; exit 1; }
+GH_TOKEN=$(gh auth token) && export GH_TOKEN || exit 1
+work=$(mktemp -d) files=$(mktemp -d) || exit 1
+trap 'rm -rf "$work" "$files"' EXIT
+cat > "$files/settings.json" <<'EOF'
+{"permissions": {"blockReadsOutsideWorkingDirectories": true},
+ "sandbox": {"enabled": true, "failIfUnavailable": true, "autoAllowBashIfSandboxed": false, "allowUnsandboxedCommands": false,
+             "filesystem": {"allowRead": ["~/.config/gh"]},
+             "network": {"allowedDomains": ["github.com", "api.github.com"], "strictAllowlist": true}}}
+EOF
+gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > "$files/mapping.md" || fail "reading the mapping"
+for board in OWNER/N; do node "$plugin/scripts/sdlc-status.mts" "$board" --mapping "$files/mapping.md" || fail "sdlc-status on $board"; done > "$files/boards.txt"
+cd "$work" && claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER, and print the summary. The mapping is $files/mapping.md; each board's sdlc-status lines are in $files/boards.txt." \
+  --restricted --strict-mcp-config --permission-mode dontAsk --settings "$files/settings.json" \
+  --plugin-dir "$plugin" --add-dir "$files" "$plugin" --tools Agent,Bash,Read,Grep,Glob,Skill \
+  --allowedTools Agent Read Grep Glob Skill 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' \
+  --disallowedTools 'Agent(isolation:*)' > "$files/summary.md" && [ -s "$files/summary.md" ] || fail "claude -p"
+grep -qF "$GH_TOKEN" "$files/summary.md" && fail "the summary held the gh token"
+post --body-file "$files/summary.md"
+```
+
+Its cron line is `0 9 * * 1  sh PATH/TO/SCRIPT`, weekly being the default 7 days; every N days is `0 9 */N * *`. `PATH` names where `gh`, `node` and `claude` live, and `plugin` the installed plugin's versioned directory, which a plugin update makes stale.
