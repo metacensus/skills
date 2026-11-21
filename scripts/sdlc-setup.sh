@@ -104,7 +104,7 @@ for board in $boards; do
       { echo "TODO  board $board: enable the Auto-add sub-issues to project workflow"; todo=1; }
     echo "note  board $board: auto-archive closed items in Settings → Workflows; the API cannot read it"
   else
-    echo "TODO  cannot read board $board; lacking the project scope, gh auth refresh -s read:project"
+    echo "TODO  cannot read board $board; lacking the project scope, gh auth refresh -s project"
     todo=1
   fi
 done
@@ -119,7 +119,7 @@ if types=$(gh api "orgs/$owner/issue-types" --jq '.[] | select(.is_enabled) | .n
 elif [[ $(gh api "users/$owner" --jq .type) == User ]]; then
   echo "ok    $owner is not an organization; titles state the type"
 else
-  echo "TODO  cannot read $owner's issue types"
+  echo "TODO  cannot read $owner's issue types; lacking the read:org scope, gh auth refresh -s read:org"
   todo=1
 fi
 

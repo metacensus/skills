@@ -14,7 +14,7 @@ Thin orchestrator: it sequences when to read what. Do not duplicate the referenc
 Copy and track:
 
 ```
-- [ ] 1. Structure follows PFI (proto → generated → implementation)
+- [ ] 1. Structure follows PFI (proto → generated → implementation); inputs and results carry references, never secrets or bulk
 - [ ] 2. The security context is a typed identity, never a bare string (P1)
 - [ ] 3. Crossing to another security context goes through Nexus, never a direct child (P2)
 - [ ] 4. Variants branch on structure/data, not labels; no workflow type shared across security contexts (P3)
@@ -26,6 +26,8 @@ Copy and track:
 ### Step 1: Structure (PFI)
 
 Edit proto and implementation only; never edit generated code. Confirm the target lives in the right package and version.
+
+A request carries a secret's name or an object's key, never its value: event history stores every input and result, readable to anyone who reads the namespace, and caps each one's size.
 
 Canonical, with package layout, registration, and code generation: [pfi-pattern.md](references/pfi-pattern.md).
 

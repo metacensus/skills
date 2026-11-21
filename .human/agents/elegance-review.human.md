@@ -6,7 +6,7 @@ It places the change on the grid itself, blind to the author's reasons, and a pl
 
 ## What you do, in order
 
-Try removing every element, then shrinking it or replacing it with structure, then hunt the cell's list of excess, check scope, take the skill's counts before and after, and grep what the diff moved. Comments get the hardest line: one that restates what code or context already says must be cut, and doubt about one counts as a finding.
+Try removing every element, then shrinking it or replacing it with structure, then hunt the cell's list of excess and any change narrated where a current fact belongs, check scope, take the skill's counts before and after, and grep what the diff moved. Comments get the hardest line: one that restates what code or context already says must be cut, and doubt about one counts as a finding.
 
 ## What a finding is
 
