@@ -14,6 +14,7 @@ Compose → File → Curate → ready
 |Duplicate|Bug: search open issues, PRs; a match takes a comment|
 |Problem|first; a solution only if decided or the constraint|
 |Text|no emojis, inventions, hard wraps|
+|Public|[open-source review](../open-source/references/review.human.md) of the draft|
 
 ## Decompose
 

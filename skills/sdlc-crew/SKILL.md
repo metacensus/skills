@@ -3,7 +3,7 @@ name: sdlc-crew
 description: Carry a `designed` Epic to closed with a crew of agents: an author per child, a fresh reviewer per pull request, and a delegator holding the plan. Trigger when running, orchestrating, or delegating an Epic's children across agents, and when asking what the crew's delegator does next.
 ---
 
-The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says. It starts from a [handoff](../sdlc/SKILL.md#handoff), whose Environment names the model each child runs on.
+The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says, and while a thread waits on a person, or the person is away, runs [`decouple`](../decouple/SKILL.md). It starts from a [handoff](../sdlc/SKILL.md#handoff), whose Environment names the model each child runs on.
 
 ## Precheck
 
@@ -28,7 +28,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 ## Delegate
 
-- A child is briefed only in [Ready](../sdlc/SKILL.md#status): nothing is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
+- A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](../decouple/SKILL.md#stack): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
 - Every author is split at Design: one agent runs Precheck and Design, then returns; its Design is confirmed, `designed` applied, within the delegator's remit, else escalated; a second, briefed with the confirmed Design, runs Implement through Land. A child already `designed` skips the first.
