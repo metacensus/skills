@@ -26,7 +26,7 @@ Lanes never read each other; a lane that needs another's answer waits a wave. Ru
 
 ## Returns
 
-The frame fixes one shape for every lane, because a shared shape is what makes lanes comparable:
+The frame fixes one shape for every lane:
 
 - per criterion, a finding, its source, and the check it passed: read at source, reported, or inferred;
 - the must-haves it failed;
@@ -36,7 +36,7 @@ A lane returns evidence, never a recommendation: a verdict from one lane anchors
 
 ## Merge
 
-One table, options by criteria. Drop the disqualified, rank the rest, and recommend one, with the runner-up and the finding that would flip them. An unknown that could flip it becomes a follow-up lane, or is named beside the recommendation. It goes up as [`sdlc`'s Roles](../sdlc/SKILL.md#roles) say — the choice, its options, a recommendation — laid out per [`human-output`](../human-output/SKILL.md).
+One table, options by criteria. Drop the disqualified, rank the rest, and recommend one, with the runner-up and the finding that would flip them. An unknown that could flip it becomes a follow-up lane, or is named beside the recommendation. It goes up as [`sdlc`'s Roles](../sdlc/SKILL.md#roles) say, laid out per [`human-output`](../human-output/SKILL.md).
 
 ## Hand-off
 
@@ -47,7 +47,7 @@ The frame is [`parallelize`'s five answers](../parallelize/SKILL.md#what-the-wor
 | Units | the lanes |
 | Edges | none within a wave |
 | Action | research the lane |
-| Done | its return filled |
+| Done | its return filled, or a must-have failed |
 | Checks | every finding cites a source |
 
 The merge runs at its [Integrate](../parallelize/SKILL.md#integrate-and-land).

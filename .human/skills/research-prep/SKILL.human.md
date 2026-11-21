@@ -16,7 +16,7 @@ Must-have · threshold · weight, fixed before lanes run.
 
 ## Lanes
 
-Known options → one each. Wide net → discover, shortlist, then one per option. Lanes never read each other.
+Known options → one each. Wide net → discover, shortlist, evaluate. Lanes never read each other.
 
 ## Returns
 
