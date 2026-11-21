@@ -26,7 +26,7 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 
 `tfplan` is as secret as state — every variable's value in cleartext, `sensitive` ones included — and is deleted after its apply. A change to a sensitive value waits for a person's go-ahead for that apply. A read-only plan of shared state takes `-lock=false`.
 
-**Hole:** where applies run (a laptop or CI against real state) and how drift is detected — metacensus/skills#119.
+**Drift shows in the next plan**, a pull request's or the one before an apply, as a change the diff did not make. The person who runs the apply, never a job a merge triggers ([dev-ci-github](../dev-ci-github/SKILL.md#where-ci-stops)), settles it before applying: the code adopts it, or the apply reverts it. No schedule plans between applies.
 
 ## One source per version
 
