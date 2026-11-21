@@ -79,7 +79,9 @@ Frame → Design → Work → Review → Accept: the gates mirror around the wor
 |---|---|---|---|---|
 |Design|Frame (`ready`), Design (`designed`)|Precheck, Design|Precheck, Design|Precheck, Design|
 |Delivery|Work, Review|Implement → Respond|Plan → Land|Plan → Delegate|
-|Record|Accept, no check yet|Land|Close|Close|
+|Record|Accept|Land|Close|Close|
+
+**Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
 ## Closing
 

@@ -13,8 +13,8 @@ A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL
 |Plan|children filed, `ready`, acyclic; contracts land first; no write-sets overlap|contract not the delegator's|cycle; cannot cut|
 |Delegate|a child briefed only when Ready or stacked, in its own tree|Design settles a stop|an author stops|
 |Review|fresh `sdlc-review` per PR|a choice not the delegator's|·|
-|Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on|merge refused|a stop reopens the plan|
-|Close|children closed; `Decision:` and rollout record on the Epic; `sdlc-hygiene` clean|dead end or deviation|·|
+|Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on; each child accepted on main|merge refused|a stop reopens the plan|
+|Close|children closed; `Decision:` and rollout record, with each Accept, on the Epic; `sdlc-hygiene` clean|dead end or deviation|·|
 
 ## Delegate
 

@@ -54,17 +54,18 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Land
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
+- Each landed child is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases): its Verification exits 0 on the default branch, its release is published and its consumers run it, per [`land`](../land/SKILL.md); a miss reopens it.
 - A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest files as new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, curated as Plan says, and Plan re-runs over the children unblocked at that moment, or Design, on an Epic not yet `designed`. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 - After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
-**Escalate** a merge the environment refuses. **Stop** when a child's author stops on something that reopens the Epic's plan.
+**Escalate** a merge the environment refuses, and a deviation the remit does not accept. **Stop** when a child's author stops on something that reopens the Epic's plan.
 
 ## Close
 
 - Every child is closed, completed or, past a dead end, not planned.
-- The rollout record is on the Epic: each child, its PR, who landed it, and what was accepted unchecked.
+- The rollout record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, and its Accept.
 - Each Spike's `Decision:` is in the Epic's body, the Spike `reached-up`.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
-**Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation. Escalate any question the sweep leaves.
+**Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation, and its rollout record goes to its delegator for [Accept](../sdlc/SKILL.md#phases). Escalate any question the sweep leaves.

@@ -125,7 +125,9 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 | | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we achieve what we wanted | the close, and `reached-up` |
 
-Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative. Accept has no check of its own yet: a clean merge closes the issue.
+Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
+
+**Accept**, the fifth gate, mirrors Frame: the `delegator` owns both at the high scope, as Design and Review mirror at the detailed one. It checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. The carrier one tier up runs it in its own Delivery, so no carrier accepts its own work, and a miss reopens the issue, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
 
 | Tier | Carrier | Design | Delivery | Record |
 |---|---|---|---|---|
