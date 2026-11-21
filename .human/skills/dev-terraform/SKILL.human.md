@@ -18,7 +18,7 @@ The backend file selects tfvars, environment, and context; a guard refuses any d
 
 `plan -out`, then apply that file; never auto-approve. The plan file holds secrets and outlives no apply.
 
-⚠️ Hole: where applies run and how drift is detected — metacensus/skills#119.
+A person runs each apply; drift shows in the next plan and is settled before that apply. No scheduled plan.
 
 ## One source per version
 
