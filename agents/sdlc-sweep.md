@@ -28,7 +28,7 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **mislabeled**: `ready` with a required field missing; every `blocked by` closed, yet no `ready`.
 - **board**: an `sdlc-status` line that names a move or an archive.
 - **misplaced**: a card on a board other than the one its Initiative is held by, or the default board when none holds it.
-- **uncarded**: an open issue with no card on any board that the board holding its Initiative, else the default, plausibly holds by its Purpose, naming that board; its Initiative from `sdlc-status.mts OWNER/REPO#N... --mapping PATH` run on those issues.
+- **uncarded**: an open issue with no card on any board, that the board holding its Initiative, else the default, plausibly holds by its Purpose, naming that board; its Initiative from `sdlc-status.mts OWNER/REPO#N... --mapping PATH` run on those issues.
 - **priority**: an open Task or Bug whose Priority is `—`; a `blocks higher` note, or a `no <field>` note naming an inherited field, with the value most of this repository's cards on that board carry.
 - **unowned**: an issue with no assignee that a PR closes, merged when the issue is closed completed and open when it is open, naming the PR's author when not a bot, `gh pr view <url> --json author,state`; an unassigned Epic or Initiative closed completed, naming its children's assignee when they share one.
 - **untyped**: an issue with no type, naming the likely one: Initiative over Epics, Epic over Tasks, Bug for a defect, else Task.
