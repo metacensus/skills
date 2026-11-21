@@ -125,7 +125,7 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 | | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we achieve what we wanted | the close, and `reached-up` |
 
-Design meets the bar [the ladder](#the-ladder) names; a tier's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md). Accept has no check of its own yet: a clean merge closes the issue.
+Design meets the bar [the ladder](#the-ladder) names; an Epic's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md). Accept has no check of its own yet: a clean merge closes the issue.
 
 | Tier | Carrier | Design | Delivery | Record |
 |---|---|---|---|---|
