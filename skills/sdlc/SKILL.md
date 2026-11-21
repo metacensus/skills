@@ -121,4 +121,6 @@ Completion is not deviation: a plain **completed** closes with no escalation. `d
 
 Once per repository, before filing there, run `${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-setup.sh OWNER/REPO [PATH | OWNER/NAME:PATH]` and act on each `TODO` it prints; rerunning is safe.
 
+A column `sdlc-setup.sh` finds missing is added in the board's settings, never by replacing the Status field's options through the API: that regenerates every option id and clears every card's Status, which `sdlc-status.mts OWNER/N --apply` then restores.
+
 The forms are [forms/](forms/), kept once in the organization's `.github` repository; a repository's own `.github/ISSUE_TEMPLATE/` replaces them whole.

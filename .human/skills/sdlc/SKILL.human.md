@@ -83,3 +83,5 @@ A stage runs its checks and posts one comment:
 ## Setup
 
 Once per repository: `sdlc-setup.sh OWNER/REPO`; act on each `TODO`.
+
+Add a missing column in the board's settings; replacing Status options through the API clears every card's Status, which `--apply` restores.
