@@ -1,6 +1,6 @@
 ---
 name: launch-review
-description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, favicons, private links, accessibility, privacy notice, copy compliance, domain records, a visual pass, and staging after merge. Trigger before a public site, blog or public form goes live, before a domain cutover moves it to new builds, and when asked whether a public surface is ready.
+description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, favicons, private links, accessibility, privacy notice, copy compliance, domain records, a visual pass, and staging after merge. Trigger before such a surface goes live, before a domain cutover moves it to new builds, and when asked whether it is ready.
 ---
 
 The surface is what a signed-out visitor reaches; the signed-in app and a full security review are out.
@@ -15,7 +15,7 @@ Every response carries them, the 404 included.
 
 - `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, a `Permissions-Policy` denying every feature no page uses, and CSP `frame-ancestors 'none'`.
 - **HSTS for a year**, with `includeSubDomains; preload` only once every subdomain serves HTTPS. The canonical host's HSTS covers only its own subdomains, so the apex's redirect sends it too. Submitting to the preload list is a person's call, after legacy hosts retire.
-- **Cache lifetimes**: hashed assets `immutable` for a year, other static files a week, HTML and error pages `no-cache`.
+- **Cache lifetimes**: hashed assets as [`dev-ui`](../dev-ui/SKILL.md) sets them, other static files a week, HTML and error pages `no-cache`.
 - **Proof**: an image test requests `/` and an unknown path and asserts each header.
 
 ## Canonical host
@@ -68,15 +68,15 @@ Every response carries them, the 404 included.
 
 ## Domain
 
-- DMARC at `p=none`, reporting to a mailbox that exists.
+- DMARC at least at `p=none`, reporting to a mailbox that exists, so its reports show when `quarantine` is safe.
 - CAA names only the CAs that issue for the domain.
 - **Proof**: `dig TXT _dmarc.example.org` and `dig CAA example.org`.
 
 ## Visual pass
 
-- **A person walks every route the build's inventory lists, on staging**: desktop and 375px, light and dark, print, every link followed and every form sent.
+- **A person walks every route on staging**, enumerated as [`dev-ui`](../dev-ui/SKILL.md#aligning-a-surface-to-a-design-system) does: desktop and 375px, light and dark, print, every link followed and every form sent.
 - Each finding is fixed or filed.
-- **Proof**: the person's sign-off, since the gate sees structure, never appearance.
+- **Proof**: the person's sign-off.
 
 ## Staging after merge
 
