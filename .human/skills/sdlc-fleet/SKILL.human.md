@@ -9,7 +9,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the 
 |Precheck|Initiative open, fields filled; a roadmap entry; the ladder's Initiative test|an unstated finish line or non-goal|Initiative closed; no roadmap entry|
 |Design|one outline, blockers on their lines; filed once the person applies `designed`|the outline|a required field a hole|
 |Plan|waves of unblocked Epics; coupling grepped; merge order as `blocked by`|a contract two Epics shape|cycle|
-|Delegate|a crew per Epic, split at Design; the person steers here, plan changes mirrored on the Initiative|a Design settling a stop|a crew stops|
+|Delegate|a crew per Epic, split at Design; each closed Epic accepted; the person steers here, plan changes mirrored on the Initiative|a Design settling a stop|a crew stops|
 |Close|finish line checked; open children moved; 3C record on the Initiative|always: the person accepts|·|
 
 ## Reporting

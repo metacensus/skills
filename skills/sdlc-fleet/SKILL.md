@@ -40,6 +40,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 - One `sdlc-crew` per Epic, split at Design [as a crew splits its authors](../sdlc-crew/SKILL.md#delegate): the orchestrator applies `designed`, citing its remit, unless the Design settles one of the Initiative's Stops or the remit's [stops](../sdlc/SKILL.md#roles). Those that do go to the person as one outline per wave.
 - The orchestrator writes no Epic's Design: one it wrote would go to the person.
 - The person steers, halts or queries in the orchestrator's own session; a change to the plan is mirrored as a comment on the Initiative.
+- Each closed Epic is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), from its rollout record against its Goal and Non-goals.
 - As each Epic closes, Plan re-runs over the Epics it unblocks.
 
 **Escalate** a Design that settles a stop. **Stop** when a crew stops.
