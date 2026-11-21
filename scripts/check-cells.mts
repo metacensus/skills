@@ -2,15 +2,16 @@
 /* The elegance skill's skeleton gate. `--diff` maps the changed paths of the repository it runs in
  * to their candidate cells and names what needs a second reader.
  *
- * It reads `elegance-mapping.md` at that repository's root as markdown table rows: column 1 a
- * location type from the grid's location key, column 2 its path globs, each in backticks. Every
- * location type needs a row; a row with no globs is a hole; longest matching glob wins.
+ * It reads the `## Locations` table of `elegance-mapping.md` at that repository's root through
+ * `mapping.mts`: a location type from the grid's location key, then its path globs. Every location
+ * type needs a row; one with no globs, or a hole, is reached by no path; the longest matching glob wins.
  *
  * It also runs `check-twins.mts`, this repository's twin rule. */
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { twinErrors } from "./check-twins.mts";
+import { table } from "./mapping.mts";
 
 const SKILL = join(import.meta.dirname, "..", "skills", "elegance");
 
@@ -92,22 +93,13 @@ for (const tree of TREES) {
 
 /* ------------------------------------------------------- the reverse index */
 
-/** Table rows of a markdown table, as trimmed columns. */
-function rows(src: string): string[][] {
-  return src
-    .split("\n")
-    .filter((l) => l.startsWith("|") && !/^\|[\s|:-]+\|$/.test(l))
-    .map((l) => l.replace(/^\||\|$/g, "").split("|").map((c) => c.trim()))
-    .filter((r) => !/^-+$/.test(r[0]));
-}
-
 const gridSrc = read(join(SKILL, "references", "grid.md"));
 const mappingFound = existsSync(MAPPING.path);
 const mappingSrc = mappingFound ? read(MAPPING.path) : "";
 const mappingName = relative(process.cwd(), MAPPING.path);
 
 const locationOfCell = new Map<string, string>();
-for (const row of rows(gridSrc)) {
+for (const row of table(gridSrc, "Table 3 — The grid, with examples and locations").rows) {
   for (const col of row.slice(1)) {
     const coord = /\[([0-5][ABC]) /.exec(col)?.[1];
     const tags = [...col.matchAll(/\[([^\]\[]+)\]/g)].map((m) => m[1]);
@@ -119,15 +111,18 @@ for (const coord of COORDS) {
   if (!locationOfCell.has(coord)) err("references/grid.md", `Table 3 tags no location for cell ${coord}`);
 }
 
-const enforcementOfLocation = new Map<string, string>();
-for (const [name, value] of rows(gridSrc).map((r) => [r[0], r[1]?.replace(/`/g, "")] as const)) {
-  if (["gate", "partial", "described"].includes(value ?? "")) enforcementOfLocation.set(name, value!);
+const enforcementOfLocation = new Map(table(gridSrc, "Location key").rows.map(([name, value]) => [name, value]));
+for (const [name, value] of enforcementOfLocation) {
+  if (!["gate", "partial", "described"].includes(value)) err("references/grid.md", `${name}'s enforcement is ${value}; it is gate, partial or described`);
 }
 
 const globsOfLocation = new Map<string, string[]>();
-for (const row of rows(mappingSrc)) {
-  if (!enforcementOfLocation.has(row[0])) continue;
-  globsOfLocation.set(row[0], [...(row[1] ?? "").matchAll(/`([^`]+)`/g)].map((m) => m[1]));
+const locations = table(mappingSrc, "Locations");
+for (const [name, paths = ""] of locations.rows) {
+  if (enforcementOfLocation.has(name)) globsOfLocation.set(name, paths.split(/\s+/).filter((g) => g && g !== "—"));
+}
+for (const [name] of locations.holes) {
+  if (enforcementOfLocation.has(name)) globsOfLocation.set(name, []);
 }
 
 for (const location of enforcementOfLocation.keys()) {
@@ -143,7 +138,7 @@ for (const [coord, claimed] of cellLocationClaim) {
   }
 }
 
-const unreachable = [...globsOfLocation].filter(([, g]) => !g.length).map(([name]) => name);
+const unreachable = [...enforcementOfLocation.keys()].filter((name) => globsOfLocation.get(name)?.length === 0);
 
 /** `**` crosses directories, `*` does not. */
 const globRe = (g: string) => {
