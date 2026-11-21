@@ -1,98 +1,52 @@
-> Before anything goes back into a shared repo, ten checks keep the diff from causing structural drift.
+> Ten checks before anything goes back into a shared repo, so the diff causes no structural drift.
 
 Fires: before any commit, push, or PR; "check in", "put this back".
 
 ```
-1 Branch → 2 Precedent → 3 Derived → 4 Falsified → 5 Surgical → 6 Gate → 7 Settle → 8 Diff → 9 Text → 10 ⛔ Stop
+Branch → Precedent → Derived → Falsified → Surgical → Gate → Settle → Diff → Text → ⛔ Stop
 ```
 
-The gate catches broken builds. These checks catch drift: reformatted files, duplicated derived state, invented conventions.
+## Branch
 
-## 1. Branch — never the default branch
+On the default branch, branch first: `<your-name>/<topic>`.
 
-```
-when HEAD = default branch → branch first
-name: <your-name>/<topic>      e.g. alex/retry-backoff
-when name off-shape        → git branch -m before pushing
-```
+## Precedent
 
-| Name part | Holds | Not |
-|---|---|---|
-| owner | whom to ask about a stale branch | |
-| topic | the change's subject | ticket, tool |
+Copy 2-3 siblings, key by key. ⚠️ Schema-valid is not conventional.
 
-## 2. Match precedent before you invent
+## Derived
 
-```
-new record, field, or file → find 2-3 siblings → copy their shape, key by key
-when yours differs from every precedent → change yours
-```
+Write no computed or falsifiable fact; each fact once.
 
-⚠️ Schema-valid is not conventional.
+## Falsified
 
-## 3. Never author derived state
+Grep the entity; re-read every reference.
 
-| Do not write | Example |
+## Surgical
+
+| Do | Not |
 |---|---|
-| what the system computes | counts, indices, contents lists, claims over a set |
-| a fact a later edit falsifies | "the first X in Y"; a date restated beside its field |
+| change needed lines | reformat a file |
 
-Write each fact once, in its field, in the present tense.
+## Gate
 
-## 4. Check what else your edit made false
+Run it locally; read the rule a failure names.
 
-```
-edit a record → grep the entity → re-read every reference against the change
-```
+## Settle
 
-⚠️ Sibling prose goes false while every check passes.
-
-## 5. Keep the diff surgical
-
-| Do | Do not |
+| When | Run |
 |---|---|
-| change only the lines needed | reformat or re-serialize a whole file |
-| restore encoding, line endings, order if a tool rewrote them | commit the rewrite |
-| PR onto someone's branch: your edits only | fold in a rebase or merge of their base; offer it as its own branch |
+| `elegance-mapping.md` | `check-cells.mts --diff` |
+| public repo | [`open-source`](../open-source/SKILL.human.md) |
 
-## 6. Run the gate
+## Diff
 
-```
-run the repo's gate locally, even when CI repeats it
-when it fails → read the rule it names before working around it
-```
+Read `git --no-pager diff` as a reviewer.
 
-## 7. Ask what settles what you altered
+## Text
 
-| When | Run | Then |
-|---|---|---|
-| repo has `elegance-mapping.md` | `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` | do what it prints, even when sure |
-| repo is public (`gh repo view --json visibility`) | the [`open-source`](../open-source/SKILL.human.md) review | over the change |
+Commit: [5C](../elegance/references/cells/5C-commit.human.md). PR: [4C](../elegance/references/cells/4C-merges.human.md).
 
-Paths decide the review because authors judge their own work worst.
+## Stop
 
-## 8. Read your own diff
-
-`git --no-pager diff`, every line, as a reviewer.
-
-| Ask | ✅ |
-|---|---|
-| Line count proportional to the change described? | ⬜ |
-| Did anything move that did not need to? | ⬜ |
-| Any file you did not mean to touch? | ⬜ |
-| Is every behavior change tested? | ⬜ |
-
-## 9. Commit and PR text
-
-| Text | Matches | Ends with |
-|---|---|---|
-| commit | `git log` style; [5C](../elegance/references/cells/5C-commit.human.md) | session's attribution lines |
-| PR body | [4C](../elegance/references/cells/4C-merges.human.md) | session's attribution lines |
-
-## 10. Stop at a verified diff
-
-```
-change → verify → show diff → ⛔ stop
-```
-
-Commit, push, and PR are the user's call, unless they handed you the branch.
+Verify, show the diff, ⛔ stop; commit and push are the user's.

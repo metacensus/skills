@@ -1,43 +1,15 @@
-> The contract a system exposes must equal the contract it implements; the readme is how a newcomer runs and contributes.
+System, Current, **Project API/Docs**. ↓[2B](2B-identity.human.md) ↑[4B](4B-surface.human.md)
 
-```
-        2B identity
-            ↑
-3A design ↔ 3B contract ↔ 3C release
-            ↓
-        4B surface
-```
+**Clear when** Exposed contract equals implemented, seams agree, a newcomer runs and contributes from the readme unasked.
 
-Tier 3 · scope System · time Current
-
-## Example
-
-The contract the system exposes · how to run it · how to contribute.
-
-## Location
-
-**Project API/Docs**, in the location key (grid).
-
-## Clear when
-
-exposed contract = implemented contract · both sides of every seam agree · newcomer runs and contributes from the readme unasked · gate: generated or typed contract, docs at review or assertion
-
-## Excess
-
-| Excess | Test or move |
+|Excess|Move|
 |---|---|
-| **A readme that describes the code** | Says what the system is, what it refuses, how to run. Each line: is, refuses, or runs? Anything about how it is built links down: architecture to [3A](3A-design.human.md), module surfaces to [4B](4B-surface.human.md). |
-| **Prose beside a generated contract** | Cover the sentence; read the field's name and type. They say it → the sentence is a second copy. |
-| **A contributor guide that restates the gate** | Name the command; the gate's output says what it checks. |
-| **A one-way door explained more than once** | Explain once, at the door, where the choice was made. |
-| **"What this is not" grown into an essay** | A list of refused concerns, one line each. |
+|**A readme describing the code**|Say what it is, refuses, how to run; link [3A](3A-design.human.md), [4B](4B-surface.human.md).|
+|**Prose beside a generated contract**|A copy.|
+|**A guide restating the gate**|Name the command.|
+|**A one-way door explained twice**|Once, there.|
+|**"What this is not" as essay**|One-line list.|
 
-## Cost
+**Cost** ⚠️ Most dangerous: identical signatures collide unseen.
 
-⚠️ The most dangerous cell: a semantic collision on an identical signature executes rather than errors, and no instrument sees it.
-
-## Moves
-
-1. Generate the contract from the implementation, or the reverse → they cannot disagree
-2. Surface moves → ✏️ rewrite the docs in the same change
-3. Link down to [4B](4B-surface.human.md) → record a delta, never describe the surface again
+**Moves** Generate one side from the other. Rewrite docs with the surface change; link down.

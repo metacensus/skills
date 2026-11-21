@@ -71,12 +71,12 @@ A request to pick an issue up is the delegator's yes to assigning.
 
 ## Reporting
 
-**A person's attention is spent once per item.** What goes up to a person — an escalation, a consult, a report — names each item once, in the turn it arises or changes, on a line of its own led by a loud marker: ⛔ waits on them, 🟢 ready for them, ✅ done. A later turn repeats nothing unchanged: no rolling "still for you" or "still to do".
+**A person's attention is spent once per item.** What goes up to a person — an escalation, a consult, a report — names each item once, in the turn it arises or changes, on a line of its own led by a loud marker: ⛔ waits on them, 🔷 ready for them, ✅ done. A later turn repeats nothing unchanged: no rolling "still for you" or "still to do".
 
 **The status outline** is printed only when the person asks for status, or when all work waits on them:
 
 - **Your queue** first: their acts alone, ordered by what each unblocks, each a link and a few words.
-- Then a block per area, one line per item, icon first: ✅ done · 🟢 ready for them · ⛔ waits on them · ⬜ next · ⏸ parked.
+- Then a block per area, one line per item, icon first: ✅ done · 🔷 ready for them · ⛔ waits on them · 🔶 next · ⏳ waiting · 🌙 deferred.
 - Terms and phrases, never sentences. The product's state, never the orchestration's: no agent names, PR churn or process narration.
 
 ## Stages

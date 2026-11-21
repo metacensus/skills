@@ -41,6 +41,8 @@ claude plugin install metacensus@metacensus --scope project
 
 The plugin works offline from then on. `autoUpdate` brings each new commit on `main` in the background; run `/reload-plugins` or restart to load it.
 
+The `open-source` skill scans for secrets with [gitleaks](https://github.com/gitleaks/gitleaks#installing): `brew install gitleaks`.
+
 ## Changing a skill
 
 Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. Every commit is a release: neither manifest sets `version`, so the commit SHA is the version.

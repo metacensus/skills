@@ -1,89 +1,47 @@
 > A change moves through gates to a release; a failed gate stops it, and the tag is the last gate.
 
-Fires: writing or reviewing a workflow, Makefile target, pre-commit hook, Dockerfile build step or release; deciding what CI gates.
+Fires: writing or reviewing a workflow, Makefile target, hook, Dockerfile or release.
 
 ```
-Edit ─hook: check only→ Commit ─push / PR→ Checks ─aggregate: all success→ ✅ Mergeable
-                                                                               │
-Publish ←CI re-run at tag─ Tag vX.Y.Z ←─────────make release TYPE=───────────┘
+Edit → Commit → Checks ─all success→ ✅ Mergeable → Tag vX.Y.Z ─CI re-run→ Publish
 ```
-
-Key: ⛔ run fails · ⚠️ silent trap · ✅ passes · `→` then
 
 ## CI runs `make`
 
-Every check is a `make` target; a workflow step calls it and never re-spells it.
+Each check is a `make` target; `make check` is CI minus the freshness diff.
 
-| Target | Does |
+## Pinned toolchain
+
+| Thing | Pinned by |
 |---|---|
-| `make check` | all of CI except the freshness diff |
-| `make help` | prints `## target — what it does` comments |
+| Go, tools | `go.mod` |
+| Generation | `GOWORK=off` + `GOTOOLCHAIN`; ⚠️ empty passes silently |
+| Node | `.nvmrc`; lockfile written on Linux |
+| Third-party images | digest |
 
-## One toolchain, read from a committed file
+## Output matches source
 
-| Thing | Pinned by | Detail |
-|---|---|---|
-| Go | `go-version-file: go.mod` | · |
-| Tools (buf, protoc plugins, mockery) | `tool` directives in a `go.mod` consumers never import | installed to repo-local `.bin`, first on `PATH` |
-| Generation | `GOWORK=off` + `GOTOOLCHAIN` from that `go.mod` | guard ⛔ fails on empty · ⚠️ Go accepts `GOTOOLCHAIN=` silently |
-| Slow-to-build tool | cache keyed on `go.sum`, `go.mod`, `Makefile` | · |
-| Node | `node-version-file: .nvmrc` | Dockerfile `node` base, same major |
-| Node deps | `npm ci` from lockfile | tools from `node_modules`, never global |
-
-- `GOWORK=off`: a workspace member cannot rebuild generators at another version (protoc-gen-go stamps it).
-- `GOTOOLCHAIN`: a newer gofmt reformats generated comments.
-
-## Committed output matches its source
-
-| Gate | ✅ when |
-|---|---|
-| Generated code, build output | regenerate + build → `git diff --exit-code` clean, no untracked files |
-| Modules | `go mod tidy` leaves `go.mod`, `go.sum` unchanged |
-| Format | `gofmt -l` empty · `prettier --check` passes |
-| Vet | `go vet`, including `integration`- and `artifact`-tagged code |
-| Lint | golangci-lint, committed config |
-
-Pre-commit hooks: via `make` · check, never rewrite · skip generated paths · opt-in; CI enforces.
+Generated files: `git diff --exit-code` clean. Modules: `go mod tidy` changes nothing.
 
 ## Workflow shape
 
-```
-trigger → orchestrator → reusable checks (workflow_call) → aggregate job → required status
-```
-
-| Part | Rule |
-|---|---|
-| Aggregate | the only required check; needs every check, `if: always()`; ⛔ unless each result is `success` · ⚠️ a skipped job reads as passing |
-| `concurrency` | `cancel-in-progress`, grouped by workflow + ref · not in a workflow that applies infrastructure |
-| `permissions` | `contents: read` on top; a job needing more grants itself |
-| `timeout-minutes` | every job |
-| Path filters | where a repo holds several deployables |
-
-## Test the artifact CI built
-
-Build once: buildx `load: true`, CI tag → artifact suite receives it as `SERVICE_IMAGE`.
+The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ skipped reads as passing.
 
 ## Secrets
 
-| When | Then |
-|---|---|
-| job reads a secret | runs on pushes and same-repo PRs only |
-| secret missing | preflight ⛔ fails, one line: secret name + command that sets it |
-| test step | sets `REQUIRE_*` |
+- Private packages reach an image build as a BuildKit secret.
 
 ## Release from a tag
 
-```
-make release TYPE=patch|minor|major → tag → CI re-runs at tag → ✅ gates every publish → images · packages
-```
+`make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.
 
-| Step | Rule |
-|---|---|
-| `make release` | derives next semver · ⛔ empty result · ⛔ tag already on `origin` |
-| Trigger | semver tags only: `v[0-9]+.[0-9]+.[0-9]+` |
-| Images | multi-arch · tags: ref, short sha, `latest` · compile on `$BUILDPLATFORM`, cross-compile to `TARGETOS/TARGETARCH` |
-| Docker Hub login | OIDC via `docker/login-action`: org as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in env, `id-token: write` |
-| Hub connection | one per repo; subject `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`) |
-| npm packages | trusted publishing (OIDC) + provenance · a job with `id-token: write` installs `--ignore-scripts` |
+- 🩷 Before the first OIDC publish: create the Docker Hub repository; publish the npm package by hand.
+- A second registry copies by digest.
+
+## Where CI stops
+
+- `gh pr merge --auto` fails where auto-merge is off.
+- ⚠️ A run with no step output: check the spending limit first.
+- 🩷 Terraform: plan on the PR; a person applies.
 
 ⚠️ Hole: vulnerability and license checks — metacensus/skills#13.

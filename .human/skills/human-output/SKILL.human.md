@@ -1,35 +1,19 @@
 > The shape is seen before the words are read.
 
-Fires: reports, proposals, options, summaries, issue or PR bodies, parallel documents.
+Fires: reports, proposals, options, summaries, issue or PR bodies.
 
-Classify → form → highest device → draw for the medium
+| Family | Device | Form |
+|---|---|---|
+| Status | mark | keyed mark lines |
+| Structure | position | tree, table, matrix |
+| Flow | direction | `A → B → C`, loop |
+| Logic | branch | `when X → Y` |
+| Meaning | words | terms, prose |
 
-## Families
+✅ done · ⛔ waits on you · 🔷 ready · 🔶 next · ⏳ waiting · 🌙 deferred · ⭐ new · 🩷 needs a person's hands · 📌 exists · 🟣 edit · ⚠️ risk
 
-| Family | Members | Device | Form |
-|---|---|---|---|
-| Status | state, change, ask | mark | keyed mark lines |
-| Structure | hierarchy, comparison, coverage | position | tree, table, matrix |
-| Flow | sequence, lifecycle, cycle | direction | `A → B → C`, state line, loop |
-| Logic | rule, decision | branch | `when X → Y`, decision table |
-| Meaning | definition, example, reason | words | terms, sample, prose |
+Icons: plain, colored, distinct in color or shape; no grey, white, black, detailed, or look-alike ones. They lead the line as tags, then the title; text never repeats them.
 
-## What survives compression
-
-- Keep what the reader acts on · layer detail · drop what nobody misses
-- One idea per item or outline line
-- A link to a numbered thing: its number as text
-
-## Marks
-
-✅ done · ⛔ waits on you · 🟢 ready · ⬜ next · ⏸️ parked · 🆕 new · 📌 exists · ✏️ edit · ⚠️ risk; one meaning each; negatives `·`.
-
-## Media
-
-| Medium | Leads with | Draws | Route |
-|---|---|---|---|
-| Conversation | outcome, queue | marks, tables | [chat](references/chat.human.md) |
-| Parallel document | a map | headings, tables, marks | [parallel](references/parallel.human.md) |
-| Issue or PR body | changes, done | tables, lists, diagrams | [github](references/github.human.md) |
+Media: [chat](references/chat.human.md) · [parallel](references/parallel.human.md) · [github](references/github.human.md)
 
 Pages read often: [the loop](references/loop.human.md).
