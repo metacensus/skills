@@ -27,7 +27,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 ## Implement
 
 - Status is In progress: assign the acting identity, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
-- The branch is [`checkin`'s](../checkin/SKILL.md).
+- [`checkout`](../checkout/SKILL.md) holds: current main, a worktree and branch of its own.
 - [`elegance`](../elegance/SKILL.md) governs every line written.
 - Work too large for one agent goes to [`parallelize`](../parallelize/SKILL.md), answered: units are the design's pieces, edges the contracts it settled, the action is to build each, done is its criteria and the gate, checks are `elegance`.
 

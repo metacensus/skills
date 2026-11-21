@@ -7,7 +7,7 @@ A sloppy check-in rarely breaks the build — the gate catches that. It causes *
 
 ## 1. Branch — never the default branch
 
-If `git rev-parse --abbrev-ref HEAD` names the default branch, branch first. Name the branch **`<your-name>/<topic>`**, `alex/retry-backoff`: the owner prefix says whom to ask about a stale branch, and the topic names the change's subject rather than a ticket or the tool that made it. Rename (`git branch -m`) a branch off that shape before pushing.
+If `git rev-parse --abbrev-ref HEAD` names the default branch, branch first, named per [`checkout`](../checkout/SKILL.md). Rename (`git branch -m`) a branch off that shape before pushing.
 
 ## 2. Match precedent before you invent
 
@@ -27,29 +27,37 @@ Change the lines the change needs and no others. Never reformat or re-serialize 
 
 A pull request onto someone else's branch carries only your edits; offer a rebase or merge of their base as a branch of its own.
 
-## 6. Run the gate
+## 6. Sync with main
+
+Before the gate, so the gate runs on what will merge. `git fetch origin`; a branch behind `origin/<default>` brings it in:
+
+- Rebase while the branch is yours alone and unreviewed; merge once another has pulled it or review has begun, and never force-push over them.
+- A conflict in a generated file, a lockfile or generated code, is regenerated, never merged by hand.
+- `git diff origin/<default>...HEAD` shows only your change, and the PR body describes only it.
+
+## 7. Run the gate
 
 Run the repository's gate locally even when CI repeats it: finding the break before the push is the point. Where the gate validates content, a failure names the rule it holds; read that rule before working around it.
 
-## 7. Ask what settles what you altered
+## 8. Ask what settles what you altered
 
 Where the repository has an `elegance-mapping.md`, `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` maps changed paths to the review they need; run it and do what it prints, even when sure. It is computed from paths because that is the judgement an author makes worst about their own work.
 
 Where the repository is public (`gh repo view --json visibility`), run the [`open-source`](../open-source/SKILL.md) skill's review over the change.
 
-## 8. Read your own diff
+## 9. Read your own diff
 
 `git --no-pager diff`, every line, as if reviewing someone else:
 
-- Is the line count proportional to the change described?
+- Is the line count proportional to the change described, and do additions net of removals (`git diff --shortstat origin/<default>...HEAD`) match it? A change that only adds where it could have replaced says why.
 - Did anything move that did not need to?
 - Is any file in it one you did not mean to touch?
 - Is every behavior change tested?
 
-## 9. Commit and PR text
+## 10. Commit and PR text
 
 Match the repository's observed commit style (`git log`). A commit message answers to [5C](../elegance/references/cells/5C-commit.md) and a PR body to [4C](../elegance/references/cells/4C-merges.md). End both with the attribution lines the session supplies.
 
-## 10. Stop at a verified diff
+## 11. Stop at a verified diff
 
 Make the change, verify it, show the diff, and stop. Committing, pushing, and opening a pull request are the user's call unless they have handed you the branch.
