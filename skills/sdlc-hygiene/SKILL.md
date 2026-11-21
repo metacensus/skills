@@ -7,7 +7,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The scope is the user's Epic, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh api repos/OWNER/REPO/issues/N/sub_issues --paginate`, and the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
+- The scope is the user's Epic, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'`, and the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
 - The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, else all.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
@@ -53,12 +53,19 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Schedule
 
-- The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended, as a cron on the delegator's machine, where `gh` holds the `project` scope.
-- Its line fetches the mapping and names an issue in a private repository, where the run posts its stage comments, flags and Read's questions. Its tools read, and write only that comment.
+- The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended: a script on the delegator's machine, where `gh` holds the `project` scope, run by cron.
+- The script reads the mapping and each board's `sdlc-status` lines, runs the stages on tools that only read, and posts the summary they print as one comment on an issue in a private repository. The delegator's own settings add their allow rules to the run's.
+- Sweep's briefs carry the board lines in place of `sdlc-status`. A check needing a command the run does not hold, such as the rate-limit fallback or a repository's own forms, is marked `not run` in the summary.
 - Adopt, Act and Report wait for the delegator, in a session opened on that comment.
 
-```text
-0 9 * * 1  gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > /tmp/sdlc-mapping.md && claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER. The mapping is /tmp/sdlc-mapping.md. Comment the summary on OWNER/PRIVATE#N." --allowedTools Agent Read 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' 'Bash(gh api repos/*/sub_issues --paginate)' 'Bash(node *sdlc-status.mts *)' 'Bash(gh issue comment *)' --disallowedTools 'Bash(*--apply*)'
+```sh
+set -e
+map=$(mktemp) status=$(mktemp) out=$(mktemp)
+gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > "$map"
+for board in OWNER/N; do node PLUGIN/scripts/sdlc-status.mts "$board" --mapping "$map"; done > "$status"
+claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER, and print the summary. The mapping is $map; the boards' sdlc-status lines are $status." \
+  --allowedTools Agent Read 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' > "$out"
+gh issue comment N -R OWNER/PRIVATE --body-file "$out"
 ```
 
-Weekly is the default 7 days; every N days is `0 9 */N * *`.
+Its cron line is `0 9 * * 1  sh PATH/TO/SCRIPT`, weekly being the default 7 days; every N days is `0 9 */N * *`.

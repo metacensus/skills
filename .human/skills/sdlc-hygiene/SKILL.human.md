@@ -23,4 +23,4 @@ A request naming a class's fix is the yes to it.
 
 ## Schedule
 
-A weekly cron, `claude -p` on the delegator's machine, runs Precheck, Sweep and Read and comments their summary on a private issue; its tools read, but for that comment. Adopt, Act and Report wait for the delegator.
+A weekly cron runs a script on the delegator's machine: it reads the mapping and board status, runs Precheck, Sweep and Read through `claude -p` on tools that only read, and posts their summary on a private issue. A check needing more is `not run`. Adopt, Act and Report wait for the delegator.
