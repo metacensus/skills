@@ -12,7 +12,7 @@ Before drafting a Bug, search for a duplicate: `gh issue list -R OWNER/REPO --se
 Draft the issue against these checks:
 
 - **Type** on the [ladder](../sdlc/SKILL.md#the-ladder). Filing an Initiative or Epic escalates to the [`delegator`](../sdlc/SKILL.md#roles), unless the remit hands it down.
-- **Parent**, if any: an Epic's is an Initiative; a Task's or Bug's, an Epic; an Initiative takes none.
+- **Parent**, if any: an Epic's is an Initiative; a Task's or Bug's, an Epic; a Release's, a Rollout; an Initiative or Rollout takes none.
 - **Repository**: as the ladder says; an Epic's, the repository most of its work lands in; an Initiative's, any the delegator names, else the home the mapping suggests.
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.

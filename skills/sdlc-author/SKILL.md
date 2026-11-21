@@ -12,6 +12,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Its body carries its form's required fields.
 - Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../decouple/SKILL.md#stack) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
 - Every `blocked by` is closed or, [stacked](../decouple/SKILL.md#stack), In review; its parent is open.
+- A blocker typed Release or Rollout is read by title and state alone; its blockers are never walked.
 - Its card, if any, sits in its status's column, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author may not [make](../sdlc/SKILL.md#roles), such as a missing field in another's body. **Stop** when it is assigned to another, blocked but not stacked, under a closed parent, or past In progress.

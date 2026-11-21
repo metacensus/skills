@@ -1,0 +1,18 @@
+name: Release
+description: One versioned release of one repository.
+type: Release
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
+
+        Title it with its version. The work it ships blocks it (`gh issue edit THIS --add-blocked-by N`); its parent, if any, is a Rollout.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence — what this release delivers.
+    validations:
+      required: true

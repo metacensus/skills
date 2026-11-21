@@ -1,0 +1,18 @@
+name: Rollout
+description: Releases across repositories, held as sub-issues.
+type: Rollout
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
+
+        Its Releases are sub-issues (`gh issue edit RELEASE --parent THIS`); it takes no parent.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence — what is true when every Release has shipped.
+    validations:
+      required: true

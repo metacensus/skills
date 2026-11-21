@@ -21,11 +21,11 @@ You read one repository and flag every drift a class reaches, without weighing i
 **Read** every issue in scope, open ones alone unless `unowned` or `untyped` is among your classes, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,state,stateReason,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type and state, `gh issue view <url> --json issueType,state`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a family; rate-limited, read the issues through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate`. Flag only these, of the classes you get:
 
 - **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative or Epic with no children.
-- **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, an Initiative with a parent.
+- **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, a Release under anything but a Rollout, an Initiative or Rollout with a parent.
 - **done-but-open**: an Epic whose children are all closed; a Task a PR closes, `gh pr view <url> --json state` saying `MERGED`.
 - **closed-parent**: an open issue whose parent is closed.
 - **stale**: no update in `stale` days; Backlog, and created over `backlog` days ago.
-- **mislabeled**: `ready` with a required field missing; every `blocked by` closed, yet no `ready`.
+- **mislabeled**: `ready` with a required field missing; every [`blocked by`](../skills/sdlc/SKILL.md#mechanisms) closed, yet no `ready`.
 - **board**: an `sdlc-status` line that names a move or an archive.
 - **misplaced**: a card on a board other than the one its Initiative is held by, or the default board when none holds it.
 - **uncarded**: an open issue with no card on any board, that the board holding its Initiative, else the default, plausibly holds by its Purpose, naming that board; its Initiative from `sdlc-status.mts OWNER/REPO#N... --mapping PATH` run on those issues.

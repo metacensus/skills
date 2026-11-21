@@ -5,14 +5,14 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { table } from "./mapping.mts";
 
-type Ref = { url: string; state: string };
+type Ref = { url: string; state: string; issueType: { name: string } | null };
 type Values = { nodes: { name?: string; field?: { name: string } }[] };
 type Item = { id: string; project: { number: number; owner: { login: string } }; values: Record<string, string | null> };
 type Issue = {
   id: string; url: string; state: string; stateReason: string | null;
   issueType: { name: string } | null; assignees: { totalCount: number };
   labels: { nodes: { name: string }[] };
-  blockedBy: { nodes: Ref[] }; blocking: { nodes: Ref[] };
+  issueDependenciesSummary: { blockedBy: number }; blocking: { nodes: Ref[] };
   closedByPullRequestsReferences: { nodes: { state: string }[] };
   issueFieldValues: Values;
   parent: { url: string } | null; subIssues: { nodes: { url: string }[] };
@@ -78,7 +78,7 @@ const column = (status: string) => columns.get(status) ?? status;
 // a card's whole `fieldValues` connection costs one per card), each under an alias `v0`, `v1`, …
 const cardFields = [...new Set(["Status", ...(sections.get("Inherited fields")?.keys() ?? [])])];
 const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} labels(first:20){nodes{name}}
-  blockedBy(first:20){nodes{url state}} blocking(first:20){nodes{url state}}
+  issueDependenciesSummary{blockedBy} blocking(first:100){nodes{url state issueType{name}}}
   closedByPullRequestsReferences(first:5){nodes{state}}
   issueFieldValues(first:10){nodes{... on IssueFieldSingleSelectValue{name field{... on IssueFieldSingleSelect{name}}}}}
   parent{url} subIssues(first:50){nodes{url}}
@@ -138,16 +138,15 @@ if (board1) {
 const below = new Set<string>();
 if (reset) for (const url of scope) for (const c of fetchIssue(url).subIssues.nodes) if (!below.has(c.url)) { below.add(c.url); scope.push(c.url); }
 
-const isParent = (i: Issue) => i.issueType?.name === "Epic" || i.issueType?.name === "Initiative";
 // Ancestors are read in batches, as are a parent's children when its status asks; an issue a Priority walk
 // alone reaches is read as the walk asks.
 reach(scope, (i) => [i.parent?.url]);
-fetchMany([...new Set(scope.flatMap((u) => (isParent(issues.get(u)!) ? issues.get(u)!.subIssues.nodes.map((c) => c.url) : [])))].filter((u) => !issues.has(u)));
+fetchMany([...new Set(scope.flatMap((u) => issues.get(u)!.subIssues.nodes.map((c) => c.url)))].filter((u) => !issues.has(u)));
 const status = (url: string): string => {
   const i = fetchIssue(url);
-  if (isParent(i)) fetchMany(i.subIssues.nodes.map((c) => c.url).filter((u) => !issues.has(u)));
-  const openBlocker = i.blockedBy.nodes.some((b) => b.state === "OPEN");
-  const started = isParent(i) && i.subIssues.nodes.some((c) => ["In progress", "In review", "Done"].includes(status(c.url)));
+  fetchMany(i.subIssues.nodes.map((c) => c.url).filter((u) => !issues.has(u)));
+  const openBlocker = i.issueDependenciesSummary.blockedBy > 0;
+  const started = i.subIssues.nodes.some((c) => ["In progress", "In review", "Done"].includes(status(c.url)));
   return i.state === "CLOSED" ? (i.stateReason === "COMPLETED" ? "Done" : "Dropped")
     : i.closedByPullRequestsReferences.nodes.some((p) => p.state === "OPEN") ? "In review"
     : i.assignees.totalCount > 0 || started ? "In progress"
@@ -163,6 +162,7 @@ const pick = (v: Values, name: string) => v.nodes.find((n) => n.field?.name === 
 const stored = (i: Issue) => pick(i.issueFieldValues, "Priority");
 const own = (i: Issue) => (below.has(i.url) ? null : stored(i));
 const higher = (a: string | null, b: string | null) => (!a ? b : !b ? a : rank.get(a)! <= rank.get(b)! ? a : b);
+const raises = (b: Ref) => b.state === "OPEN" && !["Release", "Rollout"].includes(b.issueType?.name ?? "");
 const inherited = new Map<string, string | null>();
 const inherit = (url: string, seen = new Set<string>()): string | null => {
   if (inherited.has(url)) return inherited.get(url)!;
@@ -170,7 +170,7 @@ const inherit = (url: string, seen = new Set<string>()): string | null => {
   seen.add(url);
   const i = fetchIssue(url);
   let p = own(i) ?? (i.parent ? inherit(i.parent.url, seen) : null);
-  if (!own(i)) for (const b of i.blocking.nodes) if (b.state === "OPEN") p = higher(p, inherit(b.url, seen));
+  if (!own(i)) for (const b of i.blocking.nodes) if (raises(b)) p = higher(p, inherit(b.url, seen));
   inherited.set(url, p);
   return p;
 };
@@ -257,7 +257,7 @@ for (const url of scope) {
         `setIssueFieldValue(input:{issueId:${JSON.stringify(i.id)},issueFields:[{fieldId:${JSON.stringify(field.id)},singleSelectOptionId:${JSON.stringify(field.options.find((o: { name: string }) => o.name === p).id)}}]})`);
   }
   for (const b of i.blocking.nodes)
-    if (i.state === "OPEN" && b.state === "OPEN" && own(i) && rank.get(own(i)!)! > (rank.get(inherit(b.url) ?? "") ?? Infinity))
+    if (i.state === "OPEN" && raises(b) && own(i) && rank.get(own(i)!)! > (rank.get(inherit(b.url) ?? "") ?? Infinity))
       notes.push(`blocks higher: ${b.url}`);
   console.log([url, s, p ?? "—", initiative(url) ?? "—", ...notes].join("\t"));
 }

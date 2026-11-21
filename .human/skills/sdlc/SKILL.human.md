@@ -13,13 +13,16 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
 |Bug|`type: Bug`|as a Task|
+|Release|`type: Release`|one version of one repo|
+|Cross-project release|`type: Rollout`|Releases across repos|
 |Sub-task|·|a Task wanting children is an Epic|
 
 ## Mechanisms
 
 |Mechanism|Carries|
 |---|---|
-|Parent|Epic → Initiative; Task → Epic|
+|Parent|Epic → Initiative; Task → Epic; Release → Rollout|
+|Dependency|`blocked by`; a Release or Rollout read by title and state only|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
