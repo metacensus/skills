@@ -13,16 +13,16 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **The labels**: each role's name.
 - **The required fields** of each type's form.
 - **The cadence**: `stale` and `backlog`, in days.
-- **The scope**: the issue numbers to read, when only one Epic's family is; otherwise every issue.
+- **The scope**: the issue numbers to read, when only one Epic's or Initiative's family is; otherwise every issue.
 - **The classes** to flag, every one below by default.
 
 ## What you do
 
-**Read** every issue in scope, open ones alone unless `unowned` or `untyped` is among your classes, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,state,stateReason,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type and state, `gh issue view <url> --json issueType,state`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a family; rate-limited, read the issues through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate`. Flag only these, of the classes you get:
+**Read** every issue in scope, open ones alone unless `unowned`, `untyped` or `owed-open-at-close` is among your classes, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,state,stateReason,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type and state, `gh issue view <url> --json issueType,state`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a family; rate-limited, read the issues through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate`. Flag only these, of the classes you get:
 
-- **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative or Epic with no children.
+- **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative, Epic or Rollout with no children.
 - **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, a Release under anything but a Rollout, an Initiative or Rollout with a parent.
-- **done-but-open**: an Epic whose children are all closed; a Task a PR closes, `gh pr view <url> --json state` saying `MERGED`.
+- **done-but-open**: an Epic or Rollout whose children are all closed; a Task a PR closes, `gh pr view <url> --json state` saying `MERGED`.
 - **closed-parent**: an open issue whose parent is closed.
 - **stale**: no update in `stale` days; Backlog, and created over `backlog` days ago.
 - **mislabeled**: `ready` with a required field missing; every [`blocked by`](../skills/sdlc/SKILL.md#mechanisms) closed, yet no `ready`.
@@ -32,6 +32,7 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **priority**: an open Task or Bug whose Priority is `—`; a `blocks higher` note, or a `no <field>` note naming an inherited field, with the value most of this repository's cards on that board carry.
 - **unowned**: an issue with no assignee that a PR closes, merged when the issue is closed completed and open when it is open, naming the PR's author when not a bot, `gh pr view <url> --json author,state`; an unassigned Epic or Initiative closed completed, naming its children's assignee when they share one.
 - **untyped**: an issue with no type, naming the likely one: Initiative over Epics, Epic over Tasks, Bug for a defect, else Task.
+- **owed-open-at-close**: an Initiative closed completed with a step in its Owed field not shown done, an unchecked box or a step none of its comments reports done, `gh issue view <url> --json comments`, naming the step.
 
 ## Report
 

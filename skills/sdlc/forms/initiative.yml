@@ -1,5 +1,5 @@
 name: Initiative
-description: Quarter-scale, held as Epics.
+description: A finish line, held as the Epics that exist for it; work it shares is a blocker.
 type: Initiative
 body:
   - type: markdown
@@ -21,7 +21,7 @@ body:
     id: goal
     attributes:
       label: Goal
-      description: One paragraph — what is true when every Epic has closed.
+      description: One paragraph — what is true when every Epic has closed, with its date, if one is committed.
     validations:
       required: true
 
@@ -47,6 +47,12 @@ body:
       description: "What always waits on a person: named Spikes, hands-on steps, publishing, merges."
     validations:
       required: true
+
+  - type: textarea
+    id: measures
+    attributes:
+      label: Measures
+      description: "One per line: measure · today · target. A measure never replaces the finish line."
 
   - type: textarea
     id: owed
