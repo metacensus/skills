@@ -46,6 +46,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 ## Report
 
 - Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: escalate`, a line `- [ ] <issue>: <question> → <direction>` per question.
+- Once the delegator answers, each answer is commented on its Epic, and a family left with no question goes to its crew by a [handoff](../sdlc/SKILL.md#handoff), those answers its Decided.
 - The stage's comment counts by class what was fixed and escalated.
 
 **Escalate** while a flag or question waits on the delegator.
