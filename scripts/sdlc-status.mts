@@ -78,7 +78,7 @@ const column = (status: string) => columns.get(status) ?? status;
 // a card's whole `fieldValues` connection costs one per card), each under an alias `v0`, `v1`, …
 const cardFields = [...new Set(["Status", ...(sections.get("Inherited fields")?.keys() ?? [])])];
 const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} labels(first:20){nodes{name}}
-  issueDependenciesSummary{blockedBy} blocking(first:20){nodes{url state issueType{name}}}
+  issueDependenciesSummary{blockedBy} blocking(first:100){nodes{url state issueType{name}}}
   closedByPullRequestsReferences(first:5){nodes{state}}
   issueFieldValues(first:10){nodes{... on IssueFieldSingleSelectValue{name field{... on IssueFieldSingleSelect{name}}}}}
   parent{url} subIssues(first:50){nodes{url}}

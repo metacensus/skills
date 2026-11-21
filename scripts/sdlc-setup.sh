@@ -107,13 +107,13 @@ for o in $(sed -n 's|^\([^/]*\)/[0-9][0-9]*$|\1|p' <<<"$boards" | sort -u); do
   fi
 done
 
-ladder=(Initiative Epic Task Bug Release Rollout)
+ladder=$(sed -n 's/^type:[[:space:]]*//p' "$hub"/forms/*.yml | sort -u)
 if types=$(gh api "orgs/$owner/issue-types" --jq '.[] | select(.is_enabled) | .name' 2>/dev/null); then
-  for want in "${ladder[@]}"; do
+  for want in $ladder; do
     grep -qx "$want" <<<"$types" || { echo "TODO  org issue type $want is missing"; todo=1; }
   done
   while read -r have; do
-    [[ " ${ladder[*]} " == *" $have "* ]] || { echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1; }
+    grep -qxF "$have" <<<"$ladder" || { echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1; }
   done <<<"$types"
 elif [[ $(gh api "users/$owner" --jq .type) == User ]]; then
   echo "ok    $owner is not an organization; titles state the type"
@@ -144,7 +144,7 @@ fi
 if [[ $where ]]; then
   have=$(form_types "$where")
   lacking=
-  for want in $(sed -n 's/^type:[[:space:]]*//p' "$hub"/forms/*.yml | sort -u); do
+  for want in $ladder; do
     grep -qx "$want" <<<"$have" && continue
     echo "TODO  forms in $where lack a form of type $want; copy one from $hub/forms/ to its .github/ISSUE_TEMPLATE/"
     lacking=1 todo=1
