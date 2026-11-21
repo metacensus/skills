@@ -113,6 +113,27 @@ Each stage belongs to a skill. It runs its own checks and the mapping's Checks r
 
 A comment naming a private repository lands only in a private one.
 
+## Phases
+
+Every tier runs three phases, each a run of [stages](#stages) in the skill that carries the tier, its carrier. Their gates mirror around the work, and nobody confirms their own step:
+
+| Phase | Step | Whose | Asks | Answered by |
+|---|---|---|---|---|
+| **Design** | Frame | `delegator`, through [`sdlc-intake`](../sdlc-intake/SKILL.md) | what should we do | `ready` |
+| | Design | the carrier | how, and what of the frame to change | `designed`, applied by the `delegator` |
+| **Delivery** | Work | the carrier | · | a PR, or the children closed |
+| | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
+| **Record** | Accept | `delegator` | did we achieve what we wanted | the close, and `reached-up` |
+
+Design meets the bar [the ladder](#the-ladder) names; a tier's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md). Accept has no check of its own yet: a clean merge closes the issue.
+
+| Tier | Carrier | Design | Delivery | Record |
+|---|---|---|---|---|
+| Task, Bug | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Publish, Respond | Land: the merge and the close |
+| Epic | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land | Close: the rollout record |
+
+A Spike is design work carved into a Task, at any tier. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
+
 ## Closing
 
 | Outcome | Close |
