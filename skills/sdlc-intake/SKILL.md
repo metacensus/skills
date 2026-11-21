@@ -25,9 +25,9 @@ No issue exists yet, so Compose's comment goes to the user.
 
 ## Decompose
 
-An Epic's children are filed against [`elegance`'s 4A plan](../elegance/references/cells/4A-plan.md).
+A parent's children file against its bar: an Initiative's Epics from its approved outline, against [`elegance`'s 3A design](../elegance/references/cells/3A-design.md); an Epic's children against [4A plan](../elegance/references/cells/4A-plan.md).
 
-Compose each child, then File it, each blocker before what it blocks: `--parent` the Epic, `--blocked-by` each stated blocker. File every child before Curating any, so Curate reads the whole set.
+Compose each child, then File it, each blocker before what it blocks: `--parent` the parent, `--blocked-by` each stated blocker. File every child before Curating any, so Curate reads the whole set.
 
 Work found during execution files through Compose, under the Epic it serves; it is not folded into a sibling.
 

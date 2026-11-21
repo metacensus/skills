@@ -18,7 +18,7 @@ Compose → File → Curate → ready
 
 ## Decompose
 
-Epic children: blockers first, all before Curate.
+Initiative: its Epics, from the approved outline. Epic: its children. Blockers first, all before Curate.
 
 ## File
 
