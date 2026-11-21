@@ -5,6 +5,8 @@ description: Read code with a person one block at a time, so they understand it 
 
 **A walkthrough teaches; nothing changes unless the person asks.**
 
+Steps the person runs, not code they read, go to [`operator-runbook`](../operator-runbook/SKILL.md).
+
 ## Pace
 
 One chunk at a time: a logical block, a type, a function, a resource, ten to thirty lines. After each, stop and take direction: continue, deeper, skip, or a question. Deeper means data flow, concurrency, error paths, and how the chunk joins the next; skip means one line and on. Line by line only on a block the person names, after a chunk pass left it unclear.
