@@ -11,7 +11,7 @@ Probe → Survey → ⛔ List → Pilot → Fan-out → Verify → Report
 
 ## The probe
 
-- One read-only command per repository that exits 0 when the change is present, reading the default branch through the API so nothing is cloned to look: `gh api repos/ORG/REPO/contents/.nvmrc -H 'Accept: application/vnd.github.raw' | grep -qx 22`, `gh api repos/ORG/REPO/labels/LABEL`, `gh api repos/ORG/REPO --jq .allow_auto_merge | grep -qx true`.
+- One read-only command per repository that exits 0 when the change is present, run as the identity that will write it, reading the default branch through the API so nothing is cloned to look: `gh api repos/ORG/REPO/contents/.nvmrc -H 'Accept: application/vnd.github.raw' | grep -qx 22`, `gh api repos/ORG/REPO/labels/LABEL`, `gh api repos/ORG/REPO --jq .allow_auto_merge | grep -qx true`.
 - A change with several spellings probes each: a Node pin lives in `.nvmrc`, `engines` and CI's `node-version`.
 
 ## Survey
