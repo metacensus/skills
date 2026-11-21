@@ -38,7 +38,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 - Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and [`sdlc-status --apply`](../sdlc/SKILL.md#status) on each board, which settles every `board` flag.
 - An `untyped` Task or Bug takes the type the sweep names.
-- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `unowned`, the assignee the sweep names; an `untyped` Epic or Initiative, its type; a `no <field>` note, the value the sweep names for its topmost card, then `sdlc-status --apply`; `setup`'s, and each `root` issue, as a question. A request that named a class's fix is the delegator's yes to it. It closes nothing.
+- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `unowned`, the assignee the sweep names; an `untyped` Epic or Initiative, its type; a `no <field>` note, the value the sweep names for its topmost card, then `sdlc-status --apply`; `uncarded`, a card on the board the sweep names, then `sdlc-status --apply`; `setup`'s, and each `root` issue, as a question. A request that named a class's fix is the delegator's yes to it. It closes nothing.
 - Its own writes go out a second apart: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a faster burst. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
 
 **Stop** on a rate limit; a rerun once it resets skips what is written.
