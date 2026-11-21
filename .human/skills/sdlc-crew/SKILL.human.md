@@ -4,11 +4,13 @@ Fires: orchestrating or delegating an Epic's children across agents; asking what
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Epic, composing [`parallelize`](../parallelize/SKILL.human.md).
 
+A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL.human.md).
+
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
 |Precheck|Epic `designed`; children `ready`, acyclic; remit cited|a family question|cycle|
 |Plan|contracts land first; no write-sets overlap|contract not the delegator's|cannot cut|
-|Delegate|a child briefed only when Ready, in its own tree|Design outside remit|an author stops|
+|Delegate|a child briefed only when Ready or stacked, in its own tree|Design outside remit|an author stops|
 |Review|fresh `sdlc-review` per PR|a choice not the delegator's|·|
 |Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on|merge refused|a stop reopens the plan|
 |Close|children closed; `Decision:` and rollout record on the Epic; `sdlc-hygiene` clean|dead end or deviation|·|
