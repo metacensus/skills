@@ -1,6 +1,6 @@
 ---
 name: sdlc-hygiene
-description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, and when asking what is left to decide.
+description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, after a pivot, when asking what is left to decide, and when scheduling the sweep.
 ---
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments to the session.
@@ -50,3 +50,15 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 - The stage's comment counts by class what was fixed and escalated.
 
 **Escalate** while a flag or question waits on the delegator.
+
+## Schedule
+
+- The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended, as a cron on the delegator's machine, where `gh` holds the `project` scope.
+- Its line fetches the mapping and names an issue in a private repository, where the run posts its stage comments, flags and Read's questions. Its tools read, and write only that comment.
+- Adopt, Act and Report wait for the delegator, in a session opened on that comment.
+
+```text
+0 9 * * 1  gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > /tmp/sdlc-mapping.md && claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER. The mapping is /tmp/sdlc-mapping.md. Comment the summary on OWNER/PRIVATE#N." --allowedTools Agent Read 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' 'Bash(gh api repos/*/sub_issues --paginate)' 'Bash(node *sdlc-status.mts *)' 'Bash(gh issue comment *)' --disallowedTools 'Bash(*--apply*)'
+```
+
+Weekly is the default 7 days; every N days is `0 9 */N * *`.
