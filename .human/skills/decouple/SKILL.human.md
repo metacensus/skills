@@ -8,6 +8,6 @@ Fires: a thread waits on a person; a batch of questions; every thread about to h
 |plan, scope, wording, order|decided, `Decided, reversible:`, keep going|
 |already answered|never asked|
 
-While it waits, only what can be undone: build the options · stack on open PRs · push the neighbours · run discovery.
+While it waits, only what can be undone: build the options · stack on PRs in review · push the neighbours · run discovery.
 
 Overnight, from a [handoff](../sdlc/SKILL.human.md#handoff): grants quoted in every brief · a clock-time stop · morning board.

@@ -23,7 +23,7 @@ Each option goes far enough that the person picks by looking: the copy drafted, 
 
 ### Stack
 
-A dependent whose open blockers each have an open pull request starts on their branch, its own pull request based on theirs, when nothing still pending on them reaches what it uses. It merges after its bases, rebased as each lands. [`sdlc-author`'s Precheck](../sdlc-author/SKILL.md#precheck) takes it as unblocked.
+A dependent whose open blockers each have an open pull request starts on their branch, its own pull request based on theirs, when nothing still pending on them, a person's choice or a contract `sdlc-crew`'s Plan merges first, reaches what it uses. It merges after its bases, rebased as each lands; a base whose review stops, or that closes unmerged, parks it as Blocked. [`sdlc-author`'s Precheck](../sdlc-author/SKILL.md#precheck) takes it as unblocked.
 
 ### Push the neighbours
 
