@@ -54,6 +54,8 @@ Work starts only on a Task or Bug in Ready, highest Priority first, `gh issue li
 
 A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates.
 
+A remit hands choices down short of its **stops**, the kinds of choice, or the issues by name, that escalate however much else it hands over. Unless the remit names its own, they are a fact only a person knows, canon or ontology, policy, a message to others, a choice its giver decided, and closing an Initiative. `designed` is applied by the issue's delegator, never by the agent whose Design proposed it.
+
 A delegate **escalates** a choice it cannot own, **consults** a person on a question whose choice stays its own, and **reports** what its delegator should know and need not answer. A delegator may **steer**, **halt** or **query** its delegate unprompted.
 
 What goes up is sized to the receiver's scope: the choice, its options and a recommendation, never the work behind them. To a person it goes as [Reporting](#reporting) says.
@@ -120,7 +122,7 @@ A comment naming a private repository lands only in a private one.
 | Child needed a parent rewrite | `reached-up` on the Task |
 | Spike answered | **completed** + a `Decision:` comment, once the decision is in the body that reads it (usually the parent's: `reached-up`) |
 
-Completion is not deviation: a plain **completed** closes with no escalation. `deviated` and **not planned** escalate to the `delegator`.
+Completion is not deviation: a plain **completed** closes with no escalation. The issue holds the problem and its Design the solution, so a Design settling what the body left open is no deviation; contradicting the body, or settling a [stop](#roles), is. `deviated` and **not planned** escalate to the `delegator`.
 
 ## Linking an issue to its branch and PR
 

@@ -26,4 +26,4 @@ Epic children: blockers first, all before Curate.
 
 ## Curate
 
-Rerun Compose: delegator applies `ready`; others ⛔.
+Rerun Compose: the delegator, or a remit naming it, applies `ready`, and `designed` short of its stops; others ⛔.

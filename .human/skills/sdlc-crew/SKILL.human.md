@@ -8,16 +8,16 @@ A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL
 
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
-|Precheck|Epic `designed`; children `ready`, acyclic; remit cited|a family question|cycle|
+|Precheck|Epic `designed`; children `ready`, acyclic; remit and stops cited|a family question|cycle|
 |Plan|contracts land first; no write-sets overlap|contract not the delegator's|cannot cut|
-|Delegate|a child briefed only when Ready or stacked, in its own tree|Design outside remit|an author stops|
+|Delegate|a child briefed only when Ready or stacked, in its own tree|Design settles a stop|an author stops|
 |Review|fresh `sdlc-review` per PR|a choice not the delegator's|·|
 |Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on|merge refused|a stop reopens the plan|
 |Close|children closed; `Decision:` and rollout record on the Epic; `sdlc-hygiene` clean|dead end or deviation|·|
 
 ## Delegate
 
-Author 1 (Precheck, Design) → delegator confirms Design, applies `designed` (within remit, else ⛔) → Author 2 (Implement → Land)
+Author 1 (Precheck, Design) → delegator confirms Design, applies `designed` (⛔ on a stop) → Author 2 (Implement → Land)
 
 ## Close
 

@@ -11,7 +11,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - Each child carries `ready`, with every `blocked by` edge inside the Epic; one that does not goes through [`sdlc-intake`'s Curate](../sdlc-intake/SKILL.md#curate), under the remit.
 - The `blocked by` graph has no cycle.
 - The [mapping](../sdlc/SKILL.md#the-mapping) is read whole.
-- The comment cites the delegator's own remit: which labels, merges, closes and branches it was handed, which checks its environment cannot run that it accepts unchecked, and that the rest escalate.
+- The comment cites the delegator's own remit: which labels, merges, closes and branches it was handed, its stops, which checks its environment cannot run that it accepts unchecked, and that the rest escalate.
 - [`sdlc-family`](../../agents/sdlc-family.md) has read the family, run inline when the delegator is itself delegated.
 
 **Escalate** on a question of `sdlc-family`'s, or a fix the delegator may not [make](../sdlc/SKILL.md#roles). **Stop** on a cycle, or an Epic closed or without `designed`.
@@ -31,10 +31,10 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](../decouple/SKILL.md#stack): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
-- Every author is split at Design: one agent runs Precheck and Design, then returns; its Design is confirmed, `designed` applied, within the delegator's remit, else escalated; a second, briefed with the confirmed Design, runs Implement through Land. A child already `designed` skips the first.
+- Every author is split at Design: one agent runs Precheck and Design, then returns; the delegator confirms its Design and applies `designed`, citing its remit, unless the Design settles one of the remit's [stops](../sdlc/SKILL.md#roles); a second, briefed with the confirmed Design, runs Implement through Land. A child already `designed` skips the first.
 - Authors spawn nothing.
 
-**Escalate** a Design outside the remit. **Stop** when an author stops.
+**Escalate** a Design that settles a stop. **Stop** when an author stops.
 
 ## Review
 
@@ -50,7 +50,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest files as new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, curated as Precheck says, and Plan re-runs over the children unblocked at that moment. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 - After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
-**Escalate** a merge the environment refuses. **Stop** when a child's stop reopens the Epic's plan.
+**Escalate** a merge the environment refuses. **Stop** when a child's author stops on something that reopens the Epic's plan.
 
 ## Close
 
