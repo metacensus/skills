@@ -11,10 +11,11 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Precheck
 
+- The Initiative is open, its body carrying its form's required fields.
 - The roadmap entry it advances, and the smallest finish line that moves it.
 - [The ladder](../sdlc/SKILL.md#the-ladder)'s Initiative test passes; else it refiles as an Epic.
 
-**Escalate** a finish line or non-goal the person has not stated. **Stop** when no roadmap entry owns it.
+**Escalate** a finish line or non-goal the person has not stated. **Stop** on an Initiative closed, or when no roadmap entry owns it.
 
 ## Design
 
@@ -36,7 +37,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Delegate
 
-- One `sdlc-crew` per Epic, each in its own session, split at Design as a crew splits its authors: it runs Precheck and Design and returns; the orchestrator applies `designed`, citing its remit, unless the Design settles one of the remit's [stops](../sdlc/SKILL.md#roles). Those that do go to the person as one outline per wave.
+- One `sdlc-crew` per Epic, split at Design [as a crew splits its authors](../sdlc-crew/SKILL.md#delegate): the orchestrator applies `designed`, citing its remit, unless the Design settles one of the Initiative's Stops or the remit's [stops](../sdlc/SKILL.md#roles). Those that do go to the person as one outline per wave.
 - The orchestrator writes no Epic's Design: one it wrote would go to the person.
 - The person steers, halts or queries in the orchestrator's own session; a change to the plan is mirrored as a comment on the Initiative.
 - As each Epic closes, Plan re-runs over the Epics it unblocks.
@@ -56,4 +57,4 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Reporting
 
-[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on. An Epic that rewrites the Initiative is reported the turn it happens.
+[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on.
