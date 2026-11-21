@@ -8,7 +8,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 
 |Jira|GitHub|Size|
 |---|---|---|
-|Initiative|`type: Initiative`|quarter|
+|Initiative|`type: Initiative`|one outcome; its own Epics, ≥ 2 preferred; shared work a `blocked by`|
 |Epic|`type: Epic`|weeks|
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
