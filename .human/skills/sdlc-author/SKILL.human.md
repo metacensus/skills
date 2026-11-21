@@ -18,7 +18,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 
 ## Land
 
-Merge, [close](../sdlc/SKILL.human.md#closing), file follow-ups.
+Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), file follow-ups.
 
 ## Without a pull request
 
