@@ -21,7 +21,7 @@ Each entry is an example at that scope and time, tagged with the type of locatio
 | 4 Module | [4A plan](cells/4A-plan.md) A parent item with its children and its non-goals [Git/Issues] | [4B surface](cells/4B-surface.md) One module's exports: its types, its functions, and the invariants callers can rely on [Package API] | [4C merges](cells/4C-merges.md) The pull requests, open for decision or merged, each naming the item it closed and where it deviated from the plan [Git/History] |
 | 5 File | [5A criteria](cells/5A-criteria.md) What the file should contain, and the acceptance criteria that say when it is done [Git/Issues] | [5B code](cells/5B-code.md) The file as it is; the test that passes or fails against it [Code] | [5C commit](cells/5C-commit.md) The commit and its message [Git/History] |
 
-*A cell maps to a location type here, and the type maps to a place in the repository's `elegance-mapping.md`, the one file that names an organization.*
+*A cell maps to a location type here, and the type maps to a place in the repository's `elegance-mapping.md`, the one file that names an organization: a row of its `## Locations` table, the type, then its path globs in backticks, the longest match winning. A type with no globs, or a `Hole`, is reported as reached by no path.*
 
 ## Where the grid collapses
 

@@ -5,6 +5,7 @@ set -euo pipefail
 repo=${1:?usage: sdlc-setup.sh OWNER/REPO [PATH | OWNER/NAME:PATH]}
 owner=${repo%%/*}
 hub=$(dirname "$0")/../skills/sdlc
+parse=$(dirname "$0")/mapping.mts
 todo=0
 
 case ${2-} in
@@ -13,39 +14,16 @@ case ${2-} in
 *) mapping=$(<"$2") ;;
 esac
 
-# Body rows of stdin's `## $1` table, tab-separated, backticks stripped.
-rows() {
-  local line section= body= cell cells row
-  while IFS= read -r line; do
-    case $line in
-    '## '*) section=${line#'## '} body= ;;
-    '|'*)
-      [[ $section == "$1" ]] || continue
-      [[ $line =~ ^[-|:\ ]+$ ]] && { body=1; continue; }
-      [[ $body ]] || continue
-      line=${line//\`/}
-      IFS='|' read -ra cells <<<"${line#|}"
-      row=
-      for cell in "${cells[@]}"; do
-        read -r cell <<<"$cell"
-        row+=$cell$'\t'
-      done
-      echo "${row%$'\t'}"
-      ;;
-    esac
-  done
-}
-
 merged() {
   local stated key rest
-  stated=$(rows "$1" <<<"$mapping" | grep -v Hole || true)
+  stated=$(node "$parse" "$1" <<<"$mapping")
   [[ -z $stated ]] || echo "$stated"
   while IFS=$'\t' read -r key rest; do
     case $'\n'$stated in *$'\n'"$key"$'\t'*) ;; *) printf '%s\t%s\t%s\n' "$key" "$key" "$rest" ;; esac
   done
 }
 
-grep '^|.*Hole' <<<"$mapping" | sed 's/^/ok    Hole, so its default holds: /' || true
+node "$parse" --holes <<<"$mapping" | sed 's/^/ok    Hole, so its default holds: /'
 
 gh api -X PATCH "repos/$repo" -F has_issues=true --silent
 echo "ok    issues on"
@@ -75,7 +53,7 @@ while IFS=$'\t' read -r label _; do
     { echo "TODO  label $label: no role names it; delete it, or give it a role in the mapping"; todo=1; }
 done <<<"$labels"
 
-boards=$(rows Boards <<<"$mapping" | grep -v Hole | cut -f1 || true)
+boards=$(node "$parse" Boards <<<"$mapping" | cut -f1)
 [[ $boards ]] || echo "ok    no board"
 views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative')
 for board in $boards; do
@@ -87,7 +65,7 @@ for board in $boards; do
     while IFS=$'\t' read -r status column _; do
       [[ $column == — ]] && { echo "ok    no column for $status"; continue; }
       grep -qxF "$column" <<<"$columns" || { echo "TODO  board $board has no column $column"; todo=1; }
-    done < <(rows Status <"$hub/SKILL.md" | merged Status)
+    done < <(node "$parse" Status "$hub/SKILL.md" | merged Status)
     project=$(gh api graphql -F o="${BASH_REMATCH[1]}" -F n="${BASH_REMATCH[2]}" -f query='query($o:String!,$n:Int!){repositoryOwner(login:$o){... on ProjectV2Owner{projectV2(number:$n){id
       views(first:50){nodes{name groupByFields(first:1){nodes{... on ProjectV2FieldCommon{name}}}}}
       workflows(first:20){nodes{name enabled}}}}}}' --jq .data.repositoryOwner.projectV2)

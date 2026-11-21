@@ -13,6 +13,6 @@
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
 | `## Cadence` | Threshold, Value | `sweep` every 7 days; `stale` after 14 days without activity; `backlog` after 90 days in Backlog |
 
-- A cell containing `Hole` is undecided: its row takes the default, and it is reported, never filled. `—` is an empty cell.
+- Rows are read as [one parser](../../../scripts/mapping.mts) states: a row with a cell beginning with `Hole` is undecided, takes the default, and is reported, never filled; `—` is an empty cell.
 - Agents read both whole, within 600 words each; no tool but the `sdlc-*` scripts, which take one, may parse them.
 - If the repository has none, ask the user where the organization's is; read a private one with `gh api repos/<owner>/<name>/contents/<path>`.

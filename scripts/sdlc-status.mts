@@ -3,6 +3,7 @@
  * as curated: whether the body meets its form is the sweep's `mislabeled` flag. */
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { table } from "./mapping.mts";
 
 type Ref = { url: string; state: string };
 type Values = { nodes: { name?: string; field?: { name: string } }[] };
@@ -59,28 +60,23 @@ if (!targets.length) {
   process.exit(2);
 }
 
-// A section's body rows, first cell to second, holes left out.
-const table = new Map<string, Map<string, string>>();
+// A section's rows, first cell to second.
+const sections = new Map<string, Map<string, string>>();
 if (mappingAt >= 0) {
   const at = argv[mappingAt + 1];
   const remote = at.match(/^([^/:]+\/[^:]+):(.+)$/);
   const text = remote
     ? execFileSync("gh", ["api", "-H", "Accept: application/vnd.github.raw", `repos/${remote[1]}/contents/${remote[2]}`], { encoding: "utf8" })
     : readFileSync(at, "utf8");
-  let rows = new Map<string, string>();
-  for (const line of text.split("\n")) {
-    if (line.startsWith("## ")) table.set(line.slice(3), (rows = new Map()));
-    const cells = line.split("|").slice(1, -1).map((c) => c.trim().replaceAll("`", ""));
-    if (cells.length >= 2 && !/^[-: ]+$/.test(cells[0]) && !cells[1].includes("Hole")) rows.set(cells[0], cells[1]);
-  }
+  for (const name of ["Status", "Labels", "Inherited fields"]) sections.set(name, new Map(table(text, name).rows.map(([k, v]) => [k, v])));
 }
-const columns = table.get("Status") ?? new Map<string, string>();
-const readyLabel = table.get("Labels")?.get("ready") ?? "ready";
+const columns = sections.get("Status") ?? new Map<string, string>();
+const readyLabel = sections.get("Labels")?.get("ready") ?? "ready";
 const column = (status: string) => columns.get(status) ?? status;
 
 // A card is read by the names of the fields this run uses (`fieldValueByName` costs no extra request per card, where
 // a card's whole `fieldValues` connection costs one per card), each under an alias `v0`, `v1`, …
-const cardFields = [...new Set(["Status", ...(table.get("Inherited fields")?.keys() ?? [])])];
+const cardFields = [...new Set(["Status", ...(sections.get("Inherited fields")?.keys() ?? [])])];
 const ISSUE = `id url state stateReason issueType{name} assignees{totalCount} labels(first:20){nodes{name}}
   blockedBy(first:20){nodes{url state}} blocking(first:20){nodes{url state}}
   closedByPullRequestsReferences(first:5){nodes{state}}
@@ -222,7 +218,7 @@ const setCard = (url: string, item: Item, name: string, value: string) => {
 const archiveCard = (url: string, item: Item) =>
   queue(`${url} ${keyOf(item)} archive`, `archiveProjectV2Item(input:{projectId:${JSON.stringify(board(item).id)},itemId:${JSON.stringify(item.id)}})`);
 
-const carried = (key: string) => [...(table.get("Inherited fields") ?? [])].filter(([, b]) => b.split(/\s+/).includes(key)).map(([f]) => f);
+const carried = (key: string) => [...(sections.get("Inherited fields") ?? [])].filter(([, b]) => b.split(/\s+/).includes(key)).map(([f]) => f);
 const inheritCard = (url: string, key: string, name: string): string | null => {
   const i = fetchIssue(url), item = i.projectItems.nodes.find((n) => keyOf(n) === key);
   return item?.values[name] ?? (i.parent ? inheritCard(i.parent.url, key, name) : null);
