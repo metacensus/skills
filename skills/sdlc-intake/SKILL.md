@@ -7,7 +7,7 @@ Each stage follows the [`sdlc`](../sdlc/SKILL.md) hub's [protocol](../sdlc/SKILL
 
 ## Compose
 
-Before drafting a Bug, search for it: `gh issue list -R OWNER/REPO --search "…"` and `gh pr list -R OWNER/REPO --search "…"`, both open by default. A match takes the new evidence as a comment, and nothing is filed.
+Before drafting a Bug, search for a duplicate: `gh issue list -R OWNER/REPO --search "…"` and `gh pr list -R OWNER/REPO --search "…"`, both open by default. A match takes the new evidence as a comment, and nothing is filed.
 
 Draft the issue against these checks:
 
@@ -16,7 +16,7 @@ Draft the issue against these checks:
 - **Repository**: as the ladder says; an Epic's, the repository most of its work lands in; an Initiative's, any the delegator names, else the home the mapping suggests.
 - **Form**: the required fields of its type's [form](../sdlc/forms/).
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
-- **Problem first**: the body leads with the problem and its evidence. It names a solution only when one is already decided or is itself the constraint; otherwise the solution is left to the author's [Design](../sdlc-author/SKILL.md#design).
+- **Problem first**: the form's opening field states the problem, and the body carries its evidence. It names a solution only when one is already decided or is itself the constraint; otherwise the solution is left to the author's [Design](../sdlc-author/SKILL.md#design).
 - **Text**: no emojis, nothing the request or its evidence does not supply, and no line breaks inside a paragraph.
 - **Irreversible step**: everything that must hold before [one](../sdlc-review/SKILL.md#focus), each its own criterion.
 
@@ -36,7 +36,7 @@ Work found during execution files through Compose, under the Epic it serves; it 
 gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 ```
 
-`--type` only inside an organization. `--parent` and `--blocked-by` take a number in `-R`'s repository, else the issue's URL. `--project` takes the board's title and needs the `project` scope: `gh auth refresh -s project`. Add `--blocked-by N` for a stated blocker and `--project` for the [board](../sdlc/SKILL.md#mechanisms) that holds its Initiative, then [`sdlc-status --apply`](../sdlc/SKILL.md#status). No label. A new parent's existing children attach with `gh issue edit P --add-sub-issue N`.
+`--type` only inside an organization. Add `--blocked-by N` for a stated blocker and `--project` for the [board](../sdlc/SKILL.md#mechanisms) that holds its Initiative. `--parent` and `--blocked-by` take a number in `-R`'s repository, else the issue's URL; `--project` takes the board's title and needs the `project` scope: `gh auth refresh -s project`. Then [`sdlc-status --apply`](../sdlc/SKILL.md#status). No label. A new parent's existing children attach with `gh issue edit P --add-sub-issue N`.
 
 ## Curate
 
