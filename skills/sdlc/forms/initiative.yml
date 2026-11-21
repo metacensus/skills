@@ -31,3 +31,27 @@ body:
       label: Non-goals
     validations:
       required: true
+
+  - type: textarea
+    id: decided
+    attributes:
+      label: Decided
+      description: Choices not to reopen, one line each.
+    validations:
+      required: true
+
+  - type: textarea
+    id: stops
+    attributes:
+      label: Stops
+      description: "What always waits on a person: named Spikes, hands-on steps, publishing, merges."
+    validations:
+      required: true
+
+  - type: textarea
+    id: owed
+    attributes:
+      label: Owed
+      description: Steps the finish line needs that no Epic holds.
+    validations:
+      required: true
