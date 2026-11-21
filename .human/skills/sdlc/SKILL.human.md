@@ -17,11 +17,12 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Cross-project release|`type: Rollout`|Releases across repos|
 |Sub-task|·|a Task wanting children is an Epic|
 
+![Issue types: parents point up, blocked by is dashed](../../../skills/sdlc/figures/types.svg)
+
 ## Mechanisms
 
 |Mechanism|Carries|
 |---|---|
-|Parent|Epic → Initiative; Task → Epic; Release → Rollout|
 |Dependency|`blocked by`; a Release or Rollout read by title and state only|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
@@ -76,13 +77,9 @@ A stage runs its checks and posts one comment:
 
 ## Phases
 
-Frame → Design → Work → Review → Accept: the gates mirror around the work; nobody confirms their own.
+![Gates mirrored around the work: each step's owner and what closes it](../../../skills/sdlc/figures/gates.svg)
 
-|Phase|Steps|Task, Bug: `sdlc-author`|Epic: `sdlc-crew`|Initiative: `sdlc-fleet`|
-|---|---|---|---|---|
-|Design|Frame (`ready`), Design (`designed`)|Precheck, Design|Precheck, Design|Precheck, Design|
-|Delivery|Work, Review|Implement → Respond|Plan → Land|Plan → Delegate|
-|Record|Accept|Land|Close|Close|
+![Each tier's carrier and its stages by phase](../../../skills/sdlc/figures/carriers.svg)
 
 **Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
