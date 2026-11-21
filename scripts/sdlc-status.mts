@@ -68,7 +68,7 @@ if (mappingAt >= 0) {
   const text = remote
     ? execFileSync("gh", ["api", "-H", "Accept: application/vnd.github.raw", `repos/${remote[1]}/contents/${remote[2]}`], { encoding: "utf8" })
     : readFileSync(at, "utf8");
-  for (const name of ["Status", "Labels", "Inherited fields"]) sections.set(name, new Map(table(text, name).rows.map(([k, v]) => [k, v])));
+  for (const name of ["Status", "Labels", "Inherited fields"]) sections.set(name, new Map(table(text, name).rows.filter((r) => r.length > 1).map(([k, v]) => [k, v])));
 }
 const columns = sections.get("Status") ?? new Map<string, string>();
 const readyLabel = sections.get("Labels")?.get("ready") ?? "ready";

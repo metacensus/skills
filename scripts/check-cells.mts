@@ -112,6 +112,9 @@ for (const coord of COORDS) {
 }
 
 const enforcementOfLocation = new Map(table(gridSrc, "Location key").rows.map(([name, value]) => [name, value]));
+for (const [name, value] of enforcementOfLocation) {
+  if (!["gate", "partial", "described"].includes(value)) err("references/grid.md", `${name}'s enforcement is ${value}; it is gate, partial or described`);
+}
 
 const globsOfLocation = new Map<string, string[]>();
 const locations = table(mappingSrc, "Locations");
