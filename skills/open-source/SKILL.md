@@ -1,6 +1,6 @@
 ---
 name: open-source
-description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, before any commit, push, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, and whenever the user asks whether something is safe to push or publish.
+description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, before any commit, push, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, when porting a sample, a skill or a file from a private repository into a public one, and whenever the user asks whether something is safe to push or publish.
 ---
 
 **Publishing cannot be undone**: copies spread within minutes of a push and no rewrite reaches them, so the check runs before the push.
@@ -20,12 +20,13 @@ description: Open-source a repository, or keep working in one that is public, wi
 
 If the repository under check has none, ask the user where the organization's is. Read a private one from a local clone whose `origin` is its repository, or with `gh api repos/<owner>/<name>/contents/<path>`.
 
-## Two modes
+## Three modes
 
 - **init** — a repository about to go public, or one already public under audit: every object it has ever held, with coverage proven. It organizes what it finds and proposes; the user decides. [init.md](references/init.md).
 - **review** — a change before it lands in a public repository: its diff, commits, and the text written for the host. Its scope is small, so it fixes and tells. [review.md](references/review.md).
+- **port** — a sample taken from a private repository into a public one: only the sources the request lists, copied whole, then stripped. [port.md](references/port.md).
 
-Neither gives license advice of its own. [licensing.md](references/licensing.md).
+None gives license advice of its own. [licensing.md](references/licensing.md).
 
 ## What a finding is
 

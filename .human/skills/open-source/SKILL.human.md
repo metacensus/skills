@@ -1,6 +1,6 @@
 > Publishing cannot be undone, so the check runs before the push.
 
-Fires: going public; any commit, push, PR, issue or comment in a public repo; leak or license audit.
+Fires: going public; any commit, push, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
 
 ⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check; scanners flag, `open-source-triage` judges.
 
@@ -8,6 +8,7 @@ Fires: going public; any commit, push, PR, issue or comment in a public repo; le
 |---|---|---|
 | [init](references/init.human.md) | every object ever held | ⛔ the user decides |
 | [review](references/review.human.md) | diff, commits, host text | 🟢 fixes, then tells |
+| [port](references/port.human.md) | listed sources, copied whole | 🟢 strips, then maps |
 
 `open-source-mapping.md`, one per organization in a private repo, holds:
 
