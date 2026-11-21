@@ -1,7 +1,8 @@
 /* This repository's twin rule, checked as a consuming repository's gate checks it on a submodule
- * bump. An AI document is any `.md` under `skills/`, or directly in `agents/`; its twin is the same
- * path under `.human/`, `.md` replaced by `.human.md`. Each AI document has a twin, each file under
- * `.human/` twins one, and a twin has no `#` heading and at most a third of its AI document's words.
+ * bump. An AI document is any `.md` under `skills/`, directly in `agents/`, or a `CLAUDE.md` or
+ * `AGENTS.md` at any depth; its twin is the same path under `.human/`, `.md` replaced by `.human.md`.
+ * Each AI document has a twin, each file under `.human/` twins one, and a twin has no `#` heading and
+ * at most a third of its AI document's words.
  *
  * Importing it runs nothing; `check-cells.mts` calls `twinErrors`. */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
@@ -10,26 +11,38 @@ import { join } from "node:path";
 /** The plugin root, not the git toplevel: run from a consuming repository, it still checks this tree. */
 const ROOT = join(import.meta.dirname, "..");
 
-const read = (file: string) => readFileSync(join(ROOT, file), "utf8").replace(/\r\n/g, "\n");
+/** Read raw, as the consuming gate reads. */
+const read = (file: string) => readFileSync(join(ROOT, file), "utf8");
 
 /** Words as the consuming gate counts them: frontmatter dropped, the rest split on whitespace. */
 const words = (src: string) => src.replace(/^---\n([\s\S]*?)\n---\n/, "").split(/\s+/).filter(Boolean).length;
 
-/** Every file under `dir`, relative to the root. */
-const walk = (dir: string): string[] =>
-  existsSync(join(ROOT, dir))
-    ? readdirSync(join(ROOT, dir), { recursive: true, withFileTypes: true })
-        .filter((e) => e.isFile())
-        .map((e) => join(e.parentPath, e.name).slice(ROOT.length + 1))
-    : [];
+/** Directories the consuming gate's walk skips, at any depth. */
+const SKIP = new Set(["node_modules", "tmp", "temp", "dist", "out", ".next", ".git", ".claude", ".agents"]);
 
-const twinOf = (ai: string) => join(".human", ai.replace(/\.md$/, ".human.md"));
+/** Every file under `dir`, as a `/`-separated path from the root. */
+function walk(dir: string, acc: string[] = []): string[] {
+  if (!existsSync(join(ROOT, dir))) return acc;
+  for (const e of readdirSync(join(ROOT, dir), { withFileTypes: true })) {
+    const path = dir ? `${dir}/${e.name}` : e.name;
+    if (e.isDirectory()) {
+      if (!SKIP.has(e.name)) walk(path, acc);
+    } else if (e.isFile()) acc.push(path);
+  }
+  return acc;
+}
+
+const twinOf = (ai: string) => `.human/${ai.replace(/\.md$/, ".human.md")}`;
 
 export function twinErrors(): { twins: number; errors: [where: string, msg: string][] } {
   const errors: [string, string][] = [];
-  const ais = [...walk("skills"), ...walk("agents").filter((p) => !p.slice("agents/".length).includes("/"))]
-    .filter((p) => p.endsWith(".md"))
-    .sort();
+  const agents = readdirSync(join(ROOT, "agents")).map((name) => `agents/${name}`);
+  const ais = [
+    ...new Set([
+      ...[...walk("skills"), ...agents].filter((p) => p.endsWith(".md")),
+      ...walk("").filter((p) => /(^|\/)(AGENTS|CLAUDE)\.md$/.test(p)),
+    ]),
+  ].sort();
   const aiOfTwin = new Map(ais.map((ai) => [twinOf(ai), ai]));
   const twins = walk(".human").sort();
 

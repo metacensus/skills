@@ -47,7 +47,7 @@ The `open-source` skill scans for secrets with [gitleaks](https://github.com/git
 
 Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. Every commit is a release: neither manifest sets `version`, so the commit SHA is the version.
 
-[CI](.github/workflows/ci.yml) is the gate. A twin holds at most a third of its AI document's words, frontmatter excluded, and carries no `#` heading; `check-cells.mts` checks both. Its scripts need Node 22.18 or later, which runs TypeScript directly. Markdown prose is one line per paragraph; `node scripts/check-md.mts` unwraps it.
+[CI](.github/workflows/ci.yml) is the gate. Its scripts need Node 22.18 or later, which runs TypeScript directly. Markdown prose is one line per paragraph; `node scripts/check-md.mts` unwraps it. A twin holds at most a third of its AI document's words, frontmatter excluded, and carries no `#` heading; `check-cells.mts` checks both.
 
 ## License
 
