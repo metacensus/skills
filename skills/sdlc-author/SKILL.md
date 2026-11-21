@@ -61,7 +61,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Land
 
-- The PR is merged on the review's pass.
+- The PR is merged on the review's pass, and released where it ships, per [`land`](../land/SKILL.md).
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
 - Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
