@@ -18,7 +18,7 @@ A foreground `sleep` is blocked, and looking by hand spends a turn per look. Wai
 Bottom first: a child merges after its parent, never into the parent's branch.
 
 - **Retarget** once the parent merges: `gh pr edit N --base <default>`, confirmed by `gh pr view N --json baseRefName`. GitHub retargets it only when the parent's branch is deleted.
-- **Sync** per `checkin`. A squashed parent leaves its commits on the child; a rebase drops them: `git rebase --onto origin/<default> <parent's last commit>`.
+- **Sync** per `checkin`: a reviewed child merges `origin/<default>`. An unreviewed one may drop a squashed parent's commits instead: `git rebase --onto origin/<default> <parent's last commit>`.
 - **Wait** for CI to rerun on the new base, then merge the next.
 
 ## 3. A refused merge
@@ -33,7 +33,7 @@ Bottom first: a child merges after its parent, never into the parent's branch.
 | a repository rule is violated | a ruleset | `gh api repos/O/R/rules/branches/<default>` names it: meet it, or hand it to an admin |
 | `gh pr merge` hits a GraphQL limit while `gh api rate_limit` shows room | GraphQL's own limit | REST: `gh api -X PUT repos/O/R/pulls/N/merge -f merge_method=squash` |
 | the agent's environment refuses the command | policy: the merge is a person's | hand them the one command per [`operator-runbook`](../operator-runbook/SKILL.md); never route around it through REST, `--admin`, or another identity |
-| nothing: a merge landed on `<default>` by mistake | no refusal stopped it | revert it in a PR of its own, `git revert -m 1 <merge commit>` (a squash needs no `-m`); never force-push `<default>` |
+| none: a merge landed on `<default>` by mistake | — | revert it in a PR of its own: `git revert -m 1 <merge commit>`, `git revert <squash commit>`, or `git revert <first>^..<last>` for a rebase merge; never force-push `<default>` |
 
 ## 4. Release
 

@@ -18,4 +18,4 @@ Wait → Merge (bottom first, retarget, sync) → Release → Verify → Bump
 | rule violated | meet it, or an admin |
 | GraphQL limit | REST |
 | environment refuses | ⛔ a person, per [`operator-runbook`](../operator-runbook/SKILL.human.md) |
-| merged by mistake | revert in a PR; ⚠️ never force-push |
+| merged by mistake | revert in a PR, whatever the merge method; ⚠️ never force-push |
