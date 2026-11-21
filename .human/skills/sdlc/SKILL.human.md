@@ -77,7 +77,7 @@ A stage runs its checks and posts one comment:
 
 ## Phases
 
-![Gates mirrored around the work: each step's owner and what closes it](../../../skills/sdlc/figures/gates.svg)
+![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
 
 ![Each tier's carrier and its stages by phase](../../../skills/sdlc/figures/carriers.svg)
 

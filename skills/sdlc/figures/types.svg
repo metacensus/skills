@@ -1,63 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="456" viewBox="0 0 800 456" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2328">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="496" viewBox="0 0 800 496" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2328">
   <title>Issue types and their edges</title>
   <defs>
     <marker id="parent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f2328"/></marker>
     <marker id="blocked" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#59636e"/></marker>
   </defs>
-  <rect x="0" y="0" width="800" height="456" fill="#ffffff"/>
+  <rect x="0" y="0" width="800" height="496" fill="#ffffff"/>
 
-  <rect x="16" y="96" width="448" height="296" rx="8" fill="#f6f8fa" stroke="#d1d9e0"/>
-  <text x="448" y="112" text-anchor="end" dominant-baseline="central" font-size="12" fill="#59636e">work, any tier</text>
+  <rect x="16" y="112" width="448" height="296" rx="8" fill="#f6f8fa" stroke="#d1d9e0"/>
+  <text x="448" y="128" text-anchor="end" dominant-baseline="central" font-size="12" fill="#59636e">work, any tier</text>
 
-  <rect x="16" y="16" width="160" height="48" rx="8" fill="#ffffff" stroke="#8c959f" stroke-dasharray="4 4"/>
-  <text x="96" y="40" text-anchor="middle" dominant-baseline="central" fill="#59636e">another Initiative</text>
+  <rect x="16" y="16" width="192" height="48" rx="8" fill="#ffffff" stroke="#8c959f" stroke-dasharray="4 4"/>
+  <text x="112" y="40" text-anchor="middle" dominant-baseline="central" fill="#59636e">another Initiative's work</text>
 
-  <rect x="176" y="128" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
-  <text x="240" y="152" text-anchor="middle" dominant-baseline="central">Initiative</text>
-  <rect x="176" y="224" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
-  <text x="240" y="248" text-anchor="middle" dominant-baseline="central">Epic</text>
-  <rect x="32" y="320" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
-  <text x="96" y="344" text-anchor="middle" dominant-baseline="central">Task</text>
-  <rect x="176" y="320" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
-  <text x="240" y="344" text-anchor="middle" dominant-baseline="central">Spike (a Task)</text>
-  <rect x="320" y="320" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
-  <text x="384" y="344" text-anchor="middle" dominant-baseline="central">Bug</text>
+  <rect x="176" y="144" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="240" y="168" text-anchor="middle" dominant-baseline="central">Initiative</text>
+  <rect x="176" y="240" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="240" y="264" text-anchor="middle" dominant-baseline="central">Epic</text>
+  <rect x="32" y="336" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="96" y="360" text-anchor="middle" dominant-baseline="central">Task</text>
+  <rect x="176" y="336" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="240" y="360" text-anchor="middle" dominant-baseline="central">Spike (a Task)</text>
+  <rect x="320" y="336" width="128" height="48" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+  <text x="384" y="360" text-anchor="middle" dominant-baseline="central">Bug</text>
 
-  <rect x="656" y="224" width="128" height="48" rx="8" fill="#fff8c5" stroke="#9a6700"/>
-  <text x="720" y="248" text-anchor="middle" dominant-baseline="central">Rollout</text>
-  <rect x="656" y="320" width="128" height="48" rx="8" fill="#fff8c5" stroke="#9a6700"/>
-  <text x="720" y="344" text-anchor="middle" dominant-baseline="central">Release</text>
+  <rect x="656" y="240" width="128" height="48" rx="8" fill="#fff8c5" stroke="#9a6700"/>
+  <text x="720" y="264" text-anchor="middle" dominant-baseline="central">Rollout</text>
+  <rect x="656" y="336" width="128" height="48" rx="8" fill="#fff8c5" stroke="#9a6700"/>
+  <text x="720" y="360" text-anchor="middle" dominant-baseline="central">Release</text>
 
   <g stroke="#1f2328" stroke-width="1.5">
-    <line x1="240" y1="224" x2="240" y2="176" marker-end="url(#parent)"/>
-    <line x1="240" y1="320" x2="240" y2="272" marker-end="url(#parent)"/>
-    <line x1="96" y1="320" x2="96" y2="296"/>
-    <line x1="384" y1="320" x2="384" y2="296"/>
-    <line x1="96" y1="296" x2="384" y2="296"/>
-    <line x1="720" y1="320" x2="720" y2="272" marker-end="url(#parent)"/>
+    <line x1="240" y1="240" x2="240" y2="192" marker-end="url(#parent)"/>
+    <line x1="240" y1="336" x2="240" y2="288" marker-end="url(#parent)"/>
+    <line x1="96" y1="336" x2="96" y2="312"/>
+    <line x1="384" y1="336" x2="384" y2="312"/>
+    <line x1="96" y1="312" x2="384" y2="312"/>
+    <line x1="720" y1="336" x2="720" y2="288" marker-end="url(#parent)"/>
   </g>
 
   <g stroke="#59636e" stroke-width="1.5" stroke-dasharray="6 4" fill="none">
-    <polyline points="96,64 96,248 176,248" marker-end="url(#blocked)"/>
-    <line x1="464" y1="248" x2="656" y2="248" marker-end="url(#blocked)"/>
-    <line x1="656" y1="336" x2="464" y2="336" marker-end="url(#blocked)"/>
-    <line x1="464" y1="352" x2="656" y2="352" marker-end="url(#blocked)"/>
+    <line x1="112" y1="64" x2="112" y2="112" marker-end="url(#blocked)"/>
+    <line x1="464" y1="264" x2="656" y2="264" marker-end="url(#blocked)"/>
+    <line x1="656" y1="352" x2="464" y2="352" marker-end="url(#blocked)"/>
+    <line x1="464" y1="368" x2="656" y2="368" marker-end="url(#blocked)"/>
   </g>
   <g font-size="12" fill="#59636e" dominant-baseline="central">
-    <text x="104" y="200">shared work</text>
-    <text x="560" y="232" text-anchor="middle">follows, across repositories</text>
-    <text x="560" y="320" text-anchor="middle">ships</text>
-    <text x="560" y="368" text-anchor="middle">follows</text>
+    <text x="120" y="88">shared work</text>
+    <text x="560" y="248" text-anchor="middle">follows, across repositories</text>
+    <text x="560" y="336" text-anchor="middle">ships</text>
+    <text x="560" y="384" text-anchor="middle">follows</text>
   </g>
 
   <g font-size="12" dominant-baseline="central">
-    <rect x="16" y="424" width="24" height="16" rx="4" fill="#ddf4ff" stroke="#0969da"/>
-    <text x="48" y="432">work type</text>
-    <rect x="144" y="424" width="24" height="16" rx="4" fill="#fff8c5" stroke="#9a6700"/>
-    <text x="176" y="432">release type</text>
-    <line x1="288" y1="432" x2="320" y2="432" stroke="#1f2328" stroke-width="1.5" marker-end="url(#parent)"/>
-    <text x="328" y="432">parent: child → parent</text>
-    <line x1="504" y1="432" x2="536" y2="432" stroke="#59636e" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#blocked)"/>
-    <text x="544" y="432">blocked by: blocked → blocker</text>
+    <rect x="16" y="440" width="24" height="16" rx="4" fill="#ddf4ff" stroke="#0969da"/>
+    <text x="48" y="448">work type</text>
+    <rect x="144" y="440" width="24" height="16" rx="4" fill="#fff8c5" stroke="#9a6700"/>
+    <text x="176" y="448">release type</text>
+    <rect x="288" y="440" width="24" height="16" rx="4" fill="#ffffff" stroke="#8c959f" stroke-dasharray="4 4"/>
+    <text x="320" y="448">outside this Initiative</text>
+    <line x1="16" y1="472" x2="40" y2="472" stroke="#1f2328" stroke-width="1.5" marker-end="url(#parent)"/>
+    <text x="48" y="472">parent: child → parent</text>
+    <line x1="208" y1="472" x2="232" y2="472" stroke="#59636e" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#blocked)"/>
+    <text x="240" y="472">blocked by: blocked → blocker</text>
   </g>
 </svg>
