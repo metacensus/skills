@@ -18,7 +18,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 
 Precheck reads a Release or Rollout blocker by title and state alone.
 
-Publish blocks the earliest open Release after its blockers' Releases, filing the next if none; moving later takes the work it blocks along.
+Publish blocks the earliest open Release that holds, filing the next if none: a work blocker ships in it or earlier, a Release blocker is strictly earlier, versions compared within one repo; moving later takes the work it blocks along.
 
 ## Land
 

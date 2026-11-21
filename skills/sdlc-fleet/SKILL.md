@@ -30,7 +30,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 `parallelize` answered: units are the Epics whose [blockers](../sdlc/SKILL.md#mechanisms) are closed; edges their `blocked by` and the contracts they share; the action is [`sdlc-crew`](../sdlc-crew/SKILL.md).
 
 - Before a wave, the repositories its Epics touch are grepped for shared files, renamed names and workflows that name them; a coupling found files as a split Task.
-- Merge order across Epics is `blocked by` between Tasks, never prose in a PR body.
+- A Task that builds on another Epic's Task is `blocked by` it, never prose in a PR body.
 
 **Escalate** a contract two Epics both shape. **Stop** on a cycle.
 
@@ -58,4 +58,4 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Reporting
 
-[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on. While a Release its descendants block is open, the outline carries "N of M Releases shipped".
+[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on. While a Release its descendants block is open, the outline carries "N of M Releases closed".

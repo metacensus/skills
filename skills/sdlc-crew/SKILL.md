@@ -27,6 +27,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 - The children the Design proposed file through [`sdlc-intake`'s Decompose](../sdlc-intake/SKILL.md#decompose); at least one is filed, a lone Spike enough.
 - Each child carries `ready`, with every `blocked by` edge inside the Epic, set by its Initiative's Plan, or to a [Release or Rollout](../sdlc/SKILL.md#mechanisms), and the graph has no cycle; a child without `ready` goes through [Curate](../sdlc-intake/SKILL.md#curate), under the remit.
+- The Epic blocks the earliest open Release that holds, as [`sdlc-author`'s Publish](../sdlc-author/SKILL.md#publish) picks one, filing the next version when none does; its Tasks do instead where they ship in different Releases.
 - The contract lands first, pinned in a file its consumers read, and merged before a consumer starts.
 - No two write-sets in a wave overlap; a line no child owns goes to one, or to a child filed for it.
 - The comment lists the waves, each child's write-set and contracts.

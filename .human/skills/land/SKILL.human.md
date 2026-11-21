@@ -1,4 +1,4 @@
-> Landing ends when what merged is published and its consumers run it; work blocking an open Release ends at the merge.
+> Landing ends when what merged is published and its consumers run it; work blocking an open Release, itself or through its Epic, ends at the merge.
 
 Fires: waiting on a run, check, or agent; merging a PR or a stack; a refused merge; a release.
 
