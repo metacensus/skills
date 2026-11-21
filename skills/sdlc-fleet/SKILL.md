@@ -48,6 +48,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 - The Goal's finish line is checked directly, and each Owed step is done; Measures, where any exist, inform the check and never replace it.
 - Each child's state is read from GitHub, not from PR text.
+- Every Release its descendants block has closed, read from each descendant's `blocking` by title and state; a Release's own blockers are never walked.
 - A criterion met under another Epic closes **completed** with a link to where.
 - Open children move back to the parent that owns their blocker, or to one [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) proposes.
 - The roadmap entry names the Initiative as done.
@@ -57,4 +58,4 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Reporting
 
-[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on.
+[The hub's Reporting](../sdlc/SKILL.md#reporting), its status outline a row per Epic: its state, what runs, what it waits on. While a Release its descendants block is open, the outline carries "N of M Releases shipped".
