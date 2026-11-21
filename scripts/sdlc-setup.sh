@@ -53,7 +53,7 @@ done <<<"$labels"
 
 boards=$(node "$parse" Boards <<<"$mapping" | cut -f1)
 [[ $boards ]] || echo "ok    no board"
-views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative')
+views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative' 'Releases type:Release,Rollout')
 for board in $boards; do
   if ! [[ $board =~ ^([^/]+)/([0-9]+)$ ]]; then
     echo "TODO  board $board is not OWNER/N"
@@ -68,7 +68,7 @@ for board in $boards; do
       views(first:50){nodes{name groupByFields(first:1){nodes{... on ProjectV2FieldCommon{name}}}}}
       workflows(first:20){nodes{name enabled}}}}}}' --jq .data.repositoryOwner.projectV2)
     jq -r --args '.views.nodes[].name | select(IN($ARGS.positional[]) | not)' "${views[@]%% *}" <<<"$project" |
-      while IFS= read -r name; do echo "note  board $board view $name: not one of Setup's three; left as set"; done
+      while IFS= read -r name; do echo "note  board $board view $name: not one of Setup's; left as set"; done
     for view in "${views[@]}"; do
       name=${view%% *}
       if ! jq -e --arg n "$name" '.views.nodes[] | select(.name == $n)' <<<"$project" >/dev/null; then
@@ -107,12 +107,13 @@ for o in $(sed -n 's|^\([^/]*\)/[0-9][0-9]*$|\1|p' <<<"$boards" | sort -u); do
   fi
 done
 
+ladder=(Initiative Epic Task Bug Release Rollout)
 if types=$(gh api "orgs/$owner/issue-types" --jq '.[] | select(.is_enabled) | .name' 2>/dev/null); then
-  for want in Initiative Epic Task Bug; do
+  for want in "${ladder[@]}"; do
     grep -qx "$want" <<<"$types" || { echo "TODO  org issue type $want is missing"; todo=1; }
   done
   while read -r have; do
-    case $have in Initiative | Epic | Task | Bug) ;; *) echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1 ;; esac
+    [[ " ${ladder[*]} " == *" $have "* ]] || { echo "TODO  org issue type $have is not in the ladder; retire it"; todo=1; }
   done <<<"$types"
 elif [[ $(gh api "users/$owner" --jq .type) == User ]]; then
   echo "ok    $owner is not an organization; titles state the type"

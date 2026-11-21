@@ -28,7 +28,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Plan
 
-`parallelize` answered: units are the Epics whose blockers are closed; edges their `blocked by` and the contracts they share; the action is [`sdlc-crew`](../sdlc-crew/SKILL.md).
+`parallelize` answered: units are the Epics whose [blockers](../sdlc/SKILL.md#mechanisms) are closed; edges their `blocked by` and the contracts they share; the action is [`sdlc-crew`](../sdlc-crew/SKILL.md).
 
 - Before a wave, the repositories its Epics touch are grepped for shared files, renamed names and workflows that name them; a coupling found files as a split Task.
 - Merge order across Epics is `blocked by` between Tasks, never prose in a PR body.

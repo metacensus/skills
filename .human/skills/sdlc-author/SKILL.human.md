@@ -16,6 +16,8 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 |Respond|Land|dispute at loop cap|finding reopens design|
 |Land|closed|a merge no Role or remit reaches; a `deviated` or not-planned close|PR cannot merge|
 
+Precheck reads a Release or Rollout blocker by title and state alone.
+
 ## Land
 
 Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), file follow-ups.

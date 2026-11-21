@@ -12,6 +12,8 @@ description: The software development lifecycle every organization on the Initia
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
 | **Bug** | Issue `type: Bug` | Same size as Task. |
+| **Release** (version) | Issue `type: Release` | Task tier: one versioned release of one repository. Its only parent is a Rollout; the work it ships blocks it. |
+| **Cross-project release** | Issue `type: Rollout` | Epic tier: coordinates Releases across repositories, its children. No parent. |
 | **Sub-task** | *none* | A Task wanting children is an Epic. |
 
 Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
@@ -22,12 +24,12 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 
 | Mechanism | Carries |
 |---|---|
-| **Type** | Initiative / Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
-| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
-| **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
+| **Type** | Initiative / Epic / Task / Bug, and Release / Rollout, set org-wide; no others. Outside an organization, the title states it. |
+| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. A Release's parent, if any, is a Rollout; a Rollout takes none, and neither parents work. |
+| **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. Work of any tier relates to a Release or Rollout by `blocked by` alone: the Release is blocked by the work it ships, and work that must follow it is blocked by it, or by its Rollout when other repositories must move first. A direct edge between two works stays beside one through a Release. Work joins the next planned Release by blocking it; the Release's owner adds the edge, or the author asks one tier up. An agent reads a blocker typed Release or Rollout by title and state alone, and never walks its blockers. |
 | **Label** | Three roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built) and `deviated` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status) and Priority, holding the Initiatives the mapping's Boards rows give it and everything under them, the default board holding the rest. [Setup](#setup) gives it a view per type, Status columns by Priority rows, and the Auto-add sub-issues workflow, which carries a child onto its parent's board. Writing to it needs the `project` scope. |
-| **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
+| **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks, a Release or Rollout aside. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
 
 ## Status
 
@@ -38,7 +40,7 @@ Derived from GitHub facts alone by `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-stat
 | Backlog | open |
 | Blocked | open, with an open `blocked by` |
 | Ready | open, `ready`, unassigned, no open `blocked by`, and the body carries its form's required fields |
-| In progress | open and assigned; an Initiative or Epic, also once a child is In progress, In review or Done |
+| In progress | open and assigned; a parent, also once a child is In progress, In review or Done |
 | In review | an open PR closes it |
 | Done | closed **completed** |
 | Dropped | closed **not planned** |
