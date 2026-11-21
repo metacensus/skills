@@ -4,10 +4,13 @@
  *
  * It reads `elegance-mapping.md` at that repository's root as markdown table rows: column 1 a
  * location type from the grid's location key, column 2 its path globs, each in backticks. Every
- * location type needs a row; a row with no globs is a hole; longest matching glob wins. */
+ * location type needs a row; a row with no globs is a hole; longest matching glob wins.
+ *
+ * It also runs `check-twins.mts`, this repository's twin rule. */
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
+import { twinErrors } from "./check-twins.mts";
 
 const SKILL = join(import.meta.dirname, "..", "skills", "elegance");
 
@@ -200,6 +203,11 @@ for (const file of files) {
   }
 }
 
+/* ---------------------------------------------------------------- the twins */
+
+const twins = twinErrors();
+for (const [where, msg] of twins.errors) err(where, msg);
+
 /* ------------------------------------------------------------------ --diff */
 
 const defaultBranch = () => git("symbolic-ref", "--short", "refs/remotes/origin/HEAD").trim().replace(/^origin\//, "") || "main";
@@ -268,6 +276,7 @@ for (const line of errors) console.error(line);
 if (unreachable.length) console.log(`\n  no path reaches ${unreachable.join(", ")}; --diff can never flag their cells`);
 console.log(
   `\n${cellCount} cells · ${files.length} files · ${linkCount} links · ` +
-    `${mappingFound ? `map ${mapWords}/${MAPPING.maxWords} words` : "no mapping"} · ${errors.length} error(s)`,
+    `${mappingFound ? `map ${mapWords}/${MAPPING.maxWords} words` : "no mapping"} · ${twins.twins} twins · ` +
+    `${errors.length} error(s)`,
 );
 process.exit(errors.length ? 1 : 0);
