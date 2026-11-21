@@ -19,7 +19,16 @@ Classify each piece of what is to be said, give it its family's form, and carry 
 
 ## What survives compression
 
-Keep what the reader needs to act, move detail down a layer, and drop what nobody would miss. A rule rarely survives losing its condition (`when X → Y` is not `Y`); defaults, tests, and examples usually earn their place; reasons are usually the first to go. Every term is one the reader already uses, or one defined where it first appears. An item that carries a surprise (its size, its cost, anything irreversible) says so on its line. One idea per item or outline line, at most about 25 words. A link to a numbered thing takes the number or coordinate as its text.
+Keep what the reader needs to act, move detail down a layer, and drop what nobody would miss. A rule rarely survives losing its condition (`when X → Y` is not `Y`); defaults, tests, and examples usually earn their place; reasons are usually the first to go. Every term is one the reader already uses, or one defined where it first appears. An item that carries a surprise (its size, its cost, anything irreversible) says so on its line. A link to a numbered thing takes the number or coordinate as its text.
+
+A list or board item is usually its title alone. A note follows only where the reader needs it to act; the rest goes behind the item's link. Words are literal: no metaphor stands in for what the item is or does. One idea per item, at most about 25 words.
+
+```
+⛔ #41 binding renames · pick one of two names
+🔶 #43 import old keymaps
+```
+
+not `🔶 #43 import old keymaps · the bridge legacy users cross once the dust settles on #41`.
 
 ## Marks
 
