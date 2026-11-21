@@ -23,4 +23,4 @@ A request naming a class's fix is the yes to it.
 
 ## Schedule
 
-A weekly cron runs a script on the delegator's machine: it reads the mapping and board status, runs Precheck, Sweep and Read through `claude -p` in a sandbox that reaches only GitHub, on tools that only read, and posts their summary, or what failed, on a private issue. A check needing more is `not run`. Adopt, Act and Report wait for the delegator.
+A weekly cron runs a script on the delegator's machine: it reads the mapping and board status, runs Precheck, Sweep and Read through `claude -p` in a sandbox that reaches only GitHub, on tools that only read, and posts their summary, or what failed, on a private issue. A check needing more is `not run`. Adopt, Act and Report wait for the delegator. Run it once by hand, and read its comment, before the cron line goes in.
