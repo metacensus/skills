@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="872" viewBox="0 0 800 872" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+  <title>Each tier's skill and its stages, each Delivery holding the tier below</title>
+  <style>
+    .bg { fill: var(--bg, #fff) }
+    .ink { fill: var(--ink, #444A5A) }
+    .soft { fill: var(--ink, #444A5A); fill-opacity: .8 }
+    .muted { fill: var(--muted, #8A90A2) }
+    .accent { fill: var(--accent, #3B0E75) }
+    .panel { fill: var(--ink, #444A5A); fill-opacity: .05; stroke: var(--muted, #8A90A2); stroke-opacity: .5 }
+    .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+    .phase { fill: none; stroke: var(--azure, #3D9BD1) }
+  </style>
+  <rect x="0" y="0" width="800" height="872" class="bg"/>
+
+  <g class="panel">
+    <rect x="16" y="16" width="768" height="64" rx="8"/>
+    <rect x="16" y="96" width="768" height="640" rx="8"/>
+    <rect x="48" y="224" width="704" height="432" rx="8"/>
+    <rect x="80" y="352" width="640" height="144" rx="8"/>
+    <rect x="80" y="512" width="640" height="64" rx="8"/>
+    <rect x="16" y="752" width="768" height="64" rx="8"/>
+  </g>
+  <g class="phase">
+    <rect x="32" y="160" width="736" height="512" rx="8"/>
+    <rect x="64" y="288" width="672" height="304" rx="8"/>
+  </g>
+  <g dominant-baseline="central">
+    <text x="32" y="40" font-size="13" font-weight="600">every tier</text>
+    <text x="32" y="56" class="accent">sdlc-intake</text>
+    <text x="32" y="120" font-size="13" font-weight="600">Initiative</text>
+    <text x="32" y="136" class="accent">sdlc-fleet</text>
+    <text x="64" y="248" font-size="13" font-weight="600">Epic, Rollout</text>
+    <text x="64" y="264" class="accent">sdlc-crew</text>
+    <text x="96" y="376" font-size="13" font-weight="600">Task, Bug,</text>
+    <text x="96" y="392" font-size="13" font-weight="600">Spike, Release</text>
+    <text x="96" y="408" class="accent">sdlc-author</text>
+    <text x="96" y="536" font-size="13" font-weight="600">each PR</text>
+    <text x="96" y="552" class="accent">sdlc-review</text>
+    <text x="32" y="776" font-size="13" font-weight="600">on its own trigger</text>
+    <text x="32" y="792" class="accent">sdlc-hygiene</text>
+  </g>
+  <g class="soft" dominant-baseline="central">
+    <text x="160" y="48">Frame</text>
+    <text x="160" y="128">Design</text>
+    <text x="160" y="192">Delivery</text>
+    <text x="160" y="704">Record</text>
+    <text x="192" y="256">Design</text>
+    <text x="192" y="320">Delivery</text>
+    <text x="192" y="624">Record</text>
+    <text x="224" y="384">Design</text>
+    <text x="224" y="424">Delivery</text>
+    <text x="224" y="464">Record</text>
+  </g>
+
+  <g class="blue">
+    <rect x="224" y="32" width="96" height="32" rx="8"/>
+    <rect x="328" y="32" width="96" height="32" rx="8"/>
+    <rect x="432" y="32" width="96" height="32" rx="8"/>
+    <rect x="536" y="32" width="96" height="32" rx="8"/>
+    <rect x="224" y="112" width="96" height="32" rx="8"/>
+    <rect x="328" y="112" width="96" height="32" rx="8"/>
+    <rect x="224" y="176" width="96" height="32" rx="8"/>
+    <rect x="328" y="176" width="96" height="32" rx="8"/>
+    <rect x="256" y="240" width="96" height="32" rx="8"/>
+    <rect x="360" y="240" width="96" height="32" rx="8"/>
+    <rect x="256" y="304" width="96" height="32" rx="8"/>
+    <rect x="360" y="304" width="96" height="32" rx="8"/>
+    <rect x="464" y="304" width="96" height="32" rx="8"/>
+    <rect x="568" y="304" width="96" height="32" rx="8"/>
+    <rect x="288" y="368" width="96" height="32" rx="8"/>
+    <rect x="392" y="368" width="96" height="32" rx="8"/>
+    <rect x="288" y="408" width="96" height="32" rx="8"/>
+    <rect x="392" y="408" width="96" height="32" rx="8"/>
+    <rect x="496" y="408" width="96" height="32" rx="8"/>
+    <rect x="600" y="408" width="96" height="32" rx="8"/>
+    <rect x="288" y="448" width="96" height="32" rx="8"/>
+    <rect x="288" y="528" width="96" height="32" rx="8"/>
+    <rect x="392" y="528" width="96" height="32" rx="8"/>
+    <rect x="496" y="528" width="96" height="32" rx="8"/>
+    <rect x="256" y="608" width="96" height="32" rx="8"/>
+    <rect x="224" y="688" width="96" height="32" rx="8"/>
+  </g>
+  <g text-anchor="middle" dominant-baseline="central">
+    <text x="272" y="48">Compose</text>
+    <text x="376" y="48">Decompose</text>
+    <text x="480" y="48">File</text>
+    <text x="584" y="48">Curate</text>
+    <text x="272" y="128">Precheck</text>
+    <text x="376" y="128">Design</text>
+    <text x="272" y="192">Plan</text>
+    <text x="376" y="192">Delegate</text>
+    <text x="304" y="256">Precheck</text>
+    <text x="408" y="256">Design</text>
+    <text x="304" y="320">Plan</text>
+    <text x="408" y="320">Delegate</text>
+    <text x="512" y="320">Review</text>
+    <text x="616" y="320">Land</text>
+    <text x="336" y="384">Precheck</text>
+    <text x="440" y="384">Design</text>
+    <text x="336" y="424">Implement</text>
+    <text x="440" y="424">Self-review</text>
+    <text x="544" y="424">Publish</text>
+    <text x="648" y="424">Respond</text>
+    <text x="336" y="464">Land</text>
+    <text x="336" y="544">Precheck</text>
+    <text x="440" y="544">Summarize</text>
+    <text x="544" y="544">Focus</text>
+    <text x="304" y="624">Close</text>
+    <text x="272" y="704">Close</text>
+  </g>
+
+  <g dominant-baseline="central">
+    <rect x="16" y="840" width="24" height="16" rx="4" class="panel"/>
+    <text x="48" y="848">skill, holding its stages</text>
+    <rect x="224" y="840" width="24" height="16" rx="4" class="phase"/>
+    <text x="256" y="848">Delivery, holding the tier below</text>
+    <rect x="480" y="840" width="24" height="16" rx="4" class="blue"/>
+    <text x="512" y="848">stage</text>
+  </g>
+</svg>
