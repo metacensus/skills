@@ -7,7 +7,6 @@
 |Priority|Board, Value, Meaning|
 |Inherited fields|Field, Boards|
 |Status|Status, Column|
-|Roles|Role, Who|
 |Checks|Stage, Paths, Check|
 |Cadence|Threshold, Value|
 

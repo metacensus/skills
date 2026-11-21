@@ -9,7 +9,6 @@
 | `## Priority` | Board, Value, Meaning | each value means only its place in the field's order |
 | `## Inherited fields` | Field (single-select), Boards as space-separated `OWNER/N` | no board field inherits |
 | `## Status` | Status, Column (`—`: card archived) | each column named for its status |
-| `## Roles` | Role, Who | the [defaults](../SKILL.md#roles) |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
 | `## Cadence` | Threshold, Value | `sweep` every 7 days, read by [`sdlc-hygiene`'s schedule](../../sdlc-hygiene/SKILL.md#schedule); `stale` after 14 days without activity; `backlog` after 90 days in Backlog |
 

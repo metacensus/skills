@@ -14,7 +14,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 |Self-review|Publish|dispute at loop cap|Verification cannot pass|
 |Publish|review|before linking|·|
 |Respond|Land|dispute at loop cap|finding reopens design|
-|Land|closed|a merge no Role or remit reaches; a `deviated` or not-planned close|PR cannot merge|
+|Land|closed|a merge no remit reaches; a `deviated` or not-planned close|PR cannot merge|
 
 Precheck reads a Release or Rollout blocker by title and state alone.
 

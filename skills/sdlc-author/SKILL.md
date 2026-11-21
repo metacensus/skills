@@ -47,7 +47,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - [`checkin`](../checkin/SKILL.md) holds, and the branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`.
-- The reviewers the mapping's Roles name are requested.
+- The reviewers the remit names are requested.
 - Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** before linking, unless the remit hands over the branch.
@@ -67,7 +67,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
 - Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
-**Escalate** the merge where neither the mapping's Roles nor the remit reach it, and the close only when `deviated` or **not planned**, before a merge would close it; a plain completion never escalates. The run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
+**Escalate** the merge where the remit does not reach it, and the close only when `deviated` or **not planned**, before a merge would close it; a plain completion never escalates. The run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.
 
 ## Without a pull request
 
