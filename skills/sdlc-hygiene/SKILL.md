@@ -54,18 +54,28 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 ## Schedule
 
 - The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended: a script on the delegator's machine, where `gh` holds the `project` scope, run by cron.
-- The script reads the mapping and each board's `sdlc-status` lines, runs the stages on tools that only read, and posts the summary they print as one comment on an issue in a private repository. The delegator's own settings add their allow rules to the run's.
-- Sweep's briefs carry the board lines in place of `sdlc-status`. A check needing a command the run does not hold, such as the rate-limit fallback or a repository's own forms, is marked `not run` in the summary.
+- The script reads the mapping and each board's `sdlc-status` lines, then runs the stages in a sandbox that reaches only GitHub, on tools that only read. It posts the summary they print, or the step that failed, as one comment on an issue in a private repository. The delegator's own settings add their allow rules to the run's.
+- Sweep's briefs carry each repository's board lines, and say they stand in for `sdlc-status`, which the run cannot call. A check needing a command the run does not hold, such as the rate-limit fallback or a repository's own forms, is marked `not run` in the summary.
 - Adopt, Act and Report wait for the delegator, in a session opened on that comment.
 
 ```sh
-set -e
-map=$(mktemp) status=$(mktemp) out=$(mktemp)
-gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > "$map"
-for board in OWNER/N; do node PLUGIN/scripts/sdlc-status.mts "$board" --mapping "$map"; done > "$status"
-claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER, and print the summary. The mapping is $map; the boards' sdlc-status lines are $status." \
-  --allowedTools Agent Read 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' > "$out"
-gh issue comment N -R OWNER/PRIVATE --body-file "$out"
+PATH=/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin
+post() { gh issue comment N -R OWNER/PRIVATE "$@"; }
+fail() { post --body "The scheduled sdlc-hygiene run failed: $1."; exit 1; }
+work=$(mktemp -d) files=$(mktemp -d) || exit 1
+trap 'rm -rf "$work" "$files"' EXIT
+cat > "$files/settings.json" <<'EOF'
+{"permissions": {"blockReadsOutsideWorkingDirectories": true},
+ "sandbox": {"enabled": true, "failIfUnavailable": true, "autoAllowBashIfSandboxed": false, "allowUnsandboxedCommands": false,
+             "network": {"allowedDomains": ["github.com", "api.github.com"], "strictAllowlist": true}}}
+EOF
+gh api -H 'Accept: application/vnd.github.raw' repos/OWNER/REPO/contents/PATH > "$files/mapping.md" || fail "reading the mapping"
+for board in OWNER/N; do node PLUGIN/scripts/sdlc-status.mts "$board" --mapping "$files/mapping.md" || fail "sdlc-status on $board"; done > "$files/boards.txt"
+cd "$work" && claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER, and print the summary. The mapping is $files/mapping.md; each board's sdlc-status lines are in $files/boards.txt." \
+  --settings "$files/settings.json" --add-dir "$files" PLUGIN \
+  --allowedTools Agent Read 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' \
+  --disallowedTools 'Agent(isolation:*)' > "$files/summary.md" && [ -s "$files/summary.md" ] || fail "claude -p"
+post --body-file "$files/summary.md"
 ```
 
-Its cron line is `0 9 * * 1  sh PATH/TO/SCRIPT`, weekly being the default 7 days; every N days is `0 9 */N * *`.
+Its cron line is `0 9 * * 1  sh PATH/TO/SCRIPT`, weekly being the default 7 days; every N days is `0 9 */N * *`. `PATH` names where `gh`, `node` and `claude` live.
