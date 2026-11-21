@@ -54,6 +54,6 @@ The comment is the verdict, posted once every check finishes, to the issue's car
 - **Escalate** on a finding whose fix is a choice neither the author nor this review's remit owns.
 - **Stop** on a finding that reopens the design or a criterion.
 
-A diff that leaves a criterion or a choice the confirmed Design settled, or a finding that shows the Design's premise false, is a deviation: the verdict names it and applies the mapping's `deviated` label to the issue the PR closes. Wording, link style and a line the body declares are not; the body names those, as [4C](../elegance/references/cells/4C-merges.md) says.
+A diff that leaves a criterion or a choice the confirmed Design settled, or a finding that shows the Design's premise false, is a deviation, which passes: the verdict names it and applies the mapping's `deviated` label to the issue the PR closes. Wording, link style and a line the body declares are not; the body names those, as [4C](../elegance/references/cells/4C-merges.md) says.
 
 Post it with `gh pr review N --body-file <comment>`: `--approve` on pass, `--request-changes` on stop, else `--comment`. Reviewer and author often share one GitHub identity, as in a crew, and GitHub allows only a comment on one's own PR; there the heading is the verdict, so a pass reads as a `COMMENT` review headed `pass`.
