@@ -1,6 +1,6 @@
 ---
 name: dev-terraform
-description: How to write and operate Terraform — roots and state, one source per version, module interfaces, plan-time knowability, stateful lifecycle, secrets kept out of state and logs, least privilege, Kubernetes through Terraform, and terraform test. Trigger when writing, reviewing, or planning Terraform or OpenTofu code, a module, a root, a backend or environment layout, a terraform test, or the Makefile and scripts that run them.
+description: How to write and operate Terraform — roots and state, one source per version, module interfaces, plan-time knowability, stateful lifecycle, secrets kept out of state and logs, least privilege, Kubernetes through Terraform, and terraform test. Trigger when writing or reviewing Terraform or OpenTofu code (`.tf`, `.tftest.hcl`, `.tfvars`), a module, a root, a backend or environment layout, a terraform test, or the Makefile and scripts that run them, and before any plan, apply, import or destroy.
 ---
 
 ## Done is an empty second plan
@@ -76,7 +76,7 @@ A change is finished when `terraform plan -detailed-exitcode` exits 0 right afte
 - **CI trust pins the immutable subject** (`repo:<owner>@<id>/<repo>@<id>`), the audience, and the ref, validated by regex: the ref sits in `sub` for a branch job, and in the `ref` claim for a job that declares an `environment`, whose `sub` names the environment instead. Stricter still, two roles a workflow can assume differ by a claim (`job_workflow_ref`, `environment`) rather than share one subject.
 - **A permission split by resource carries the condition each needs** — instances by tag, documents by name.
 - **No wildcard roles.** A `*/*/*` ClusterRole or a policy that can rewrite its own ACLs is root by another name.
-- **Every argument whose default costs money or weakens security is set**: on AWS, IMDSv2 required with hop limit 1 (`http_tokens = "required"`, `http_put_response_hop_limit = 1`) keeps pods off the node's role; the hop limit alone leaves IMDSv1 open, and hostNetwork pods reach it either way.
+- **Every argument whose default costs money or weakens security is set**: on AWS, IMDSv2 required with hop limit 1 (`http_tokens = "required"`, `http_put_response_hop_limit = 1`) keeps pods off the node's role; the hop limit alone leaves IMDSv1 open, and hostNetwork pods reach it either way. A controller that discovers its VPC or region from IMDS is given them in its values.
 
 ## Kubernetes through Terraform
 

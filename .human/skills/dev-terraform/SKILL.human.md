@@ -1,4 +1,6 @@
-How to write and operate Terraform.
+> Done is an empty second plan: each root owns one environment's state, applies only the plan a person read, and keeps stateful things and secrets safe from mistakes.
+
+Fires: writing or reviewing `.tf`, `.tftest.hcl` or `.tfvars`; before any plan, apply, import or destroy.
 
 ## Done is an empty second plan
 
@@ -10,11 +12,13 @@ One state per environment, each root holding only its own credentials, cross-roo
 
 ## One file names the environment
 
-The backend file selects tfvars, environment, and context; a guard refuses any disagreement and any auto-loaded tfvars.
+The backend file selects tfvars, environment, and context; a guard refuses any disagreement and, in a shared environment's run, any auto-loaded tfvars.
 
 ## Apply the plan that was reviewed
 
 `plan -out`, then apply that file; never auto-approve. The plan file holds secrets and outlives no apply.
+
+⚠️ Hole: where applies run and how drift is detected — metacensus/skills#119.
 
 ## One source per version
 
