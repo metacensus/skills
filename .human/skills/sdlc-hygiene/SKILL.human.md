@@ -8,7 +8,7 @@ Fires: grooming, sweeping, after a pivot, scheduling it; what is stale or undeci
 |Sweep|`sdlc-sweep` per repo|`short` line|repo unreadable|
 |Read|`sdlc-family` per Epic, with `family`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|
-|Act|setup, board, Task/Bug type, Initiative card fixes|other flags|rate limit|
+|Act|setup, board, Task/Bug type, cards under a boarded Initiative|other flags|rate limit|
 |Report|comment per Epic; a handoff per answered family|open flags|·|
 
 ## Adopt
@@ -17,7 +17,7 @@ Each orphan or root issue is proposed: 📌 existing parent · 🔗 issue that m
 
 ## Act
 
-[`sdlc-setup.sh`](../sdlc/SKILL.human.md#setup) and `sdlc-status --apply` fix `setup`, `board`; an untyped Task or Bug takes its type; an `uncarded` issue under a boarded Initiative takes its card; every other flag ⛔, with what the sweep names, a `no <field>` the nearest Epic's value. Writes a second apart; a refused one, rate limits aside, is reported, the rest go on.
+[`sdlc-setup.sh`](../sdlc/SKILL.human.md#setup) and `sdlc-status --apply` fix `setup`, `board`; an untyped Task or Bug takes its type; an `uncarded` issue under a boarded Initiative takes its card; every other flag ⛔, with what the sweep names, a `no <field>`, a value for its nearest Epic's card, else its own. Writes a second apart; a refused one, rate limits aside, is reported, the rest go on.
 
 A request naming a class's fix is the yes to it.
 
