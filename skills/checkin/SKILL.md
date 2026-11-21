@@ -60,4 +60,4 @@ Match the repository's observed commit style (`git log`). A commit message answe
 
 ## 11. Stop at a verified diff
 
-Make the change, verify it, show the diff, and stop. Committing, pushing, and opening a pull request are the user's call unless they have handed you the branch. A pull request opened before the diff is verified is a draft (`gh pr create --draft`) until `gh pr ready`: review stops on a draft.
+Make the change, verify it, show the diff, and stop. Committing, pushing, and opening a pull request are the user's call unless they have handed you the branch. A pull request opened before the diff is verified is a draft (`gh pr create --draft`) until `gh pr ready`: [review stops on a draft](../sdlc-review/SKILL.md#precheck).
