@@ -75,11 +75,11 @@ A stage runs its checks and posts one comment:
 
 Frame → Design → Work → Review → Accept: the gates mirror around the work; nobody confirms their own.
 
-|Phase|Steps|Task, Bug: `sdlc-author`|Epic: `sdlc-crew`|
-|---|---|---|---|
-|Design|Frame (`ready`), Design (`designed`)|Precheck, Design|Precheck, Design|
-|Delivery|Work, Review|Implement → Respond|Plan → Land|
-|Record|Accept, no check yet|Land|Close|
+|Phase|Steps|Task, Bug: `sdlc-author`|Epic: `sdlc-crew`|Initiative: `sdlc-fleet`|
+|---|---|---|---|---|
+|Design|Frame (`ready`), Design (`designed`)|Precheck, Design|Precheck, Design|Precheck, Design|
+|Delivery|Work, Review|Implement → Respond|Plan → Land|Plan → Delegate|
+|Record|Accept, no check yet|Land|Close|Close|
 
 ## Closing
 

@@ -3,7 +3,7 @@ name: sdlc-crew
 description: Carry an Epic from its Design to closed with a crew of agents: an author per child, a fresh reviewer per pull request, and a delegator holding the plan. Trigger when running, orchestrating, or delegating an Epic's children across agents, when designing an Epic's children, and when asking what the crew's delegator does next.
 ---
 
-The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says, and while a thread waits on a person, or the person is away, runs [`decouple`](../decouple/SKILL.md). It starts from a [handoff](../sdlc/SKILL.md#handoff), whose Environment names the model each child runs on.
+The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. Under an Initiative, its delegator is [`sdlc-fleet`](../sdlc-fleet/SKILL.md), and the Initiative's Decided and Stops bind it as its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says, and while a thread waits on a person, or the person is away, runs [`decouple`](../decouple/SKILL.md). It starts from a [handoff](../sdlc/SKILL.md#handoff), whose Environment names the model each child runs on.
 
 ## Precheck
 
@@ -26,7 +26,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 `parallelize` answered: units are the children; edges their `blocked by` and the contracts their write-sets share, a renamed term grepped across the repository before any brief; the action is [`sdlc-author`](../sdlc-author/SKILL.md); done is [the hub's Closing](../sdlc/SKILL.md#closing); the checks, [`sdlc-review`](../sdlc-review/SKILL.md) per PR.
 
 - The children the Design proposed file through [`sdlc-intake`'s Decompose](../sdlc-intake/SKILL.md#decompose); at least one is filed, a lone Spike enough.
-- Each child carries `ready`, with every `blocked by` edge inside the Epic, and the graph has no cycle; a child without `ready` goes through [Curate](../sdlc-intake/SKILL.md#curate), under the remit.
+- Each child carries `ready`, with every `blocked by` edge inside the Epic, or set by its Initiative's Plan, and the graph has no cycle; a child without `ready` goes through [Curate](../sdlc-intake/SKILL.md#curate), under the remit.
 - The contract lands first, pinned in a file its consumers read, and merged before a consumer starts.
 - No two write-sets in a wave overlap; a line no child owns goes to one, or to a child filed for it.
 - The comment lists the waves, each child's write-set and contracts.

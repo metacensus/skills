@@ -125,12 +125,13 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 | | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we achieve what we wanted | the close, and `reached-up` |
 
-Design meets the bar [the ladder](#the-ladder) names; an Epic's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md). Accept has no check of its own yet: a clean merge closes the issue.
+Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative. Accept has no check of its own yet: a clean merge closes the issue.
 
 | Tier | Carrier | Design | Delivery | Record |
 |---|---|---|---|---|
 | Task, Bug | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Publish, Respond | Land: the merge and the close |
 | Epic | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land | Close: the rollout record |
+| Initiative | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate | Close: what landed and dropped, the roadmap |
 
 A Spike is design work carved into a Task, at any tier. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
 
