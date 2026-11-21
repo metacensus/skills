@@ -16,9 +16,9 @@ description: Search a person's recent sessions, memory and skills for candidate 
 Each transcript is reduced to its conversation, tool output dropped:
 
 ```sh
-jq -r 'select(.type == "user" or .type == "assistant") | .type as $who | .message.content
+jq -r 'select((.type == "user" or .type == "assistant") and (.isMeta | not)) | .type as $who | .message.content
   | if type == "string" then [{type: "text", text: .}] else . end | .[]
-  | if .type == "text" then "\($who): \(.text)"
+  | if .type == "text" and (.text | test("^<(system-reminder|task-notification)>") | not) then "\($who): \(.text)"
     elif .type == "tool_use" then "tool: \([.name, .input.skill // empty] | join(" "))"
     else empty end' SESSION.jsonl
 ```
@@ -38,9 +38,9 @@ The [`parallelize`](../parallelize/SKILL.md#what-the-work-answers) questions, an
 ## Merge
 
 - Flags group by target and direction into candidates.
-- Recurrence is derived from the refs, never judged by a scout: many is repeated work, a few weeks apart is rare-but-recurring.
+- Recurrence is derived from the refs, never judged by a scout: many is repeated work, a few on separate days is rare-but-recurring.
 - A target's body is read before a candidate calls it silent or wrong.
 
 ## Report
 
-One [outline](../human-output/references/chat.md#the-outline), a line per candidate: new or an edit; its target, the skill it augments, replaces or sits beside, or `none`; a direction in one sentence; its refs. The person picks, and each pick goes to [`sdlc-intake`](../sdlc-intake/SKILL.md). Evidence stays local: a filed candidate carries its direction, never a quoted span.
+One [outline](../human-output/references/chat.md#the-outline), a line per candidate: new or an edit; its target, the skill it augments, replaces or sits beside, or `none`; a direction in one sentence; its refs. The person picks, and each pick goes to [`sdlc-intake`](../sdlc-intake/SKILL.md). Evidence stays local: a filed candidate carries its target and direction alone, never a ref or a span.

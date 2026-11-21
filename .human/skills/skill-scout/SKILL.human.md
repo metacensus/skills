@@ -16,4 +16,4 @@ Scouts flag workflows, corrections, friction, and skills silent or wrong; the me
 
 Each candidate: new or edit · target or `none` · one-sentence direction · refs.
 
-⚠️ Evidence stays local; a filed candidate carries its direction, never a quoted span.
+⚠️ Evidence stays local; a filed candidate carries its target and direction alone.
