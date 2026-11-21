@@ -53,4 +53,4 @@ Commit: [5C](../elegance/references/cells/5C-commit.human.md). PR: [4C](../elega
 
 ## Stop
 
-Verify, show the diff, ⛔ stop; commit and push are the user's.
+Verify, show the diff, ⛔ stop; commit and push are the user's. A PR opened unverified is a draft until `gh pr ready`.

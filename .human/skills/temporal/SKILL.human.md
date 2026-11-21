@@ -10,7 +10,7 @@ Testing:   Target → Analyze → Gaps → Guidance → Clarify → Plan → ⛔
 
 ## Authoring
 
-Edit proto and implementation, never generated code ([pfi-pattern](references/pfi-pattern.human.md)). Every workflow is tested.
+Edit proto and implementation, never generated code ([pfi-pattern](references/pfi-pattern.human.md)). Every workflow is tested. Inputs and results land in history: a secret's name or an object's key, never its value.
 
 | | Rule | Do | Never |
 |---|---|---|---|

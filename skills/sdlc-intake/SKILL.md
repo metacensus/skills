@@ -18,6 +18,7 @@ Draft the issue against these checks:
 - **Bar**: the ladder's for its type, a Spike's decision standing as its criterion.
 - **Problem first**: the form's opening field states the problem, and the body carries its evidence. It names a solution only when one is already decided or is itself the constraint; otherwise the solution is left to the author's [Design](../sdlc-author/SKILL.md#design).
 - **Text**: no emojis, nothing the request or its evidence does not supply, and no line breaks inside a paragraph.
+- **Public**: in a public repository, the draft passes [`open-source`'s review](../open-source/references/review.md).
 - **Irreversible step**: everything that must hold before [one](../sdlc-review/SKILL.md#focus), each its own criterion.
 
 No issue exists yet, so Compose's comment goes to the user.
