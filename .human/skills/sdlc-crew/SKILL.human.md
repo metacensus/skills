@@ -1,4 +1,4 @@
-> A delegator carries a `designed` Epic to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child.
+> A delegator carries a `designed` Epic to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child. Starts from a [handoff](../sdlc/SKILL.human.md#handoff).
 
 Fires: orchestrating or delegating an Epic's children across agents; asking what the delegator does next.
 

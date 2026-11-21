@@ -9,7 +9,7 @@ Fires: grooming, sweeping; what is stale or undecided.
 |Read|`sdlc-family` per Epic, with `family`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|
 |Act|setup, board, Task/Bug type fixes|other flags|rate limit|
-|Report|comment per Epic|open flags|·|
+|Report|comment per Epic; a handoff per answered family|open flags|·|
 
 ## Adopt
 
