@@ -36,7 +36,6 @@ while IFS=$'\t' read -r role label description; do
   ready) color=0e8a16 ;;
   designed) color=1d76db ;;
   deviated) color=fbca04 ;;
-  reached-up) color=c5def5 ;;
   *) color=ededed ;;
   esac
   named+=$label$'\n'
@@ -46,8 +45,7 @@ while IFS=$'\t' read -r role label description; do
 done < <(printf '%s\t%s\n' \
   ready 'Meets its form; may be picked up' \
   designed 'A person can read the issue alone and know what will be built' \
-  deviated 'Done differently than planned; see the closing comment' \
-  reached-up 'Its work rewrote the parent' | merged Labels)
+  deviated 'Done differently than designed; the review names how' | merged Labels)
 while IFS=$'\t' read -r label _; do
   [[ -z $label ]] || grep -qxF "$label" <<<"$named" ||
     { echo "TODO  label $label: no role names it; delete it, or give it a role in the mapping"; todo=1; }

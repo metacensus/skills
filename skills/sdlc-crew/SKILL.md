@@ -63,8 +63,8 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Close
 
 - Every child is closed, completed or, past a dead end, not planned.
-- The rollout record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, and its Accept.
-- Each Spike's `Decision:` is in the Epic's body, the Spike `reached-up`.
+- The rollout record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words.
+- Each Spike's `Decision:` is in the Epic's body, confirmed by the Epic's delegator.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
