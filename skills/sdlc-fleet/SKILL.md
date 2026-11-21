@@ -13,7 +13,6 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 - The Initiative is open, its body carrying its form's required fields.
 - The roadmap entry it advances, and the smallest finish line that moves it.
-- [The ladder](../sdlc/SKILL.md#the-ladder)'s Initiative test passes; else it refiles as an Epic.
 
 **Escalate** a finish line or non-goal the person has not stated. **Stop** on an Initiative closed, or when no roadmap entry owns it.
 
