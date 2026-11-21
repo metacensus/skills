@@ -28,7 +28,7 @@ At that size, in each theme the host shows. Rules are judged on the screenshot, 
 
 ## Uniform boxes
 
-- Each box has a kind: a service, a store, an actor. Boxes of one kind share width, height, corner radius, stroke, fill and font size.
+- Each box has a kind, such as a service, a store or an actor. Boxes of one kind share width, height, corner radius, stroke, fill and font size.
 - A kind's size is its longest label plus one padding. A label that does not fit is shortened or wrapped; its box never grows alone.
 - Labels are centred, in one font family. A connector's label sits at its midpoint, clear of the line.
 - More than one kind gets a legend.
