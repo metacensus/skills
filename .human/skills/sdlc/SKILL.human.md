@@ -1,6 +1,6 @@
 > Every organization on the Initiative / Epic / Task / Bug ladder shares one lifecycle; its `sdlc-mapping.md` binds it ([mapping](references/mapping.human.md)).
 
-Fires: setting up issues, writing a mapping, asking how status works, reporting up. Setup runs first.
+Fires: setting up issues, writing a mapping, asking how status works, reporting up, handing off to a fresh session. Setup runs first.
 
 Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 
@@ -48,6 +48,10 @@ Work starts on a Ready Task or Bug, highest Priority first.
 |`reviewer`|a PR's review; default `CODEOWNERS`|
 
 A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down. An agent acts on a Task or Bug, ⛔ on an Epic or Initiative; assigning and editing another's issue ⛔.
+
+## Handoff
+
+A fresh session starts from one: Goal, linked · Decided, do not reopen · Grants, quoted · Stop · Environment.
 
 ## Reporting
 
