@@ -32,3 +32,5 @@ Then `elegance`, the mapping's Checks, Verification; unfinished blocks a pass.
 |✅ Pass|no finding needs a choice|
 |⛔ Escalate|fix is no one here's|
 |🛑 Stop|finding reopens design|
+
+`deviated`: applied by the verdict when a criterion, a settled choice or the Design's premise is left.

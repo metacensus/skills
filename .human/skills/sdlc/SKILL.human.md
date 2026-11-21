@@ -20,7 +20,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Mechanism|Carries|
 |---|---|
 |Parent|Epic → Initiative; Task → Epic|
-|Label|`ready`, `designed`, `deviated`, `reached-up`|
+|Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
 
@@ -88,8 +88,7 @@ Frame → Design → Work → Review → Accept: the gates mirror around the wor
 |Outcome|Close|
 |---|---|
 |Done as planned|**completed**|
-|Done differently|**completed** + `deviated`, ⛔|
-|Parent rewritten|`reached-up`|
+|Done differently|**completed** + `deviated` from the review, ⛔|
 |Not planned|**not planned**, ⛔|
 
 The issue holds the problem, its Design the solution: a Design settling what the body left open is not `deviated`; contradicting the body, or settling a stop, is.

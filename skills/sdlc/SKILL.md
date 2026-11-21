@@ -25,7 +25,7 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 | **Type** | Initiative / Epic / Task / Bug, set org-wide; no others. Outside an organization, the title states it. |
 | **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
 | **Dependency** | `blocked by` / `blocking`, what can start today: `gh issue edit N --add-blocked-by M`. |
-| **Label** | Four roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built), `deviated` and `reached-up` (see [Closing](#closing)). |
+| **Label** | Three roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built) and `deviated` (see [Closing](#closing)). |
 | **Board** | A projection of [status](#status) and Priority, holding the Initiatives the mapping's Boards rows give it and everything under them, the default board holding the rest. [Setup](#setup) gives it a view per type, Status columns by Priority rows, and the Auto-add sub-issues workflow, which carries a child onto its parent's board. Writing to it needs the `project` scope. |
 | **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
 
@@ -52,7 +52,7 @@ Work starts only on a Task or Bug in Ready, highest Priority first, `gh issue li
 | `delegator` | what the delegate cannot own: a stage's escalation or stop, filing an Initiative or Epic, a root issue | whoever handed the work over, the user or an agent at a wider scope; else the person who started the work, on whom the run waits |
 | `reviewer` | a PR's review | `CODEOWNERS`, else none |
 
-A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates.
+A **remit** is what a delegator writes when handing work down: the choices the delegate owns. A comment relying on one cites it. A choice is the delegate's when nobody outside its unit has to agree, [`elegance`'s scope test](../elegance/references/scope.md#which-tier-is-this), or when the remit hands it down; otherwise it escalates. Changing how the plan is carried out stays with the delegate; changing the plan escalates one tier, to a person only where that tier is theirs or the change settles a stop.
 
 A remit hands choices down short of its **stops**, the kinds of choice, or the issues by name, that escalate however much else it hands over. Unless the remit names its own, they are a fact only a person knows, canon or ontology, policy, a message to others, a choice its giver decided, and closing an Initiative. `designed` is applied by the issue's delegator, never by the agent whose Design proposed it.
 
@@ -123,7 +123,7 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 | | Design | the carrier | how, and what of the frame to change | `designed`, applied by the `delegator` |
 | **Delivery** | Work | the carrier | · | a PR, or the children closed |
 | | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
-| **Record** | Accept | `delegator` | did we achieve what we wanted | the close kept or reopened, and `reached-up` |
+| **Record** | Accept | `delegator` | did we achieve what we wanted | the close kept or reopened |
 
 Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
 
@@ -135,16 +135,15 @@ Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's 
 | Epic | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land | Close: the rollout record |
 | Initiative | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate | Close: what landed and dropped, the roadmap |
 
-A Spike is design work carved into a Task, at any tier. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
+A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
 
 ## Closing
 
 | Outcome | Close |
 |---|---|
 | Done as planned | **completed** |
-| Done differently | **completed** + `deviated` + comment |
-| Child needed a parent rewrite | `reached-up` on the Task |
-| Spike answered | **completed** + a `Decision:` comment, once the decision is in the body that reads it (usually the parent's: `reached-up`) |
+| Done differently | **completed** + `deviated`, from the review's verdict, which names how; without a PR, from whoever closes it |
+| Spike answered | **completed** + a `Decision:` comment, once its parent's delegator confirms the answer and it is in the body that reads it |
 
 Completion is not deviation: a plain **completed** closes with no escalation. The issue holds the problem and its Design the solution, so a Design settling what the body left open is no deviation; contradicting the body, or settling a [stop](#roles), is. `deviated` and **not planned** escalate to the `delegator`.
 
