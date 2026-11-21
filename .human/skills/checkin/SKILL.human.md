@@ -1,14 +1,14 @@
-> Ten checks before anything goes back into a shared repo, so the diff causes no structural drift.
+> Checks before anything goes back into a shared repo, so the diff causes no structural drift.
 
 Fires: before any commit, push, or PR; "check in", "put this back".
 
 ```
-Branch → Precedent → Derived → Falsified → Surgical → Gate → Settle → Diff → Text → ⛔ Stop
+Branch → Precedent → Derived → Falsified → Surgical → Sync → Gate → Settle → Diff → Text → ⛔ Stop
 ```
 
 ## Branch
 
-On the default branch, branch first: `<your-name>/<topic>`.
+On the default branch, branch first, named per [`checkout`](../checkout/SKILL.human.md).
 
 ## Precedent
 
@@ -27,6 +27,10 @@ Grep the entity; re-read every reference.
 | Do | Not |
 |---|---|
 | change needed lines | reformat a file |
+
+## Sync
+
+Fetch and bring in main before the gate: rebase while alone, merge once shared.
 
 ## Gate
 

@@ -111,7 +111,7 @@ Completion is not deviation: a plain **completed** closes with no escalation. `d
 ## Linking an issue to its branch and PR
 
 - `Closes #N` in the PR body, `Closes OWNER/REPO#N` across repositories.
-- `gh issue develop N --name <branch>`, under [`checkin`](../checkin/SKILL.md)'s name, at Publish before the push: it creates the remote branch. When one already exists, or it cannot run, skip it and rely on `Closes #N`. **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
+- `gh issue develop N --name <branch>`, under [`checkout`](../checkout/SKILL.md)'s name, at Publish before the push: it creates the remote branch. When one already exists, or it cannot run, skip it and rely on `Closes #N`. **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
 
 ## The mapping
 
