@@ -3,7 +3,7 @@ name: land
 description: Carry a pull request from its review's pass to merged and released — waiting on CI and background agents without sleeping, merging a stack in order, recovering a refused merge, cutting a release. Trigger when waiting on a run, a check, or a background agent; when merging a PR or a stack; when a merge is refused; and when tagging, rerunning, or verifying a release.
 ---
 
-Landing ends when what merged is published and its consumers run it. Syncing a branch is [`checkin`'s Sync](../checkin/SKILL.md#6-sync-with-main); first-publish order is [`dev-ci-github`'s](../dev-ci-github/SKILL.md#release-from-a-tag).
+Landing ends when what merged is published and its consumers run it; a merge that blocks an open Release ends at the merge, and the Release ships the rest. Syncing a branch is [`checkin`'s Sync](../checkin/SKILL.md#6-sync-with-main); first-publish order is [`dev-ci-github`'s](../dev-ci-github/SKILL.md#release-from-a-tag).
 
 ## 1. Wait without sleeping
 
@@ -37,6 +37,7 @@ Bottom first: a child merges after its parent, never into the parent's branch.
 
 ## 4. Release
 
+- **A Release batches what blocks it**: a merge blocking an open one is not tagged on its own, `gh api repos/O/R/issues/N/dependencies/blocking --jq '.[] | select(.state == "open" and .type.name == "Release") | .title'` naming it. The Release ships once nothing blocking it is open, `gh issue list --search 'type:Release -is:blocked'` listing those; one under a Rollout ships as a child of the Rollout's [`sdlc-crew`](../sdlc-crew/SKILL.md) run.
 - **Tag** as [Release from a tag](../dev-ci-github/SKILL.md#release-from-a-tag) says, the first release only once its first-publish order holds; wait on the run.
 - **A transient failure** (runner, registry 5xx, rate limit) reruns: `gh run rerun RUN --failed`. One a commit fixes merges the fix and cuts the next patch; a published tag never moves.
 - **Publish is verified at the registry**, not the run: `npm view PKG@VER version`, `docker buildx imagetools inspect IMAGE:TAG`, `gh release view vX.Y.Z`.
@@ -44,4 +45,4 @@ Bottom first: a child merges after its parent, never into the parent's branch.
 
 ## 5. Done
 
-One line per PR merged and per version published, each linked.
+One line per PR merged and per version published, each linked. On a Release they are its closing comment, and it closes **completed** once each consumer runs its version.

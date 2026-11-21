@@ -54,7 +54,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Land
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
-- Each landed child is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases): its Verification exits 0 on the default branch, its release is published and its consumers run it, per [`land`](../land/SKILL.md); a miss reopens it.
+- Each landed child is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases): its Verification exits 0 on the default branch and it has landed per [`land`](../land/SKILL.md); a miss reopens it.
 - A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest files as new children through [`sdlc-intake`](../sdlc-intake/SKILL.md#decompose) under the Epic, curated as Plan says, and Plan re-runs over the children unblocked at that moment, or Design, on an Epic not yet `designed`. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 - After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
