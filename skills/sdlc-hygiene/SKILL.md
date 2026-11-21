@@ -7,22 +7,22 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The scope is the user's Epic, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'`, and the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
+- The scope is the user's Epic or Initiative, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'`; an Initiative's is its family two levels deep, the Initiative, its Epics and their children, by the same search run on the Initiative and then on each Epic it returns; each with the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
 - The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, else all.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
-**Escalate** without it: only the person at the keyboard can refresh it. **Stop** when no repository is in scope or the Epic cannot be read.
+**Escalate** without it: only the person at the keyboard can refresh it. **Stop** when no repository is in scope or the Epic or Initiative cannot be read.
 
 ## Sweep
 
-- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with an Epic's family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no checks, done when every issue in scope the classes need, and every card the sweep reads, is read.
+- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with a family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no checks, done when every issue in scope the classes need, and every card the sweep reads, is read.
 
 **Escalate** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
-- With `family` among the classes, one [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic is the scope, through `parallelize`, answered as Sweep.
+- With `family` among the classes, one [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic or Initiative is the scope, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
@@ -38,7 +38,8 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 - Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and [`sdlc-status --apply`](../sdlc/SKILL.md#status) on each board, which settles every `board` flag.
 - An `untyped` Task or Bug takes the type the sweep names.
-- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `unowned`, the assignee the sweep names; an `untyped` Epic or Initiative, its type; a `no <field>` note, the value the sweep names for its topmost card, then `sdlc-status --apply`; `uncarded`, a card on the board the sweep names, then `sdlc-status --apply`; `setup`'s, and each `root` issue, as a question. A request that named a class's fix is the delegator's yes to it. It closes nothing.
+- An `uncarded` issue under an Initiative a Boards row names takes a card on that board, `gh project item-add`, then `sdlc-status --apply`.
+- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, its removal; a missing `ready`, [`sdlc-intake`'s curation](../sdlc-intake/SKILL.md#curate); `unowned`, the assignee the sweep names; an `untyped` Epic or Initiative, its type; a `no <field>` note, the value the sweep names for the nearest Epic's card, else its own, then `sdlc-status --apply`; any other `uncarded`, a card on the board the sweep names, then `sdlc-status --apply`; `setup`'s, and each `root` issue, as a question. A request that named a class's fix is the delegator's yes to it. It closes nothing.
 - Its own writes go out a second apart: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a faster burst. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
 
 **Stop** on a rate limit; a rerun once it resets skips what is written.
