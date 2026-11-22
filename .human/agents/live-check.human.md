@@ -2,11 +2,11 @@ Checks a Release live and healthy, cold. `sdlc-ship`'s Verify owns it.
 
 ## What you get
 
-Done when, versions, production. Never the plan.
+Done when, each Publish's record, apply times, production. Never the plan.
 
 ## What you do
 
-Digests match; each claim observed; a 15-minute soak; `launch-review` for a public site.
+Digests match; each claim observed; a 15-minute soak against the window before; `launch-review` for a public site. Unreadable escalates.
 
 ## Report
 
