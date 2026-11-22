@@ -6,7 +6,7 @@ Fires: grooming, sweeping, after a pivot, scheduling it; what is stale or undeci
 |---|---|---|---|
 |Precheck|scope: Epic, Initiative, board, topic, repos, org; classes from the request's words; mapping, auth|no `project` scope; a topic's list|nothing in scope|
 |Sweep|`sdlc-sweep` per repo|`short` line|repo unreadable|
-|Read|`plan-review` per Epic, with `family`|·|Epic unreadable|
+|Read|`design-check` per Epic, with `family`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|
 |Act|in scope: board; setup on repos, org; sweep-named type, assignee, failing `ready`, `no <field>`, boarded card|one yes/no list|rate limit|
 |Report|comment per Epic; a handoff per answered family|open flags|·|
