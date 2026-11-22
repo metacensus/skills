@@ -1,6 +1,6 @@
 > What every web UI shares; a child skill holds the rest.
 
-Fires: a front-end repo's build config, base path, Dockerfile, styling, dependencies or API calls; two UIs sharing; design-system alignment; any work for a child.
+Fires: a front-end repo's build config, base path, Dockerfile, styling, dependencies, API calls or a form's submit; two UIs sharing; design-system alignment; any work for a child.
 
 |Skill|Holds|
 |---|---|
@@ -11,7 +11,7 @@ Fires: a front-end repo's build config, base path, Dockerfile, styling, dependen
 |[`dev-ci-github`](../dev-ci-github/SKILL.human.md)|CI and release|
 
 ```
-Image → Base path → Headers → Tokens → Versions → Clients → Build gate → Align
+Image → Base path → Headers → Tokens → Versions → Clients → Forms → Build gate → Align
 ```
 
 ## One image, every environment
@@ -37,6 +37,10 @@ One version per package and framework major, bumped together. ⚠️ No forks; a
 ## Generated clients only
 
 One session seam over the generated client. ⚠️ No raw `fetch` writes or hand-written wire types. ✅ Schema-checked at every boundary.
+
+## Submitting a form
+
+Through the seam's timeout; a synchronous guard against double submit. ✅ `aria-busy`, status or alert focused, input kept.
 
 ## The build is the gate
 

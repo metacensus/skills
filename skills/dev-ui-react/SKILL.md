@@ -33,6 +33,7 @@ description: What a React app, or a plugin into a host, needs beyond what every 
 
 - **The design-system package's field kit wires each control's label, description and error** (`id`, `htmlFor`, `aria-describedby`, `aria-invalid`) by construction, so no form wires them by hand.
 - **Every form is React Hook Form with its zod resolver**, zod being the one validator the app's data boundaries already use, and the schema is typed against the generated request type, so a form cannot drift from the contract.
+- **A form submits as [`dev-ui`](../dev-ui/SKILL.md#submitting-a-form) says**, its double-submit guard a ref.
 
 ## Plugins into a host
 
