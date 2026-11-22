@@ -19,9 +19,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # Not --strict: its one warning is the absent version, absent so every commit is a release.
       - name: Validate the plugin and marketplace
-        run: npx -y @anthropic-ai/claude-code plugin validate .
+        run: npx -y @anthropic-ai/claude-code plugin validate --strict .
       - name: Check the elegance skill and the twins
         run: node scripts/check-cells.mts
       - name: Check markdown prose is one line per paragraph
