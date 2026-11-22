@@ -19,11 +19,11 @@
 
   <g class="panel">
     <rect x="16" y="16" width="448" height="288" rx="8"/>
-    <rect x="624" y="112" width="160" height="192" rx="8"/>
+    <rect x="624" y="16" width="160" height="288" rx="8"/>
   </g>
   <g font-size="13" font-weight="600" class="soft" dominant-baseline="central">
     <text x="32" y="32">Code changes</text>
-    <text x="640" y="128">Production changes</text>
+    <text x="640" y="32">Production changes</text>
   </g>
 
   <g class="blue">
@@ -40,9 +40,9 @@
   <g text-anchor="middle" dominant-baseline="central">
     <text x="240" y="72">Initiative</text>
     <text x="240" y="168">Epic</text>
-    <text x="96" y="264">Bug</text>
+    <text x="96" y="264">Spike (a Task)</text>
     <text x="240" y="264">Task</text>
-    <text x="384" y="264">Spike (a Task)</text>
+    <text x="384" y="264">Bug</text>
     <text x="704" y="168">Rollout</text>
     <text x="704" y="264">Release</text>
   </g>

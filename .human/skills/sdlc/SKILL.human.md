@@ -79,7 +79,7 @@ A stage runs its checks and posts one comment:
 
 ![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
 
-![Each tier's carrier and its stages by phase](../../../skills/sdlc/figures/carriers.svg)
+![Each tier's carrier runs the steps; its Work holds the tier below](../../../skills/sdlc/figures/carriers.svg)
 
 **Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
 

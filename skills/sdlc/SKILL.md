@@ -121,11 +121,11 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 
 | Phase | Step | Whose | Asks | Answered by |
 |---|---|---|---|---|
-| **Design** | Frame | `delegator`, through [`sdlc-intake`](../sdlc-intake/SKILL.md) | what should we do | `ready` |
-| | Design | the carrier | how, and what of the frame to change | `designed`, applied by the `delegator` |
+| **Design** | Frame | `delegator`, through [`sdlc-intake`](../sdlc-intake/SKILL.md) | what is the problem? | `ready` |
+| | Design | the carrier | what is the plan? | `designed`, applied by the `delegator` |
 | **Delivery** | Work | the carrier | · | a PR, or the children closed |
-| | Review | `reviewer` | did we do what we said, and do it well | the verdict, and `deviated` |
-| **Record** | Accept | `delegator` | did we achieve what we wanted | the close kept or reopened |
+| | Review | `reviewer` | did we follow the plan? | the verdict, and `deviated` |
+| **Record** | Accept | `delegator` | did we solve the problem? | the close kept or reopened |
 
 Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
 
