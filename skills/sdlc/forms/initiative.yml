@@ -1,5 +1,5 @@
 name: Initiative
-description: A finish line, held as the Epics that exist for it; work it shares is a blocker.
+description: A finish line, held as the Epics that exist for it.
 type: Initiative
 body:
   - type: markdown
