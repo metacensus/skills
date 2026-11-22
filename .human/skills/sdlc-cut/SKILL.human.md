@@ -1,6 +1,6 @@
 > A cut carries one Publish: one repository's artifact out at one version. Minutes, never one-way: the version before stays served. Its yes is its Release's, or, alone, the person's `designed` on it.
 
-Fires: cutting, tagging or publishing a version; a release run failing; checking what a registry serves.
+Fires: cutting, tagging or publishing a version; a person handing over a Publish; a release run failing; checking what a registry serves.
 
 ```
 Plan → Change → Verify
