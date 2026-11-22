@@ -8,7 +8,7 @@ Components → Structure → Routing → Data → Forms → Plugins → Lint
 
 ## Components
 
-Design-system package first, then Radix, a native element counting. ⚠️ No clickable `div`; `<dialog>` with `showModal()`; `aria-current` on nav. No outer layout in a component.
+Design-system package first, then Radix; a native element is an equivalent. ⚠️ No clickable `div`; `<dialog>` with `showModal()`; `aria-current` on nav. No outer layout in a component.
 
 ## Structure
 

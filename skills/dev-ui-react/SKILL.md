@@ -5,7 +5,7 @@ description: What a React app, or a plugin into a host, needs beyond what every 
 
 ## Components
 
-- **Primitives come from the design-system package first**; Radix, the one headless library, only where the package has no equivalent, and a native element counts as one. A primitive neither holds is built once in the app's `ui/` and moves into the package when a second UI needs it ([`dev-ui`](../dev-ui/SKILL.md#one-version-line)), so each primitive has one way to be made.
+- **Primitives come from the design-system package first**; Radix, the one headless library, only where the package has no equivalent, a native element counting as an equivalent. A primitive neither holds is built once in the app's `ui/` and moves into the package when a second UI needs it ([`dev-ui`](../dev-ui/SKILL.md#one-version-line)), so each primitive has one way to be made.
 - **Anything clickable is a `<button type="button">` or an `<a>`, never a clickable `div`**, which gets no focus, keyboard or role.
 - **A dialog is a native `<dialog>` opened with `showModal()`**, which brings focus, Escape and the top layer without a library.
 - **Navigation marks its current link `aria-current="page"`**, so a screen reader hears where it is.
@@ -43,7 +43,7 @@ description: What a React app, or a plugin into a host, needs beyond what every 
 ## Lint and types
 
 - **ESLint flat config with typescript-eslint, `react-hooks` and `jsx-a11y`'s strict set, run with `--max-warnings 0`**, so no warning accumulates; `jsx-a11y` is what catches the clickable `div`.
-- **`no-restricted-imports` enforces the boundaries**, its message giving the reason: no feature reaches into another's folders, `ui/` imports no feature, and host and plugin never import each other.
+- **`no-restricted-imports` enforces the boundaries**, its message giving the reason: no feature reaches into another's folders, and `ui/` imports no feature.
 - **`tsconfig` sets `strict` and `noUncheckedIndexedAccess`**, so an index read is typed as possibly missing.
 - **knip fails on an unused file, export or dependency**; an overlapping one (a second headless library, HTTP client or validator) is the review's, since no tool sees two libraries doing one job.
 - **All of it runs in the gate** ([`dev-ui`](../dev-ui/SKILL.md#the-build-is-the-gate)).
