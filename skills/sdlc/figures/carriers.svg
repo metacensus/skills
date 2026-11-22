@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="2408" viewBox="0 0 800 2408" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="2504" viewBox="0 0 800 2504" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
   <title>sdlc's parts</title>
   <desc>Inside sdlc, each code and production tier's carrier and the agents its steps start, its Work fanning out to the tier below; project management beside them; the standards, communication and dev skills outside.</desc>
   <style>
@@ -24,58 +24,58 @@
   <defs>
     <marker id="next" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
   </defs>
-  <rect x="0" y="0" width="800" height="2408" class="bg"/>
+  <rect x="0" y="0" width="800" height="2504" class="bg"/>
 
-  <rect x="8" y="8" width="784" height="1888" rx="8" class="skill"/>
+  <rect x="8" y="8" width="784" height="1984" rx="8" class="skill"/>
   <text x="24" y="32" font-size="13" dominant-baseline="central"><tspan font-weight="600" class="accent">sdlc</tspan><tspan class="soft"> · the hub: ladder, status, labels, reporting policy (what goes up, when); the skills inside are its parts</tspan></text>
 
   <g class="panel">
-    <rect x="24" y="48" width="752" height="784" rx="8"/>
-    <rect x="24" y="848" width="752" height="608" rx="8"/>
-    <rect x="24" y="1536" width="752" height="160" rx="8"/>
-    <rect x="24" y="1712" width="752" height="168" rx="8"/>
-    <rect x="24" y="1944" width="368" height="160" rx="8"/>
-    <rect x="408" y="1944" width="368" height="160" rx="8"/>
-    <rect x="24" y="2120" width="752" height="272" rx="8"/>
+    <rect x="24" y="48" width="752" height="832" rx="8"/>
+    <rect x="24" y="896" width="752" height="656" rx="8"/>
+    <rect x="24" y="1632" width="752" height="160" rx="8"/>
+    <rect x="24" y="1808" width="752" height="168" rx="8"/>
+    <rect x="24" y="2040" width="368" height="160" rx="8"/>
+    <rect x="408" y="2040" width="368" height="160" rx="8"/>
+    <rect x="24" y="2216" width="752" height="272" rx="8"/>
   </g>
   <g font-size="12" dominant-baseline="central">
     <text x="40" y="64"><tspan class="group">CODE CHANGES</tspan><tspan class="soft"> · an Initiative holds Epics; an Epic holds Tasks and Bugs</tspan></text>
-    <text x="40" y="864"><tspan class="group">PRODUCTION CHANGES</tspan><tspan class="soft"> · Rollout holds Releases; a Release holds Publishes</tspan></text>
-    <text x="40" y="1552" class="group">PROJECT MANAGEMENT</text>
-    <text x="40" y="1728" class="group">KEY</text>
-    <text x="40" y="1960" class="group">STANDARDS</text>
-    <text x="424" y="1960" class="group">COMMUNICATION</text>
-    <text x="40" y="2136"><tspan class="group">DEV</tspan><tspan class="soft"> · optional for authors</tspan></text>
+    <text x="40" y="912"><tspan class="group">PRODUCTION CHANGES</tspan><tspan class="soft"> · Rollout holds Releases; a Release holds Publishes</tspan></text>
+    <text x="40" y="1648" class="group">PROJECT MANAGEMENT</text>
+    <text x="40" y="1824" class="group">KEY</text>
+    <text x="40" y="2056" class="group">STANDARDS</text>
+    <text x="424" y="2056" class="group">COMMUNICATION</text>
+    <text x="40" y="2232"><tspan class="group">DEV</tspan><tspan class="soft"> · optional for authors</tspan></text>
   </g>
 
   <!-- code changes -->
   <g class="funnel">
     <rect x="40" y="80" width="720" height="168"/>
-    <polygon points="360,176 440,176 440,264 472,280 760,264 760,464 40,464 40,264 328,280 360,264"/>
-    <polygon points="360,392 440,392 440,480 472,496 760,480 760,816 40,816 40,480 328,496 360,480"/>
+    <polygon points="360,176 440,176 440,264 472,280 760,328 760,488 40,488 40,328 328,280 360,264"/>
+    <polygon points="360,416 440,416 440,504 472,520 760,568 760,864 40,864 40,568 328,520 360,504"/>
   </g>
   <g class="skill">
     <rect x="176" y="96" width="448" height="136" rx="8"/>
-    <rect x="176" y="312" width="448" height="136" rx="8"/>
-    <rect x="176" y="528" width="448" height="272" rx="8"/>
+    <rect x="176" y="336" width="448" height="136" rx="8"/>
+    <rect x="176" y="576" width="448" height="272" rx="8"/>
   </g>
   <g class="bg">
     <rect x="360" y="176" width="80" height="88"/>
-    <rect x="360" y="392" width="80" height="88"/>
+    <rect x="360" y="416" width="80" height="88"/>
   </g>
   <g class="panel" style="stroke:none">
     <rect x="360" y="176" width="80" height="88"/>
-    <rect x="360" y="392" width="80" height="88"/>
+    <rect x="360" y="416" width="80" height="88"/>
   </g>
   <g class="funnel">
     <rect x="360" y="176" width="80" height="88" style="stroke:none"/>
-    <rect x="360" y="392" width="80" height="88" style="stroke:none"/>
-    <path d="M360,176 V264 M440,176 V264 M360,392 V480 M440,392 V480" style="fill:none"/>
+    <rect x="360" y="416" width="80" height="88" style="stroke:none"/>
+    <path d="M360,176 V264 M440,176 V264 M360,416 V504 M440,416 V504" style="fill:none"/>
   </g>
   <g font-size="13" dominant-baseline="central">
     <text x="192" y="112"><tspan font-weight="600" class="accent">sdlc-fleet</tspan><tspan class="soft"> · Initiative, in a person's span</tspan></text>
-    <text x="192" y="328"><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · Epic, in the fleet's span</tspan></text>
-    <text x="192" y="544"><tspan font-weight="600" class="accent">sdlc-author</tspan><tspan class="soft"> · Task, Bug, in the crew's span</tspan></text>
+    <text x="192" y="352"><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · Epic, in the fleet's span</tspan></text>
+    <text x="192" y="592"><tspan font-weight="600" class="accent">sdlc-author</tspan><tspan class="soft"> · Task, Bug, in the crew's span</tspan></text>
   </g>
 
   <g class="purple">
@@ -86,32 +86,32 @@
     <rect x="200" y="128" width="112" height="48" rx="8"/>
     <rect x="344" y="128" width="112" height="48" rx="8"/>
     <rect x="488" y="128" width="112" height="48" rx="8"/>
-    <rect x="56" y="344" width="112" height="48" rx="8"/>
-    <rect x="200" y="344" width="112" height="48" rx="8"/>
-    <rect x="344" y="344" width="112" height="48" rx="8"/>
-    <rect x="488" y="344" width="112" height="48" rx="8"/>
-    <rect x="632" y="344" width="112" height="48" rx="8"/>
-    <rect x="56" y="560" width="112" height="48" rx="8"/>
-    <rect x="200" y="560" width="112" height="48" rx="8"/>
-    <rect x="344" y="560" width="112" height="48" rx="8"/>
-    <rect x="488" y="560" width="112" height="48" rx="8"/>
-    <rect x="632" y="560" width="112" height="48" rx="8"/>
+    <rect x="56" y="368" width="112" height="48" rx="8"/>
+    <rect x="200" y="368" width="112" height="48" rx="8"/>
+    <rect x="344" y="368" width="112" height="48" rx="8"/>
+    <rect x="488" y="368" width="112" height="48" rx="8"/>
+    <rect x="632" y="368" width="112" height="48" rx="8"/>
+    <rect x="56" y="608" width="112" height="48" rx="8"/>
+    <rect x="200" y="608" width="112" height="48" rx="8"/>
+    <rect x="344" y="608" width="112" height="48" rx="8"/>
+    <rect x="488" y="608" width="112" height="48" rx="8"/>
+    <rect x="632" y="608" width="112" height="48" rx="8"/>
   </g>
   <g class="skill">
-    <rect x="432" y="624" width="176" height="160" rx="8"/>
+    <rect x="432" y="672" width="176" height="160" rx="8"/>
     <rect x="360" y="192" width="80" height="32" rx="8"/>
-    <rect x="360" y="408" width="80" height="32" rx="8"/>
+    <rect x="360" y="432" width="80" height="32" rx="8"/>
   </g>
   <g class="sub">
     <polygon points="184,208 196,192 316,192 328,208 316,224 196,224"/>
-    <polygon points="184,424 196,408 316,408 328,424 316,440 196,440"/>
+    <polygon points="184,448 196,432 316,432 328,448 316,464 196,464"/>
     <polygon points="472,208 484,192 604,192 616,208 604,224 484,224"/>
-    <polygon points="472,424 484,408 604,408 616,424 604,440 484,440"/>
-    <polygon points="448,672 460,656 580,656 592,672 580,688 460,688"/>
-    <polygon points="448,712 460,696 580,696 592,712 580,728 460,728"/>
-    <polygon points="448,752 460,736 580,736 592,752 580,768 460,768"/>
+    <polygon points="472,448 484,432 604,432 616,448 604,464 484,464"/>
+    <polygon points="448,720 460,704 580,704 592,720 580,736 460,736"/>
+    <polygon points="448,760 460,744 580,744 592,760 580,776 460,776"/>
+    <polygon points="448,800 460,784 580,784 592,800 580,816 460,816"/>
     <polygon points="328,280 340,264 460,264 472,280 460,296 340,296"/>
-    <polygon points="328,496 340,480 460,480 472,496 460,512 340,512"/>
+    <polygon points="328,520 340,504 460,504 472,520 460,536 340,536"/>
   </g>
 
   <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
@@ -120,32 +120,32 @@
     <text x="400" y="152">Work</text>
     <text x="544" y="152">Review</text>
     <text x="688" y="152">Accept</text>
-    <text x="112" y="368">Frame</text>
-    <text x="256" y="368">Design</text>
-    <text x="400" y="368">Work</text>
-    <text x="544" y="368">Review</text>
-    <text x="688" y="368">Accept</text>
-    <text x="112" y="584">Frame</text>
-    <text x="256" y="584">Design</text>
-    <text x="400" y="584">Work</text>
-    <text x="544" y="584">Review</text>
-    <text x="688" y="584">Accept</text>
+    <text x="112" y="392">Frame</text>
+    <text x="256" y="392">Design</text>
+    <text x="400" y="392">Work</text>
+    <text x="544" y="392">Review</text>
+    <text x="688" y="392">Accept</text>
+    <text x="112" y="632">Frame</text>
+    <text x="256" y="632">Design</text>
+    <text x="400" y="632">Work</text>
+    <text x="544" y="632">Review</text>
+    <text x="688" y="632">Accept</text>
   </g>
   <g font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
-    <text x="520" y="640" font-size="13">sdlc-review</text>
+    <text x="520" y="688" font-size="13">sdlc-review</text>
     <text x="400" y="208" font-size="13">parallelize</text>
-    <text x="400" y="424" font-size="13">parallelize</text>
+    <text x="400" y="448" font-size="13">parallelize</text>
   </g>
   <g font-weight="600" text-anchor="middle" dominant-baseline="central" class="subtext">
     <text x="256" y="208">design-check</text>
-    <text x="256" y="424">design-check</text>
+    <text x="256" y="448">design-check</text>
     <text x="544" y="208">delivery-review</text>
-    <text x="544" y="424">delivery-review</text>
-    <text x="520" y="672">code-review</text>
-    <text x="520" y="712">elegance-review</text>
-    <text x="520" y="752">open-source-review</text>
+    <text x="544" y="448">delivery-review</text>
+    <text x="520" y="720">code-review</text>
+    <text x="520" y="760">elegance-review</text>
+    <text x="520" y="800">open-source-review</text>
     <text x="400" y="280">crew per Epic</text>
-    <text x="400" y="496">author per Task, Bug</text>
+    <text x="400" y="520">author per Task, Bug</text>
   </g>
 
   <g class="edge" stroke-width="1.5">
@@ -153,202 +153,202 @@
     <line x1="312" y1="152" x2="344" y2="152" marker-end="url(#next)"/>
     <line x1="456" y1="152" x2="488" y2="152" marker-end="url(#next)"/>
     <line x1="600" y1="152" x2="632" y2="152" marker-end="url(#next)"/>
-    <line x1="168" y1="368" x2="200" y2="368" marker-end="url(#next)"/>
-    <line x1="312" y1="368" x2="344" y2="368" marker-end="url(#next)"/>
-    <line x1="456" y1="368" x2="488" y2="368" marker-end="url(#next)"/>
-    <line x1="600" y1="368" x2="632" y2="368" marker-end="url(#next)"/>
-    <line x1="168" y1="584" x2="200" y2="584" marker-end="url(#next)"/>
-    <line x1="312" y1="584" x2="344" y2="584" marker-end="url(#next)"/>
-    <line x1="456" y1="584" x2="488" y2="584" marker-end="url(#next)"/>
-    <line x1="600" y1="584" x2="632" y2="584" marker-end="url(#next)"/>
+    <line x1="168" y1="392" x2="200" y2="392" marker-end="url(#next)"/>
+    <line x1="312" y1="392" x2="344" y2="392" marker-end="url(#next)"/>
+    <line x1="456" y1="392" x2="488" y2="392" marker-end="url(#next)"/>
+    <line x1="600" y1="392" x2="632" y2="392" marker-end="url(#next)"/>
+    <line x1="168" y1="632" x2="200" y2="632" marker-end="url(#next)"/>
+    <line x1="312" y1="632" x2="344" y2="632" marker-end="url(#next)"/>
+    <line x1="456" y1="632" x2="488" y2="632" marker-end="url(#next)"/>
+    <line x1="600" y1="632" x2="632" y2="632" marker-end="url(#next)"/>
   </g>
   <g class="tick">
     <line x1="256" y1="176" x2="256" y2="192"/>
-    <line x1="256" y1="392" x2="256" y2="408"/>
+    <line x1="256" y1="416" x2="256" y2="432"/>
     <line x1="544" y1="176" x2="544" y2="192"/>
-    <line x1="544" y1="392" x2="544" y2="408"/>
-    <line x1="544" y1="608" x2="544" y2="624"/>
+    <line x1="544" y1="416" x2="544" y2="432"/>
+    <line x1="544" y1="656" x2="544" y2="672"/>
     <line x1="400" y1="176" x2="400" y2="192"/>
-    <line x1="400" y1="392" x2="400" y2="408"/>
+    <line x1="400" y1="416" x2="400" y2="432"/>
   </g>
 
   <!-- production changes -->
-  <rect x="40" y="880" width="720" height="168" class="funnel"/>
-  <rect x="56" y="896" width="688" height="136" rx="8" class="skill"/>
+  <rect x="40" y="928" width="720" height="168" class="funnel"/>
+  <rect x="56" y="944" width="688" height="136" rx="8" class="skill"/>
   <g class="funnel">
-    <polygon points="360,976 440,976 440,1064 472,1080 760,1064 760,1264 40,1264 40,1064 328,1080 360,1064"/>
-    <polygon points="360,1192 440,1192 440,1280 472,1296 760,1280 760,1440 40,1440 40,1280 328,1296 360,1280"/>
+    <polygon points="360,1024 440,1024 440,1112 472,1128 760,1176 760,1336 40,1336 40,1176 328,1128 360,1112"/>
+    <polygon points="360,1264 440,1264 440,1352 472,1368 760,1416 760,1536 40,1536 40,1416 328,1368 360,1352"/>
   </g>
   <g class="skill">
-    <rect x="56" y="1112" width="688" height="136" rx="8"/>
-    <rect x="56" y="1328" width="688" height="96" rx="8"/>
+    <rect x="56" y="1184" width="688" height="136" rx="8"/>
+    <rect x="56" y="1424" width="688" height="96" rx="8"/>
   </g>
   <g class="bg">
-    <rect x="360" y="976" width="80" height="88"/>
-    <rect x="360" y="1192" width="80" height="88"/>
+    <rect x="360" y="1024" width="80" height="88"/>
+    <rect x="360" y="1264" width="80" height="88"/>
   </g>
   <g class="panel" style="stroke:none">
-    <rect x="360" y="976" width="80" height="88"/>
-    <rect x="360" y="1192" width="80" height="88"/>
+    <rect x="360" y="1024" width="80" height="88"/>
+    <rect x="360" y="1264" width="80" height="88"/>
   </g>
   <g class="funnel">
-    <rect x="360" y="976" width="80" height="88" style="stroke:none"/>
-    <rect x="360" y="1192" width="80" height="88" style="stroke:none"/>
-    <path d="M360,976 V1064 M440,976 V1064 M360,1192 V1280 M440,1192 V1280" style="fill:none"/>
+    <rect x="360" y="1024" width="80" height="88" style="stroke:none"/>
+    <rect x="360" y="1264" width="80" height="88" style="stroke:none"/>
+    <path d="M360,1024 V1112 M440,1024 V1112 M360,1264 V1352 M440,1264 V1352" style="fill:none"/>
   </g>
   <g class="skill">
-    <rect x="360" y="992" width="80" height="32" rx="8"/>
-    <rect x="360" y="1208" width="80" height="32" rx="8"/>
+    <rect x="360" y="1040" width="80" height="32" rx="8"/>
+    <rect x="360" y="1280" width="80" height="32" rx="8"/>
   </g>
   <g font-size="13" dominant-baseline="central">
-    <text x="72" y="912"><tspan font-weight="600" class="accent">sdlc-campaign</tspan><tspan class="soft"> · Rollout: Releases, with time and conditions between them; optional</tspan></text>
-    <text x="72" y="1128"><tspan font-weight="600" class="accent">sdlc-ship</tspan><tspan class="soft"> · Release: one change, in one go</tspan></text>
-    <text x="72" y="1344"><tspan font-weight="600" class="accent">sdlc-cut</tspan><tspan class="soft"> · Publish: one version of one artifact, served by its registry</tspan></text>
+    <text x="72" y="960"><tspan font-weight="600" class="accent">sdlc-campaign</tspan><tspan class="soft"> · Rollout: Releases, with time and conditions between them; optional</tspan></text>
+    <text x="72" y="1200"><tspan font-weight="600" class="accent">sdlc-ship</tspan><tspan class="soft"> · Release: one change, in one go</tspan></text>
+    <text x="72" y="1440"><tspan font-weight="600" class="accent">sdlc-cut</tspan><tspan class="soft"> · Publish: one version of one artifact, served by its registry</tspan></text>
   </g>
   <g class="blue">
-    <rect x="136" y="928" width="112" height="48" rx="8"/>
-    <rect x="344" y="928" width="112" height="48" rx="8"/>
-    <rect x="552" y="928" width="112" height="48" rx="8"/>
-    <rect x="136" y="1144" width="112" height="48" rx="8"/>
-    <rect x="344" y="1144" width="112" height="48" rx="8"/>
-    <rect x="552" y="1144" width="112" height="48" rx="8"/>
-    <rect x="136" y="1360" width="112" height="48" rx="8"/>
-    <rect x="344" y="1360" width="112" height="48" rx="8"/>
-    <rect x="552" y="1360" width="112" height="48" rx="8"/>
+    <rect x="136" y="976" width="112" height="48" rx="8"/>
+    <rect x="344" y="976" width="112" height="48" rx="8"/>
+    <rect x="552" y="976" width="112" height="48" rx="8"/>
+    <rect x="136" y="1216" width="112" height="48" rx="8"/>
+    <rect x="344" y="1216" width="112" height="48" rx="8"/>
+    <rect x="552" y="1216" width="112" height="48" rx="8"/>
+    <rect x="136" y="1456" width="112" height="48" rx="8"/>
+    <rect x="344" y="1456" width="112" height="48" rx="8"/>
+    <rect x="552" y="1456" width="112" height="48" rx="8"/>
   </g>
   <g class="sub">
-    <polygon points="328,1080 340,1064 460,1064 472,1080 460,1096 340,1096"/>
-    <polygon points="120,1224 132,1208 252,1208 264,1224 252,1240 132,1240"/>
-    <polygon points="536,1224 548,1208 668,1208 680,1224 668,1240 548,1240"/>
-    <polygon points="328,1296 340,1280 460,1280 472,1296 460,1312 340,1312"/>
+    <polygon points="328,1128 340,1112 460,1112 472,1128 460,1144 340,1144"/>
+    <polygon points="120,1296 132,1280 252,1280 264,1296 252,1312 132,1312"/>
+    <polygon points="536,1296 548,1280 668,1280 680,1296 668,1312 548,1312"/>
+    <polygon points="328,1368 340,1352 460,1352 472,1368 460,1384 340,1384"/>
   </g>
   <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
-    <text x="192" y="952">Plan</text>
-    <text x="400" y="952">Change</text>
-    <text x="608" y="952">Verify</text>
-    <text x="192" y="1168">Plan</text>
-    <text x="400" y="1168">Change</text>
-    <text x="608" y="1168">Verify</text>
-    <text x="192" y="1384">Plan</text>
-    <text x="400" y="1384">Change</text>
-    <text x="608" y="1384">Verify</text>
+    <text x="192" y="1000">Plan</text>
+    <text x="400" y="1000">Change</text>
+    <text x="608" y="1000">Verify</text>
+    <text x="192" y="1240">Plan</text>
+    <text x="400" y="1240">Change</text>
+    <text x="608" y="1240">Verify</text>
+    <text x="192" y="1480">Plan</text>
+    <text x="400" y="1480">Change</text>
+    <text x="608" y="1480">Verify</text>
   </g>
   <g font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
-    <text x="400" y="1008">parallelize</text>
-    <text x="400" y="1224">parallelize</text>
+    <text x="400" y="1056">parallelize</text>
+    <text x="400" y="1296">parallelize</text>
   </g>
   <g font-weight="600" text-anchor="middle" dominant-baseline="central" class="subtext">
-    <text x="400" y="1080">ship per Release</text>
-    <text x="192" y="1224">plan-check</text>
-    <text x="608" y="1224">live-check</text>
-    <text x="400" y="1296">cut per Publish</text>
+    <text x="400" y="1128">ship per Release</text>
+    <text x="192" y="1296">plan-check</text>
+    <text x="608" y="1296">live-check</text>
+    <text x="400" y="1368">cut per Publish</text>
   </g>
   <g class="edge" stroke-width="1.5">
-    <line x1="248" y1="952" x2="344" y2="952" marker-end="url(#next)"/>
-    <line x1="456" y1="952" x2="552" y2="952" marker-end="url(#next)"/>
-    <line x1="248" y1="1168" x2="344" y2="1168" marker-end="url(#next)"/>
-    <line x1="456" y1="1168" x2="552" y2="1168" marker-end="url(#next)"/>
-    <line x1="248" y1="1384" x2="344" y2="1384" marker-end="url(#next)"/>
-    <line x1="456" y1="1384" x2="552" y2="1384" marker-end="url(#next)"/>
+    <line x1="248" y1="1000" x2="344" y2="1000" marker-end="url(#next)"/>
+    <line x1="456" y1="1000" x2="552" y2="1000" marker-end="url(#next)"/>
+    <line x1="248" y1="1240" x2="344" y2="1240" marker-end="url(#next)"/>
+    <line x1="456" y1="1240" x2="552" y2="1240" marker-end="url(#next)"/>
+    <line x1="248" y1="1480" x2="344" y2="1480" marker-end="url(#next)"/>
+    <line x1="456" y1="1480" x2="552" y2="1480" marker-end="url(#next)"/>
   </g>
   <g class="tick">
-    <line x1="400" y1="976" x2="400" y2="992"/>
-    <line x1="192" y1="1192" x2="192" y2="1208"/>
-    <line x1="400" y1="1192" x2="400" y2="1208"/>
-    <line x1="608" y1="1192" x2="608" y2="1208"/>
+    <line x1="400" y1="1024" x2="400" y2="1040"/>
+    <line x1="192" y1="1264" x2="192" y2="1280"/>
+    <line x1="400" y1="1264" x2="400" y2="1280"/>
+    <line x1="608" y1="1264" x2="608" y2="1280"/>
   </g>
 
   <g font-size="11" dominant-baseline="central" class="muted">
-    <text x="40" y="1480"><tspan font-weight="600">launch-review</tspan>: the checks <tspan font-weight="600">live-check</tspan> runs on a public site</text>
-    <text x="40" y="1496">adopting a new version: a code Task, not a type</text>
+    <text x="40" y="1576"><tspan font-weight="600">launch-review</tspan>: the checks <tspan font-weight="600">live-check</tspan> runs on a public site</text>
+    <text x="40" y="1592">adopting a new version: a code Task, not a type</text>
   </g>
 
   <!-- project management -->
   <g class="skill">
-    <rect x="40" y="1576" width="336" height="48" rx="8"/>
-    <rect x="40" y="1632" width="336" height="48" rx="8"/>
-    <rect x="424" y="1576" width="336" height="104" rx="8"/>
+    <rect x="40" y="1672" width="336" height="48" rx="8"/>
+    <rect x="40" y="1728" width="336" height="48" rx="8"/>
+    <rect x="424" y="1672" width="336" height="104" rx="8"/>
   </g>
   <g class="sub">
-    <polygon points="440,1648 452,1632 572,1632 584,1648 572,1664 452,1664"/>
-    <polygon points="600,1648 612,1632 732,1632 744,1648 732,1664 612,1664"/>
+    <polygon points="440,1744 452,1728 572,1728 584,1744 572,1760 452,1760"/>
+    <polygon points="600,1744 612,1728 732,1728 744,1744 732,1760 612,1760"/>
   </g>
   <g text-anchor="middle" dominant-baseline="central">
     <g font-size="13" font-weight="600" class="accent">
-      <text x="208" y="1592">sdlc-capture</text>
-      <text x="208" y="1648">sdlc-align</text>
-      <text x="592" y="1592">sdlc-hygiene</text>
+      <text x="208" y="1688">sdlc-capture</text>
+      <text x="208" y="1744">sdlc-align</text>
+      <text x="592" y="1688">sdlc-hygiene</text>
     </g>
     <g font-weight="600" class="subtext">
-      <text x="512" y="1648">sdlc-sweep</text>
-      <text x="672" y="1648">design-check</text>
+      <text x="512" y="1744">sdlc-sweep</text>
+      <text x="672" y="1744">design-check</text>
     </g>
     <g class="soft">
-      <text x="208" y="1608">records found work under its owner</text>
-      <text x="208" y="1664">finds where the org departs from a standard; lists fixes</text>
-      <text x="592" y="1608">sweeps for drift, on its trigger</text>
+      <text x="208" y="1704">records found work under its owner</text>
+      <text x="208" y="1760">finds where the org departs from a standard; lists fixes</text>
+      <text x="592" y="1704">sweeps for drift, on its trigger</text>
     </g>
   </g>
 
   <!-- key -->
-  <rect x="40" y="1752" width="32" height="16" rx="4" class="blue"/>
-  <rect x="40" y="1776" width="32" height="16" rx="4" class="purple"/>
-  <rect x="40" y="1800" width="32" height="16" rx="4" class="skill"/>
-  <polygon points="40,1832 46,1824 66,1824 72,1832 66,1840 46,1840" class="sub"/>
-  <rect x="40" y="1848" width="32" height="16" rx="4" class="panel"/>
-  <rect x="424" y="1752" width="32" height="16" class="funnel"/>
-  <polygon points="436,1776 444,1776 444,1786 456,1782 456,1792 424,1792 424,1782 436,1786" class="funnel"/>
-  <line x1="424" y1="1808" x2="456" y2="1808" class="edge" stroke-width="1.5" marker-end="url(#next)"/>
-  <line x1="440" y1="1824" x2="440" y2="1840" class="tick"/>
+  <rect x="40" y="1848" width="32" height="16" rx="4" class="blue"/>
+  <rect x="40" y="1872" width="32" height="16" rx="4" class="purple"/>
+  <rect x="40" y="1896" width="32" height="16" rx="4" class="skill"/>
+  <polygon points="40,1928 46,1920 66,1920 72,1928 66,1936 46,1936" class="sub"/>
+  <rect x="40" y="1944" width="32" height="16" rx="4" class="panel"/>
+  <rect x="424" y="1848" width="32" height="16" class="funnel"/>
+  <polygon points="436,1872 444,1872 444,1878 456,1886 456,1888 424,1888 424,1886 436,1878" class="funnel"/>
+  <line x1="424" y1="1904" x2="456" y2="1904" class="edge" stroke-width="1.5" marker-end="url(#next)"/>
+  <line x1="440" y1="1920" x2="440" y2="1936" class="tick"/>
   <g dominant-baseline="central">
-    <text x="88" y="1760">a step</text>
-    <text x="88" y="1784">a person's step</text>
-    <text x="88" y="1808">a skill</text>
-    <text x="88" y="1832">a sub-agent, started by its skill or tier above</text>
-    <text x="88" y="1856">a group</text>
-    <text x="472" y="1760">a tier: its delegator frames and accepts</text>
-    <text x="472" y="1784">a step fanned out; its mouth holds the tier below</text>
-    <text x="472" y="1808">then</text>
-    <text x="472" y="1832">what the step above calls</text>
+    <text x="88" y="1856">a step</text>
+    <text x="88" y="1880">a person's step</text>
+    <text x="88" y="1904">a skill</text>
+    <text x="88" y="1928">a sub-agent, started by its skill or tier above</text>
+    <text x="88" y="1952">a group</text>
+    <text x="472" y="1856">a tier: its delegator frames and accepts</text>
+    <text x="472" y="1880">a step fanned out; its mouth holds the tier below</text>
+    <text x="472" y="1904">then</text>
+    <text x="472" y="1928">what the step above calls</text>
   </g>
 
   <!-- other skills, outside sdlc -->
-  <text x="24" y="1928" font-size="13" dominant-baseline="central"><tspan font-weight="600">Other skills</tspan><tspan class="soft"> · any step may use; none is part of sdlc</tspan></text>
+  <text x="24" y="2024" font-size="13" dominant-baseline="central"><tspan font-weight="600">Other skills</tspan><tspan class="soft"> · any step may use; none is part of sdlc</tspan></text>
   <g class="skill">
-    <rect x="40" y="1984" width="336" height="48" rx="8"/>
-    <rect x="40" y="2040" width="336" height="48" rx="8"/>
-    <rect x="424" y="1984" width="336" height="48" rx="8"/>
-    <rect x="424" y="2040" width="336" height="48" rx="8"/>
-    <rect x="40" y="2160" width="336" height="48" rx="8"/>
-    <rect x="40" y="2216" width="336" height="48" rx="8"/>
-    <rect x="40" y="2272" width="336" height="48" rx="8"/>
-    <rect x="40" y="2328" width="336" height="48" rx="8"/>
-    <rect x="424" y="2160" width="336" height="48" rx="8"/>
-    <rect x="456" y="2216" width="304" height="48" rx="8"/>
-    <rect x="456" y="2272" width="304" height="48" rx="8"/>
-    <rect x="456" y="2328" width="304" height="48" rx="8"/>
+    <rect x="40" y="2080" width="336" height="48" rx="8"/>
+    <rect x="40" y="2136" width="336" height="48" rx="8"/>
+    <rect x="424" y="2080" width="336" height="48" rx="8"/>
+    <rect x="424" y="2136" width="336" height="48" rx="8"/>
+    <rect x="40" y="2256" width="336" height="48" rx="8"/>
+    <rect x="40" y="2312" width="336" height="48" rx="8"/>
+    <rect x="40" y="2368" width="336" height="48" rx="8"/>
+    <rect x="40" y="2424" width="336" height="48" rx="8"/>
+    <rect x="424" y="2256" width="336" height="48" rx="8"/>
+    <rect x="456" y="2312" width="304" height="48" rx="8"/>
+    <rect x="456" y="2368" width="304" height="48" rx="8"/>
+    <rect x="456" y="2424" width="304" height="48" rx="8"/>
   </g>
-  <path d="M440,2208 V2352 M440,2240 H456 M440,2296 H456 M440,2352 H456" class="tree"/>
+  <path d="M440,2304 V2448 M440,2336 H456 M440,2392 H456 M440,2448 H456" class="tree"/>
   <g text-anchor="middle" dominant-baseline="central">
     <g font-size="13" font-weight="600" class="accent">
-      <text x="208" y="2000">elegance</text>
-      <text x="208" y="2056">open-source</text>
-      <text x="592" y="2000">human-output</text>
-      <text x="592" y="2056">human-steps</text>
-      <text x="208" y="2184">dev-ci-github</text>
-      <text x="208" y="2240">dev-terraform</text>
-      <text x="208" y="2296">dev-testing-go</text>
-      <text x="208" y="2352">dev-temporal</text>
-      <text x="592" y="2184">dev-ui</text>
-      <text x="608" y="2240">dev-ui-astro</text>
-      <text x="608" y="2296">dev-ui-react</text>
-      <text x="608" y="2352">dev-ui-testing</text>
+      <text x="208" y="2096">elegance</text>
+      <text x="208" y="2152">open-source</text>
+      <text x="592" y="2096">human-output</text>
+      <text x="592" y="2152">human-steps</text>
+      <text x="208" y="2280">dev-ci-github</text>
+      <text x="208" y="2336">dev-terraform</text>
+      <text x="208" y="2392">dev-testing-go</text>
+      <text x="208" y="2448">dev-temporal</text>
+      <text x="592" y="2280">dev-ui</text>
+      <text x="608" y="2336">dev-ui-astro</text>
+      <text x="608" y="2392">dev-ui-react</text>
+      <text x="608" y="2448">dev-ui-testing</text>
     </g>
     <g class="soft">
-      <text x="208" y="2016">sets the bar for all writing</text>
-      <text x="208" y="2072">how to publish open-source work</text>
-      <text x="592" y="2016">the shape of all a person reads</text>
-      <text x="592" y="2072">walks a person through, one step at a time</text>
+      <text x="208" y="2112">sets the bar for all writing</text>
+      <text x="208" y="2168">how to publish open-source work</text>
+      <text x="592" y="2112">the shape of all a person reads</text>
+      <text x="592" y="2168">walks a person through, one step at a time</text>
     </g>
   </g>
 
