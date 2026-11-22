@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="392" viewBox="0 0 800 392" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+  <title>Gates mirrored around the work</title>
+  <style>
+    .bg { fill: var(--bg, #fff) }
+    .ink { fill: var(--ink, #444A5A) }
+    .soft { fill: var(--ink, #444A5A); fill-opacity: .8 }
+    .muted { fill: var(--muted, #8A90A2) }
+    .accent { fill: var(--accent, #3B0E75) }
+    .edge { fill: none; stroke: var(--ink, #444A5A) }
+    .back { fill: none; stroke: var(--muted, #8A90A2) }
+    .mirror { fill: none; stroke: var(--accent, #3B0E75) }
+    .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+  </style>
+  <defs>
+    <marker id="then" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
+    <marker id="back" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="muted"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="392" class="bg"/>
+
+  <g class="mirror" stroke-width="2">
+    <polyline points="80,96 80,40 720,40 720,96"/>
+    <polyline points="240,96 240,80 560,80 560,96"/>
+  </g>
+  <g class="accent" text-anchor="middle" dominant-baseline="central">
+    <text x="16" y="24" text-anchor="start">what is the problem?</text>
+    <text x="784" y="24" text-anchor="end">did we solve the problem?</text>
+    <text x="240" y="64">what is the plan?</text>
+    <text x="560" y="64">did we follow the plan?</text>
+  </g>
+
+  <g class="blue">
+    <rect x="16" y="104" width="128" height="128" rx="8"/>
+    <rect x="176" y="104" width="128" height="128" rx="8"/>
+    <rect x="336" y="104" width="128" height="128" rx="8"/>
+    <rect x="496" y="104" width="128" height="128" rx="8"/>
+    <rect x="656" y="104" width="128" height="128" rx="8"/>
+  </g>
+  <g class="blue">
+    <line x1="32" y1="184" x2="128" y2="184"/>
+    <line x1="192" y1="184" x2="288" y2="184"/>
+    <line x1="352" y1="184" x2="448" y2="184"/>
+    <line x1="512" y1="184" x2="608" y2="184"/>
+    <line x1="672" y1="184" x2="768" y2="184"/>
+  </g>
+  <g text-anchor="middle" dominant-baseline="central">
+    <g font-size="14" font-weight="600">
+      <text x="80" y="128">Frame</text>
+      <text x="240" y="128">Design</text>
+      <text x="400" y="128">Work</text>
+      <text x="560" y="128">Review</text>
+      <text x="720" y="128">Accept</text>
+    </g>
+    <g class="soft">
+      <text x="80" y="152">delegator, via</text>
+      <text x="80" y="168">sdlc-intake</text>
+      <text x="240" y="160">the carrier</text>
+      <text x="400" y="160">the carrier</text>
+      <text x="560" y="160">reviewer</text>
+      <text x="720" y="152">delegator,</text>
+      <text x="720" y="168">not the carrier</text>
+    </g>
+    <text x="80" y="208">ready</text>
+    <text x="240" y="200">designed, applied</text>
+    <text x="240" y="216">by the delegator</text>
+    <text x="400" y="200">a PR, or the</text>
+    <text x="400" y="216">children closed</text>
+    <text x="560" y="200">the verdict,</text>
+    <text x="560" y="216">and deviated</text>
+    <text x="720" y="200">the close kept</text>
+    <text x="720" y="216">or reopened</text>
+  </g>
+
+  <g class="edge" stroke-width="1.5">
+    <line x1="144" y1="128" x2="176" y2="128" marker-end="url(#then)"/>
+    <line x1="304" y1="128" x2="336" y2="128" marker-end="url(#then)"/>
+    <line x1="464" y1="128" x2="496" y2="128" marker-end="url(#then)"/>
+    <line x1="624" y1="128" x2="656" y2="128" marker-end="url(#then)"/>
+  </g>
+  <g class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="160" y="184" transform="rotate(-90 160 184)">the issue</text>
+    <text x="320" y="184" transform="rotate(-90 320 184)">the Design</text>
+    <text x="480" y="184" transform="rotate(-90 480 184)">the PR</text>
+    <text x="640" y="184" transform="rotate(-90 640 184)">the merge</text>
+  </g>
+
+  <g class="back" stroke-width="1.5">
+    <path d="M528,232 C528,272 432,272 432,232" marker-end="url(#back)"/>
+    <path d="M688,232 C688,336 272,336 272,232" marker-end="url(#back)"/>
+  </g>
+  <g class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="480" y="280">a finding</text>
+    <text x="480" y="328">a miss reopens the issue</text>
+  </g>
+
+  <g dominant-baseline="central">
+    <text x="16" y="368"><tspan font-weight="600">step</tspan> · <tspan class="soft">owner</tspan> · closed by</text>
+    <line x1="184" y1="368" x2="216" y2="368" class="edge" stroke-width="1.5" marker-end="url(#then)"/>
+    <text x="224" y="368">then, handing on</text>
+    <path d="M376,360 C376,376 344,376 344,360" class="back" stroke-width="1.5" marker-end="url(#back)"/>
+    <text x="384" y="368">sometimes back</text>
+    <polyline points="496,376 496,360 528,360 528,376" class="mirror" stroke-width="2"/>
+    <text x="536" y="368">mirrored gates and their questions</text>
+  </g>
+</svg>

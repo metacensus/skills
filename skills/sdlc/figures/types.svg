@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" class="ink">
+  <title>Issue types and their edges</title>
+  <style>
+    .bg { fill: var(--bg, #fff) }
+    .ink { fill: var(--ink, #444A5A) }
+    .soft { fill: var(--ink, #444A5A); fill-opacity: .8 }
+    .muted { fill: var(--muted, #8A90A2) }
+    .edge { fill: none; stroke: var(--ink, #444A5A) }
+    .rule { fill: none; stroke: var(--muted, #8A90A2) }
+    .panel { fill: var(--ink, #444A5A); fill-opacity: .05; stroke: var(--muted, #8A90A2); stroke-opacity: .5 }
+    .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+    .purple { fill: var(--amethyst, #915EDA); fill-opacity: .18; stroke: var(--amethyst, #915EDA) }
+  </style>
+  <defs>
+    <marker id="parent" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
+    <marker id="blocked" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="muted"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="360" class="bg"/>
+
+  <g class="panel">
+    <rect x="16" y="16" width="448" height="288" rx="8"/>
+    <rect x="624" y="16" width="160" height="288" rx="8"/>
+  </g>
+  <g font-size="13" font-weight="600" class="soft" dominant-baseline="central">
+    <text x="32" y="32">Code changes</text>
+    <text x="640" y="32">Production changes</text>
+  </g>
+
+  <g class="blue">
+    <rect x="176" y="48" width="128" height="48" rx="8"/>
+    <rect x="176" y="144" width="128" height="48" rx="8"/>
+    <rect x="32" y="240" width="128" height="48" rx="8"/>
+    <rect x="176" y="240" width="128" height="48" rx="8"/>
+    <rect x="320" y="240" width="128" height="48" rx="8"/>
+  </g>
+  <g class="purple">
+    <rect x="640" y="144" width="128" height="48" rx="8"/>
+    <rect x="640" y="240" width="128" height="48" rx="8"/>
+  </g>
+  <g text-anchor="middle" dominant-baseline="central">
+    <text x="240" y="72">Initiative</text>
+    <text x="240" y="168">Epic</text>
+    <text x="96" y="264">Spike (a Task)</text>
+    <text x="240" y="264">Task</text>
+    <text x="384" y="264">Bug</text>
+    <text x="704" y="168">Rollout</text>
+    <text x="704" y="264">Release</text>
+  </g>
+
+  <g class="edge" stroke-width="1.5">
+    <line x1="240" y1="144" x2="240" y2="96" marker-end="url(#parent)"/>
+    <line x1="240" y1="240" x2="240" y2="192" marker-end="url(#parent)"/>
+    <line x1="96" y1="240" x2="96" y2="216"/>
+    <line x1="384" y1="240" x2="384" y2="216"/>
+    <line x1="96" y1="216" x2="384" y2="216"/>
+    <line x1="704" y1="240" x2="704" y2="192" marker-end="url(#parent)"/>
+  </g>
+
+  <g class="rule" stroke-width="1.5" stroke-dasharray="6 4">
+    <line x1="464" y1="168" x2="640" y2="168" marker-end="url(#blocked)"/>
+    <line x1="640" y1="256" x2="464" y2="256" marker-end="url(#blocked)"/>
+    <line x1="464" y1="272" x2="640" y2="272" marker-end="url(#blocked)"/>
+  </g>
+  <g font-size="12" class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="544" y="136">follows, across</text>
+    <text x="544" y="152">repositories</text>
+    <text x="544" y="240">ships</text>
+    <text x="544" y="288">follows</text>
+  </g>
+
+  <g font-size="12" dominant-baseline="central">
+    <line x1="16" y1="336" x2="40" y2="336" class="edge" stroke-width="1.5" marker-end="url(#parent)"/>
+    <text x="48" y="336">parent: child → parent</text>
+    <line x1="208" y1="336" x2="232" y2="336" class="rule" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#blocked)"/>
+    <text x="240" y="336">blocked by: blocked → blocker</text>
+  </g>
+</svg>

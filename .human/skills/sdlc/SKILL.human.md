@@ -17,11 +17,12 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Cross-project release|`type: Rollout`|Releases across repos|
 |Sub-task|·|a Task wanting children is an Epic|
 
+![Issue types: parents point up, blocked by is dashed](../../../skills/sdlc/figures/types.svg)
+
 ## Mechanisms
 
 |Mechanism|Carries|
 |---|---|
-|Parent|Epic → Initiative; Task → Epic; Release → Rollout|
 |Dependency|`blocked by`; a Release or Rollout read by title and state only|
 |Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Rollouts, never blocked by one|
 |Label|`ready`, `designed`, `deviated`|
@@ -79,13 +80,9 @@ A stage runs its checks and posts one comment:
 
 ## Phases
 
-Frame → Design → Work → Review → Accept: the gates mirror around the work; nobody confirms their own.
+![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
 
-|Phase|Steps|Task, Bug: `sdlc-author`|Epic: `sdlc-crew`|Initiative: `sdlc-fleet`|
-|---|---|---|---|---|
-|Design|Frame (`ready`), Design (`designed`)|Precheck, Design|Precheck, Design|Precheck, Design|
-|Delivery|Work, Review|Implement → Respond|Plan → Land|Plan → Delegate|
-|Record|Accept|Land|Close|Close|
+![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management and the standards any step may use stand apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
 
 **Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
