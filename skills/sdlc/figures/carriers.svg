@@ -259,9 +259,8 @@
   </g>
 
   <g font-size="11" dominant-baseline="central" class="muted">
-    <text x="40" y="1480"><tspan font-weight="600">land</tspan>'s release half and <tspan font-weight="600">dev-ci-github</tspan>'s release rules → <tspan font-weight="600">sdlc-ship</tspan></text>
-    <text x="40" y="1496"><tspan font-weight="600">launch-review</tspan> → checks a <tspan font-weight="600">sdlc-ship</tspan> runs for public sites</text>
-    <text x="40" y="1512">adopting a new version: a code Task, not a type</text>
+    <text x="40" y="1480"><tspan font-weight="600">launch-review</tspan>: the checks <tspan font-weight="600">live-check</tspan> runs on a public site</text>
+    <text x="40" y="1496">adopting a new version: a code Task, not a type</text>
   </g>
 
   <!-- project management -->
@@ -286,7 +285,7 @@
     </g>
     <g class="soft">
       <text x="208" y="1608">records found work under its owner</text>
-      <text x="208" y="1664">brings the org in line with a standard; lists what to fix</text>
+      <text x="208" y="1664">finds where the org departs from a standard; lists what to fix</text>
       <text x="592" y="1608">sweeps for drift, on its trigger</text>
     </g>
   </g>

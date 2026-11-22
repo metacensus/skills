@@ -79,7 +79,7 @@
     <text x="472" y="336">a miss reopens the issue</text>
   </g>
 
-  <text x="40" y="392" font-size="11" dominant-baseline="central" class="muted">each arrow hands on, in turn: the issue, the Design, the PR, the merge</text>
+  <text x="40" y="392" font-size="11" dominant-baseline="central" class="muted">each arrow hands on, in turn: the issue, the Design, the PR or the children, the record</text>
 
   <!-- production flow -->
   <rect x="40" y="448" width="720" height="176" class="funnel"/>
