@@ -3,7 +3,7 @@ name: sdlc-hygiene
 description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, after a pivot, when asking what is left to decide, and when scheduling the sweep.
 ---
 
-The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments to the session.
+The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
 ## Precheck
 
@@ -19,7 +19,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 The scope is the first row that holds. The first four list issues, each with its repository, and any scope drops what the request excludes.
 
 - The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
-- The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, by name or by a word for what a class checks, less those it excludes, else all. "Relationships" selects `orphan`, `misparented` and `family`. The stage's comment names the classes taken.
+- The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, by name or by a word for what a class checks, less those it excludes, else all. "Relationships" selects `orphan`, `misparented` and `family`.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
@@ -41,9 +41,8 @@ The scope is the first row that holds. The first four list issues, each with its
 
 - With `orphan` or `family` among the classes, each `orphan` and `root` issue, and each child the Read stage finds outside its parent's goal, gets one of three: an existing parent, a parent to file, or none, with its reason.
 - A parent is checked against its Initiative's non-goals, and against the board the issue's subtree would join.
-- The proposals go to the delegator as one [outline](../human-output/references/chat.md#the-outline), keyed 📌 existing parent · 🔗 existing issue that moves here · ⭐ to file · 🌙 left without a parent.
 
-**Escalate** the outline in Act's list; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a new parent files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
+**Escalate** each proposal as a line of Act's list, under the parent it proposes; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a new parent files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
 
 ## Act
 
@@ -53,6 +52,7 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 - [`sdlc-status --apply`](../sdlc/SKILL.md#status) runs on each board the scope names, on every board for the organization, else on the scope's issues, `OWNER/REPO#N...`, and settles every `board` flag.
 - Five flags take the value the sweep names: an `untyped` issue its type; `unowned` its assignee; a `ready` on an issue failing its form comes off; a `no <field>` note's value goes on the nearest Epic's card in scope, else its own; an `uncarded` issue under an Initiative a Boards row names gets a card on that board, `gh project item-add`. Then `sdlc-status --apply` runs again as above, on the issues it touched but for a board scope.
 - Every other flag goes up in one list with Adopt's proposals and Read's questions, a yes/no line apiece naming its fix, all answered in one reply: a missing `ready`, [the hub's Frame](../sdlc/SKILL.md#phases); a `release-order`, a work blocker shipping in a later Release or a Release blocker not strictly earlier, within one repository: the move to the Release it names, the work it names moving too, a renumbering only as the delegator's call; any other `uncarded`, a card on the board the sweep names; `setup`'s, and each `root` issue. A yes is written as its line says; a no leaves the issue as it is.
+- The list goes up as the summary, one [outline](../human-output/references/chat.md#the-outline): its outcome names the scope, the classes taken, and the run as a check of issues, labels and boards; one line counts Act's own fixes by class; then one line per issue left, under its Epic under its Initiative, each heading naming its type, an issue under neither in a group of its own. A class goes by what it checks, never by its name alone, and each line carries the issue's title, what drifted and the fix a yes writes, its link at the end, `mark title · #N`, so it reads without opening the issue.
 - A request naming a class's fix, a standing grant among them only where the request quotes it, answers that class's lines yes, but never a choice of goal, scope or parent, or anything irreversible: those stay in the list.
 - It closes nothing: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
 - Its own writes go out a second apart: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a faster burst. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
@@ -61,16 +61,16 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 
 ## Report
 
-- Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: escalate`, a line `- [ ] <issue>: <question> → <direction>` per question.
+- Each Epic with questions, its children's among them, carries one comment headed `### sdlc-hygiene · Read: escalate`, a line `- [ ] <issue>: <question> → <direction>` per question, worded as its summary line.
 - Once the delegator answers, each answer is commented on its Epic, and a family left with no question goes to its crew by a [handoff](../sdlc/SKILL.md#handoff), those answers its Decided.
-- The stage's comment counts by class what was fixed and escalated.
+- The stage's comment counts by class what the answers wrote, in [`human-output`](../human-output/SKILL.md)'s shape, as the summary's count line does.
 
 **Escalate** while a flag or question waits on the delegator.
 
 ## Schedule
 
 - The mapping's `sweep` cadence runs Precheck, Sweep and Read unattended: a script on the delegator's machine, where `gh` holds the `project` scope, run by cron.
-- The script reads the mapping and each board's `sdlc-status` lines, then runs the stages in a sandbox that reaches only GitHub, on tools that only read, with none of the delegator's own settings. It posts the summary they print, or the step that failed, as one comment on an issue in a private repository.
+- The script reads the mapping and each board's `sdlc-status` lines, then runs the stages in a sandbox that reaches only GitHub, on tools that only read, with none of the delegator's own settings. It posts the summary they print, Act's own fixes counted as due, or the step that failed, as one comment on an issue in a private repository.
 - Sweep's briefs carry each repository's board lines, and say they stand in for `sdlc-status`, which the run cannot call. A check needing a command the run does not hold, such as the rate-limit fallback or a repository's own forms, is marked `not run` in the summary.
 - Adopt, Act and Report wait for the delegator, in a session opened on that comment.
 - The delegator runs the script once by hand, and reads the comment it posts, before the cron line goes in: that run is the check that `gh` keeps its login in the sandbox and the plugin loads.
