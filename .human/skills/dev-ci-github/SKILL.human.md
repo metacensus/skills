@@ -27,6 +27,12 @@ Generated files: `git diff --exit-code` clean. Modules: `go mod tidy` changes no
 
 The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ skipped reads as passing.
 
+## CI blocks every merge
+
+- A ruleset sets it at each repository's creation; org admins bypass; no reviews.
+- ⚠️ GitHub Free 403s private repositories until the plan allows.
+- ⛔ Never ask whether CI should block merges.
+
 ## Secrets
 
 - Private packages reach an image build as a BuildKit secret.
