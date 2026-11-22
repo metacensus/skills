@@ -44,4 +44,4 @@ Remit · items · write-set · read-set · skills · contracts · neighbours · 
 
 ## Integrate and land
 
-Run the whole-system check. Report as [`sdlc`'s Reporting](../sdlc/SKILL.human.md#reporting) says; given the branch, commit each unit per [`checkin`](../checkin/SKILL.human.md).
+Run the whole-system check. Report as [`sdlc`'s Reporting](../sdlc/SKILL.human.md#reporting) says; given the branch, commit each unit per [`sdlc-author`'s Open](../sdlc-author/SKILL.human.md#open).
