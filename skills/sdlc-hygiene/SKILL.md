@@ -43,14 +43,18 @@ The scope is the first row that holds. The first four list issues, each with its
 - A parent is checked against its Initiative's non-goals, and against the board the issue's subtree would join.
 - The proposals go to the delegator as one [outline](../human-output/references/chat.md#the-outline), keyed 📌 existing parent · 🔗 existing issue that moves here · ⭐ to file · 🌙 left without a parent.
 
-**Escalate** the outline; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a new parent files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
+**Escalate** the outline in Act's list; nothing attaches before the delegator answers. Then `gh issue edit N --parent P` attaches each, an untyped issue takes its type, a new parent files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), and [`sdlc-status --reset --apply`](../sdlc/SKILL.md#status) runs on each parent that gained a child.
 
 ## Act
 
-- Run [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) on each repository, each `TODO` it prints a `setup` flag, and [`sdlc-status --apply`](../sdlc/SKILL.md#status) on each board, which settles every `board` flag.
-- An `untyped` Task or Bug takes the type the sweep names.
-- An `uncarded` issue under an Initiative a Boards row names takes a card on that board, `gh project item-add`, then `sdlc-status --apply`.
-- Every other flag escalates to the sweep's delegator, in the summary: a `ready` on an issue failing its form, its removal; a missing `ready`, [the hub's Frame](../sdlc/SKILL.md#phases); `unowned`, the assignee the sweep names; an `untyped` Epic or Initiative, its type; a `release-order`, a work blocker shipping in a later Release or a Release blocker not strictly earlier, within one repository: the move to the Release it names, the work it names moving too, a renumbering only as the delegator's call; a `no <field>` note, the value the sweep names for the nearest Epic's card, else its own, then `sdlc-status --apply`; any other `uncarded`, a card on the board the sweep names, then `sdlc-status --apply`; `setup`'s, and each `root` issue, as a question. A request that named a class's fix is the delegator's yes to it. It closes nothing.
+A request for a sweep is the delegator's yes to the fixes below, as [a request to pick an issue up](../sdlc/SKILL.md#roles) is to assigning. Act writes unasked only to the issues in scope, and on a board scope to no other board's cards: an `uncarded` issue whose board is outside it goes to the list.
+
+- With repositories or the organization as the scope, [`sdlc-setup.sh`](../sdlc/SKILL.md#setup) runs on each repository, each `TODO` it prints a `setup` flag.
+- [`sdlc-status --apply`](../sdlc/SKILL.md#status) runs on each board the scope names, on every board for the organization, else on the scope's issues, `OWNER/REPO#N...`, and settles every `board` flag.
+- Five flags take the value the sweep names: an `untyped` issue its type; `unowned` its assignee; a `ready` on an issue failing its form comes off; a `no <field>` note's value goes on the nearest Epic's card in scope, else its own; an `uncarded` issue under an Initiative a Boards row names gets a card on that board, `gh project item-add`. Then `sdlc-status --apply` runs again as above, on the issues it touched but for a board scope.
+- Every other flag goes up in one list with Adopt's proposals and Read's questions, a yes/no line apiece naming its fix, all answered in one reply: a missing `ready`, [the hub's Frame](../sdlc/SKILL.md#phases); a `release-order`, a work blocker shipping in a later Release or a Release blocker not strictly earlier, within one repository: the move to the Release it names, the work it names moving too, a renumbering only as the delegator's call; any other `uncarded`, a card on the board the sweep names; `setup`'s, and each `root` issue. A yes is written as its line says; a no leaves the issue as it is.
+- A request naming a class's fix, a standing grant among them only where the request quotes it, answers that class's lines yes, but never a choice of goal, scope or parent, or anything irreversible: those stay in the list.
+- It closes nothing: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
 - Its own writes go out a second apart: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a faster burst. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
 
 **Stop** on a rate limit; a rerun once it resets skips what is written.
