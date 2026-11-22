@@ -12,7 +12,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - Its body carries its form's required fields.
 - Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../decouple/SKILL.md#stack) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
 - Every `blocked by` is closed or, [stacked](../decouple/SKILL.md#stack), In review; its parent is open.
-- A blocker typed Release or Rollout is read by title and state alone; its blockers are never walked.
+- A blocker typed Publish, Release or Rollout is read by title and state alone; its blockers are never walked.
 - Its card, if any, sits in its status's column, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author may not [make](../sdlc/SKILL.md#roles), such as a missing field in another's body, which is the delegator's [Frame](../sdlc/SKILL.md#phases). **Stop** when it is assigned to another, blocked but not stacked, under a closed parent, or past In progress.
@@ -58,7 +58,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`. One opened before its diff is verified is a draft (`--draft`) until `gh pr ready`: [review stops on a draft](../sdlc-review/SKILL.md#precheck).
 - The reviewers the remit names are requested.
-- Where the work blocks a [Release](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Release that holds, filing the next version when none does: a blocker that is work ships in that Release or an earlier one, and a blocker that is a Release is strictly earlier. Versions compare only within one repository; across repositories the Rollout orders them. Where its own change moves it to a later Release, the work it blocks moves too.
+- Where the work blocks a [Publish](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Publish that holds, filing the next version when none does: a blocker that is work ships in that Publish or an earlier one, and a blocker that is a Publish is strictly earlier. Versions compare only within one repository; across repositories their Release orders them. Where its own change moves it to a later Publish, the work it blocks moves too.
 - Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** before the first commit or push, unless the remit hands over the branch, and on moving work that is not the author's.

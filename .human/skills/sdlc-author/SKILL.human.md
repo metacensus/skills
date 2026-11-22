@@ -16,7 +16,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 |Respond|Land|dispute at loop cap|finding reopens design|
 |Land|closed, then the delegator's Accept|a merge no remit reaches; a `deviated` or not-planned close|PR cannot merge|
 
-Precheck reads a Release or Rollout blocker by title and state alone.
+Precheck reads a Publish, Release or Rollout blocker by title and state alone.
 
 Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`, and in a public repo `gitleaks`.
 
@@ -33,7 +33,7 @@ Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`
 |Text|commit [5C](../elegance/references/cells/5C-commit.human.md), PR [4C](../elegance/references/cells/4C-merges.human.md)|
 |Unverified|a draft until `gh pr ready`|
 
-Open blocks the earliest open Release that holds, filing the next if none: a work blocker ships in it or earlier, a Release blocker is strictly earlier, versions compared within one repo; moving later takes the work it blocks along.
+Open blocks the earliest open Publish that holds, filing the next if none: a work blocker ships in it or earlier, a Publish blocker is strictly earlier, versions compared within one repo; moving later takes the work it blocks along.
 
 ## Sync
 

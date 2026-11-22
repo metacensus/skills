@@ -1,5 +1,5 @@
 name: Release
-description: One versioned release of one repository.
+description: "One cohesive change to production: its Publishes, held as sub-issues, plus deploys."
 type: Release
 body:
   - type: markdown
@@ -7,12 +7,28 @@ body:
       value: |
         Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
 
-        Title it with its version. The work it ships blocks it (`gh issue edit THIS --add-blocked-by N`); its parent, if any, is a Rollout.
+        Its Publishes are sub-issues (`gh issue edit PUBLISH --parent THIS`); its parent, if any, is a Rollout. A change whose parts need time or a condition between them is a Rollout.
 
   - type: textarea
     id: goal
     attributes:
       label: Goal
-      description: One sentence — what this release delivers.
+      description: One sentence — what is live once it closes.
     validations:
       required: true
+
+  - type: textarea
+    id: done-when
+    attributes:
+      label: Done when
+      description: Observable claims about production, each one `live-check` can confirm, and an optional soak window.
+      placeholder: |
+        - [ ] …
+    validations:
+      required: true
+
+  - type: textarea
+    id: deploys
+    attributes:
+      label: Deploys
+      description: Each environment it changes and the desired state that changes it; none for a library or plugin.

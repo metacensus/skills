@@ -52,7 +52,7 @@ An image build that fetches private packages receives the credential as a BuildK
 ## Release from a tag
 
 - **`make release TYPE=patch|minor|major`** derives the next semver, refuses an empty result, and refuses a tag that exists on `origin`.
-- **A Release issue tracks the tag**, and its title follows it.
+- **A Publish issue tracks the tag**, and its title follows it.
 - **The release triggers only on a pushed semver tag**: `on: push: tags: ['v[0-9]+.[0-9]+.[0-9]+']`.
 - **The release re-runs CI at the tagged commit** through `workflow_call` and gates every publish on it.
 - **Images** publish multi-arch, tagged by ref, short sha, and `latest`; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.

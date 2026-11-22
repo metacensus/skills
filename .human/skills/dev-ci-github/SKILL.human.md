@@ -41,7 +41,7 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.
 
-- A Release issue tracks the tag; its title follows.
+- A Publish issue tracks the tag; its title follows.
 - 🩷 Before the first OIDC publish: create the Docker Hub repository; publish the npm package by hand.
 - A second registry copies by digest.
 
