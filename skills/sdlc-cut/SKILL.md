@@ -1,6 +1,6 @@
 ---
 name: sdlc-cut
-description: Carry a Publish from its plan to served — one repository's artifact out at one version, tagged at a pinned commit, built by CI, and read back from its registry. Trigger when cutting, tagging or publishing a version, when a Release starts a cut, and when checking what a registry serves.
+description: Carry a Publish from its plan to served — one repository's artifact out at one version, tagged at a pinned commit, built by CI, and read back from its registry. Trigger when cutting, tagging or publishing a version, when a Release starts a cut, when a release run fails, and when checking what a registry serves.
 ---
 
 The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it, an `sdlc-ship` run under a Release. A Publish takes minutes and is always one-way, and has no gate of its own: its Release's yes covers its tag, and a cut never asks a person.
@@ -25,9 +25,9 @@ Each stage first checks whether its result already holds, and then does not act 
 
 - The Release carries `designed`, a person's yes, on a plan naming this Publish's version and scope.
 - The tag goes on the commit and is pushed, as [Release from a tag](../dev-ci-github/SKILL.md#release-from-a-tag) says; CI builds and publishes. Nothing publishes from a workstation.
-- The run ends green, and the comment links it with the digest or integrity hash it printed.
+- The run ends green, [waited on](../sdlc-author/SKILL.md#waiting), and the comment links it with the digest or integrity hash it printed. A transient failure (a runner, a registry 5xx, a rate limit) reruns: `gh run rerun RUN --failed`.
 
-**Escalate** a Release without that yes, and a run that fails: the tag never moves, so a fix a commit makes ships as a new Publish.
+**Escalate** a Release without that yes, and a run that fails otherwise: the tag never moves, so a fix a commit makes ships as a new Publish.
 
 ## Verify
 
