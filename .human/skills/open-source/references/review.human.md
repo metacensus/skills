@@ -1,4 +1,4 @@
-> A change fits one context: find, fix, tell.
+> A change's scope is small: find, fix, tell.
 
 Fires: before a change lands in a public repo.
 

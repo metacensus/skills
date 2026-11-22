@@ -1,7 +1,5 @@
 # review
 
-A change fits one context, so review needs no fan-out.
-
 ## What is in scope
 
 - **The lines the change adds**: `git diff <base>...HEAD`, plus anything staged or untracked that will join it. Whole new files — fixtures, data, images — count in full.
@@ -13,9 +11,9 @@ A change fits one context, so review needs no fan-out.
 
 1. **Secrets** — `gitleaks git --log-opts="<base>..HEAD"`, and `gitleaks dir` over what is not yet committed.
 2. **Examples**, where there are any — the same text through `grep -F -i -f <(cut -f2 examples)`.
-3. **Leads** — one [`open-source-scan`](../../../agents/open-source-scan.md) over the same text, in one batch file, and its `unread:` is empty.
+3. **Leads** — every span a lead reaches in the same text, flagged without weighing it, an example in another form among them: an abbreviation, initials, a first name or surname alone, a slug, a handle, a misspelling. No line is left unread.
 4. **Licensing** — when the change adds a dependency, a license file, a manifest, or code from elsewhere, against [licensing.md](licensing.md).
-5. **Triage** — the [`open-source-triage`](../../../agents/open-source-triage.md) agent over the flags, any binaries the change adds, and the licensing findings.
+5. **Triage** — each flag, any binaries the change adds, and the licensing findings, judged as [What a finding is](../SKILL.md#what-a-finding-is) says.
 6. **Fix**, then run again until nothing real is found.
 
 ## Fixing

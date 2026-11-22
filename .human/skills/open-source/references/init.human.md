@@ -15,5 +15,3 @@ Scope: every ref · ⚠️ PR refs · every blob, deleted included · commits an
 | `skipped` | binaries, lockfiles, generated, vendored |
 
 ✅ Proven when `comm -23 objects <(sort -u read skipped)` prints nothing; ⛔ anything printed went unscanned.
-
-Leads fan out under `parallelize`: batches of about 2,000 lines, leads [pinned](leads.human.md) first.
