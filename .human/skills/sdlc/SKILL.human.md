@@ -23,7 +23,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |---|---|
 |Parent|Epic → Initiative; Task → Epic; Release → Rollout|
 |Dependency|`blocked by`; a Release or Rollout read by title and state only|
-|Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and only appended, so work moves later; an Initiative mentions its Rollouts, never blocked by one|
+|Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Rollouts, never blocked by one|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
