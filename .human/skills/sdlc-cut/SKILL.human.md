@@ -8,7 +8,7 @@ Plan → Change → Verify
 
 |Stage|Holds|⛔|⏸️|
 |---|---|---|---|
-|Plan|held by a Release or handed over by a person, blockers closed; commit = scope's last merge; range = scope; semver, breaking = minor below 1.0.0; under a Release, the brief's version and commit; notes|alone, until its yes; agent-started, no Release; a stray PR|tag on another commit; brief disagrees|
+|Plan|held by a Release or handed over by a person, blockers closed; commit = scope's last merge; range = scope; semver, breaking = minor below 1.0.0; under a Release, the brief's version and commit; notes|alone, until its yes; agent-started, no Release; a stray PR|tag on another commit; under a Release, brief disagrees|
 |Change|`designed` on this version and scope, the Release's or the lone Publish's; tag pushed; CI publishes, a transient failure rerun|no yes; a failure a rerun does not fix|·|
 |Verify|registry serves CI's digest, read with no cache or extra credentials; notes on the GitHub Release; record; close|another digest, or none|·|
 

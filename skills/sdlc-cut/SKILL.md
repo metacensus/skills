@@ -19,7 +19,7 @@ Each stage first checks whether its result already holds, and then does not act 
 - A first publish waits on [`dev-ci-github`'s first-release setup](../dev-ci-github/SKILL.md#release-from-a-tag).
 - The comment records the version, the commit, the range and the notes.
 
-**Escalate** a lone Publish until its yes, one an agent started with no Release, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and on a version or commit the brief does not name.
+**Escalate** a lone Publish until its yes, one an agent started with no Release, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and, under a Release, on a version or commit the brief does not name.
 
 ## Change
 
