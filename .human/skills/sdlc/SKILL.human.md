@@ -62,7 +62,7 @@ A fresh session starts from one: Goal, linked · Decided, do not reopen · Grant
 
 ## Reporting
 
-A person's attention is spent once per item: name it once, led by ⛔ waits on them · 🟢 ready for them · ✅ done.
+Each item goes up once, when it arises or changes; nothing unchanged repeats, and a notice that changes nothing gets no line. A status outline only when asked, or when all waits on the person: their queue first, by what it unblocks; product, not process. Shape: [`human-output`](../human-output/SKILL.human.md).
 
 ## Stages
 
