@@ -39,13 +39,15 @@ claude plugin marketplace add metacensus/skills --scope local
 claude plugin install metacensus@metacensus --scope project
 ```
 
-The plugin works offline from then on. `autoUpdate` brings each new commit on `main` in the background; run `/reload-plugins` or restart to load it.
+The plugin works offline from then on. `autoUpdate` brings each new release in the background; run `/reload-plugins` or restart to load it.
+
+To pin a release, name its tag as the `ref` in both places the marketplace is declared: `"ref": "v0.1.0"` beside `"repo"` in the settings, and `metacensus/skills#v0.1.0` in the first command. A tag never moves, so `autoUpdate` brings nothing until the `ref` does.
 
 The `open-source` skill scans for secrets with [gitleaks](https://github.com/gitleaks/gitleaks#installing): `brew install gitleaks`.
 
 ## Changing a skill
 
-Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. Every commit is a release: neither manifest sets `version`, so the commit SHA is the version.
+Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. A change reaches consumers only in a release, which raises `version` in [`plugin.json`](.claude-plugin/plugin.json).
 
 [CI](.github/workflows/ci.yml) is the gate. Its scripts need Node 22.18 or later, which runs TypeScript directly. Markdown prose is one line per paragraph; `node scripts/check-md.mts` unwraps it. A twin holds at most a third of its AI document's words, frontmatter excluded, and carries no `#` heading; `check-cells.mts` checks both.
 
