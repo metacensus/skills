@@ -95,7 +95,7 @@ The delegator frames and accepts; the carrier designs, works and reviews.
 
 **Frame**: the delegator applies `ready` once the body meets its type, parent, repository, form, bar and problem first; `designed` too when it settles every choice short of a stop.
 
-**Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it without `designed`. It follows the close, but an Initiative's, and any a stop names, wait on it.
+**Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it with `ready` and without `designed`. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
 ## Closing
 
