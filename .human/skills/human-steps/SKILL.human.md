@@ -22,4 +22,4 @@ Secrets: never asked, printed, or repeated; a leak means rotate next.
 | state lock | `terraform force-unlock`, once no other run holds it |
 | wrong kube context | `kubectl config use-context` |
 
-Questions: each answer recorded as a `Decision:` in the person's words; a skip takes the default.
+Questions: each answer recorded as a `Decision:` in the person's words; a skip leaves it to its delegator's default.

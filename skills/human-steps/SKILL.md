@@ -5,11 +5,11 @@ description: Walk a person through steps one per turn, each checked before the n
 
 **One step per turn; the next waits until this one is checked.**
 
-| Steps | One step | Order | Checked by |
-|---|---|---|---|
-| [Code](#code) the person reads | a block of 10 to 30 lines | bottom up | their direction: continue, deeper, skip, or a question |
-| [Commands](#commands) only their hands run | one command, or one action in a web console | an identity check, then plan before apply | their pasted output, against what success prints |
-| [Questions](#questions) queued for them | one question | by what each unblocks | the read-back they let stand |
+| Steps | One step | Checked by |
+|---|---|---|
+| [Code](#code) the person reads | a block of 10 to 30 lines | their direction: continue, deeper, skip, or a question |
+| [Commands](#commands) only their hands run | one command, or one action in a web console | their pasted output, against what success prints |
+| [Questions](#questions) queued for them | one question | the read-back they let stand |
 
 A walk may cross kinds, a block read leading to a command run. It ends with one line per change or decision, and where each is recorded.
 
@@ -73,9 +73,7 @@ The agent never asks for one, prints one, or repeats one pasted. A command takes
 ## Questions
 
 - Before each is put, its issue and the session's earlier answers are reread; one answered since, or whose answer changes nothing, is dropped.
-- Each carries its issue, the question, options lettered, a recommendation, and the default its delegator takes on silence, so one word answers it: yes, a letter, skip. A spoken reply works the same as a typed one.
+- Each carries its issue, the question, options lettered, a recommendation, and the default its delegator takes on silence or a skip, so one word answers it: yes, a letter, skip.
 - One issue's questions go together, issues ordered by what each unblocks.
-- The answer is read back in one line at the head of the next turn, and recorded once that turn's reply lets it stand. An amendment or a rejection is read back alone and waits for a yes.
-- Each answer is recorded on its issue as a `Decision:` comment quoting the person's words. A note or new question the person raises goes beside it, never into the decision; new work goes through [`sdlc-capture`](../sdlc-capture/SKILL.md).
-- A skip leaves it open, back to its delegator with its default.
-- A side session started for the queue takes the [handoff](../sdlc/SKILL.md#handoff) it was given and reports to whoever started it: a line per decision, linked.
+- The answer is read back in one line at the head of the next turn, then recorded on its issue as a `Decision:` comment quoting the person's words once that reply lets it stand. An amendment or a rejection is read back alone and waits for a yes. A note or new question the person raises goes beside it, never into the decision; new work goes through [`sdlc-capture`](../sdlc-capture/SKILL.md).
+- A side session started for the queue takes the [handoff](../sdlc/SKILL.md#handoff) it was given and reports its closing lines to whoever started it.
