@@ -1,4 +1,4 @@
-> A ship carries one Release: its Publishes, then its deploys, in one go, checked cold before and after. Hours; it rests only before a Publish, between Publishes and deploys, or after Verify. Started by `sdlc-campaign` or a person: its delegator, who accepts it.
+> A ship carries one Release: its Publishes, then its deploys, in one go, checked cold before and after. Hours; it rests only before a Publish, between Publishes and deploys, or after Verify. Started by `sdlc-campaign` or a person once its Publishes' work has merged: its delegator, who accepts it.
 
 Fires: shipping, deploying or launching to production; a Release ready to go out.
 

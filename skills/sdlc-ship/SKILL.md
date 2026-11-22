@@ -3,7 +3,7 @@ name: sdlc-ship
 description: Carry a Release, one cohesive change to production, its Publishes and its deploys, Plan → Change → Verify in one go, checked cold before and after. Trigger when shipping, deploying or launching a change to production, when a Release is ready to go out, and when asking what a Release's carrier does next.
 ---
 
-The ship's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Release. It starts from a [handoff](../sdlc/SKILL.md#handoff), given by the `sdlc-campaign` carrying its Rollout or by a person; whoever gave it is its [`delegator`](../sdlc/SKILL.md#roles), and [accepts](../sdlc/SKILL.md#phases) it. Its Publishes are its sub-issues, read through `gh api repos/OWNER/REPO/issues/N/sub_issues`, never filtered by type.
+The ship's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Release. It starts from a [handoff](../sdlc/SKILL.md#handoff) once [Plan](#plan)'s first check holds, `gh issue list --search 'type:Publish is:open no:assignee -is:blocked'` listing the Publishes whose work has merged, given by the `sdlc-campaign` carrying its Rollout or by a person; whoever gave it is its [`delegator`](../sdlc/SKILL.md#roles), and [accepts](../sdlc/SKILL.md#phases) it. Its Publishes are its sub-issues, read through `gh api repos/OWNER/REPO/issues/N/sub_issues`, never filtered by type.
 
 A Release takes hours, in one go. It rests only before a Publish, a consumer Task's wait among them, after the last Publish served and before the first deploy, or after Verify; never mid-deploy. Each step comments its intent before it acts and its result after, so a replacement agent resumes from the issue.
 
