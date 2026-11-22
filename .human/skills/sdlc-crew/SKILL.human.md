@@ -4,7 +4,20 @@ Fires: orchestrating or delegating an Epic's children across agents; designing a
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Epic, composing [`parallelize`](../parallelize/SKILL.human.md).
 
-A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL.human.md).
+## Waiting on a person
+
+> A choice waits on a person, never the work around it.
+
+|Question|Then|
+|---|---|
+|one of the remit's [stops](../sdlc/SKILL.human.md#roles)|⛔ to the person|
+|any other|`Decided, reversible:`, keep going|
+
+While it waits, only what can be undone: build the options · stack on PRs in review · push the neighbours · run discovery.
+
+Queued questions: one [`human-steps`](../human-steps/SKILL.human.md) side session, started by the carrier the person delegates to.
+
+Away, from a handoff: grants quoted in every brief · a clock-time stop · a status outline on return.
 
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|

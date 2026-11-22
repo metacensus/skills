@@ -1,9 +1,9 @@
 ---
 name: sdlc-fleet
-description: Carry an Initiative from its outline to its finish line with a crew per Epic. Trigger when outlining, filing, running, orchestrating or closing an Initiative, and when asking what an Initiative's orchestrator does next.
+description: Carry an Initiative from its outline to its finish line with a crew per Epic. Trigger when outlining, filing, running, orchestrating or closing an Initiative, when asking what an Initiative's orchestrator does next, and when its person will be away while it runs.
 ---
 
-The orchestrator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Initiative. One orchestrator session carries one Initiative and no Epic or Task; it is every crew's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), starts from a [handoff](../sdlc/SKILL.md#handoff), and while a thread waits on a person, or the person is away, runs [`decouple`](../decouple/SKILL.md). Orchestrators of parallel Initiatives coordinate only through `blocked by` edges and the board.
+The orchestrator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Initiative. One orchestrator session carries one Initiative and no Epic or Task; it is every crew's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), starts from a [handoff](../sdlc/SKILL.md#handoff), and while a thread waits on a person, or the person is away, runs [`sdlc-crew`'s Waiting on a person](../sdlc-crew/SKILL.md#waiting-on-a-person). Orchestrators of parallel Initiatives coordinate only through `blocked by` edges and the board.
 
 ## Context
 

@@ -4,6 +4,8 @@ Fires: outlining, filing, running, orchestrating or closing an Initiative; askin
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Initiative. Crews link its Decided and Stops, never copy them.
 
+A thread waiting on a person, or the person away: [`sdlc-crew`'s Waiting on a person](../sdlc-crew/SKILL.human.md#waiting-on-a-person); queued questions go to one `human-steps` side session.
+
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
 |Precheck|Initiative open, `ready`, fields filled; a roadmap entry|not framed by the person; an unstated finish line or non-goal|Initiative closed; no roadmap entry|
