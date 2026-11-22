@@ -4,7 +4,7 @@ Fires: grooming, sweeping, after a pivot, scheduling it; what is stale or undeci
 
 |Stage|Runs|⛔|🛑|
 |---|---|---|---|
-|Precheck|scope, classes, mapping, auth|no `project` scope|nothing in scope|
+|Precheck|scope: Epic, Initiative, board, topic, repos, org; classes from the request's words; mapping, auth|no `project` scope; a topic's list|nothing in scope|
 |Sweep|`sdlc-sweep` per repo|`short` line|repo unreadable|
 |Read|`plan-review` per Epic, with `family`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|

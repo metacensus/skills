@@ -13,12 +13,12 @@ You read one repository and flag every drift a class reaches, without weighing i
 - **The labels**: each role's name.
 - **The required fields** of each type's form.
 - **The cadence**: `stale` and `backlog`, in days.
-- **The scope**: the issue numbers to read, when only one Epic's or Initiative's family is; otherwise every issue.
+- **The scope**: a list of issue numbers to read, else every issue.
 - **The classes** to flag, every one below by default.
 
 ## What you do
 
-**Read** every issue in scope, open ones alone unless `unowned`, `untyped` or `owed-open-at-close` is among your classes, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,state,stateReason,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type and state, `gh issue view <url> --json issueType,state`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a family; rate-limited, read the issues through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate`. Flag only these, of the classes you get:
+**Read** every issue in scope, open ones alone unless `unowned`, `untyped` or `owed-open-at-close` is among your classes, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,state,stateReason,issueType,body,labels,assignees,parent,subIssuesSummary,blockedBy,blocking,closedByPullRequestsReferences,createdAt,updatedAt`, each parent's type and state, `gh issue view <url> --json issueType,state`, the organization's open Initiatives, `gh search issues --owner OWNER --state open -L 1000 --json repository,number,title -- type:Initiative`, and each board's lines from `node ${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-status.mts OWNER/N --mapping PATH`, each an issue's status, Priority and Initiative, those on this repository's issues alone, and those in scope alone when the scope is a list of numbers; rate-limited, read the issues through `gh api 'repos/OWNER/REPO/issues?state=all' --paginate`. Flag only these, of the classes you get:
 
 - **orphan**: a Task or Bug with no parent that an open Epic here plausibly holds, or an Epic with none that an open Initiative plausibly holds, naming it; an Initiative, Epic or Rollout with no children.
 - **misparented**: an Epic under anything but an Initiative, a Task or Bug under anything but an Epic, a Release under anything but a Rollout, an Initiative or Rollout with a parent.
