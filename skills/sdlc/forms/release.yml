@@ -1,5 +1,5 @@
 name: Release
-description: One cohesive change to production, its Publishes plus deploys, held as sub-issues.
+description: "One cohesive change to production: its Publishes, held as sub-issues, plus deploys."
 type: Release
 body:
   - type: markdown

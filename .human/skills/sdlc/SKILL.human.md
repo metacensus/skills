@@ -25,7 +25,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Mechanism|Carries|
 |---|---|
 |Dependency|`blocked by`; a Publish, Release or Rollout read by title and state only|
-|Release|a Publish blocked by an Epic, or a Task where its Epic ships apart, closed once served; a consumer's adoption blocked by it; no Epic both blocks a Publish and waits on it; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Releases, never blocked by one, and closes after its Publishes and their Releases|
+|Production|a Publish blocked by an Epic, or a Task where its Epic ships apart, closed once served; a consumer's adoption blocked by it; no Epic both blocks a Publish and waits on it or its Release; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Releases, never blocked by one, and closes after its Publishes and their Releases|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
