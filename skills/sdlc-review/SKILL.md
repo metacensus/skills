@@ -1,9 +1,9 @@
 ---
 name: sdlc-review
-description: Carry a pull request's review from request to verdict. Trigger when reviewing a pull request, when asked for a review or assigned as reviewer, and when asking whether a PR is ready to merge.
+description: Carry a pull request's review from request to verdict. Trigger when reviewing a pull request, when asked for a review or assigned as reviewer, when asking whether a PR is ready to merge, and before a repository goes public.
 ---
 
-The reviewer's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the pull request.
+The reviewer's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the pull request. The agents it starts read, and it posts every comment from what they return. It runs in a session that can start agents, never inside one an agent started: a nested agent reports to its parent, not to the session that holds the verdict.
 
 ## Precheck
 
@@ -19,33 +19,18 @@ The reviewer's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages)
 
 ## Summarize
 
-For a reader who did not write the PR, from its diff and body alone: each significant choice, structure and architecture first, as
+Start [`code-review`](../../agents/code-review.md), and with it Focus's agents, in parallel. Post `code-review`'s summary, for a reader who did not write the PR. The author corrects it in reply, reopening Focus, which does not wait.
 
-```markdown
-- [x] <existing element>, which <role>, changed: <change> for <purpose>
-```
-
-with one change or a list; an added file's existing element is the nearest one it joins. The author corrects it in reply, reopening Focus, which does not wait.
-
-**Escalate** on a choice the diff and body do not explain. **Stop** on a PR too large to summarize, which 4C splits.
+**Escalate** on a choice the diff and body do not explain. **Stop** on a PR too large to summarize, which [4C](../elegance/references/cells/4C-merges.md) splits.
 
 ## Focus
 
-The comment answers each question:
+The comment carries `code-review`'s answer to each of [its questions](../../agents/code-review.md#what-you-do). Then the checks, hardest where the answers point:
 
-1. What breaks, and for whom, if this is wrong?
-2. What is irreversible: pushed history, a published name or tag, a visibility change, an archive, a migration, data written?
-3. What is the one thing the author is most likely wrong about?
-4. Where does the diff touch a location that does not gate, per `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff`, or from the paths without a mapping? Moot for prose alone, which never gates.
-5. Would the Verification block fail if a criterion did?
-6. Does the PR do what the issue asked, and nothing else?
-
-Then the checks, hardest where the answers point:
-
-- [`elegance`](../elegance/SKILL.md), and its [`elegance-review`](../../agents/elegance-review.md) agent over the diff.
+- [`elegance-review`](../../agents/elegance-review.md) over the diff, title and body.
+- In a public repository, [`open-source`'s review](../open-source/references/review.md) over the diff, commits, names and host text: its Secrets, Examples and Licensing run here, and [`open-source-review`](../../agents/open-source-review.md) takes its Leads and Triage over one batch file, its `unread:` empty; a pull request past one agent's context splits as [Units](#a-repository-going-public) says.
 - The [mapping's](../sdlc/SKILL.md#the-mapping) Checks rows scoped to review.
-- In a public repository, [`open-source`'s review](../open-source/references/review.md).
-- The host's reviewer, `/code-review` where one exists.
+- The host's `/code-review` command, where one exists.
 - The issue's Verification block exits 0 on the PR's head.
 
 The comment is the verdict, posted once every check finishes, to the issue's carrier, whose Land takes it as input. A check that cannot finish is unchecked with its reason, and the verdict cannot pass.
@@ -54,6 +39,20 @@ The comment is the verdict, posted once every check finishes, to the issue's car
 - **Escalate** on a finding whose fix is a choice neither the author nor this review's remit owns.
 - **Stop** on a finding that reopens the design or a criterion.
 
-A diff that leaves a criterion or a choice the confirmed Design settled, or a finding that shows the Design's premise false, is a deviation, which passes: the verdict names it and applies the mapping's `deviated` label to the issue the PR closes. Wording, link style and a line the body declares are not; the body names those, as [4C](../elegance/references/cells/4C-merges.md) says.
+A diff that leaves a criterion or a choice the confirmed Design settled, or a finding that shows the Design's premise false, is a deviation, which passes: the verdict names it and applies the mapping's `deviated` label to the issue the PR closes. Wording, link style and a line the body declares are not; the body names those, as 4C says.
+
+The verdict names each `open-source` finding by path and lead, never by its span. By Review the commit is pushed, so a real one escalates, as [review's Fixing](../open-source/references/review.md#fixing) says.
 
 Post it with `gh pr review N --body-file <comment>`: `--approve` on pass, `--request-changes` on stop, else `--comment`. Reviewer and author often share one GitHub identity, as in a crew, and GitHub allows only a comment on one's own PR; there the heading is the verdict, so a pass reads as a `COMMENT` review headed `pass`.
+
+## A repository going public
+
+[init](../open-source/references/init.md)'s order runs here, before the visibility change, its Leads and Triage by one `open-source-review` per batch, under [`parallelize`](../parallelize/SKILL.md#what-the-work-answers):
+
+- **Units** — a batch file in scratch, one per agent, of sections headed `=== <id> <path or kind>`: blobs, or commit messages and identities, or tag messages and ref names, under the id `refs`. About 2,000 lines, so one agent reads it whole; a longer blob is a batch alone. The binaries and the licensing findings are a batch of their own. Each batch carries the flags steps 1 and 2 raised in its sections.
+- **Edges** — none between units; the leads are the contract each reads, pinned before the fan-out.
+- **Action** — init's steps 3 and 6 over the batch.
+- **Done** — every id its batch holds is on its `read:` list; the binaries batch, every flag judged.
+- **Checks** — none per unit; init's coverage proof is the check.
+
+The session merges the groups, by lead and then by place, and init's Propose takes them to the person. The visibility change waits on their decision.

@@ -16,7 +16,7 @@ Every check follows these, plus the mapping's own.
 
 ## The session's copy
 
-The orchestrator pins the leads in session scratch, outside every repository, before any scanner starts, and deletes them when the work ends:
+The leads are pinned in session scratch, outside every repository, before any reading starts, and deleted when the work ends:
 
 - **`leads`** — the defaults above and the mapping's own, one per line: the lead, a tab, what it reaches.
 - **`examples`**, where the mapping points at any — one per line: the lead, a tab, the example. Take what its sources hold, with each name's distinctive tokens: a surname, an acronym, a slug. A lead with none is followed by judgement alone, and the report says so.

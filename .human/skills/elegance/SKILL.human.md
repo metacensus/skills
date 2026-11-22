@@ -48,7 +48,6 @@ The order is the point.
 
 - ⬜ **Counts.** Nodes holding one fact are a finding.
 - ⬜ **Cells.** `check-cells.mts --diff`; an unexpected one is an alteration to undo.
-- ⬜ **Fresh eyes.** The `elegance-review` agent gets the diff, no account of why.
 
 ## The review loop
 

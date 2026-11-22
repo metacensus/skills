@@ -1,6 +1,8 @@
 > A PR review, request to verdict, per [the hub's protocol](../sdlc/SKILL.human.md#stages).
 
-Fires: reviewing; asked if it may merge.
+Fires: reviewing; asked if it may merge; going public.
+
+Agents read; this skill posts. It runs where it can start agents, never inside one.
 
 Precheck → Summarize → Focus → Verdict
 
@@ -14,18 +16,11 @@ Precheck → Summarize → Focus → Verdict
 
 ## Summarize
 
-From diff and body alone, each choice. ⛔ unexplained · 🛑 too large.
+`code-review`'s summary, from diff and body alone. ⛔ unexplained · 🛑 too large.
 
 ## Focus
 
-1. What breaks, for whom?
-2. What is irreversible?
-3. What is the author likeliest wrong about?
-4. Which location doesn't gate, per `check-cells --diff`?
-5. Would Verification catch a failed criterion?
-6. Does the PR do what the issue asked, nothing else?
-
-Then `elegance`, the mapping's Checks, Verification; unfinished blocks a pass.
+`code-review`'s answers, then `elegance-review` on diff and PR text, `open-source-review` in a public repo, the mapping's Checks, Verification; unfinished blocks a pass.
 
 |Verdict|When|
 |---|---|
@@ -34,3 +29,9 @@ Then `elegance`, the mapping's Checks, Verification; unfinished blocks a pass.
 |🛑 Stop|finding reopens design|
 
 `deviated`: applied by the verdict when a criterion, a settled choice or the Design's premise is left.
+
+⚠️ An `open-source` finding is named by path and lead, never its span.
+
+## A repository going public
+
+[init](../open-source/references/init.human.md) runs here: one `open-source-review` per batch of about 2,000 lines, under `parallelize`. ⛔ The person decides each fix before visibility changes.
