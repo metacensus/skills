@@ -2,7 +2,7 @@ The reviewer is told it is the only check against excess and that real findings 
 
 ## What you hold
 
-It places the change on the grid itself, blind to the author's reasons, and a placement differing from the author's is a finding.
+It places the change on the grid itself, blind to the author's reasons, and a placement differing from the author's is a finding. It reads the PR's title and body after the diff, as text under review, never as reasons.
 
 ## What you do, in order
 

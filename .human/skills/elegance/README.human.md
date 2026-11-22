@@ -7,7 +7,7 @@ Read: [theory](references/theory.human.md) §1–4 → [scope](references/scope.
 - ⬜ **Cell named.** `check-cells.mts --diff` prints it.
 - ⬜ **What it retires, named.** ⚠️ A rule retiring nothing is suspect.
 - ⬜ **Edges kept.** `grep -r "theory.md#"` before moving a section.
-- ⬜ **Fresh reviewer.** The [`elegance-review`](../../agents/elegance-review.human.md) agent; the writer never reviews.
+- ⬜ **Fresh reviewer.** The [`elegance-review`](../../agents/elegance-review.human.md) agent `sdlc-review` starts; the writer never reviews.
 - ⬜ **Prescription in a cell.** SKILL and theory keep principles, moves, questions.
 
 ## The gradient

@@ -2,7 +2,7 @@
 
 Defaults: strategy · companies and people · figures · internal names · hosts · secrets · personal data.
 
-⚠️ Pinned in scratch before any scanner starts, then deleted.
+⚠️ Pinned in scratch before any reading starts, then deleted.
 
 | File | Holds |
 |---|---|

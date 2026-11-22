@@ -116,27 +116,27 @@ A comment naming a private repository lands only in a private one.
 
 ## Phases
 
-Every tier runs three phases, each a run of [stages](#stages) in the skill that carries the tier, its carrier. Their gates mirror around the work, and nobody confirms their own step:
+Every tier runs three phases. Its delegator frames and accepts; the skill that carries the tier, its carrier, designs, works and reviews, in [stages](#stages) of its own. The steps mirror around the work, and nobody confirms their own:
 
 | Phase | Step | Whose | Asks | Answered by |
 |---|---|---|---|---|
 | **Design** | Frame | `delegator` | what is the problem? | `ready` |
 | | Design | the carrier | what is the plan? | `designed`, applied by the `delegator` |
 | **Delivery** | Work | the carrier | · | a PR, or the children closed |
-| | Review | `reviewer` | did we follow the plan? | the verdict, and `deviated` |
+| | Review | the carrier | did we follow the plan? | a cold reviewer's verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we solve the problem? | the close kept or reopened |
 
-Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
+Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Delivery ends in a record of what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative, which Accept reads.
 
-**Frame** checks an issue's body before it is `ready`: its type, parent and repository as [the ladder](#the-ladder) and [Mechanisms](#mechanisms) say; its [form](forms/)'s required fields; the bar its type takes, a Spike's decision standing as its criterion; the problem first, with its evidence, naming a solution only where one is decided or is itself the constraint; no emojis, nothing its evidence does not supply, and no line breaks inside a paragraph; and everything that must hold before an [irreversible step](../sdlc-review/SKILL.md#focus), each its own criterion. On a pass the `delegator`, or a delegate whose [remit](#roles) names it, applies `ready`, with `designed` when the body settles every choice and none is a [stop](#roles), then [`sdlc-status --apply`](#status); anyone else escalates the pass. A parent's children are framed only once all are filed, so Frame reads the whole set.
+**Frame** checks an issue's body before it is `ready`: its type, parent and repository as [the ladder](#the-ladder) and [Mechanisms](#mechanisms) say; its [form](forms/)'s required fields; the bar its type takes, a Spike's decision standing as its criterion; the problem first, with its evidence, naming a solution only where one is decided or is itself the constraint; no emojis, nothing its evidence does not supply, and no line breaks inside a paragraph; and everything that must hold before an [irreversible step](../../agents/code-review.md), each its own criterion. On a pass the `delegator`, or a delegate whose [remit](#roles) names it, applies `ready`, with `designed` when the body settles every choice and none is a [stop](#roles), then [`sdlc-status --apply`](#status); anyone else escalates the pass. A parent's children are framed only once all are filed, so Frame reads the whole set.
 
-**Accept** checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. The carrier one tier up runs it in its own Delivery, so no carrier accepts its own work, and a miss reopens the issue, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
+**Accept** checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. A miss reopens the issue, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
 
-| Tier | Carrier | Design | Delivery | Record |
+| Tier | Frames and accepts | Carrier | Design | Delivery |
 |---|---|---|---|---|
-| Task, Bug | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Publish, Respond | Land: the merge and the close |
-| Epic | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land | Close: the rollout record |
-| Initiative | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate | Close: what landed and dropped, the roadmap |
+| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Publish, Respond, Land |
+| Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land, Close |
+| Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate, Close |
 
 A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
 

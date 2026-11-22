@@ -255,7 +255,7 @@ if (DIFF && mappingFound) {
     console.log("\nNo paths changed, so this is a reading about nothing rather than a pass.\n");
   } else {
     if (flagged.length) {
-      console.log(`Nothing gates ${flagged.join(", ")}. Hand the diff to the elegance-review agent before finishing.`);
+      console.log(`Nothing gates ${flagged.join(", ")}.`);
     }
     console.log(
       "A gate refuses an incorrect state and nothing anywhere refuses excess, so every cell above is owed a" +

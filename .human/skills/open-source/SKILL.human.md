@@ -2,13 +2,15 @@
 
 Fires: going public; any commit, push, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
 
-⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check; scanners flag, `open-source-triage` judges.
+⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check: flag every span, then judge each in context.
 
 | Mode | Scope | Outcome |
 |---|---|---|
 | [init](references/init.human.md) | every object ever held | ⛔ the user decides |
 | [review](references/review.human.md) | diff, commits, host text | 🟢 fixes, then tells |
 | [port](references/port.human.md) | listed sources, copied whole | 🟢 strips, then maps |
+
+`sdlc-review` runs init before going public, and review at a PR's Review.
 
 `open-source-mapping.md`, one per organization in a private repo, holds:
 
