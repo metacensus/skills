@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="448" viewBox="0 0 800 448" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
-  <title>Each tier's carrier runs the steps; its Work holds the tier below</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="592" viewBox="0 0 800 592" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+  <title>Each tier's carrier runs the steps; its Work holds the tier below; the other skills serve a step or run on their own</title>
   <style>
     .bg { fill: var(--bg, #fff) }
     .ink { fill: var(--ink, #444A5A) }
@@ -8,17 +8,20 @@
     .edge { fill: none; stroke: var(--ink, #444A5A) }
     .panel { fill: var(--ink, #444A5A); fill-opacity: .05; stroke: var(--muted, #8A90A2); stroke-opacity: .5 }
     .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+    .card { fill: var(--bg, #fff); stroke: var(--muted, #8A90A2) }
+    .tick { fill: none; stroke: var(--azure, #3D9BD1); stroke-width: 2 }
     .funnel { fill: var(--azure, #3D9BD1); fill-opacity: .08; stroke: var(--azure, #3D9BD1); stroke-opacity: .5 }
   </style>
   <defs>
     <marker id="next" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
   </defs>
-  <rect x="0" y="0" width="800" height="448" class="bg"/>
+  <rect x="0" y="0" width="800" height="592" class="bg"/>
 
   <g class="panel">
     <rect x="16" y="16" width="768" height="96" rx="8"/>
     <rect x="16" y="176" width="768" height="96" rx="8"/>
     <rect x="16" y="336" width="768" height="96" rx="8"/>
+    <rect x="16" y="464" width="768" height="112" rx="8"/>
   </g>
   <g class="funnel">
     <polygon points="352,96 448,96 776,176 24,176"/>
@@ -28,6 +31,7 @@
     <text x="32" y="32"><tspan font-weight="600" class="accent">sdlc-fleet</tspan><tspan class="soft"> · Initiative</tspan></text>
     <text x="32" y="192"><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · Epic</tspan></text>
     <text x="32" y="352"><tspan font-weight="600" class="accent">sdlc-author</tspan><tspan class="soft"> · Task, Bug</tspan></text>
+    <text x="32" y="480"><tspan font-weight="600" class="accent">Other skills</tspan><tspan class="soft"> · a tick joins one to the step it serves</tspan></text>
   </g>
   <g class="blue">
     <rect x="32" y="48" width="96" height="48" rx="8"/>
@@ -80,5 +84,36 @@
   <g class="soft" text-anchor="middle" dominant-baseline="central">
     <text x="400" y="144">Work: each Epic's whole lifecycle</text>
     <text x="400" y="304">Work: each Task's or Bug's whole lifecycle</text>
+  </g>
+  <g class="tick">
+    <line x1="80" y1="440" x2="80" y2="464"/>
+    <line x1="560" y1="440" x2="560" y2="464"/>
+    <line x1="720" y1="440" x2="720" y2="464"/>
+  </g>
+  <g class="card">
+    <rect x="24" y="496" width="112" height="64" rx="8"/>
+    <rect x="184" y="496" width="112" height="64" rx="8"/>
+    <rect x="344" y="496" width="112" height="64" rx="8"/>
+    <rect x="504" y="496" width="112" height="64" rx="8"/>
+    <rect x="664" y="496" width="112" height="64" rx="8"/>
+  </g>
+  <g font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
+    <text x="80" y="512">sdlc-intake</text>
+    <text x="240" y="512">sdlc</text>
+    <text x="400" y="512">sdlc-hygiene</text>
+    <text x="560" y="512">sdlc-review</text>
+    <text x="720" y="512">land</text>
+  </g>
+  <g class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="80" y="528">files an issue,</text>
+    <text x="80" y="544">curates to ready</text>
+    <text x="240" y="528">the hub: ladder,</text>
+    <text x="240" y="544">status, labels</text>
+    <text x="400" y="528">sweeps for drift</text>
+    <text x="400" y="544">on its trigger</text>
+    <text x="560" y="528">reviews a PR</text>
+    <text x="560" y="544">to its verdict</text>
+    <text x="720" y="528">merges a PR,</text>
+    <text x="720" y="544">cuts a release</text>
   </g>
 </svg>
