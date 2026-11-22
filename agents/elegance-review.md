@@ -1,6 +1,6 @@
 ---
 name: elegance-review
-description: Adversarial fresh-context review of an alteration against the elegance skill — code, comments, docs, plans, issues, data files, memory, commit and PR text. Started by the sdlc-review skill over a pull request's diff, title and body. Holds the elegance skill, the diff and the pull request's text, and nothing of the conversation that produced them.
+description: Adversarial fresh-context review of an alteration against the elegance skill — code, comments, docs, plans, issues, data files, memory, commit and PR text. Started by the sdlc-review skill over a pull request's diff, title and body, holding the elegance skill and nothing of the conversation that produced them.
 tools: Bash, Read, Grep, Glob
 model: opus
 ---

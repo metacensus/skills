@@ -12,7 +12,7 @@ The skill is applied to itself. Its files sit in cells and are held to the same 
 - **Name what it retires.** A change is finished when nothing left describes what it replaced. A new rule that retires nothing is suspect; a new sentence that removes none is more so.
 - **Keep the edges.** Theory's section numbers are the anchors every other file links through, so `grep -r "theory.md#"` is what a move owes first.
 - **One table, one file.** Table 1 lives in scope.md, Table 2 in time.md, Table 3 and the location key in grid.md. `check-cells.mts` fails when a cell and Table 3 disagree.
-- **The writer is not the reviewer.** A change made in the conversation that asked for it carries that momentum. The check is the [`elegance-review`](../../agents/elegance-review.md) agent, which `sdlc-review` starts on every pull request, holding the skill and the diff.
+- **The writer is not the reviewer.** A change made in the conversation that asked for it carries that momentum. The check is the [`elegance-review`](../../agents/elegance-review.md) agent, which `sdlc-review` starts on every pull request.
 - **Prescription lives in cells.** SKILL.md and theory.md carry principles, moves, and questions; a rule that wants to be steps belongs in the cell with the check and cost that make it specific.
 
 ## The gradient

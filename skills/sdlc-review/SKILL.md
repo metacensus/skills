@@ -28,9 +28,9 @@ Start [`code-review`](../../agents/code-review.md), and with it Focus's agents, 
 The comment carries `code-review`'s answer to each of [its questions](../../agents/code-review.md#what-you-do). Then the checks, hardest where the answers point:
 
 - [`elegance-review`](../../agents/elegance-review.md) over the diff, title and body.
-- In a public repository, [`open-source`'s review](../open-source/references/review.md) over the diff, commits, names and host text: its Secrets, Examples and Licensing run here, and [`open-source-review`](../../agents/open-source-review.md) takes its Leads and Triage.
+- In a public repository, [`open-source`'s review](../open-source/references/review.md) over the diff, commits, names and host text: its Secrets, Examples and Licensing run here, and [`open-source-review`](../../agents/open-source-review.md) takes its Leads and Triage over one batch file, its `unread:` empty; a pull request past one agent's context splits as [Units](#a-repository-going-public) says.
 - The [mapping's](../sdlc/SKILL.md#the-mapping) Checks rows scoped to review.
-- The host's reviewer, `/code-review` where one exists.
+- The host's `/code-review` command, where one exists.
 - The issue's Verification block exits 0 on the PR's head.
 
 The comment is the verdict, posted once every check finishes, to the issue's carrier, whose Land takes it as input. A check that cannot finish is unchecked with its reason, and the verdict cannot pass.
@@ -49,10 +49,10 @@ Post it with `gh pr review N --body-file <comment>`: `--approve` on pass, `--req
 
 [init](../open-source/references/init.md)'s order runs here, before the visibility change, its Leads and Triage by one `open-source-review` per batch, under [`parallelize`](../parallelize/SKILL.md#what-the-work-answers):
 
-- **Units** — a batch file in scratch, one per agent, of sections headed `=== <id> <path or kind>`: blobs, or commit messages and identities, or tag messages and ref names, under the id `refs`. About 2,000 lines, so one agent reads it whole; a longer blob is a batch alone. The binaries and the licensing findings are a batch of their own.
+- **Units** — a batch file in scratch, one per agent, of sections headed `=== <id> <path or kind>`: blobs, or commit messages and identities, or tag messages and ref names, under the id `refs`. About 2,000 lines, so one agent reads it whole; a longer blob is a batch alone. The binaries and the licensing findings are a batch of their own. Each batch carries the flags steps 1 and 2 raised in its sections.
 - **Edges** — none between units; the leads are the contract each reads, pinned before the fan-out.
 - **Action** — init's steps 3 and 6 over the batch.
-- **Done** — every id its batch holds is on its `read:` list.
+- **Done** — every id its batch holds is on its `read:` list; the binaries batch, every flag judged.
 - **Checks** — none per unit; init's coverage proof is the check.
 
 The session merges the groups, by lead and then by place, and init's Propose takes them to the person. The visibility change waits on their decision.
