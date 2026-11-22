@@ -76,7 +76,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - The PR merges on the review's pass, [waiting](#waiting) without sleeping and recovering [a refused merge](#a-refused-merge).
 - A stack merges bottom first, a child after its parent and never into the parent's branch. Once the parent merges, the child retargets, `gh pr edit N --base <default>` confirmed by `gh pr view N --json baseRefName`, since GitHub retargets it only when the parent's branch is deleted. It then [syncs](#sync), an unreviewed child free to drop a squashed parent's commits instead (`git rebase --onto origin/<default> <parent's last commit>`), and merges once CI reruns on the new base.
-- Where it ships, it goes out in the Publish it blocks, cut under its Release by [`sdlc-ship`](../sdlc-ship/SKILL.md); the author never tags.
+- Where it ships, it goes out in the Publish it or its Epic blocks, cut under its Release by [`sdlc-ship`](../sdlc-ship/SKILL.md); the author never tags.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is captured through [`sdlc-capture`](../sdlc-capture/SKILL.md).
 - Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).

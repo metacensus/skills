@@ -41,7 +41,7 @@ Fetch and bring in main: rebase while alone and unreviewed, merge once shared; â
 
 ## Land
 
-Merge on the review's pass; a stack bottom first, each child retargeted, [synced](#sync) and rerun; it ships in its Publish through [`sdlc-ship`](../sdlc-ship/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
+Merge on the review's pass; a stack bottom first, each child retargeted, [synced](#sync) and rerun; it ships in the Publish it or its Epic blocks, through [`sdlc-ship`](../sdlc-ship/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
 
 ## Waiting
 
