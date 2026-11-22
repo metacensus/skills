@@ -10,7 +10,7 @@ A thread waiting on a person, or the person away: [`decouple`](../decouple/SKILL
 |---|---|---|---|
 |Precheck|Epic open; remit and stops cited; family read|a fix not the delegator's, a family question Design skips|Epic closed|
 |Design|plan proposed: children, non-goals, contracts|until `designed`|fails its bar|
-|Plan|children filed, `ready`, acyclic; contracts land first; no write-sets overlap|contract not the delegator's|cycle; cannot cut|
+|Plan|children filed, `ready`, acyclic; the Epic blocks its Release; contracts land first; no write-sets overlap|contract not the delegator's|cycle; cannot cut|
 |Delegate|a child briefed only when Ready or stacked, in its own tree|Design settles a stop|an author stops|
 |Review|fresh `sdlc-review` per PR|a choice not the delegator's|·|
 |Land|per its author's [Land](../sdlc-author/SKILL.human.md#land); a ruling reaches the children it rules on; each child accepted on main|merge refused|a stop reopens the plan|
