@@ -18,7 +18,7 @@ Who has it, what they need, what is held fixed, and what done looks like, in no 
 - **Sibling apps:** the person's or organization's other projects that met the same need.
 - **Best practice:** the platform's or framework's documented way, and widely used tools.
 
-"Isn't that the whole point of X" names the first precedent: read what X does before anything else. Cite each by link or path, with one line on what it does, and say "none found" where none is. This widens [`checkin`'s precedent](../checkin/SKILL.md#2-match-precedent-before-you-invent) from a record's shape to the problem.
+"Isn't that the whole point of X" names the first precedent: read what X does before anything else. Cite each by link or path, with one line on what it does, and say "none found" where none is. This widens [`sdlc-author`'s precedent check](../sdlc-author/SKILL.md#open) from a record's shape to the problem.
 
 ## Agree the foundations
 

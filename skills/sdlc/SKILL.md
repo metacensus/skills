@@ -134,7 +134,7 @@ Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's 
 
 | Tier | Frames and accepts | Carrier | Design | Delivery |
 |---|---|---|---|---|
-| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Publish, Respond, Land |
+| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Open, Respond, Land |
 | Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land, Close |
 | Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate, Close |
 
@@ -153,7 +153,7 @@ Completion is not deviation: a plain **completed** closes with no escalation. Th
 ## Linking an issue to its branch and PR
 
 - `Closes #N` in the PR body, `Closes OWNER/REPO#N` across repositories.
-- `gh issue develop N --name <branch>`, under [`checkout`](../checkout/SKILL.md)'s name, at Publish before the push: it creates the remote branch. When one already exists, or it cannot run, skip it and rely on `Closes #N`. **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
+- `gh issue develop N --name <branch>`, under the name [`sdlc-author`'s Implement](../sdlc-author/SKILL.md#implement) gives, at its [Open](../sdlc-author/SKILL.md#open) before the push: it creates the remote branch. When one already exists, or it cannot run, skip it and rely on `Closes #N`. **`--name` is required**. Add `-R OWNER/REPO --branch-repo OWNER/PR-REPO` when the issue and the PR live apart.
 
 ## The mapping
 
