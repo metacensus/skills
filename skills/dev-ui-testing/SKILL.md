@@ -18,12 +18,12 @@ A render to a string is not a DOM test: nothing clicks it.
 
 ## Every route in a real browser
 
-- **axe (`@axe-core/playwright`) runs on every route, in light and dark**, and fails on any violation tagged WCAG 2.2 A or AA, impact ignored: the tags already drop best-practice rules, and a moderate failure is still a failure of the standard.
+- **axe (`@axe-core/playwright`) runs on every route, in light and dark**, and fails on any WCAG 2.2 A or AA violation, impact ignored: the tags already drop best-practice rules, and a moderate failure is still a failure of the standard. axe tags each rule by the WCAG version that introduced it, so the list names every one: `withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])`.
 - **Routes are globbed, never listed**: the route files for an app, every built `*.html` for a static site. The spec fails when the glob finds none, so a moved output cannot pass as empty.
 - **axe runs again with each form state shown and each dialog, menu and disclosure open**, since a closed one is not in the tree.
 - **axe over built HTML in jsdom is not this check**: nothing is laid out, so contrast, hydrated islands and keyboard go unseen.
 - **A console error or CSP violation fails the page.**
-- **A gap is an issue**, fixed in the change or marked `test.fail()` naming the issue. It turns red once the gap closes, so no entry outlives its bug, as an allow-list entry would.
+- **A gap is an issue**, fixed in the change or excused for that rule alone: the route's test calls `.disableRules([id])`, and a separate `test.fail()` naming the issue checks only that rule. It turns red once the gap closes, so no entry outlives its bug as an allow-list entry would; the rest of the route still gates.
 
 ## Keyboard paths are tests
 
@@ -41,14 +41,12 @@ The suite runs the image `SERVICE_IMAGE` names, as [`dev-ci-github`](../dev-ci-g
 |---|---|---|
 | `${BASE}/` | 200, `no-cache` | [one base path](../dev-ui/SKILL.md#one-base-path), [caching](../dev-ui/SKILL.md#caching-and-headers) |
 | A deep link | the page, or for a single-page app the shell, `no-cache` | [caching](../dev-ui/SKILL.md#caching-and-headers) |
-| A hashed asset, its name read from the base page | `immutable` | [caching](../dev-ui/SKILL.md#caching-and-headers) |
+| A hashed asset, its name read from the base page so a rebuild cannot stale it | `immutable` | [caching](../dev-ui/SKILL.md#caching-and-headers) |
 | A missing hashed asset | 404, not HTML | [caching](../dev-ui/SKILL.md#caching-and-headers) |
 | A static site's unknown path | 404, its own page | [caching](../dev-ui/SKILL.md#caching-and-headers) |
 | Any page | the security headers | [headers](../dev-ui/SKILL.md#caching-and-headers) |
 | `robots.txt` per `Host` | production allows, any other host disallows | [headers](../dev-ui/SKILL.md#caching-and-headers) |
-| The healthcheck | healthy | [one image](../dev-ui/SKILL.md#one-image-every-environment) |
-
-The asset's name is read, never written into the test, so a rebuild cannot stale it.
+| The healthcheck | healthy | [one base path](../dev-ui/SKILL.md#one-base-path) |
 
 ## A package renders without a browser
 

@@ -17,7 +17,7 @@ Layer → Routes → Keyboard → Image → SSR → Contrast → Harness
 
 ## Every route in a real browser
 
-axe on every globbed route, light and dark, open dialogs and form states included; any WCAG 2.2 A or AA violation fails. ⚠️ Not jsdom; a gap is `test.fail()` naming its issue, never an allow-list.
+axe on every globbed route, light and dark, open dialogs and form states included; any WCAG 2.2 A or AA violation fails. ⚠️ Not jsdom; a gap is one rule's `test.fail()` naming its issue, never an allow-list.
 
 ## Keyboard paths are tests
 
