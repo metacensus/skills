@@ -17,6 +17,13 @@ description: The software development lifecycle every organization on the Initia
 | **Rollout** | Issue `type: Rollout` | Initiative tier, optional: Releases with time and conditions between them, carried by [`sdlc-campaign`](../sdlc-campaign/SKILL.md). No parent. |
 | **Sub-task** | *none* | A Task wanting children is an Epic. |
 
+| Edge | From → to | Kind |
+|---|---|---|
+| parent, code changes | Epic → Initiative · Task, Bug → Epic | child → parent |
+| parent, production changes | Release → Rollout · Publish → Release | child → parent |
+| ships | Publish → the Epic it ships, or its Tasks where they ship apart | `blocked by` |
+| adopts | a consumer's Task → the Publish it adopts | `blocked by` |
+
 Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
 
 A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in. An Epic files where most of its work lands; an Initiative, where its delegator names, else the home the mapping suggests. A Publish files in the repository it publishes; a Release or Rollout, as an Initiative does.
@@ -127,19 +134,32 @@ Every tier runs three phases. Its delegator frames and accepts; the skill that c
 | | Review | the carrier | did we follow the plan? | a cold reviewer's verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we solve the problem? | the close kept or reopened |
 
+Each step hands on, in turn, the issue, the Design, the PR or the children, and the record. Two steps send work back: a Review finding to Work, and a miss at Accept, reopening the issue, to Design.
+
 Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Delivery ends in a record of what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative, which Accept reads.
 
 **Frame** checks an issue's body before it is `ready`: its type, parent and repository as [the ladder](#the-ladder) and [Mechanisms](#mechanisms) say; its [form](forms/)'s required fields; the bar its type takes, a Spike's decision standing as its criterion; the problem first, with its evidence, naming a solution only where one is decided or is itself the constraint; no emojis, nothing its evidence does not supply, and no line breaks inside a paragraph; and everything that must hold before an [irreversible step](../../agents/code-review.md), each its own criterion. On a pass the `delegator`, or a delegate whose [remit](#roles) names it, applies `ready`, with `designed` when the body settles every choice and none is a [stop](#roles), then [`sdlc-status --apply`](#status); anyone else escalates the pass. A parent's children are framed only once all are filed, so Frame reads the whole set.
 
 **Accept** checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. A miss reopens the issue, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
 
-| Tier | Frames and accepts | Carrier | Design | Delivery |
-|---|---|---|---|---|
-| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Open, Respond, Land |
-| Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land, Close |
-| Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Close |
+| Tier | Frames and accepts | Carrier | Design | Delivery | Calls |
+|---|---|---|---|---|---|
+| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Open, Respond, Land | Review: [`sdlc-review`](../sdlc-review/SKILL.md), starting [`code-review`](../../agents/code-review.md), [`elegance-review`](../../agents/elegance-review.md) and, in a public repository, [`open-source-review`](../../agents/open-source-review.md) |
+| Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land, Close | Design: [`design-check`](../../agents/design-check.md) · Work: `parallelize`, an `sdlc-author` per Task or Bug · Review: [`delivery-review`](../../agents/delivery-review.md) |
+| Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Close | Design: `design-check` · Work: `parallelize`, an `sdlc-crew` per Epic · Review: `delivery-review` |
 
-A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. [`sdlc-review`](../sdlc-review/SKILL.md) and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
+A production tier runs Plan, asking what should be live, then Change, then Verify, asking whether it is live as planned; they hand on, in turn, the plan, the digests and the verdict.
+
+| Tier | Delegator | Carrier | Calls |
+|---|---|---|---|
+| Publish | `sdlc-ship` | `sdlc-cut` | · |
+| Release | `sdlc-campaign`, else a person | `sdlc-ship` | Plan: [`plan-check`](../../agents/plan-check.md) · Change: `parallelize`, an `sdlc-cut` per Publish · Verify: [`live-check`](../../agents/live-check.md), running [`launch-review`](../launch-review/SKILL.md)'s checks on a public site |
+| Rollout | a person | `sdlc-campaign` | Change: `parallelize`, an `sdlc-ship` per Release |
+
+A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. `sdlc-review` and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
+
+- Project management, beside the tiers: [`sdlc-capture`](../sdlc-capture/SKILL.md), which records found work under its owner; [`sdlc-align`](../sdlc-align/SKILL.md), which finds where the org departs from a standard and lists fixes; `sdlc-hygiene`, which sweeps for drift on its trigger, starting [`sdlc-sweep`](../../agents/sdlc-sweep.md) and `design-check`.
+- Outside `sdlc`, for any step: standards, `elegance`, which sets the bar for all writing, and [`open-source`](../open-source/SKILL.md), how to publish open-source work; communication, `human-output`, the shape of all a person reads, and [`human-steps`](../human-steps/SKILL.md), which walks a person through one step at a time; dev, optional for authors, [`dev-ci-github`](../dev-ci-github/SKILL.md) · [`dev-terraform`](../dev-terraform/SKILL.md) · [`dev-testing-go`](../dev-testing-go/SKILL.md) · [`dev-temporal`](../dev-temporal/SKILL.md) · [`dev-ui`](../dev-ui/SKILL.md), parent of [`dev-ui-astro`](../dev-ui-astro/SKILL.md) · [`dev-ui-react`](../dev-ui-react/SKILL.md) · [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
 
 ## Closing
 

@@ -18,7 +18,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Rollout|`type: Rollout`|Releases with conditions between, by `sdlc-campaign`|
 |Sub-task|·|a Task wanting children is an Epic|
 
-![Issue types: parents point up, blocked by is dashed](../../../skills/sdlc/figures/types.svg)
+![Issue types: code changes, Initiative over Epic over Task and Bug, and production changes, Rollout over Release over Publish; a Publish is blocked by the Epic it ships, and a consumer's Task by the Publish it adopts](../../../skills/sdlc/figures/types.svg)
 
 ## Mechanisms
 
@@ -81,9 +81,9 @@ A stage runs its checks and posts one comment:
 
 ## Phases
 
-![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
+![The flows: a code tier runs Frame, Design, Work, Review, Accept, a finding returning to Work and a miss reopening to Design; a production tier runs Plan, Change, Verify; each pairs its mirrored questions](../../../skills/sdlc/figures/flows.svg)
 
-![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management and the standards any step may use stand apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
+![Inside sdlc, each code and production tier's carrier and the agents its steps start, its Work fanning out to the tier below; project management beside them; the standards, communication and dev skills outside](../../../skills/sdlc/figures/carriers.svg)
 
 The delegator frames and accepts; the carrier designs, works and reviews.
 
