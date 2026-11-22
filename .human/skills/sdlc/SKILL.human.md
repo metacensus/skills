@@ -13,9 +13,9 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
 |Bug|`type: Bug`|as a Task|
-|Publish (version)|`type: Publish`|one version of one repo, by `sdlc-cut`|
-|Release (cross-project release)|`type: Release`|Publishes plus deploys in one go, by `sdlc-ship`|
-|Rollout|`type: Rollout`|Releases with conditions between, by `sdlc-campaign`|
+|Publish (version)|`type: Publish`|one version of one repo, by `sdlc-cut`; alone, or under a Release|
+|Release (cross-project release)|`type: Release`|optional, where Publishes span repos, it deploys, or a yes needs its own record: Publishes plus deploys in one go, by `sdlc-ship`|
+|Rollout|`type: Rollout`|optional, where Releases need ordering: Releases with conditions between, by `sdlc-campaign`|
 |Sub-task|·|a Task wanting children is an Epic|
 
 ![Issue types: code changes, Initiative over Epic over Task and Bug, and production changes, Rollout over Release over Publish; a Publish is blocked by the Epic it ships, and a consumer's Task by the Publish it adopts](../../../skills/sdlc/figures/types.svg)

@@ -59,7 +59,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`. One opened before its diff is verified is a draft (`--draft`) until `gh pr ready`: [review stops on a draft](../sdlc-review/SKILL.md#precheck).
 - The reviewers the remit names are requested.
-- Where the work blocks a [Publish](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Publish that holds, filing the next version when none does: a blocker that is work ships in that Publish or an earlier one, and a blocker that is a Publish is strictly earlier. Versions compare only within one repository; across repositories their Release orders them. Where its own change moves it to a later Publish, the work it blocks moves too.
+- Where the work blocks a [Publish](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Publish that holds, filing the next version when none does: a blocker that is work ships in that Publish or an earlier one, and a blocker that is a Publish is strictly earlier. Versions compare only within one repository. Where its own change moves it to a later Publish, the work it blocks moves too.
 - Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** before the first commit or push, unless the remit hands over the branch, and on moving work that is not the author's.
@@ -76,7 +76,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - The PR merges on the review's pass, [waiting](#waiting) without sleeping and recovering [a refused merge](#a-refused-merge).
 - A stack merges bottom first, a child after its parent and never into the parent's branch. Once the parent merges, the child retargets, `gh pr edit N --base <default>` confirmed by `gh pr view N --json baseRefName`, since GitHub retargets it only when the parent's branch is deleted. It then [syncs](#sync), an unreviewed child free to drop a squashed parent's commits instead (`git rebase --onto origin/<default> <parent's last commit>`), and merges once CI reruns on the new base.
-- Where it ships, it goes out in the Publish it or its Epic blocks, cut under its Release by [`sdlc-ship`](../sdlc-ship/SKILL.md); the author never tags.
+- Where it ships, it goes out in the Publish it or its Epic blocks, cut by [`sdlc-cut`](../sdlc-cut/SKILL.md), under its Release where one holds it; the author never tags.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is captured through [`sdlc-capture`](../sdlc-capture/SKILL.md).
 - Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).

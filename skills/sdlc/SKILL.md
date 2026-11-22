@@ -12,9 +12,9 @@ description: The software development lifecycle every organization on the Initia
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
 | **Bug** | Issue `type: Bug` | Same size as Task. |
-| **Publish** (version) | Issue `type: Publish` | Task tier: one repository's artifact out at one version, carried by [`sdlc-cut`](../sdlc-cut/SKILL.md). Its parent is a Release, and one without escalates; the work it ships blocks it. |
-| **Release** (cross-project release) | Issue `type: Release` | Epic tier: one cohesive change to production, its Publishes plus deploys in one go, carried by [`sdlc-ship`](../sdlc-ship/SKILL.md); a library or plugin goes out as a one-Publish Release with no deploy. Its parent, if any, is a Rollout. |
-| **Rollout** | Issue `type: Rollout` | Initiative tier, optional: Releases with time and conditions between them, carried by [`sdlc-campaign`](../sdlc-campaign/SKILL.md). No parent. |
+| **Publish** (version) | Issue `type: Publish` | Task tier: one repository's artifact out at one version, carried by [`sdlc-cut`](../sdlc-cut/SKILL.md). Its parent is a Release where one is needed; else it stands alone, handed over by a person, its yes `designed` on it, and its adoption tracked by its consumers' adopt Tasks. The work it ships blocks it. |
+| **Release** (cross-project release) | Issue `type: Release` | Epic tier, optional: one cohesive change to production, its Publishes plus deploys in one go, carried by [`sdlc-ship`](../sdlc-ship/SKILL.md). Used where its Publishes span repositories, it deploys, or a version's yes or adoption needs a record of its own: a cold `plan-check`, or a Done when for `live-check`. Its parent, if any, is a Rollout. |
+| **Rollout** | Issue `type: Rollout` | Initiative tier, optional, used only where Releases need ordering: Releases with time and conditions between them, carried by [`sdlc-campaign`](../sdlc-campaign/SKILL.md). No parent. |
 | **Sub-task** | *none* | A Task wanting children is an Epic. |
 
 | Edge | From → to | Kind |
@@ -33,7 +33,7 @@ A Task files where its PR lands, unless whoever carries the Epic keeps it beside
 | Mechanism | Carries |
 |---|---|
 | **Type** | Initiative / Epic / Task / Bug, and Publish / Release / Rollout, set org-wide; no others. Outside an organization, the title states it. |
-| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. A Publish's parent is a Release, and a Release's, if any, a Rollout; a Rollout takes none, and none of the three parents work. |
+| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. A Publish's parent, if any, is a Release, and a Release's, if any, a Rollout; a Rollout takes none, and none of the three parents work. |
 | **Dependency** | `blocked by` / `blocking`: the issue cannot start while its blocker is open, `gh issue edit N --add-blocked-by M`. A wait to finish is never linked; it is checked where the issue closes. An agent reads a blocker typed Publish, Release or Rollout by title and state alone, and never walks its blockers. |
 | **Production** | Work relates to a Publish, Release or Rollout by `blocked by` alone. A Publish is blocked by the work it ships, an Epic by default and a Task only where that Epic's Tasks ship in different Publishes; work ships in the Publish it blocks, else its Epic's, and work a Release needs merged that none of its Publishes ships blocks the Release itself. A Publish closes once its registry serves the version. Adopting a version is a consumer's Task blocked by that Publish, an edge and not a type; other work that must follow a Publish is blocked by it too, or by its Release when the whole Release must be live first, and a direct edge between two works stays beside one through a Publish. The deadlock rule: an Epic that blocks a Publish, or its Release, holds no work blocked by either, since neither could close first; otherwise the edges move to its Tasks. Work joins a Publish by blocking it, the work's carrier adding the edge. A Publish's version is fixed once its issue exists, and new versions are appended, so work that cannot ship in one moves to a later one, and the work it blocks moves with it. Renumbering a planned version is rare, and its delegator's call once it has weighed what moves: the work aimed at that version and anything already announced or tagged. An Initiative mentions each Release its work ships in and is never blocked by a Publish, Release or Rollout: [its close](../sdlc-fleet/SKILL.md#close) waits on the Publishes its descendants block and, where a Release holds one, on that Release. |
 | **Label** | Three roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built) and `deviated` (see [Closing](#closing)). |
@@ -152,7 +152,7 @@ A production tier runs Plan, asking what should be live, then Change, then Verif
 
 | Tier | Delegator | Carrier | Calls |
 |---|---|---|---|
-| Publish | `sdlc-ship` | `sdlc-cut` | · |
+| Publish | `sdlc-ship`, else a person | `sdlc-cut` | · |
 | Release | `sdlc-campaign`, else a person | `sdlc-ship` | Plan: [`plan-check`](../../agents/plan-check.md) · Change: `parallelize`, an `sdlc-cut` per Publish · Verify: [`live-check`](../../agents/live-check.md), running [`launch-review`](../launch-review/SKILL.md)'s checks on a public site |
 | Rollout | a person | `sdlc-campaign` | Change: `parallelize`, an `sdlc-ship` per Release |
 

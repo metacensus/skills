@@ -3,31 +3,31 @@ name: sdlc-cut
 description: Carry a Publish from its plan to served — one repository's artifact out at one version, tagged at a pinned commit, built by CI, and read back from its registry. Trigger when cutting, tagging or publishing a version, when a Release starts a cut, when a release run fails, and when checking what a registry serves.
 ---
 
-The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it, an `sdlc-ship` run under a Release. A Publish takes minutes and is always one-way, and has no gate of its own: its Release's yes covers its tag, and a cut never asks a person.
+The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes and is never [one-way](../sdlc-ship/SKILL.md#plan), since the version before it stays served. Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person.
 
 Each stage first checks whether its result already holds, and then does not act again. Plan's comment is Change's intent and Change's is Verify's, so a replacement agent resumes from the last comment and what the world shows.
 
 ## Plan
 
-- The Publish is open, a Release holds it, and every issue blocking it is closed. The acting identity is assigned, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
+- The Publish is open, a Release holds it or a person handed it over, and every issue blocking it is closed. The acting identity is assigned, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 - **The commit** is the last merge of its scope on the default branch: the work that blocks the Publish, and an Epic's Tasks through it.
 - **The range**, from the last tag to the commit, equals the scope: each PR merged in it closes work in scope.
-- **The version** bumps the last tag by the largest change in the range: breaking is major, a feature minor, anything else patch. Below 1.0.0 breaking is minor, and 1.0.0 is cut only where the Release's yes names it. A Go major past v1 has its `/vN` module path in the range.
-- The version and the commit are those the ship's brief names.
+- **The version** bumps the last tag by the largest change in the range: breaking is major, a feature minor, anything else patch. Below 1.0.0 breaking is minor, and 1.0.0 is cut only where the yes names it. A Go major past v1 has its `/vN` module path in the range.
+- Under a Release, the version and the commit are those the ship's brief names.
 - **The tag** is free on `origin`, or already on the commit, read as Verify's last row reads it, which means Change resumes at its run.
 - **The notes** are drafted from the range's PRs: breaking changes with their migration, then features, then fixes.
 - A first publish waits on [`dev-ci-github`'s first-release setup](../dev-ci-github/SKILL.md#release-from-a-tag).
 - The comment records the version, the commit, the range and the notes.
 
-**Escalate** a Publish no Release holds, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and on a version or commit the brief does not name.
+**Escalate** a lone Publish until its yes, one an agent started with no Release, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and on a version or commit the brief does not name.
 
 ## Change
 
-- The Release carries `designed`, a person's yes, on a plan naming this Publish's version and scope.
+- `designed`, a person's yes, is on a plan naming this Publish's version and scope: the Release's, else the Publish's own, given after Plan's comment.
 - The tag goes on the commit and is pushed, as [Release from a tag](../dev-ci-github/SKILL.md#release-from-a-tag) says; CI builds and publishes. Nothing publishes from a workstation.
 - The run ends green, [waited on](../sdlc-author/SKILL.md#waiting), and the comment links it with the digest or integrity hash it printed. A transient failure (a runner, a registry 5xx, a rate limit) reruns: `gh run rerun RUN --failed`.
 
-**Escalate** a Release without that yes, and a run that fails otherwise: the tag never moves, so a fix a commit makes ships as a new Publish.
+**Escalate** a cut without that yes, and a run that fails otherwise: the tag never moves, so a fix a commit makes ships as a new Publish.
 
 ## Verify
 
