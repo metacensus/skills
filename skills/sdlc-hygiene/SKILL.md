@@ -33,7 +33,7 @@ The scope is the first row that holds. The first four list issues, each with its
 
 ## Read
 
-- With `family` among the classes, one [`plan-review`](../../agents/plan-review.md) agent per open Epic and Initiative in scope, those on the list when the scope lists issues, else `gh issue list -R OWNER/REPO --search type:Epic,Initiative`, through `parallelize`, answered as Sweep.
+- With `family` among the classes, one [`design-check`](../../agents/design-check.md) agent per open Epic and Initiative in scope, those on the list when the scope lists issues, else `gh issue list -R OWNER/REPO --search type:Epic,Initiative`, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 

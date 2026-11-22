@@ -20,7 +20,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 - One [`human-output`](../human-output/SKILL.md) outline: Initiative → Epics → known Tasks and Spikes; new, existing and moving marked; blockers on their lines.
 - An open question stands as an Epic holding only its Spike, its children left to delivery.
-- [`plan-review`](../../agents/plan-review.md) has read each existing Epic it would adopt.
+- [`design-check`](../../agents/design-check.md) has read each existing Epic it would adopt.
 - Once the person approves the outline, they apply `designed`, and each item files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [3A design](../elegance/references/cells/3A-design.md), blockers first, the Initiative's body filled per [Context](#context).
 
 **Escalate** the outline; nothing files before the person answers. **Stop** when a required field is still a hole.
@@ -43,6 +43,12 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 - As each Epic closes, Plan re-runs over the Epics it unblocks.
 
 **Escalate** a Design that settles a stop. **Stop** when a crew stops.
+
+## Review
+
+Once every Epic closes, a fresh [`delivery-review`](../../agents/delivery-review.md) reads the Initiative against its approved outline and Plan. Its deviations go in Close's record, in its words, for the person's Accept.
+
+**Escalate** a deviation the Goal still needs, as an Epic or Task to file.
 
 ## Close
 
