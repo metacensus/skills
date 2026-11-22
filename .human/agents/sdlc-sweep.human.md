@@ -6,7 +6,7 @@ The repository, its boards and their purposes, the label names, required fields,
 
 ## What you do
 
-Read every open issue in scope and, through `sdlc-status`, every card on the repository's issues; flag only orphans, misparented, done-but-open, closed-parent, stale, mislabeled `ready`, board drift, misplaced cards, issues a board's purpose holds that have no card, missing priorities, or inherited fields with a proposed value, work blocking a Release that a work blocker ships after, or a Release blocker does not precede, in one repository, with the Release that would hold, unowned issues with the closing PR's author, untyped issues with a likely type, and closed Initiatives with an Owed step not done, closed ones too for the last three.
+Read every open issue in scope, the last comment of each, and, through `sdlc-status`, every card on the repository's issues; flag only orphans, misparented, done-but-open, closed-parent, stale, mislabeled `ready`, board drift, misplaced cards, issues a board's purpose holds that have no card, missing priorities, or inherited fields with a proposed value, work blocking a Release that a work blocker ships after, or a Release blocker does not precede, in one repository, with the Release that would hold, agents' escalations or stops nobody answered, unowned issues with the closing PR's author, untyped issues with a likely type, and closed Initiatives with an Owed step not done, closed ones too for the last three.
 
 ## Report
 
