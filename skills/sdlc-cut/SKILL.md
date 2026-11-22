@@ -17,14 +17,14 @@ Each stage first checks whether its result already holds, and then does not act 
 - **The tag** is free on `origin`, or already on the commit, read as Verify's last row reads it, which means Change resumes at its run.
 - **The notes** are drafted from the range's PRs: breaking changes with their migration, then features, then fixes.
 - A first publish waits on [`dev-ci-github`'s first-release setup](../dev-ci-github/SKILL.md#release-from-a-tag).
-- The comment records the version, the commit, the range and the notes.
+- **The survey** is the comment, and what a yes is given on: the version, the commit and the range; the notes; the consumers the version reaches, each with what it must do, as the adopt Tasks the Publish blocks; what the tag sets in motion, the CI run and the registry publish of a version that, once served, never moves; and that it deploys nothing.
 
-**Escalate** a lone Publish until its yes, one an agent started with no Release, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and, under a Release, on a version or commit the brief does not name.
+**Escalate** a lone Publish's survey until its yes, one an agent started with no Release, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and, under a Release, on a version or commit the brief does not name.
 
 ## Change
 
-- `designed`, a person's yes, is on a plan naming this Publish's version and scope: the Release's, else the Publish's own, given after Plan's comment.
-- The tag goes on the commit and is pushed, as [Release from a tag](../dev-ci-github/SKILL.md#release-from-a-tag) says; CI builds and publishes. Nothing publishes from a workstation.
+- `designed`, a person's yes, is given on this Publish's survey, at its version and scope: in the Release's plan, else in Plan's comment, the yes after it.
+- The agent tags the commit and pushes the tag, as [Release from a tag](../dev-ci-github/SKILL.md#release-from-a-tag) says; CI builds and publishes. Nothing publishes from a workstation.
 - The run ends green, [waited on](../sdlc-author/SKILL.md#waiting), and the comment links it with the digest or integrity hash it printed. A transient failure (a runner, a registry 5xx, a rate limit) reruns: `gh run rerun RUN --failed`.
 
 **Escalate** a cut without that yes, and a run that fails otherwise: the tag never moves, so a fix a commit makes ships as a new Publish.
