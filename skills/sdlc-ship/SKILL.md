@@ -16,7 +16,7 @@ A Release takes hours, in one go. It rests only before any Publish, between the 
 - **Rollback target:** each environment's running version and digest, read from what is live, never from git.
 - Every state between two steps is safe. A change that needs two things live at once is a Rollout.
 - [`plan-check`](../../agents/plan-check.md) passes, given the Release and the plan comment.
-- **The yes:** a person's, on the plan and its verdict, naming each Publish's version and scope: `designed` on the Release, beside their words quoted. A yes relayed by an agent counts for nothing, and a changed plan loses it. Under a Rollout carrying `designed`, only a Release with a one-way step needs a yes of its own.
+- **The yes:** `designed` on the Release, on the plan and its verdict, naming each Publish's version and scope. It is a person's, beside their words quoted, save on a reversible Release under a Rollout carrying the person's `designed`, where `sdlc-campaign` applies it on the strength of theirs. Any other yes relayed by an agent counts for nothing, a one-way Release's included, and a changed plan loses it.
 
 **Escalate** until the yes. **Stop** on a change that needs a Rollout.
 

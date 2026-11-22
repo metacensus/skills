@@ -8,11 +8,11 @@ Plan → ⛔ yes → Change → Verify
 
 |Stage|Holds|⛔|🛑|
 |---|---|---|---|
-|Plan|work merged; Publish order; each commit, range = scope, version, breaking changes; deploys, non-production first, one one-way step at most, last; rollback target from live; every state safe; `plan-check` passes|until a person's yes, `designed`|needs a Rollout|
+|Plan|work merged; Publish order; each commit, range = scope, version, breaking changes; deploys, non-production first, one one-way step at most, last; rollback target from live; every state safe; `plan-check` passes|until the yes, `designed`|needs a Rollout|
 |Change|a cut per Publish, downstream once upstream is served; then each deploy as a PR, live re-read first; production applied by the person|failure|·|
 |Verify|`live-check` passes; record: environment, asset, version, digest; close|failure|·|
 
-Under an approved Rollout, only a Release with a one-way step needs its own yes.
+Under a Rollout carrying the person's `designed`, `sdlc-campaign` gives a reversible Release its yes; a one-way Release needs the person's own.
 
 ## Failure
 
