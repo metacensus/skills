@@ -20,7 +20,7 @@ Precheck reads a Release or Rollout blocker by title and state alone.
 
 ## Land
 
-Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), file follow-ups.
+Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), capture follow-ups.
 
 ## Without a pull request
 
