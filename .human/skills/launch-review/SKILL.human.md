@@ -15,7 +15,7 @@ Gate test → Staging request → Person → Counsel → Report: pass · fail ·
 | Robots and sitemap | canonical `Host` allows; any other `Disallow: /` | image test, both hosts |
 | Favicons | ico, touch, 192/512, manifest; no production path 404s | image test |
 | Private links | public-repo allow list; no internal hosts | build test |
-| Accessibility | axe WCAG 2.2 AA; skip link; heading order | gate + 🩷 browser for contrast |
+| Accessibility | axe at [`dev-ui-testing`'s floor](../dev-ui-testing/SKILL.human.md#every-route-in-a-real-browser); skip link; heading order | gate + 🩷 browser for contrast |
 | Privacy notice | per form; each statement traced to code | 🩷 person |
 | Copy compliance | tax status pinned; asks flagged off; careers, consent, license | tests + ⛔ counsel |
 | Domain | DMARC at least `p=none`; CAA | `dig` |
