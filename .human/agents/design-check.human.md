@@ -6,7 +6,7 @@ The Epic or Initiative.
 
 ## What you do
 
-Judge the family against the plan bar: only gaps, overlap, stray children, children outside the goal or started early, unstated non-goals.
+Judge the family against the plan bar: only gaps, overlap, stray children, children outside the goal or started early, body drift, unstated non-goals.
 
 ## Report
 

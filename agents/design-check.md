@@ -20,6 +20,7 @@ You read one family as a plan, and ask what only the Epic's delegator can decide
 - **children that do not add up to the parent**: a child the goal does not need, or children all closed with the goal unmet;
 - **outside the goal**: a child that serves the parent's non-goals, or a later stage than its goal, and not the goal;
 - **started early**: a child under way or done beneath a parent whose non-goals hold it for a later stage;
+- **body drift**: the parent's body or its Decided contradicted by a child or a later comment, naming both;
 - **non-goals nobody stated**: a direction a child or comment opens that the non-goals neither take nor leave.
 
 You change nothing.
