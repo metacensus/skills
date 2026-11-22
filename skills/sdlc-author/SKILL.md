@@ -43,7 +43,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The branch [syncs](#sync), so what follows runs on what will merge.
 - The issue's Verification block exits 0, and so does the repository's gate, run locally even where CI repeats it. A failure that names a rule is read before it is worked around.
 - Where the repository has an `elegance-mapping.md`, `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` is read as [`elegance`'s Before you finish](../elegance/SKILL.md#before-you-finish) says: an unexpected cell is an alteration to undo.
-- In a public repository (`gh repo view --json visibility`), `gitleaks git --log-opts="origin/<default>..HEAD"` and `gitleaks dir` exit 0 before the push.
+- In a public repository, [`dev-ci-github`'s pre-push check](../dev-ci-github/SKILL.md#before-a-public-push) passes before the push.
 
 **Escalate** on a secret in pushed history. **Stop** when the Verification block cannot pass as written.
 

@@ -1,9 +1,9 @@
 ---
 name: open-source
-description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, before any commit, push, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, when porting a sample, a skill or a file from a private repository into a public one, and whenever the user asks whether something is safe to push or publish.
+description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, when writing a commit, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, when porting a sample, a skill or a file from a private repository into a public one, and whenever the user asks whether something is safe to push or publish.
 ---
 
-**Publishing cannot be undone**: copies spread within minutes of a push and no rewrite reaches them, so the check runs before the push.
+**Publishing cannot be undone**: copies spread within minutes of a push and no rewrite reaches them. So secrets, which a machine can catch, are caught before the push by [`dev-ci-github`'s check](../dev-ci-github/SKILL.md#before-a-public-push); private names are caught by the writer while writing, and by the cold read at Review.
 
 **What is internal is a kind of information, not a list.** The check follows [leads](references/leads.md); examples help and never bound it. Every span a lead reaches is flagged before any is weighed, then each flag is judged in its context.
 
