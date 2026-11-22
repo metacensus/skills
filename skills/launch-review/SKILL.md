@@ -45,7 +45,7 @@ Every response carries them, the 404 included.
 
 ## Accessibility
 
-- **axe over every built page**, failing on a serious or critical WCAG 2.2 AA violation.
+- **axe over every built page**, at [`dev-ui-testing`'s floor](../dev-ui-testing/SKILL.md#every-route-in-a-real-browser).
 - A skip link, shown on focus, targets `<main id="main">`; headings nest without skipping a level.
 - **Proof**: the gate, plus one browser run for contrast, light and dark, with hidden sections shown, since jsdom lays nothing out.
 
