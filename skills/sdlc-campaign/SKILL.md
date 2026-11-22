@@ -8,31 +8,33 @@ The campaign's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages)
 Its state lives on the Rollout, so a replacement agent resumes from there:
 
 - **The plan**, in the body.
-- **The status comment**, the only comment it edits, shaped as [the status outline](../sdlc/SKILL.md#reporting): a row per phase, each gate's reading with its time, the next wake and the deadline.
+- **The status comment**, the only comment it edits: a row per phase, each gate's reading with its time, the next wake and the deadline.
 - **The decision log**: its stage comments, one per decision, never edited.
 
-Before each action it writes its intent, after it the result, and each action first checks whether it is already done.
+Before each action it writes its intent in the status comment, after it the result in the decision log, and each action first checks whether it is already done.
 
 ## Precheck
 
 - The Rollout is open, its body carrying its form's required fields, and assigned to the acting identity.
 - Its Releases and gate Tasks are read from GitHub.
 
-**Pass** goes to Plan, or to Verify on a plan carrying `designed`. **Stop** on a Rollout closed.
+**Pass** goes to Plan, or to Verify on a plan carrying `designed` whose issues are filed. **Stop** on a Rollout closed.
 
 ## Plan
 
 The body holds the end state its Goal names, and a phase per row, each one or more Releases with no time or condition between them:
 
 - its purpose;
-- **starts when**: work, as Tasks filed per [`sdlc-capture`](../sdlc-capture/SKILL.md#file) under the parent that owns them, each blocking the phase's Releases; and conditions on the live system, each a threshold over a window;
-- its expected wait and its deadline;
+- **starts when**: work, as Tasks under the parent that owns them, each blocking the phase's Releases; and conditions on the live system, each a threshold over a window;
+- its expected wait, counted from the previous phase's last Release accepted, and its deadline;
 - its back-out: a configuration change or a Release restoring the earlier behavior, or none where the phase only adds;
-- whether it is one-way.
+- whether it is one-way: whether it holds a Release whose plan will name a one-way step.
 
-As few phases one-way as the end state allows, each as late as it can be. The last phase is the cleanup: flags removed, dual paths off, old code deleted, old versions retired. Each Release files per `sdlc-capture`, `--parent` the Rollout.
+As few phases one-way as the end state allows, each as late as it can be. The last phase is the cleanup: flags removed, dual paths off, old code deleted, old versions retired.
 
-**Escalate** the plan: the person approves it once by applying `designed`, which turns each reversible start of a phase into a rule the agent applies and stands as each reversible Release's yes. A change to the plan takes `designed` off and escalates again. A plan of one phase escalates as a Release with no Rollout.
+**Escalate** the plan: the person approves it once by applying `designed`, which turns each reversible start of a phase into a rule the agent applies. A change to the plan takes `designed` off and escalates again. A plan of one phase escalates as a Release with no Rollout.
+
+Once `designed` is applied, and not before, the Releases file per [`sdlc-capture`](../sdlc-capture/SKILL.md#file), `--parent` the Rollout, and the gate Tasks under the parents that own them.
 
 ## Change
 
@@ -40,6 +42,7 @@ Once Verify finds a phase's starts-when holding, its Releases start:
 
 - One `sdlc-ship` sub-agent per Release, under [`parallelize`](../parallelize/SKILL.md) where the phase holds more than one: units its Releases, edges their `blocked by`, the action `sdlc-ship`, done each Release closed and accepted.
 - A reversible Release's yes is the Rollout's `designed`: once its plan matches its phase and passes [`plan-check`](../../agents/plan-check.md), the campaign applies `designed` to it, citing the Rollout's.
+- A Release is one-way when its plan names a one-way step, whatever its phase says. A plan that does not match its phase escalates, and the Release waits.
 - A one-way Release needs its own yes. Its brief names the phase's conditions as preconditions, `plan-check` confirms each from production evidence, and the person applies `designed` given that verdict. The campaign never certifies its own point of no return.
 - A Release already started resumes, never restarts.
 - Each closed Release is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), against the live system: its digests running where its record says. A miss reopens it.
@@ -52,7 +55,7 @@ Every wake runs Verify, the first after Plan among them. Each reading comes from
 
 1. Every earlier phase still holds: its digests running, its flags set.
 2. The current phase's conditions are read, then the next phase's starts-when.
-3. The status comment is updated, and the next wake set: events first (an issue closes, a comment arrives, an alert fires, a date comes), a poll as backstop at about a tenth of the remaining expected wait, from 15 minutes to a day.
+3. The status comment is updated, and the next wake set: events first (an issue closes, a comment arrives, a label is applied, an alert fires, a date comes), a poll as backstop at about a tenth of the phase's expected wait left, from 15 minutes to a day, and hourly while only a person's answer is awaited.
 
 - The next phase's starts-when holds: Change runs it.
 - The last phase holds and the end state is live: Close.
@@ -60,7 +63,7 @@ Every wake runs Verify, the first after Plan among them. Each reading comes from
 
 A wake that decides nothing posts no comment.
 
-**Escalate** at a deadline; on a stall, no progress across three readings; a check unread three readings running; and a changed world, such as a new consumer of what the plan retires or another Release on the same assets. Each offers extend, back out, abandon or re-plan.
+**Escalate** at a deadline; on a stall, past the phase's expected wait with no gate newly met across three readings; a check unread three readings running; and a changed world, such as a new consumer of what the plan retires or another Release on the same assets. Each offers extend, back out, abandon or re-plan.
 
 ## Failure
 
@@ -78,6 +81,6 @@ A wake that decides nothing posts no comment.
 
 What wakes it is not this skill's. It needs:
 
-- a wake on a timer and on events: an issue it watches closes, a comment arrives, an alert fires;
+- a wake on a timer and on events: an issue it watches closes, a comment arrives, a label is applied, an alert fires;
 - a watchdog flagging a Rollout whose status comment is older than its next wake;
 - read access to production.
