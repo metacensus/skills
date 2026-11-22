@@ -137,9 +137,9 @@
     <rect x="216" y="648" width="160" height="64" rx="8"/>
   </g>
   <g text-anchor="middle" dominant-baseline="central">
-    <text x="120" y="664" font-size="13" font-weight="600" class="accent">sdlc-intake</text>
-    <text x="120" y="680" class="soft">files an issue,</text>
-    <text x="120" y="696" class="soft">curates it to ready</text>
+    <text x="120" y="664" font-size="13" font-weight="600" class="accent">sdlc-capture</text>
+    <text x="120" y="680" class="soft">records found work</text>
+    <text x="120" y="696" class="soft">under its owner</text>
     <text x="296" y="664" font-size="13" font-weight="600" class="accent">sdlc-hygiene</text>
     <text x="296" y="680" class="soft">sweeps for drift,</text>
     <text x="296" y="696" class="soft">on its trigger</text>
