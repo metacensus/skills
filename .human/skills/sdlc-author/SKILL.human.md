@@ -8,7 +8,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 
 |Stage|Pass →|⛔|⏸️|
 |---|---|---|---|
-|Precheck|Design (Implement if `designed`)|fix not the author's|assigned elsewhere|
+|Precheck|Design (Implement if `designed`)|fix not the author's; a version nothing plans or serves|assigned elsewhere|
 |Design|`designed` applied|until `designed`|fails its bar|
 |Implement: from current `origin/<default>`, named branch, own worktree, stay inside|Self-review; large: `parallelize`|design shifts|criterion unmeetable|
 |Self-review: scripts only|Open|secret in pushed history|Verification cannot pass|
@@ -16,7 +16,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 |Respond|Land|dispute at loop cap|finding reopens design|
 |Land|closed, then the delegator's Accept|a merge no remit reaches; a `deviated` or not-planned close|PR cannot merge|
 
-Precheck reads a Publish, Release or Rollout blocker by title and state alone.
+Precheck reads a Publish, Release or Rollout blocker by title and state alone; a Task bumping a dependency, image or submodule is blocked by its version's Publish.
 
 Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`, and in a public repo `gitleaks`.
 
