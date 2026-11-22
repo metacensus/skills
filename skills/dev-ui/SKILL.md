@@ -1,6 +1,6 @@
 ---
 name: dev-ui
-description: What every web UI shares, and which child skill holds the rest — one image for every environment, one base path, caching and headers, tokens from one source, one version line, generated clients only, and the build as the gate. Trigger when scaffolding, reviewing, or changing a front-end repository's build config, base path, Dockerfile, web server config, styling foundation, dependencies, or API calls, when deciding how two UIs share tokens or components, when aligning a surface to a design system, and before any work that reaches for `dev-ui-astro`, `dev-ui-react` or `dev-ui-testing`.
+description: What every web UI shares, and which child skill holds the rest — one image for every environment, one base path, caching and headers, tokens from one source, one version line, generated clients only, how a form submits, and the build as the gate. Trigger when scaffolding, reviewing, or changing a front-end repository's build config, base path, Dockerfile, web server config, styling foundation, dependencies, API calls, or a form's submit, when deciding how two UIs share tokens or components, when aligning a surface to a design system, and before any work that reaches for `dev-ui-astro`, `dev-ui-react` or `dev-ui-testing`.
 ---
 
 | Skill | Holds |
@@ -59,6 +59,12 @@ A UI under a prefix states it once, as `ARG BASE` in the Dockerfile, the one fil
 - **Every call goes through the client generated from the contract**, subclassed once as the session seam: the token in memory, one single-flight refresh on 401, and a timeout, so auth and failure are handled in one place.
 - **No raw `fetch` write, hand-written wire type, or hand-mirrored contract**: a route the client lacks goes into the contract, since a hand copy drifts from the server unseen.
 - **Strict schema validation at every data boundary**, its error naming the source, so bad data fails where it enters rather than where it renders.
+
+## Submitting a form
+
+- **A form posts through the [session seam](#generated-clients-only)**, whose timeout turns a request that hangs into the error path.
+- **A flag set synchronously on submit guards a second submit**, never rendered state, which updates only after the next render.
+- **`aria-busy` while sending.** On success, focus moves to a `role="status"` panel; on error, to a `role="alert"` notice, and the fields keep what was typed.
 
 ## The build is the gate
 

@@ -28,7 +28,7 @@ One sitemap per base. ✅ Icons rasterised at build from one mark; no binaries c
 
 ## A form on a static page
 
-Generated client with a timeout; a ref guards double submit. ✅ `aria-busy`, status or alert focused, input kept, honeypot, privacy notice beside Send.
+Per [`dev-ui`](../dev-ui/SKILL.human.md#submitting-a-form); ✅ honeypot, privacy link.
 
 ## Sibling sites
 

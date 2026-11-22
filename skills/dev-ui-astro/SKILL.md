@@ -41,12 +41,9 @@ Each item at [`dev-ui`](../dev-ui/SKILL.md#the-build-is-the-gate) fails an Astro
 
 ## A form on a static page
 
-- **An island posts through the generated client with a timeout**, the seam [`dev-ui`](../dev-ui/SKILL.md#generated-clients-only) sets.
-- **A ref, not state, guards double submit**, since state updates only after the next render.
-- **`aria-busy` while sending.** On success, focus moves to a `role="status"` panel; on error, to a `role="alert"` notice, and the fields keep what was typed.
+- **An island submits as [`dev-ui`](../dev-ui/SKILL.md#submitting-a-form) says**; field wiring and the validator are [`dev-ui-react`](../dev-ui-react/SKILL.md#forms)'s.
 - **A honeypot field**, hidden from people and assistive tech, drops bots without a challenge.
 - **The privacy notice is linked beside Send**, as [`launch-review`](../launch-review/SKILL.md#privacy-notice) requires.
-- Field wiring and the validator: [`dev-ui-react`](../dev-ui-react/SKILL.md).
 
 ## Sibling sites
 

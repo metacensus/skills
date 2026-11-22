@@ -24,7 +24,7 @@ TanStack file routes in an app, plain folders and `import.meta.glob` in a plugin
 
 ## Forms
 
-The package's field kit; React Hook Form with zod, typed against the generated request.
+The package's field kit; React Hook Form with zod, typed against the generated request; submits per [`dev-ui`](../dev-ui/SKILL.human.md#submitting-a-form).
 
 ## Plugins into a host
 
