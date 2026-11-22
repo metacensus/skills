@@ -48,9 +48,10 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - [`checkin`](../checkin/SKILL.md) holds, and the branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`.
 - The reviewers the remit names are requested.
+- Where the work blocks a [Release](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Release that holds, filing the next version when none does: a blocker that is work ships in that Release or an earlier one, and a blocker that is a Release is strictly earlier. Versions compare only within one repository; across repositories the Rollout orders them. Where its own change moves it to a later Release, the work it blocks moves too.
 - Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
-**Escalate** before linking, unless the remit hands over the branch.
+**Escalate** before linking, unless the remit hands over the branch, and on moving work that is not the author's.
 
 ## Respond
 

@@ -91,7 +91,8 @@ const store = (raw: Issue & { projectItems: { nodes: (Item & Record<string, { na
   issues.set(raw.url, raw);
   return raw;
 };
-const fetchIssue = (url: string) => issues.get(url) ?? store(gql(`query($u:URI!){resource(url:$u){... on Issue{${ISSUE}}}}`, { u: url }).resource);
+const resource = (url: string) => gql(`query($u:URI!){resource(url:$u){__typename url ... on Issue{${ISSUE}}}}`, { u: url }).resource;
+const fetchIssue = (url: string) => issues.get(url) ?? store(resource(url));
 
 // Reads the issues not yet held, 25 to a request; whatever it leaves is read one at a time when asked for.
 const fetchMany = (urls: string[]) => {
@@ -132,7 +133,14 @@ if (board1) {
     if (!items.pageInfo.hasNextPage) break;
     after = items.pageInfo.endCursor;
   }
-} else scope = targets.map((t) => fetchIssue(toUrl(t)).url);
+} else
+  // GitHub reads a pull request's number as an Issue at its `/pull/` url.
+  for (const url of targets.map(toUrl)) {
+    const r = resource(url), kind = /\/pull\/\d+$/.test(r?.url) ? "PullRequest" : r?.__typename;
+    if (kind === "Issue") scope.push(store(r).url);
+    else console.error(`${url}: skipped, ${kind ? `a ${kind}, not an issue` : "not found or not readable"}`);
+  }
+if (!scope.length) process.exit(board1 ? 0 : 1);
 
 // `--reset`: every issue under the targets drops its own Priority and inherits again.
 const below = new Set<string>();

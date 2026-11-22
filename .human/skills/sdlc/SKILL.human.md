@@ -8,7 +8,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 
 |Jira|GitHub|Size|
 |---|---|---|
-|Initiative|`type: Initiative`|one outcome; its own Epics, ≥ 2 preferred; shared work a `blocked by`|
+|Initiative|`type: Initiative`|one outcome; its own Epics, ≥ 2 preferred|
 |Epic|`type: Epic`|weeks|
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
@@ -24,9 +24,12 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Mechanism|Carries|
 |---|---|
 |Dependency|`blocked by`; a Release or Rollout read by title and state only|
+|Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Rollouts, never blocked by one|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
+
+`blocked by` means can't start; a wait to finish is checked at the close, never linked.
 
 ## Status
 

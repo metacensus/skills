@@ -27,6 +27,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 `parallelize` answered: units are the children; edges their `blocked by` and the contracts their write-sets share, a renamed term grepped across the repository before any brief; the action is [`sdlc-author`](../sdlc-author/SKILL.md); done is [the hub's Closing](../sdlc/SKILL.md#closing); the checks, [`sdlc-review`](../sdlc-review/SKILL.md) per PR.
 
 - Each child carries `ready`, with every `blocked by` edge inside the Epic, set by its Initiative's Plan, or to a [Release or Rollout](../sdlc/SKILL.md#mechanisms), and the graph has no cycle; a child without `ready` is framed per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit.
+- The Epic blocks the earliest open Release that holds, as [`sdlc-author`'s Publish](../sdlc-author/SKILL.md#publish) picks one, filing the next version when none does; its Tasks do instead where they ship in different Releases.
 - The contract lands first, pinned in a file its consumers read, and merged before a consumer starts.
 - No two write-sets in a wave overlap; a line no child owns goes to one, or to a child filed for it.
 - The comment lists the waves, each child's write-set and contracts.

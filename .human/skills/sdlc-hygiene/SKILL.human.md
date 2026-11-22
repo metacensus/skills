@@ -17,7 +17,7 @@ Each orphan or root issue is proposed: 📌 existing parent · 🔗 issue that m
 
 ## Act
 
-[`sdlc-setup.sh`](../sdlc/SKILL.human.md#setup) and `sdlc-status --apply` fix `setup`, `board`; an untyped Task or Bug takes its type; an `uncarded` issue under a boarded Initiative takes its card; every other flag ⛔, with what the sweep names, a `no <field>`, a value for its nearest Epic's card, else its own. Writes a second apart; a refused one, rate limits aside, is reported, the rest go on.
+[`sdlc-setup.sh`](../sdlc/SKILL.human.md#setup) and `sdlc-status --apply` fix `setup`, `board`; an untyped Task or Bug takes its type; an `uncarded` issue under a boarded Initiative takes its card; every other flag ⛔, with what the sweep names: a `release-order` (a work blocker shipping later, a Release blocker not earlier, one repo), a move to a later Release, a renumbering only the delegator's call; a `no <field>`, a value for its nearest Epic's card, else its own. Writes a second apart; a refused one, rate limits aside, is reported, the rest go on.
 
 A request naming a class's fix is the yes to it.
 

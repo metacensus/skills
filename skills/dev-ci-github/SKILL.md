@@ -33,6 +33,12 @@ Every check is a `make` target that a workflow step calls rather than re-spells.
 - **`permissions: contents: read`** at the top; a job that needs more grants it to itself.
 - **`timeout-minutes`** on every job; **path filters** where a repository holds several deployables.
 
+## CI blocks every merge
+
+- **Every repository requires its aggregate check from creation**: a repository ruleset with `required_status_checks` on `~DEFAULT_BRANCH`, organization admins its only bypass, no review rule. An organization ruleset needs a paid plan.
+- **GitHub Free answers 403** to a private repository's rulesets and branch protection; the ruleset lands once the plan allows it.
+- **Never ask whether CI should block merges**, nor offer going without a required check.
+
 ## Test the artifact CI built
 
 The build job builds the image once with buildx `load: true` under a CI tag and passes that tag to the artifact suite as `SERVICE_IMAGE`.
