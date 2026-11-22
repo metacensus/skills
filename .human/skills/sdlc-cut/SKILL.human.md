@@ -1,6 +1,6 @@
-> A cut carries one Publish: one repository's artifact out at one version. Minutes, one-way, no person of its own: its Release's yes covers the tag.
+> A cut carries one Publish: one repository's artifact out at one version. Minutes, never one-way: the version before stays served. Its yes is its Release's, or, alone, the person's `designed` on it.
 
-Fires: cutting, tagging or publishing a version; a release run failing; checking what a registry serves.
+Fires: cutting, tagging or publishing a version; a person handing over a Publish; a release run failing; checking what a registry serves.
 
 ```
 Plan → Change → Verify
@@ -8,8 +8,8 @@ Plan → Change → Verify
 
 |Stage|Holds|⛔|⏸️|
 |---|---|---|---|
-|Plan|held by a Release, blockers closed; commit = scope's last merge; range = scope; semver, breaking = minor below 1.0.0; the brief's version and commit; notes|no Release; a stray PR|tag on another commit; brief disagrees|
-|Change|Release `designed` on this version and scope; tag pushed; CI publishes, a transient failure rerun|no yes; a failure a rerun does not fix|·|
+|Plan|held by a Release or handed over by a person, blockers closed; commit = scope's last merge; range = scope; semver, breaking = minor below 1.0.0; under a Release, the brief's version and commit; notes|alone, until its yes; agent-started, no Release; a stray PR|tag on another commit; under a Release, brief disagrees|
+|Change|`designed` on this version and scope, the Release's or the lone Publish's; tag pushed; CI publishes, a transient failure rerun|no yes; a failure a rerun does not fix|·|
 |Verify|registry serves CI's digest, read with no cache or extra credentials; notes on the GitHub Release; record; close|another digest, or none|·|
 
 Each stage checks first whether it is done, a tag already on the commit resuming at Change's run; each comment is the next stage's intent.
