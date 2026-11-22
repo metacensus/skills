@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="848" viewBox="0 0 800 848" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+  <title>The code and production flows</title>
+  <desc>A code tier runs Frame, Design, Work, Review, Accept, a finding returning to Work and a miss reopening to Design; a production tier runs Plan, Change, Verify; each pairs its mirrored questions.</desc>
+  <style>
+    svg { --bg: #fff; --ink: #444A5A; --muted: #8A90A2; --accent: #3B0E75; --azure: #3D9BD1 }
+    @media (prefers-color-scheme: dark) { svg { --bg: #121318; --ink: #E8E8EC; --accent: #D0B5E6 } }
+    .bg { fill: var(--bg) }
+    .ink { fill: var(--ink) }
+    .soft { fill: var(--ink); fill-opacity: .8 }
+    .accent { fill: var(--accent) }
+    .edge { fill: none; stroke: var(--ink) }
+    .panel { fill: var(--ink); fill-opacity: .05; stroke: var(--muted); stroke-opacity: .5 }
+    .blue { fill: var(--azure); fill-opacity: .18; stroke: var(--azure) }
+    .skill { fill: var(--bg); stroke: var(--azure); stroke-width: 1.5 }
+    .group { fill: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 1px }
+    .muted { fill: var(--muted) }
+    .funnel { fill: var(--azure); fill-opacity: .08; stroke: var(--azure); stroke-opacity: .5 }
+    .mirror { fill: none; stroke: var(--accent); stroke-width: 2 }
+  </style>
+  <defs>
+    <marker id="next" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
+  </defs>
+  <rect x="0" y="0" width="800" height="848" class="bg"/>
+
+  <g class="panel">
+    <rect x="24" y="16" width="752" height="352" rx="8"/>
+    <rect x="24" y="416" width="752" height="224" rx="8"/>
+    <rect x="24" y="688" width="752" height="144" rx="8"/>
+  </g>
+  <g font-size="12" dominant-baseline="central">
+    <text x="40" y="32"><tspan class="group">CODE CHANGES</tspan><tspan class="soft"> · one tier: an Initiative, an Epic, or a Task or Bug</tspan></text>
+    <text x="40" y="432"><tspan class="group">PRODUCTION CHANGES</tspan><tspan class="soft"> · one tier: a Rollout, a Release, or a Publish</tspan></text>
+    <text x="40" y="704" class="group">KEY</text>
+  </g>
+
+  <!-- code flow -->
+  <rect x="40" y="48" width="720" height="304" class="funnel"/>
+  <rect x="176" y="104" width="448" height="184" rx="8" class="skill"/>
+  <text x="192" y="120" font-size="13" dominant-baseline="central"><tspan class="soft">the carrier: </tspan><tspan font-weight="600" class="accent">sdlc-fleet</tspan><tspan class="soft"> · </tspan><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · </tspan><tspan font-weight="600" class="accent">sdlc-author</tspan></text>
+
+  <g class="mirror">
+    <polyline points="112,176 112,88 688,88 688,176"/>
+    <polyline points="256,176 256,160 544,160 544,176"/>
+  </g>
+  <g class="accent" dominant-baseline="central">
+    <text x="56" y="72">what is the problem?</text>
+    <text x="744" y="72" text-anchor="end">did we solve the problem?</text>
+    <text x="200" y="144">what is the plan?</text>
+    <text x="600" y="144" text-anchor="end">did we follow the plan?</text>
+  </g>
+
+  <g class="blue">
+    <rect x="56" y="184" width="112" height="48" rx="8"/>
+    <rect x="200" y="184" width="112" height="48" rx="8"/>
+    <rect x="344" y="184" width="112" height="48" rx="8"/>
+    <rect x="488" y="184" width="112" height="48" rx="8"/>
+    <rect x="632" y="184" width="112" height="48" rx="8"/>
+  </g>
+  <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
+    <text x="112" y="208">Frame</text>
+    <text x="256" y="208">Design</text>
+    <text x="400" y="208">Work</text>
+    <text x="544" y="208">Review</text>
+    <text x="688" y="208">Accept</text>
+  </g>
+
+  <g class="edge" stroke-width="1.5">
+    <line x1="168" y1="208" x2="200" y2="208" marker-end="url(#next)"/>
+    <line x1="312" y1="208" x2="344" y2="208" marker-end="url(#next)"/>
+    <line x1="456" y1="208" x2="488" y2="208" marker-end="url(#next)"/>
+    <line x1="600" y1="208" x2="632" y2="208" marker-end="url(#next)"/>
+  </g>
+  <g class="edge" stroke-width="1.5" stroke-dasharray="6 4">
+    <path d="M544,232 C544,264 400,264 400,232" marker-end="url(#next)"/>
+    <path d="M688,232 C688,352 256,352 256,232" marker-end="url(#next)"/>
+  </g>
+  <g class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="472" y="272">a finding</text>
+    <text x="472" y="336">a miss reopens the issue</text>
+  </g>
+
+  <text x="40" y="392" font-size="11" dominant-baseline="central" class="muted">each arrow hands on, in turn: the issue, the Design, the PR, the merge</text>
+
+  <!-- production flow -->
+  <rect x="40" y="448" width="720" height="176" class="funnel"/>
+  <rect x="56" y="464" width="688" height="144" rx="8" class="skill"/>
+  <text x="72" y="480" font-size="13" dominant-baseline="central"><tspan class="soft">the carrier: </tspan><tspan font-weight="600" class="accent">sdlc-campaign</tspan><tspan class="soft"> · </tspan><tspan font-weight="600" class="accent">sdlc-ship</tspan><tspan class="soft"> · </tspan><tspan font-weight="600" class="accent">sdlc-cut</tspan></text>
+
+  <polyline points="192,536 192,520 608,520 608,536" class="mirror"/>
+  <g class="accent" dominant-baseline="central">
+    <text x="136" y="504">what should be live?</text>
+    <text x="664" y="504" text-anchor="end">is it live as planned?</text>
+  </g>
+
+  <g class="blue">
+    <rect x="136" y="544" width="112" height="48" rx="8"/>
+    <rect x="344" y="544" width="112" height="48" rx="8"/>
+    <rect x="552" y="544" width="112" height="48" rx="8"/>
+  </g>
+  <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
+    <text x="192" y="568">Plan</text>
+    <text x="400" y="568">Change</text>
+    <text x="608" y="568">Verify</text>
+  </g>
+  <g class="edge" stroke-width="1.5">
+    <line x1="248" y1="568" x2="344" y2="568" marker-end="url(#next)"/>
+    <line x1="456" y1="568" x2="552" y2="568" marker-end="url(#next)"/>
+  </g>
+
+  <text x="40" y="664" font-size="11" dominant-baseline="central" class="muted">each step hands on, in turn: the plan, the digests, the verdict</text>
+
+  <!-- key -->
+  <rect x="40" y="728" width="32" height="16" rx="4" class="blue"/>
+  <rect x="40" y="752" width="32" height="16" rx="4" class="skill"/>
+  <rect x="40" y="776" width="32" height="16" class="funnel"/>
+  <rect x="40" y="800" width="32" height="16" rx="4" class="panel"/>
+  <line x1="424" y1="736" x2="456" y2="736" class="edge" stroke-width="1.5" marker-end="url(#next)"/>
+  <line x1="424" y1="760" x2="456" y2="760" class="edge" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#next)"/>
+  <polyline points="424,792 424,776 456,776 456,792" class="mirror"/>
+  <g dominant-baseline="central">
+    <text x="88" y="736">a step</text>
+    <text x="88" y="760">a skill</text>
+    <text x="88" y="784">a tier: its delegator frames and accepts</text>
+    <text x="88" y="808">a group</text>
+    <text x="472" y="736">then, handing on</text>
+    <text x="472" y="760">sometimes back</text>
+    <text x="472" y="784">mirrored questions</text>
+  </g>
+</svg>
