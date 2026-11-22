@@ -134,7 +134,7 @@ Every tier runs three phases. Its delegator frames and accepts; the skill that c
 | | Review | the carrier | did we follow the plan? | a cold reviewer's verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we solve the problem? | the close kept or reopened |
 
-Two steps send work back: a Review finding to Work, and a miss at Accept, reopening the issue, to Design.
+Each step hands on, in turn, the issue, the Design, the PR or the children, and the record. Two steps send work back: a Review finding to Work, and a miss at Accept, reopening the issue, to Design.
 
 Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Delivery ends in a record of what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative, which Accept reads.
 
@@ -158,8 +158,8 @@ A production tier runs Plan, asking what should be live, then Change, then Verif
 
 A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. `sdlc-review` and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
 
-- Project management, beside the tiers: [`sdlc-capture`](../sdlc-capture/SKILL.md) · [`sdlc-align`](../sdlc-align/SKILL.md) · `sdlc-hygiene`, which starts [`sdlc-sweep`](../../agents/sdlc-sweep.md) and `design-check`.
-- Outside `sdlc`, for any step: standards, `elegance` · [`open-source`](../open-source/SKILL.md); communication, `human-output` · [`human-steps`](../human-steps/SKILL.md); dev, optional for authors, [`dev-ci-github`](../dev-ci-github/SKILL.md) · [`dev-terraform`](../dev-terraform/SKILL.md) · [`dev-testing-go`](../dev-testing-go/SKILL.md) · [`dev-temporal`](../dev-temporal/SKILL.md) · [`dev-ui`](../dev-ui/SKILL.md), parent of [`dev-ui-astro`](../dev-ui-astro/SKILL.md) · [`dev-ui-react`](../dev-ui-react/SKILL.md) · [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
+- Project management, beside the tiers: [`sdlc-capture`](../sdlc-capture/SKILL.md), which records found work under its owner; [`sdlc-align`](../sdlc-align/SKILL.md), which finds where the org departs from a standard and lists fixes; `sdlc-hygiene`, which sweeps for drift on its trigger, starting [`sdlc-sweep`](../../agents/sdlc-sweep.md) and `design-check`.
+- Outside `sdlc`, for any step: standards, `elegance`, which sets the bar for all writing, and [`open-source`](../open-source/SKILL.md), how to publish open-source work; communication, `human-output`, the shape of all a person reads, and [`human-steps`](../human-steps/SKILL.md), which walks a person through one step at a time; dev, optional for authors, [`dev-ci-github`](../dev-ci-github/SKILL.md) · [`dev-terraform`](../dev-terraform/SKILL.md) · [`dev-testing-go`](../dev-testing-go/SKILL.md) · [`dev-temporal`](../dev-temporal/SKILL.md) · [`dev-ui`](../dev-ui/SKILL.md), parent of [`dev-ui-astro`](../dev-ui-astro/SKILL.md) · [`dev-ui-react`](../dev-ui-react/SKILL.md) · [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
 
 ## Closing
 
