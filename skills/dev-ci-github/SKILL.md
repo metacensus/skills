@@ -52,9 +52,8 @@ An image build that fetches private packages receives the credential as a BuildK
 ## Where each build publishes
 
 - **Every push to `main` publishes each image to the app's private ECR repository** once CI passes, tagged `sha-<7>` and `main`, logging in over OIDC to a push role that a preflight step requires. The `main` tag moves only while the commit is still `main`'s head (`git ls-remote`), so a re-run of an older run never moves it back; a re-run finding its `sha-` tag already in ECR repoints `main` rather than rebuilding.
-- **Docker Hub receives release tags only.**
-- **Every release tag also copies to ECR by digest**, the registry production pulls from: `docker buildx imagetools create --tag <ecr>:<tag> docker.io/<image>@<digest>`, the release tag alone, since ECR's `sha-` tags are `main`'s.
-- **A private repository's Docker Hub repository is private.**
+- **Docker Hub receives releases only**; `main` never publishes there.
+- **Every release also lands in ECR**, the registry production pulls from, under its release tag alone: ECR's `sha-` tags are `main`'s, and every ECR tag but `main` is immutable.
 
 ## Release from a tag
 
@@ -63,9 +62,10 @@ An image build that fetches private packages receives the credential as a BuildK
 - **The release triggers only on a pushed semver tag**: `on: push: tags: ['v[0-9]+.[0-9]+.[0-9]+']`.
 - **The release re-runs CI at the tagged commit** through `workflow_call` and gates every publish on it.
 - **Images** publish multi-arch, tagged by ref, short sha, and `latest`; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.
+- **A second registry receives the image by digest**: `docker buildx imagetools create --tag <second>:<tag> <first>@<digest>`.
 - **Docker Hub login is OIDC**: `docker/login-action` with the organization as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in its env, and `id-token: write`. Each repository has its own connection, its subject GitHub's immutable `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`).
 - **Packages** publish through npm trusted publishing (OIDC) with provenance, from npm 11.5.1 and Node 22.14 or later; a job holding `id-token: write` installs with `--ignore-scripts`, and `repository.url` in `package.json` names the publishing repository, which publishing checks.
-- **Before the first release**, an owner creates the Docker Hub repository, public or private as intended, and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
+- **Before the first release**, an owner creates the Docker Hub repository, private for a private repository, and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
 
 ## Where CI stops
 
