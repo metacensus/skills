@@ -32,7 +32,7 @@ Bottom first: a child merges after its parent, never into the parent's branch.
 | the merge method is not allowed | the repository allows others | `gh api repos/O/R --jq '[.allow_squash_merge,.allow_merge_commit,.allow_rebase_merge]'`, then an allowed one |
 | a repository rule is violated | a ruleset | `gh api repos/O/R/rules/branches/<default>` names it: meet it, or hand it to an admin |
 | `gh pr merge` hits a GraphQL limit while `gh api rate_limit` shows room | GraphQL's own limit | REST: `gh api -X PUT repos/O/R/pulls/N/merge -f merge_method=squash` |
-| the agent's environment refuses the command | policy: the merge is a person's | hand them the one command per [`operator-runbook`](../operator-runbook/SKILL.md); never route around it through REST, `--admin`, or another identity |
+| the agent's environment refuses the command | policy: the merge is a person's | hand them the one command per [`human-steps`' Commands](../human-steps/SKILL.md#commands); never route around it through REST, `--admin`, or another identity |
 | none: a merge landed on `<default>` by mistake | — | revert it in a PR of its own: `git revert -m 1 <merge commit>`, `git revert <squash commit>`, or `git revert <first>^..<last>` for a rebase merge; never force-push `<default>` |
 
 ## 4. Release
