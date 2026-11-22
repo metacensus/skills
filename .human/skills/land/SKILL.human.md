@@ -19,5 +19,5 @@ A Release ships once nothing blocking it is open, and closes once its consumers 
 | method not allowed | an allowed one |
 | rule violated | meet it, or an admin |
 | GraphQL limit | REST |
-| environment refuses | ⛔ a person, per [`operator-runbook`](../operator-runbook/SKILL.human.md) |
+| environment refuses | ⛔ a person, per [`human-steps`](../human-steps/SKILL.human.md) |
 | merged by mistake | revert in a PR, whatever the merge method; ⚠️ never force-push |

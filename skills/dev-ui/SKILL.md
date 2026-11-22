@@ -1,39 +1,74 @@
 ---
 name: dev-ui
-description: How to build and ship a web UI as its own image — the path prefix it shares with the proxy, a static build behind Caddy, the build as the content gate, interactivity only where a page asks, and what a UI shares with a sibling UI. Trigger when scaffolding, reviewing, or changing a front-end repository's build config, base path, Dockerfile, web server config, or styling foundation, when deciding how two UIs share tokens or components, or when aligning a surface to a design system.
+description: What every web UI shares, and which child skill holds the rest — one image for every environment, one base path, caching and headers, tokens from one source, one version line, generated clients only, and the build as the gate. Trigger when scaffolding, reviewing, or changing a front-end repository's build config, base path, Dockerfile, web server config, styling foundation, dependencies, or API calls, when deciding how two UIs share tokens or components, when aligning a surface to a design system, and before any work that reaches for `dev-ui-astro`, `dev-ui-react` or `dev-ui-testing`.
 ---
 
-CI and release follow [`dev-ci-github`](../dev-ci-github/SKILL.md).
+| Skill | Holds |
+|---|---|
+| `dev-ui` | What every web UI shares |
+| [`dev-ui-astro`](../dev-ui-astro/SKILL.md) | Static sites |
+| [`dev-ui-react`](../dev-ui-react/SKILL.md) | React apps, and plugins into a host |
+| [`dev-ui-testing`](../dev-ui-testing/SKILL.md) | How a UI is tested |
+| [`dev-ci-github`](../dev-ci-github/SKILL.md) | CI and release |
 
-## One path, agreed three times
+## One image, every environment
 
-A UI under a prefix holds it in the build's base (`base: '/app'`), the directory the image serves (`/srv/app` under a `/srv` root), and the proxy route (`/app/*`). Nothing strips it, so a URL means the same thing at every hop.
+- **Render to files**; a server runtime is added only for what a file cannot answer, since a file needs no process kept alive or patched.
+- **Caddy's `file_server`** with `admin off` and `auto_https off`: the edge terminates TLS, and nothing reconfigures the server once it starts.
+- **One image is promoted through every environment**, so what was tested is what ships. The API is reached same-origin through the proxy and never baked into the build, which leaves nothing to rebuild per environment and no CORS to configure.
+- **The image builds once on `$BUILDPLATFORM`** and takes its architectures from the runtime image, since the output is architecture-independent and an emulated build is slow and can crash.
+- **Base images are pinned by digest**, so a rebuild cannot pull a different server. **The server runs as a non-root user on an unprivileged port**, so a compromise holds no root.
+- **CI smoke-tests the built image, never the dev server**, since the image is what ships; the probes are in [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
 
-- **The artifact test holds it**: run the image, then require 200 from the base page and from one hashed asset that page links.
-- **Every internal link is built from the framework's base value**, never a literal; check whether it ends in a slash before appending.
+## One base path
 
-## A static build, served small
+A UI under a prefix states it once, as `ARG BASE` in the Dockerfile, the one file every hop already reads; a prefix written by hand in each place drifts.
 
-- **Render to files**; a server runtime is added only for something a file cannot answer.
-- **The image builds the site once on `$BUILDPLATFORM`** and takes its architectures from the runtime image.
-- **Caddy's `file_server`** with `admin off` and `auto_https off`; the edge terminates TLS.
-- **Hashed assets** are `Cache-Control: public, max-age=31536000, immutable`; HTML is not.
-- **An unknown path is a 404** with the site's own page (`handle_errors` → `rewrite` → `file_server` keeps the status), never the index with a 200.
-- **The image healthcheck** fetches the base page with the image's BusyBox `wget`.
+- **The build's base reads it from the environment**, and the image serves `/srv${BASE}`.
+- **It is re-exported as `ENV BASE`** for the healthcheck, which fetches the base page with the image's BusyBox `wget`, and for the Caddyfile's `{$BASE}`.
+- **The edge proxy's route is the one copy outside the repository**, since the proxy is configured where its other routes are.
+- **Nothing strips the prefix**, so a URL means the same thing at every hop.
+- **Every internal link is built from the framework's base value**, never a literal, so a moved prefix moves every link; check whether it ends in a slash before appending.
+
+## Caching and headers
+
+- **Hashed assets are `Cache-Control: public, max-age=31536000, immutable`**, with no HTML fallback under their directory, so a missing chunk is a loud 404 rather than HTML parsed as script.
+- **The HTML shell and any single-page fallback are `no-cache`**, so after a deploy no browser asks for chunks that are gone.
+- **A static site's unknown path is a 404** with its own page (`handle_errors` → `rewrite` → `file_server` keeps the status), never the index with a 200, so crawlers and link checkers see it missing.
+- **Every surface sends security headers**: a content security policy naming `script-src` and `frame-ancestors`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy` and HSTS. The image sends them, not the edge, since one image serves every host.
+- **`robots.txt` is answered per host in the Caddyfile**: production allows, every other host disallows, so one image runs everywhere and no non-production host is indexed.
+
+## Tokens from one source
+
+- **The design-system package maps its palette to semantic roles, and components read roles only**, so dark mode and a rebrand touch one file.
+- **Dark mode comes from `color-scheme: light dark` and `light-dark()`**, a `.dark` or `.light` class overriding any subtree, and a pre-paint script in `<head>` applying the stored choice, so nothing flashes and no media block is duplicated. One storage key across surfaces carries the choice between them.
+- **No palette utility, arbitrary value or hex outside the token source**, since no theme can move it. **No class name built from strings**, which the build cannot see; a safelist is its tell. **No parallel palette** beside the package's.
+- **Contrast is asserted numerically from the tokens**, in light and dark, so a token edit cannot silently break legibility; the test is in [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
+- **Fonts are self-hosted from a package**, so no page waits on another host.
+- **Tailwind 4, its `@theme` over the roles**: CSS-first, with no config file to drift from the tokens.
+
+## One version line
+
+- **The design-system package and each framework major** (React, Tailwind, the bundler, TypeScript, Node) **sit at one version across their consumers**, moved by grouped automated bumps, so an upgrade is one change rather than a project per repository, and a component can move between UIs.
+- **No shared package until a second consumer exists**, since one consumer cannot show which interface is shared.
+- **No fork of an app**; a fork is archived, since two deploy targets of one app drift.
+- **A file several repositories share comes from a reusable workflow or a package, never a copy**, since copies drift and each fix becomes a pull request per copy; the workflow's mechanics are in [`dev-ci-github`](../dev-ci-github/SKILL.md).
+
+## Generated clients only
+
+- **Every call goes through the client generated from the contract**, subclassed once as the session seam: the token in memory, one single-flight refresh on 401, and a timeout, so auth and failure are handled in one place.
+- **No raw `fetch` write, hand-written wire type, or hand-mirrored contract**: a route the client lacks goes into the contract, since a hand copy drifts from the server unseen.
+- **Strict schema validation at every data boundary**, its error naming the source, so bad data fails where it enters rather than where it renders.
 
 ## The build is the gate
 
-The build checks content frontmatter against a schema, imports, and types (`astro check`, `tsc --noEmit`), and excludes drafts.
+The build fails on each of these, so no reviewer has to catch them; how a static site wires each is in [`dev-ui-astro`](../dev-ui-astro/SKILL.md):
 
-## Interactive only where a page asks
-
-A component hydrates only where a page marks it, on visibility (`client:visible`) rather than load, and reaches the API same-origin through the proxy.
-
-## Sharing with a sibling UI
-
-- **Match framework majors** (React, Tailwind) so a component can move between them.
-- **No shared package until a second consumer exists.**
-- **A copy names its source file**, and an issue tracks replacing it with a dependency on a published, versioned package.
+- content off its schema;
+- a broken internal link;
+- a route missing from the inventory, which gives each route its audience and purpose;
+- a link to a private or non-production host;
+- a type error.
 
 ## Aligning a surface to a design system
 
@@ -57,19 +92,13 @@ git ls-tree -r --name-only $R | grep "$S"                   # the surface itself
 - **Look for these defects**:
   - Parallel chrome: two nav or footer systems, chosen by layout route.
   - Asset drift: one logo drawn from a component here and a raster there.
-  - A theme that does not carry across pages: its storage key scoped per surface.
-  - A hardcoded palette that no theme can move.
   - Placeholder in production copy, such as `(insert link)`.
   - A dead error branch matching a string the API never returns.
-  - A `<label>` without `htmlFor`, an `<input>` without `id`.
   - Content gated on visibility as the first thing on screen, so the page opens blank.
   - A split layout putting a screen of prose above a mobile form.
-  - A relative `href` that resolves only from the current path.
   - A nav link to the page you are on.
-  - An orphan route, reachable only by URL.
-  - Validation shown three ways across forms.
 - **Confirm which tree the dev server serves** before trusting a result: fetch a module only the branch has and one only the base has; exactly one returns JavaScript, the other the SPA fallback. A shell's directory can revert between commands.
 - **Verify styling by computed value**: `getComputedStyle` on a representative element; screenshots break when the page is scrolled programmatically.
 - **Audit chrome parity by walking the routes** with `pushState`, asserting the system's root, nav and footer are present and the old ones absent.
 - **Check a dormant page behind a guard** by lifting the guard, then restoring it and grep-confirming the restore.
-- **The gate sees structure, never appearance**; CI may not run the tests, so run them locally and look at the render.
+- **The gate sees structure, never appearance**: look at the render.

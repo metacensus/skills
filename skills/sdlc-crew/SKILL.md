@@ -7,12 +7,12 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 ## Precheck
 
-- The Epic is open, its body carrying its form's required fields.
+- The Epic is framed: open, `ready`, its body carrying its form's required fields.
 - The [mapping](../sdlc/SKILL.md#the-mapping) is read whole.
 - The comment cites the delegator's own remit: which labels, merges, closes and branches it was handed, its stops, which checks its environment cannot run that it accepts unchecked, and that the rest escalate.
 - [`plan-review`](../../agents/plan-review.md) has read the family, run inline when the delegator is itself delegated.
 
-**Pass** goes to Design, which on an Epic carrying `designed` only files the children its body names, or to Plan on an Epic holding only a Spike, which designs once its Spike lands. **Escalate** a fix the delegator may not [make](../sdlc/SKILL.md#roles), and a question of `plan-review`'s on an Epic Plan takes; Design answers the rest. **Stop** on an Epic closed.
+**Pass** goes to Design, which on an Epic carrying `designed` only files the children its body names, or to Plan on an Epic holding only a Spike, which designs once its Spike lands. **Escalate** an Epic not yet framed, which is its own delegator's, a fix the delegator may not [make](../sdlc/SKILL.md#roles), and a question of `plan-review`'s on an Epic Plan takes; Design answers the rest. **Stop** on an Epic closed.
 
 ## Design
 
@@ -26,7 +26,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 `parallelize` answered: units are the children; edges their `blocked by` and the contracts their write-sets share, a renamed term grepped across the repository before any brief; the action is [`sdlc-author`](../sdlc-author/SKILL.md); done is [the hub's Closing](../sdlc/SKILL.md#closing); the checks, [`sdlc-review`](../sdlc-review/SKILL.md) per PR.
 
-- Each child carries `ready`, with every `blocked by` edge inside the Epic, set by its Initiative's Plan, or to a [Publish, Release or Rollout](../sdlc/SKILL.md#mechanisms), and the graph has no cycle; a child without `ready` is framed per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit.
+- Every `blocked by` edge is inside the Epic, set by its Initiative's Plan, or to a [Publish, Release or Rollout](../sdlc/SKILL.md#mechanisms), and the graph has no cycle.
 - The Epic blocks the earliest open Publish that holds, as [`sdlc-author`'s Publish](../sdlc-author/SKILL.md#publish) picks one, filing the next version when none does; its Tasks do instead where they ship in different Publishes, or where [the deadlock rule](../sdlc/SKILL.md#mechanisms) moves the edges.
 - The contract lands first, pinned in a file its consumers read, and merged before a consumer starts.
 - No two write-sets in a wave overlap; a line no child owns goes to one, or to a child filed for it.
@@ -36,6 +36,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 ## Delegate
 
+- Each child is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit, before its brief, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes: its Verification exits 0 on the default branch.
 - A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](../decouple/SKILL.md#stack): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
@@ -55,7 +56,6 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Land
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
-- Each child, once [landed](../land/SKILL.md), is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases): its Verification exits 0 on the default branch; a miss reopens it.
 - A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest is captured under the Epic through [`sdlc-capture`](../sdlc-capture/SKILL.md), and Plan re-runs over the children unblocked at that moment, any captured under the Epic since among them, or Design, on an Epic not yet `designed`. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 - After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
