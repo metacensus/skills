@@ -36,7 +36,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 ## Delegate
 
-- Each child is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit, before its brief, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once its PR merges: its Verification exits 0 on the default branch; a miss reopens it.
+- Each child is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit, before its brief, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes: its Verification exits 0 on the default branch.
 - A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](../decouple/SKILL.md#stack): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
