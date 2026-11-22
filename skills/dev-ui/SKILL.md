@@ -14,7 +14,7 @@ description: What every web UI shares, and which child skill holds the rest — 
 ## One image, every environment
 
 - **Render to files**; a server runtime is added only for what a file cannot answer, since a file needs no process kept alive or patched.
-- **Caddy's `file_server`** with `admin off` and `auto_https off`: the edge terminates TLS, and nothing in the image takes configuration at runtime.
+- **Caddy's `file_server`** with `admin off` and `auto_https off`: the edge terminates TLS, and nothing reconfigures the server once it starts.
 - **One image is promoted through every environment**, so what was tested is what ships. The API is reached same-origin through the proxy and never baked into the build, which leaves nothing to rebuild per environment and no CORS to configure.
 - **The image builds once on `$BUILDPLATFORM`** and takes its architectures from the runtime image, since the output is architecture-independent and an emulated build is slow and can crash.
 - **Base images are pinned by digest**, so a rebuild cannot pull a different server. **The server runs as a non-root user on an unprivileged port**, so a compromise holds no root.
@@ -35,7 +35,7 @@ A UI under a prefix states it once, as `ARG BASE` in the Dockerfile, the one fil
 - **Hashed assets are `Cache-Control: public, max-age=31536000, immutable`**, with no HTML fallback under their directory, so a missing chunk is a loud 404 rather than HTML parsed as script.
 - **The HTML shell and any single-page fallback are `no-cache`**, so after a deploy no browser asks for chunks that are gone.
 - **A static site's unknown path is a 404** with its own page (`handle_errors` → `rewrite` → `file_server` keeps the status), never the index with a 200, so crawlers and link checkers see it missing.
-- **Every surface sends security headers**: a content security policy naming `script-src` and `frame-ancestors`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy` and HSTS. The image sends them, not the edge, since one image serves every host; a logged-in app needs them most.
+- **Every surface sends security headers**: a content security policy naming `script-src` and `frame-ancestors`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy` and HSTS. The image sends them, not the edge, since one image serves every host.
 - **`robots.txt` is answered per host in the Caddyfile**: production allows, every other host disallows, so one image runs everywhere and no non-production host is indexed.
 
 ## Tokens from one source
@@ -96,7 +96,6 @@ git ls-tree -r --name-only $R | grep "$S"                   # the surface itself
   - A dead error branch matching a string the API never returns.
   - Content gated on visibility as the first thing on screen, so the page opens blank.
   - A split layout putting a screen of prose above a mobile form.
-  - A relative `href` that resolves only from the current path.
   - A nav link to the page you are on.
 - **Confirm which tree the dev server serves** before trusting a result: fetch a module only the branch has and one only the base has; exactly one returns JavaScript, the other the SPA fallback. A shell's directory can revert between commands.
 - **Verify styling by computed value**: `getComputedStyle` on a representative element; screenshots break when the page is scrolled programmatically.
