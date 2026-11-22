@@ -1,119 +1,159 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="592" viewBox="0 0 800 592" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
-  <title>Each tier's carrier runs the steps; its Work holds the tier below; the other skills serve a step or run on their own</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="752" viewBox="0 0 800 752" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" class="ink">
+  <title>sdlc's parts: each tier a span its Work funnels into, who runs each step, its cold reviewers, and project management</title>
   <style>
     .bg { fill: var(--bg, #fff) }
     .ink { fill: var(--ink, #444A5A) }
     .soft { fill: var(--ink, #444A5A); fill-opacity: .8 }
     .accent { fill: var(--accent, #3B0E75) }
     .edge { fill: none; stroke: var(--ink, #444A5A) }
+    .frame { fill: none; stroke: var(--accent, #3B0E75) }
     .panel { fill: var(--ink, #444A5A); fill-opacity: .05; stroke: var(--muted, #8A90A2); stroke-opacity: .5 }
     .blue { fill: var(--azure, #3D9BD1); fill-opacity: .18; stroke: var(--azure, #3D9BD1) }
+    .purple { fill: var(--amethyst, #915EDA); fill-opacity: .18; stroke: var(--amethyst, #915EDA) }
     .card { fill: var(--bg, #fff); stroke: var(--muted, #8A90A2) }
+    .cold { stroke-width: 1.5; stroke-dasharray: 4 3 }
     .tick { fill: none; stroke: var(--azure, #3D9BD1); stroke-width: 2 }
     .funnel { fill: var(--azure, #3D9BD1); fill-opacity: .08; stroke: var(--azure, #3D9BD1); stroke-opacity: .5 }
   </style>
   <defs>
     <marker id="next" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L8,4 L0,8 z" class="ink"/></marker>
   </defs>
-  <rect x="0" y="0" width="800" height="592" class="bg"/>
+  <rect x="0" y="0" width="800" height="752" class="bg"/>
+
+  <rect x="8" y="8" width="784" height="736" rx="8" class="frame" stroke-width="1.5"/>
+  <text x="24" y="32" font-size="13" dominant-baseline="central"><tspan font-weight="600" class="accent">sdlc</tspan><tspan class="soft"> · the hub: ladder, status, labels; the skills inside are its parts</tspan></text>
 
   <g class="panel">
-    <rect x="16" y="16" width="768" height="96" rx="8"/>
-    <rect x="16" y="176" width="768" height="96" rx="8"/>
-    <rect x="16" y="336" width="768" height="96" rx="8"/>
-    <rect x="16" y="464" width="768" height="112" rx="8"/>
+    <rect x="24" y="48" width="752" height="136" rx="8"/>
+    <rect x="24" y="248" width="752" height="136" rx="8"/>
+    <rect x="24" y="448" width="752" height="136" rx="8"/>
+    <rect x="24" y="608" width="368" height="120" rx="8"/>
+    <rect x="408" y="608" width="368" height="120" rx="8"/>
   </g>
   <g class="funnel">
-    <polygon points="352,96 448,96 776,176 24,176"/>
-    <polygon points="352,256 448,256 776,336 24,336"/>
+    <polygon points="344,128 456,128 456,184 776,248 24,248 344,184"/>
+    <polygon points="344,328 456,328 456,384 776,448 24,448 344,384"/>
   </g>
   <g font-size="13" dominant-baseline="central">
-    <text x="32" y="32"><tspan font-weight="600" class="accent">sdlc-fleet</tspan><tspan class="soft"> · Initiative</tspan></text>
-    <text x="32" y="192"><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · Epic</tspan></text>
-    <text x="32" y="352"><tspan font-weight="600" class="accent">sdlc-author</tspan><tspan class="soft"> · Task, Bug</tspan></text>
-    <text x="32" y="480"><tspan font-weight="600" class="accent">Other skills</tspan><tspan class="soft"> · a tick joins one to the step it serves</tspan></text>
+    <text x="40" y="64"><tspan font-weight="600" class="accent">sdlc-fleet</tspan><tspan class="soft"> · Initiative, in a person's span</tspan></text>
+    <text x="40" y="264"><tspan font-weight="600" class="accent">sdlc-crew</tspan><tspan class="soft"> · Epic, in the fleet's span</tspan></text>
+    <text x="40" y="464"><tspan font-weight="600" class="accent">sdlc-author</tspan><tspan class="soft"> · Task, Bug, in the crew's span</tspan></text>
+    <text x="40" y="624" font-weight="600" class="accent">Project management</text>
+  </g>
+
+  <g class="purple">
+    <rect x="40" y="80" width="112" height="48" rx="8"/>
+    <rect x="648" y="80" width="112" height="48" rx="8"/>
   </g>
   <g class="blue">
-    <rect x="32" y="48" width="96" height="48" rx="8"/>
-    <rect x="192" y="48" width="96" height="48" rx="8"/>
-    <rect x="352" y="48" width="96" height="48" rx="8"/>
-    <rect x="512" y="48" width="96" height="48" rx="8"/>
-    <rect x="672" y="48" width="96" height="48" rx="8"/>
-    <rect x="32" y="208" width="96" height="48" rx="8"/>
-    <rect x="192" y="208" width="96" height="48" rx="8"/>
-    <rect x="352" y="208" width="96" height="48" rx="8"/>
-    <rect x="512" y="208" width="96" height="48" rx="8"/>
-    <rect x="672" y="208" width="96" height="48" rx="8"/>
-    <rect x="32" y="368" width="96" height="48" rx="8"/>
-    <rect x="192" y="368" width="96" height="48" rx="8"/>
-    <rect x="352" y="368" width="96" height="48" rx="8"/>
-    <rect x="512" y="368" width="96" height="48" rx="8"/>
-    <rect x="672" y="368" width="96" height="48" rx="8"/>
-  </g>
-  <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
-    <text x="80" y="72">Frame</text>
-    <text x="240" y="72">Design</text>
-    <text x="400" y="72">Work</text>
-    <text x="560" y="72">Review</text>
-    <text x="720" y="72">Accept</text>
-    <text x="80" y="232">Frame</text>
-    <text x="240" y="232">Design</text>
-    <text x="400" y="232">Work</text>
-    <text x="560" y="232">Review</text>
-    <text x="720" y="232">Accept</text>
-    <text x="80" y="392">Frame</text>
-    <text x="240" y="392">Design</text>
-    <text x="400" y="392">Work</text>
-    <text x="560" y="392">Review</text>
-    <text x="720" y="392">Accept</text>
-  </g>
-  <g class="edge" stroke-width="1.5">
-    <line x1="128" y1="72" x2="192" y2="72" marker-end="url(#next)"/>
-    <line x1="288" y1="72" x2="352" y2="72" marker-end="url(#next)"/>
-    <line x1="448" y1="72" x2="512" y2="72" marker-end="url(#next)"/>
-    <line x1="608" y1="72" x2="672" y2="72" marker-end="url(#next)"/>
-    <line x1="128" y1="232" x2="192" y2="232" marker-end="url(#next)"/>
-    <line x1="288" y1="232" x2="352" y2="232" marker-end="url(#next)"/>
-    <line x1="448" y1="232" x2="512" y2="232" marker-end="url(#next)"/>
-    <line x1="608" y1="232" x2="672" y2="232" marker-end="url(#next)"/>
-    <line x1="128" y1="392" x2="192" y2="392" marker-end="url(#next)"/>
-    <line x1="288" y1="392" x2="352" y2="392" marker-end="url(#next)"/>
-    <line x1="448" y1="392" x2="512" y2="392" marker-end="url(#next)"/>
-    <line x1="608" y1="392" x2="672" y2="392" marker-end="url(#next)"/>
-  </g>
-  <g class="soft" text-anchor="middle" dominant-baseline="central">
-    <text x="400" y="144">Work: each Epic's whole lifecycle</text>
-    <text x="400" y="304">Work: each Task's or Bug's whole lifecycle</text>
-  </g>
-  <g class="tick">
-    <line x1="80" y1="440" x2="80" y2="464"/>
-    <line x1="560" y1="440" x2="560" y2="464"/>
-    <line x1="720" y1="440" x2="720" y2="464"/>
+    <rect x="192" y="80" width="112" height="48" rx="8"/>
+    <rect x="344" y="80" width="112" height="48" rx="8"/>
+    <rect x="40" y="280" width="112" height="48" rx="8"/>
+    <rect x="192" y="280" width="112" height="48" rx="8"/>
+    <rect x="344" y="280" width="112" height="48" rx="8"/>
+    <rect x="648" y="280" width="112" height="48" rx="8"/>
+    <rect x="40" y="480" width="112" height="48" rx="8"/>
+    <rect x="192" y="480" width="112" height="48" rx="8"/>
+    <rect x="344" y="480" width="112" height="48" rx="8"/>
+    <rect x="496" y="480" width="112" height="48" rx="8" class="cold"/>
+    <rect x="648" y="480" width="112" height="48" rx="8"/>
+    <rect x="192" y="144" width="112" height="32" rx="8" class="cold"/>
+    <rect x="192" y="344" width="112" height="32" rx="8" class="cold"/>
+    <rect x="280" y="544" width="112" height="32" rx="8" class="cold"/>
+    <rect x="408" y="544" width="112" height="32" rx="8" class="cold"/>
   </g>
   <g class="card">
-    <rect x="24" y="496" width="112" height="64" rx="8"/>
-    <rect x="184" y="496" width="112" height="64" rx="8"/>
-    <rect x="344" y="496" width="112" height="64" rx="8"/>
-    <rect x="504" y="496" width="112" height="64" rx="8"/>
-    <rect x="664" y="496" width="112" height="64" rx="8"/>
+    <rect x="496" y="80" width="112" height="48" rx="8"/>
+    <rect x="496" y="280" width="112" height="48" rx="8"/>
   </g>
-  <g font-size="13" font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
-    <text x="80" y="512">sdlc-intake</text>
-    <text x="240" y="512">sdlc</text>
-    <text x="400" y="512">sdlc-hygiene</text>
-    <text x="560" y="512">sdlc-review</text>
-    <text x="720" y="512">land</text>
+
+  <g font-size="14" font-weight="600" text-anchor="middle" dominant-baseline="central">
+    <text x="96" y="96">Frame</text>
+    <text x="248" y="96">Design</text>
+    <text x="400" y="96">Work</text>
+    <text x="552" y="96">Review</text>
+    <text x="704" y="96">Accept</text>
+    <text x="96" y="296">Frame</text>
+    <text x="248" y="296">Design</text>
+    <text x="400" y="296">Work</text>
+    <text x="552" y="296">Review</text>
+    <text x="704" y="296">Accept</text>
+    <text x="96" y="496">Frame</text>
+    <text x="248" y="496">Design</text>
+    <text x="400" y="496">Work</text>
+    <text x="552" y="496">Review</text>
+    <text x="704" y="496">Accept</text>
   </g>
   <g class="soft" text-anchor="middle" dominant-baseline="central">
-    <text x="80" y="528">files an issue,</text>
-    <text x="80" y="544">curates to ready</text>
-    <text x="240" y="528">the hub: ladder,</text>
-    <text x="240" y="544">status, labels</text>
-    <text x="400" y="528">sweeps for drift</text>
-    <text x="400" y="544">on its trigger</text>
-    <text x="560" y="528">reviews a PR</text>
-    <text x="560" y="544">to its verdict</text>
-    <text x="720" y="528">merges a PR,</text>
-    <text x="720" y="544">cuts a release</text>
+    <text x="96" y="112">person</text>
+    <text x="248" y="112">fleet</text>
+    <text x="400" y="112">fleet</text>
+    <text x="552" y="112" font-size="16" font-weight="600">·</text>
+    <text x="704" y="112">person</text>
+    <text x="96" y="312">fleet or person</text>
+    <text x="248" y="312">design crew</text>
+    <text x="400" y="312">crew</text>
+    <text x="552" y="312" font-size="16" font-weight="600">·</text>
+    <text x="704" y="312">fleet</text>
+    <text x="96" y="512">crew</text>
+    <text x="248" y="512">design author</text>
+    <text x="400" y="512">implement author</text>
+    <text x="552" y="512">fresh reviewer</text>
+    <text x="704" y="512">crew</text>
+  </g>
+  <g font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
+    <text x="248" y="160">sdlc-family</text>
+    <text x="248" y="360">sdlc-family</text>
+    <text x="336" y="560">elegance-review</text>
+    <text x="464" y="560">open-source scan</text>
+  </g>
+
+  <g class="edge" stroke-width="1.5">
+    <line x1="152" y1="104" x2="192" y2="104" marker-end="url(#next)"/>
+    <line x1="304" y1="104" x2="344" y2="104" marker-end="url(#next)"/>
+    <line x1="456" y1="104" x2="496" y2="104" marker-end="url(#next)"/>
+    <line x1="608" y1="104" x2="648" y2="104" marker-end="url(#next)"/>
+    <line x1="152" y1="304" x2="192" y2="304" marker-end="url(#next)"/>
+    <line x1="304" y1="304" x2="344" y2="304" marker-end="url(#next)"/>
+    <line x1="456" y1="304" x2="496" y2="304" marker-end="url(#next)"/>
+    <line x1="608" y1="304" x2="648" y2="304" marker-end="url(#next)"/>
+    <line x1="152" y1="504" x2="192" y2="504" marker-end="url(#next)"/>
+    <line x1="304" y1="504" x2="344" y2="504" marker-end="url(#next)"/>
+    <line x1="456" y1="504" x2="496" y2="504" marker-end="url(#next)"/>
+    <line x1="608" y1="504" x2="648" y2="504" marker-end="url(#next)"/>
+  </g>
+  <g class="tick">
+    <line x1="248" y1="128" x2="248" y2="144"/>
+    <line x1="248" y1="328" x2="248" y2="344"/>
+    <path d="M400,528 V536 M336,536 H464 M336,536 V544 M464,536 V544"/>
+  </g>
+  <g class="soft" text-anchor="middle" dominant-baseline="central">
+    <text x="400" y="216">Work: each Epic's whole lifecycle</text>
+    <text x="400" y="416">Work: each Task's or Bug's whole lifecycle</text>
+  </g>
+
+  <g class="card">
+    <rect x="40" y="648" width="160" height="64" rx="8"/>
+    <rect x="216" y="648" width="160" height="64" rx="8"/>
+  </g>
+  <g text-anchor="middle" dominant-baseline="central">
+    <text x="120" y="664" font-size="13" font-weight="600" class="accent">sdlc-intake</text>
+    <text x="120" y="680" class="soft">files an issue,</text>
+    <text x="120" y="696" class="soft">curates it to ready</text>
+    <text x="296" y="664" font-size="13" font-weight="600" class="accent">sdlc-hygiene</text>
+    <text x="296" y="680" class="soft">sweeps for drift,</text>
+    <text x="296" y="696" class="soft">on its trigger</text>
+  </g>
+
+  <rect x="424" y="624" width="32" height="16" rx="4" class="blue"/>
+  <rect x="424" y="648" width="32" height="16" rx="4" class="purple"/>
+  <rect x="424" y="672" width="32" height="16" rx="4" class="blue cold"/>
+  <rect x="424" y="696" width="32" height="16" rx="4" class="card"/>
+  <g dominant-baseline="central">
+    <text x="440" y="704" text-anchor="middle" font-size="16" font-weight="600" class="soft">·</text>
+    <text x="472" y="632">an agent's step</text>
+    <text x="472" y="656">a person's step</text>
+    <text x="472" y="680">a cold reviewer: a fresh context</text>
+    <text x="472" y="704">no skill names who runs it</text>
   </g>
 </svg>
