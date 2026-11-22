@@ -1,6 +1,6 @@
-> Publishing cannot be undone, so the check runs before the push.
+> Publishing cannot be undone: a machine catches secrets before the push, the cold read private names at Review.
 
-Fires: going public; any commit, push, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
+Fires: going public; writing a commit, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
 
 ⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check: flag every span, then judge each in context.
 

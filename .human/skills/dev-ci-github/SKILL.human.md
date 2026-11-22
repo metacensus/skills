@@ -37,6 +37,10 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 
 - Private packages reach an image build as a BuildKit secret.
 
+## Before a public push
+
+⛔ on a `gitleaks` finding in outgoing commits or the tree; CI scans all history.
+
 ## Release from a tag
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.

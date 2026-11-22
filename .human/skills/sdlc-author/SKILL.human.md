@@ -18,7 +18,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages); each fixes what it
 
 Precheck reads a Publish, Release or Rollout blocker by title and state alone; a Task bumping a dependency, image or submodule is blocked by its version's Publish.
 
-Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`, and in a public repo `gitleaks`.
+Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`, and in a public repo [`gitleaks`](../dev-ci-github/SKILL.human.md#before-a-public-push).
 
 ## Open
 

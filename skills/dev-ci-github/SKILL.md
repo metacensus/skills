@@ -1,6 +1,6 @@
 ---
 name: dev-ci-github
-description: How to run CI and release on GitHub Actions for Go and Node repositories. Trigger when writing or reviewing a workflow, Makefile target, pre-commit hook, Dockerfile build step, or release process, or when deciding what CI should gate.
+description: How to run CI and release on GitHub Actions for Go and Node repositories. Trigger when writing or reviewing a workflow, Makefile target, pre-commit or pre-push hook, Dockerfile build step, or release process, or when deciding what CI should gate.
 ---
 
 ## CI runs `make`
@@ -48,6 +48,10 @@ The build job builds the image once with buildx `load: true` under a CI tag and 
 A job that reads a secret runs on pushes and same-repository pull requests only. A preflight step fails with one line naming the missing secret and the command that sets it, and the test step sets `REQUIRE_*`.
 
 An image build that fetches private packages receives the credential as a BuildKit secret (`RUN --mount=type=secret`) through the build action's `secrets:` input: a `.netrc` under `GOPRIVATE` for Go, an `.npmrc` for Node.
+
+## Before a public push
+
+In a public repository (`gh repo view --json visibility`), `gitleaks git --log-opts="origin/<default>..HEAD"` over the outgoing commits and `gitleaks dir` over the working tree exit 0 before the push. A `pre-push` hook may run both, opt-in as pre-commit hooks are. CI repeats `gitleaks git` over the whole history: checkout takes `fetch-depth: 0`, and the step runs the gitleaks image pinned by digest, since gitleaks-action needs a license key in an organization's repository.
 
 ## Release from a tag
 
