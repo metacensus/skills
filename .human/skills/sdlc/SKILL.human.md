@@ -79,7 +79,7 @@ A stage runs its checks and posts one comment:
 
 ![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
 
-![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management stands apart](../../../skills/sdlc/figures/carriers.svg)
+![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management stands apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
 
 **Frame**: the delegator applies `ready` once the body meets its type, parent, repository, form, bar and problem first; `designed` too when it settles every choice short of a stop.
 
