@@ -10,8 +10,8 @@ The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) s
 Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - Its body carries its form's required fields.
-- Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../decouple/SKILL.md#stack) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
-- Every `blocked by` is closed or, [stacked](../decouple/SKILL.md#stack), In review; its parent is open.
+- Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../sdlc-crew/SKILL.md#stack) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
+- Every `blocked by` is closed or, [stacked](../sdlc-crew/SKILL.md#stack), In review; its parent is open.
 - A blocker typed Publish, Release or Rollout is read by title and state alone; its blockers are never walked.
 - A Task that bumps a dependency, an image or a submodule to a version a [Publish](../sdlc/SKILL.md#mechanisms) carries is blocked by that Publish, the edge added where missing.
 - Its card, if any, sits in its status's column, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
