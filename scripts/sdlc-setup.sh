@@ -53,7 +53,7 @@ done <<<"$labels"
 
 boards=$(node "$parse" Boards <<<"$mapping" | cut -f1)
 [[ $boards ]] || echo "ok    no board"
-views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative' 'Releases type:Release,Rollout')
+views=('Issues type:Task,Bug' 'Epics type:Epic' 'Initiatives type:Initiative' 'Production type:Publish,Release,Rollout')
 for board in $boards; do
   if ! [[ $board =~ ^([^/]+)/([0-9]+)$ ]]; then
     echo "TODO  board $board is not OWNER/N"

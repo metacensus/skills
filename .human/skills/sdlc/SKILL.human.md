@@ -13,8 +13,9 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
 |Bug|`type: Bug`|as a Task|
-|Release|`type: Release`|one version of one repo|
-|Cross-project release|`type: Rollout`|Releases across repos|
+|Publish (version)|`type: Publish`|one version of one repo, by `sdlc-cut`|
+|Release (cross-project release)|`type: Release`|Publishes plus deploys in one go, by `sdlc-ship`|
+|Rollout|`type: Rollout`|Releases with conditions between, by `sdlc-campaign`|
 |Sub-task|·|a Task wanting children is an Epic|
 
 ![Issue types: parents point up, blocked by is dashed](../../../skills/sdlc/figures/types.svg)
@@ -23,8 +24,8 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 
 |Mechanism|Carries|
 |---|---|
-|Dependency|`blocked by`; a Release or Rollout read by title and state only|
-|Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Rollouts, never blocked by one|
+|Dependency|`blocked by`; a Publish, Release or Rollout read by title and state only|
+|Release|a Publish blocked by an Epic, or a Task where its Epic ships apart, closed once served; a consumer's adoption blocked by it; no Epic both blocks a Publish and waits on it; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Releases, never blocked by one, and closes after its Publishes and their Releases|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
