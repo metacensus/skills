@@ -140,7 +140,7 @@ if (board1) {
     if (kind === "Issue") scope.push(store(r).url);
     else console.error(`${url}: skipped, ${kind ? `a ${kind}, not an issue` : "not found or not readable"}`);
   }
-if (!scope.length) process.exit();
+if (!scope.length) process.exit(board1 ? 0 : 1);
 
 // `--reset`: every issue under the targets drops its own Priority and inherits again.
 const below = new Set<string>();
