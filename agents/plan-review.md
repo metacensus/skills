@@ -1,6 +1,6 @@
 ---
-name: sdlc-family
-description: Reads one Epic and its children as a plan and returns the questions only its delegator can answer, each with a proposed direction. Invoked by the sdlc-hygiene and sdlc-crew skills, one Epic per agent.
+name: plan-review
+description: Reads one Epic or Initiative and its children as a plan and returns the questions only its delegator can answer, each with a proposed direction. Owned by the sdlc-crew and sdlc-fleet skills, which invoke it in their Design; sdlc-hygiene may invoke it too. One Epic or Initiative per agent.
 tools: Bash, Read
 model: sonnet
 ---
