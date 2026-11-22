@@ -1,36 +1,46 @@
-> A web UI ships as its own image: one prefix, a static build, a build that gates content, and no more JavaScript than a page asks for.
+> What every web UI shares; a child skill holds the rest.
 
-Fires: scaffolding or reviewing a front-end repo's build config, base path, Dockerfile, or styling; two UIs sharing components; design-system alignment.
+Fires: a front-end repo's build config, base path, Dockerfile, styling, dependencies or API calls; two UIs sharing; design-system alignment; any work for a child.
+
+|Skill|Holds|
+|---|---|
+|`dev-ui`|what every UI shares|
+|[`dev-ui-astro`](../dev-ui-astro/SKILL.human.md)|static sites|
+|[`dev-ui-react`](../dev-ui-react/SKILL.human.md)|React apps and plugins|
+|[`dev-ui-testing`](../dev-ui-testing/SKILL.human.md)|testing a UI|
+|[`dev-ci-github`](../dev-ci-github/SKILL.human.md)|CI and release|
 
 ```
-Prefix ×3 → Static build → Build gate → Hydrate on ask → Share → Align
+Image → Base path → Headers → Tokens → Versions → Clients → Build gate → Align
 ```
 
-CI: [`dev-ci-github`](../dev-ci-github/SKILL.human.md).
+## One image, every environment
 
-## One path, agreed three times
+Static files behind Caddy, one image promoted everywhere, the API same-origin. ✅ Digest-pinned, non-root, smoke-tested as built.
 
-| Build | Image | Proxy |
-|---|---|---|
-| base `/app` | `/srv/app` | `/app/*` |
+## One base path
 
-✅ Artifact test: 200 from the base page and one hashed asset.
+`ARG BASE` once; build, `/srv${BASE}`, healthcheck and Caddyfile read it. ⚠️ Nothing strips it; no literal links.
 
-## A static build, served small
+## Caching and headers
 
-Files; a runtime only where a file cannot answer. Caddy `file_server`; hashed assets `immutable`. ⚠️ An unknown path is a 404, never the index with a 200.
+Hashed assets `immutable`, shell `no-cache`. ⚠️ A missing chunk is a 404, never HTML. CSP and security headers from the image; `robots.txt` per host.
+
+## Tokens from one source
+
+Components read semantic roles; `light-dark()` with a pre-paint script. ⚠️ No hex, palette utility, built class name or second palette. ✅ Contrast asserted; fonts self-hosted; Tailwind 4.
+
+## One version line
+
+One version per package and framework major, bumped together. ⚠️ No forks; a shared file comes from a workflow or package, never a copy.
+
+## Generated clients only
+
+One session seam over the generated client. ⚠️ No raw `fetch` writes or hand-written wire types. ✅ Schema-checked at every boundary.
 
 ## The build is the gate
 
-Frontmatter schemas, imports, types; drafts excluded.
-
-## Interactive only where a page asks
-
-Hydrate on visibility; call the API same-origin.
-
-## Sharing with a sibling UI
-
-Match framework majors; share no package until a second consumer exists.
+Schemas, links, route inventory, private hosts, types.
 
 ## Aligning a surface to a design system
 
