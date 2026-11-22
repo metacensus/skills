@@ -7,7 +7,7 @@ What every UI shares is in [`dev-ui`](../dev-ui/SKILL.md); how a site is tested,
 
 ## Islands
 
-- **A component hydrates only where a page marks it**, as [`dev-ui`](../dev-ui/SKILL.md#one-image-every-environment) renders to files: `client:visible` by default, since a visible island costs nothing until scrolled to, and `client:load` only above the fold.
+- **A component hydrates only where a page marks it**: `client:visible` by default, since it costs nothing until scrolled to, and `client:load` only above the fold.
 - **Chrome takes no directive**: header, nav and footer render static.
 - **A kit component that hydrates ships with an `.astro` wrapper fixing its directive**, and a site renders the wrapper, so one component cannot hydrate on load on one site and on visibility on another.
 
@@ -20,7 +20,7 @@ What every UI shares is in [`dev-ui`](../dev-ui/SKILL.md); how a site is tested,
 
 ## MDX
 
-- **Anything computed from content works on the parsed tree**: reading time is a remark plugin counting the mdast's text, exposed through `remarkPluginFrontmatter`, since a regex over the source miscounts nested JSX and code.
+- **Anything computed from content works on the parsed tree**: reading time is a plugin counting the MDAST's text nodes, exposed through `remarkPluginFrontmatter`, since a regex over the source miscounts nested JSX and code.
 
 ## Wiring the gate
 
@@ -32,7 +32,7 @@ Each item at [`dev-ui`](../dev-ui/SKILL.md#the-build-is-the-gate) fails an Astro
   - reads `routes.json`, each route's audience and purpose, and fails on a route built but unlisted or listed but not built;
   - regenerates `ROUTES.md`: chrome's links once, then each page's links and forms in `<main>`, so a footer link is not repeated per page;
   - fails on a broken internal link;
-  - fails on a link to a staging, local or internal host, denied by pattern, and on a link to an organization repository that [`launch-review`](../launch-review/SKILL.md#private-links)'s public list does not name, since a list of private repositories would publish their names and pass the next one created.
+  - fails on a link to a staging, local or internal host, denied by pattern, and on a link to an organization repository that [`launch-review`](../launch-review/SKILL.md#private-links)'s public list does not name.
 
 ## Sitemaps and icons
 
