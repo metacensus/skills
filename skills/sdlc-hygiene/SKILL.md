@@ -7,22 +7,33 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Precheck
 
-- The scope is the user's Epic or Initiative, else the repositories the user names, else the organization's unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled`. An Epic's scope is its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'`; an Initiative's is its family two levels deep, the Initiative, its Epics and their children, by the same search run on the Initiative and then on each Epic it returns; each with the repositories they live in. The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
-- The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, else all.
+| Scope | The request names | Issues |
+|---|---|---|
+| Epic | an Epic | its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'` |
+| Initiative | an Initiative | its family two levels deep, the Initiative, its Epics and their children, by the same search run on the Initiative and then on each Epic it returns |
+| board | one or more boards, `OWNER/N` | each card's issue and its Initiative, the first and fourth columns of [`sdlc-status`](../sdlc/SKILL.md#status) `OWNER/N --mapping PATH`, and its parent, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,parent` |
+| topic | a topic, in words that select no class | what its searches match, `gh search issues --owner OWNER -L 1000 --json repository,number,title,state -- QUERY`, each word its own argument, each exclusion a `-repo:` or `-label:` qualifier |
+| repositories | repositories | every issue in them |
+| organization | none of these | every issue in its unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled` |
+
+The scope is the first row that holds. The first four list issues, each with its repository, and any scope drops what the request excludes.
+
+- The boards are the mapping's Boards rows, and the thresholds its Cadence rows. With no mapping, ask the user where the organization's is, and take boards and forms from the answer.
+- The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family`: those the request names, by name or by a word for what a class checks, less those it excludes, else all. "Relationships" selects `orphan`, `misparented` and `family`. The stage's comment names the classes taken.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
 
-**Escalate** without it: only the person at the keyboard can refresh it. **Stop** when no repository is in scope or the Epic or Initiative cannot be read.
+**Escalate** without it: only the person at the keyboard can refresh it. Escalate a topic's list, as one [outline](../human-output/references/chat.md#the-outline) by repository; Sweep waits on the person's confirmation or edits. **Stop** when nothing is in scope, or an Epic, Initiative or board cannot be read.
 
 ## Sweep
 
-- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with a family the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no checks, done when every issue in scope the classes need, and every card the sweep reads, is read.
+- One [`sdlc-sweep`](../../agents/sdlc-sweep.md) agent per repository, briefed as its [What you get](../../agents/sdlc-sweep.md#what-you-get) lists, with a scope that lists issues, the numbers in that repository, through [`parallelize`](../parallelize/SKILL.md), answered: no edges, no checks, done when every issue in scope the classes need, and every card the sweep reads, is read.
 
 **Escalate** on a `short` line. **Stop** when a repository cannot be read.
 
 ## Read
 
-- With `family` among the classes, one [`plan-review`](../../agents/plan-review.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic or Initiative is the scope, through `parallelize`, answered as Sweep.
+- With `family` among the classes, one [`plan-review`](../../agents/plan-review.md) agent per open Epic and Initiative in scope, those on the list when the scope lists issues, else `gh issue list -R OWNER/REPO --search type:Epic,Initiative`, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
