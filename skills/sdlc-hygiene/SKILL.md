@@ -5,6 +5,8 @@ description: Sweep an organization's issues, labels and boards for drift from th
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
+A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh issue list ... --jq '.[].number' | while read -r n; do gh issue edit "$n" ...; sleep 1; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+
 ## Precheck
 
 | Scope | The request names | Issues |
@@ -22,8 +24,9 @@ The scope is the first row that holds. The first four list issues, each with its
 - The classes are the [sweep's](../../agents/sdlc-sweep.md#what-you-do) and Read's `family` and `body-drift`: those the request names, by name or by a word for what a class checks, less those it excludes, else all. "Relationships" selects `orphan`, `misparented` and `family`.
 - Each repository's forms, wherever [Setup](../sdlc/SKILL.md#setup) finds them, else the hub's [`forms/`](../sdlc/forms/), yield each type's required fields.
 - `gh auth status` holds the `project` scope where a board is named.
+- A read that returns nothing, here or as a sweep's `read`, is checked against a count read another way before its scope is called clean: an Epic's or Initiative's sub-issues, `gh issue view <url> --json subIssuesSummary`; a board's items, `gh project view N --owner OWNER --format json --jq .items.totalCount`; a repository's open issues, `gh repo list OWNER -L 1000 --json name,issues`; for a sweep given a list, its numbers. Above zero, the read is `short`.
 
-**Escalate** without it: only the person at the keyboard can refresh it. Escalate a topic's list, as one [outline](../human-output/references/chat.md#the-outline) by repository; Sweep waits on the person's confirmation or edits. **Stop** when nothing is in scope, or an Epic, Initiative or board cannot be read.
+**Escalate** without it: only the person at the keyboard can refresh it. Escalate a `short` read. Escalate a topic's list, as one [outline](../human-output/references/chat.md#the-outline) by repository; Sweep waits on the person's confirmation or edits. **Stop** when nothing is in scope, or an Epic, Initiative or board cannot be read.
 
 ## Sweep
 
@@ -96,7 +99,7 @@ for board in OWNER/N; do node "$plugin/scripts/sdlc-status.mts" "$board" --mappi
 cd "$work" && claude -p "Run sdlc-hygiene's Precheck, Sweep and Read on OWNER, and print the summary. The mapping is $files/mapping.md; each board's sdlc-status lines are in $files/boards.txt." \
   --restricted --strict-mcp-config --permission-mode dontAsk --settings "$files/settings.json" \
   --plugin-dir "$plugin" --add-dir "$files" "$plugin" --tools Agent,Bash,Read,Grep,Glob,Skill \
-  --allowedTools Agent Read Grep Glob Skill 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' 'Bash(gh pr list *)' \
+  --allowedTools Agent Read Grep Glob Skill 'Bash(gh auth status)' 'Bash(gh repo list *)' 'Bash(gh issue list *)' 'Bash(gh issue view *)' 'Bash(gh search issues *)' 'Bash(gh pr view *)' 'Bash(gh pr list *)' 'Bash(gh project view *)' \
   --disallowedTools 'Agent(isolation:*)' > "$files/summary.md" && [ -s "$files/summary.md" ] || fail "claude -p"
 grep -qF "$GH_TOKEN" "$files/summary.md" && fail "the summary held the gh token"
 post --body-file "$files/summary.md"

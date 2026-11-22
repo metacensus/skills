@@ -2,9 +2,11 @@
 
 Fires: grooming, sweeping, after a pivot, scheduling it; what is stale or undecided.
 
+Lists reach a loop a line at a time, `while read -r`, never as an unquoted variable, which zsh passes whole.
+
 |Stage|Runs|⛔|🛑|
 |---|---|---|---|
-|Precheck|scope: Epic, Initiative, board, topic, repos, org, archived repos too for `wrong-home`; classes from the request's words; mapping, auth|no `project` scope; a topic's list|nothing in scope|
+|Precheck|scope: Epic, Initiative, board, topic, repos, org, archived repos too for `wrong-home`; classes from the request's words; mapping, auth; an empty read checked against a count|no `project` scope; a `short` read; a topic's list|nothing in scope|
 |Sweep|`sdlc-sweep` per repo|`short` line|repo unreadable|
 |Read|`design-check` per Epic, with `family` or `body-drift`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|
