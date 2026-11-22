@@ -11,8 +11,8 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 |---|---|---|
 | Epic | an Epic | its family, the Epic and its sub-issues, `gh search issues -L 1000 -- 'parent-issue:OWNER/REPO#N'` |
 | Initiative | an Initiative | its family two levels deep, the Initiative, its Epics and their children, by the same search run on the Initiative and then on each Epic it returns |
-| board | one or more boards, `OWNER/N` | each card's issue and its Initiative, the first and fourth columns of `sdlc-status OWNER/N --mapping PATH`, and its parent, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,parent` |
-| topic | a topic | what its searches match, `gh search issues --owner OWNER -L 1000 --json repository,number,title,state -- 'QUERY'`, each exclusion a `-repo:` or `-label:` qualifier |
+| board | one or more boards, `OWNER/N` | each card's issue and its Initiative, the first and fourth columns of [`sdlc-status`](../sdlc/SKILL.md#status) `OWNER/N --mapping PATH`, and its parent, `gh issue list -R OWNER/REPO --state all -L 1000 --json number,parent` |
+| topic | a topic, in words that select no class | what its searches match, `gh search issues --owner OWNER -L 1000 --json repository,number,title,state -- QUERY`, each word its own argument, each exclusion a `-repo:` or `-label:` qualifier |
 | repositories | repositories | every issue in them |
 | organization | none of these | every issue in its unarchived repositories with issues on, `gh repo list OWNER -L 1000 --no-archived --json name,hasIssuesEnabled` |
 
