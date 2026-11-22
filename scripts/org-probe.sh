@@ -17,7 +17,7 @@ done
 departs=0
 while read -r repo; do
   [[ $repo ]] || continue
-  if repo=$repo bash -c "$2" >/dev/null 2>&1 </dev/null; then
+  if repo=$repo bash -c "$2" >/dev/null </dev/null; then
     printf 'conforms\t%s\n' "$repo"
   else
     printf 'departs\t%s\n' "$repo"
