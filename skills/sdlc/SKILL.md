@@ -66,7 +66,7 @@ An agent acts, or escalates in a comment:
 
 | Action | Task / Bug | Epic / Initiative |
 |---|---|---|
-| Type, and labels but `ready` and `designed` | may | escalate |
+| Type, and labels but [`ready` and `designed`](#phases) | may | escalate |
 | Parent or stated `blocked by` | may | escalate |
 | Close an issue it carries, completed as planned | may | may |
 | Assign; close another's issue or edit its body | escalate | escalate |

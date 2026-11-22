@@ -21,7 +21,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 - One [`human-output`](../human-output/SKILL.md) outline: Initiative → Epics → known Tasks and Spikes; new, existing and moving marked; blockers on their lines.
 - An open question stands as an Epic holding only its Spike, its children left to delivery.
 - [`sdlc-family`](../../agents/sdlc-family.md) has read each existing Epic it would adopt.
-- Once the person approves the outline, they apply `designed`, and each item files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [3A design](../elegance/references/cells/3A-design.md), blockers first and all before [Frame](../sdlc/SKILL.md#phases) reads any, the Initiative's body filled per [Context](#context).
+- Once the person approves the outline, they apply `designed`, and each item files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [3A design](../elegance/references/cells/3A-design.md), blockers first, the Initiative's body filled per [Context](#context).
 
 **Escalate** the outline; nothing files before the person answers. **Stop** when a required field is still a hole.
 

@@ -18,7 +18,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 - The comment proposes the Epic's plan, to the bar [the ladder](../sdlc/SKILL.md#the-ladder) names: a human version, then its children, filed or to file, each a line with its type, goal and `blocked by`; its non-goals; the contracts its children share; and each change it asks of the Epic's body.
 - It answers each of `sdlc-family`'s questions.
-- Once its delegator applies `designed`, the children file per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [4A plan](../elegance/references/cells/4A-plan.md), each blocker before what it blocks, `--parent` the Epic and `--blocked-by` each stated blocker: at least one, a lone Spike enough, and all before [Frame](../sdlc/SKILL.md#phases) reads any.
+- Once its delegator applies `designed`, the children file per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [4A plan](../elegance/references/cells/4A-plan.md), each blocker before what it blocks, `--parent` the Epic and `--blocked-by` each stated blocker: at least one, a lone Spike enough.
 
 **Escalate** until its own delegator applies `designed`; nothing files before. **Stop** when the Epic fails its bar.
 

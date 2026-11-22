@@ -26,4 +26,4 @@ gh issue create -R OWNER/REPO --type T --parent P --title "…" --body-file BODY
 
 ## Pickup
 
-Filed without `ready` under its parent, it reaches the agent carrying that parent: [`sdlc-crew`'s Land](../sdlc-crew/SKILL.md#land) re-plans over every child of its Epic, framing a captured one at [Frame](../sdlc/SKILL.md#phases), and the filer names it in its return to its own delegator. Under a parent no agent carries, [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md#act)'s missing `ready` raises it.
+Filed without `ready` under its parent, it reaches the agent carrying that parent: [`sdlc-crew`'s Land](../sdlc-crew/SKILL.md#land) re-runs Plan over the children unblocked then, framing a captured one at [Frame](../sdlc/SKILL.md#phases), and the filer names it in its return to its own delegator. Under a parent no agent carries, [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md#act)'s missing `ready` raises it.
