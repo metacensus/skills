@@ -10,8 +10,8 @@ Plan → Change → Verify
 |---|---|---|---|
 |Plan|held by a Release, blockers closed; commit = scope's last merge; range = scope; semver, breaking = minor below 1.0.0; the brief's version and commit; notes|no Release; a stray PR|tag on another commit; brief disagrees|
 |Change|Release `designed` on this version and scope; tag pushed; CI publishes|no yes; failed run|·|
-|Verify|registry serves CI's digest, read clean; notes on the GitHub Release; record; close|another digest, or none|·|
+|Verify|registry serves CI's digest, read with no cache or extra credentials; notes on the GitHub Release; record; close|another digest, or none|·|
 
-Each stage checks first whether it is done; each comment is the next stage's intent.
+Each stage checks first whether it is done, a tag already on the commit resuming at Change's run; each comment is the next stage's intent.
 
 ⚠️ Never re-tag or overwrite a served version: a new Publish retires it.
