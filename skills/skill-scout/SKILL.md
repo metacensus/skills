@@ -43,4 +43,4 @@ The [`parallelize`](../parallelize/SKILL.md#what-the-work-answers) questions, an
 
 ## Report
 
-One [outline](../human-output/references/chat.md#the-outline), a line per candidate: new or an edit; its target, the skill it augments, replaces or sits beside, or `none`; a direction in one sentence; its refs. The person picks, and each pick goes to [`sdlc-intake`](../sdlc-intake/SKILL.md). Evidence stays local: a filed candidate carries its target and direction alone, never a ref or a span.
+One [outline](../human-output/references/chat.md#the-outline), a line per candidate: new or an edit; its target, the skill it augments, replaces or sits beside, or `none`; a direction in one sentence; its refs. The person picks, and each pick goes to [`sdlc-capture`](../sdlc-capture/SKILL.md). Evidence stays local: a filed candidate carries its target and direction alone, never a ref or a span.

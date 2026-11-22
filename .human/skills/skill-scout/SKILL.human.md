@@ -2,7 +2,7 @@
 
 Fires: what skill to write next, what a skill misses, where agents need correcting.
 
-Sources → batches → `skill-scout-scan` per batch → merge → outline → ⛔ person picks → `sdlc-intake`
+Sources → batches → `skill-scout-scan` per batch → merge → outline → ⛔ person picks → `sdlc-capture`
 
 | Source | Read |
 |---|---|

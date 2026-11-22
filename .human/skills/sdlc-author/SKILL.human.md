@@ -22,7 +22,7 @@ Publish blocks the earliest open Release that holds, filing the next if none: a 
 
 ## Land
 
-Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), file follow-ups.
+Merge and release per [`land`](../land/SKILL.human.md), [close](../sdlc/SKILL.human.md#closing), capture follow-ups.
 
 ## Without a pull request
 

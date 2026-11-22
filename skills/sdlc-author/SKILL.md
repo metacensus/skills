@@ -65,7 +65,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - The PR is merged on the review's pass, and released where it ships, per [`land`](../land/SKILL.md).
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
-- Follow-up work is filed through [`sdlc-intake`](../sdlc-intake/SKILL.md).
+- Follow-up work is captured through [`sdlc-capture`](../sdlc-capture/SKILL.md).
 - Status is Done, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** the merge where the remit does not reach it, and the close only when `deviated` or **not planned**, before a merge would close it; a plain completion never escalates. The run ends there, and whoever takes the escalation completes Land. **Stop** when the PR cannot merge without reopening a criterion.

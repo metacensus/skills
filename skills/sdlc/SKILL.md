@@ -1,6 +1,6 @@
 ---
 name: sdlc
-description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here, or reporting up to a person, and when handing work to a fresh session or writing its prompt.
+description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here, or whether an issue is ready, or reporting up to a person, and when handing work to a fresh session or writing its prompt.
 ---
 
 ## The ladder
@@ -18,7 +18,7 @@ description: The software development lifecycle every organization on the Initia
 
 Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
 
-A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in.
+A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in. An Epic files where most of its work lands; an Initiative, where its delegator names, else the home the mapping suggests.
 
 ## Mechanisms
 
@@ -67,7 +67,7 @@ An agent acts, or escalates in a comment:
 
 | Action | Task / Bug | Epic / Initiative |
 |---|---|---|
-| Type, and labels but `designed` and [`sdlc-intake`](../sdlc-intake/SKILL.md)'s `ready` | may | escalate |
+| Type, and labels but [`ready` and `designed`](#phases) | may | escalate |
 | Parent or stated `blocked by` | may | escalate |
 | Close an issue it carries, completed as planned | may | may |
 | Assign; close another's issue or edit its body | escalate | escalate |
@@ -122,13 +122,15 @@ Every tier runs three phases, each a run of [stages](#stages) in the skill that 
 
 | Phase | Step | Whose | Asks | Answered by |
 |---|---|---|---|---|
-| **Design** | Frame | `delegator`, through [`sdlc-intake`](../sdlc-intake/SKILL.md) | what is the problem? | `ready` |
+| **Design** | Frame | `delegator` | what is the problem? | `ready` |
 | | Design | the carrier | what is the plan? | `designed`, applied by the `delegator` |
 | **Delivery** | Work | the carrier | · | a PR, or the children closed |
 | | Review | `reviewer` | did we follow the plan? | the verdict, and `deviated` |
 | **Record** | Accept | `delegator` | did we solve the problem? | the close kept or reopened |
 
 Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Record writes what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
+
+**Frame** checks an issue's body before it is `ready`: its type, parent and repository as [the ladder](#the-ladder) and [Mechanisms](#mechanisms) say; its [form](forms/)'s required fields; the bar its type takes, a Spike's decision standing as its criterion; the problem first, with its evidence, naming a solution only where one is decided or is itself the constraint; no emojis, nothing its evidence does not supply, and no line breaks inside a paragraph; and everything that must hold before an [irreversible step](../sdlc-review/SKILL.md#focus), each its own criterion. On a pass the `delegator`, or a delegate whose [remit](#roles) names it, applies `ready`, with `designed` when the body settles every choice and none is a [stop](#roles), then [`sdlc-status --apply`](#status); anyone else escalates the pass. A parent's children are framed only once all are filed, so Frame reads the whole set.
 
 **Accept** checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. The carrier one tier up runs it in its own Delivery, so no carrier accepts its own work, and a miss reopens the issue, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
 
