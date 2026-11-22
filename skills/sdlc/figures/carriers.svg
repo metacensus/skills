@@ -115,8 +115,8 @@
     <text x="704" y="512">crew</text>
   </g>
   <g font-weight="600" text-anchor="middle" dominant-baseline="central" class="accent">
-    <text x="248" y="160">sdlc-family</text>
-    <text x="248" y="360">sdlc-family</text>
+    <text x="248" y="160">plan-review</text>
+    <text x="248" y="360">plan-review</text>
     <text x="400" y="560">checkout</text>
     <text x="400" y="608">elegance-review</text>
     <text x="400" y="656">open-source-scan</text>
@@ -124,7 +124,7 @@
     <text x="400" y="752">checkin</text>
     <text x="552" y="560">sdlc-review</text>
     <text x="296" y="936">sdlc-sweep</text>
-    <text x="296" y="984">sdlc-family</text>
+    <text x="296" y="984">plan-review</text>
   </g>
 
   <g class="edge" stroke-width="1.5">

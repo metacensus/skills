@@ -22,7 +22,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 ## Read
 
-- With `family` among the classes, one [`sdlc-family`](../../agents/sdlc-family.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic or Initiative is the scope, through `parallelize`, answered as Sweep.
+- With `family` among the classes, one [`plan-review`](../../agents/plan-review.md) agent per open Epic and Initiative in scope, `gh issue list -R OWNER/REPO --search type:Epic,Initiative` unless the Epic or Initiative is the scope, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
