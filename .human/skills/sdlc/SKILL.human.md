@@ -79,7 +79,7 @@ A stage runs its checks and posts one comment:
 
 ![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
 
-![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management stands apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
+![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management and the standards any step may use stand apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
 
 **Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
