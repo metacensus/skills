@@ -1,6 +1,6 @@
 ---
 name: elegance
-description: Elegance is the presentation of data or concepts with maximum clarity using the fewest possible elements. Trigger whenever an AI is about to write, rewrite, review, or remove anything persistent — code, comments, docs, plans, issues, data files, memory, commit and PR text — and whenever the user asks whether something should be written, shortened, moved, refactored, or exist at all.
+description: Maximum clarity with the fewest elements. Trigger whenever an AI is about to write, rewrite, review or remove anything persistent — code, comments, docs, plans, issues, data files, memory, commit and PR text — and whenever the user asks whether something should be written, shortened, moved, refactored, or exist at all.
 ---
 
 **Elegance is the presentation of data or concepts with maximum clarity using the fewest possible elements.** Clarity is the constraint; fewest is the direction. Nothing is elegant, only nearer to it, so "fine as is" is never a finding — it is the absence of one.

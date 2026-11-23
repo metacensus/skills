@@ -1,6 +1,6 @@
 ---
 name: sdlc-author
-description: Carry an issue from pickup to closed, and any change in a shared repository from its first edit to merged. Trigger when picking up, starting, working, finishing, or landing an issue, when answering its review, and when asking what work is ready to start; before the first edit of a change, and before any commit, push or pull request; when waiting on CI or a background agent; and when merging a PR or a stack, or a merge is refused.
+description: Carry an issue from pickup to closed, and any change in a shared repository from its first edit to merged. Trigger when picking up, starting, working, finishing or landing an issue, answering its review, or asking what work is ready; before the first edit of a change, and before any commit, push or PR; when waiting on CI or a background agent; and when merging a PR or a stack, or a merge is refused.
 ---
 
 The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, the mapping's Checks rows included. A stage fixes what it can before it reports, in an earlier stage's work if that is where the fix lies. A change with no issue runs Implement, Self-review and Open's checks, and stops where Open escalates.
@@ -10,10 +10,10 @@ The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) s
 Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 - Its body carries its form's required fields.
-- Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../sdlc-crew/SKILL.md#stack) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
-- Every `blocked by` is closed or, [stacked](../sdlc-crew/SKILL.md#stack), In review; its parent is open.
+- Its [derived status](../sdlc/SKILL.md#status) is Ready, Blocked only on [stacked](../sdlc-crew/references/stack.md) blockers, or In progress assigned to the acting identity, `gh api user --jq .login`.
+- Every `blocked by` is closed or, [stacked](../sdlc-crew/references/stack.md), In review; its parent is open.
 - A blocker typed Publish, Release or Rollout is read by title and state alone; its blockers are never walked.
-- A Task that bumps a dependency, an image or a submodule to a version a [Publish](../sdlc/SKILL.md#mechanisms) carries is blocked by that Publish, the edge added where missing.
+- A Task that bumps a dependency, an image or a submodule to a version a [Publish](../sdlc/references/production.md#shipping) carries is blocked by that Publish, the edge added where missing.
 - Its card, if any, sits in its status's column, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Pass** goes to Design, or to Implement on an issue carrying `designed`. **Escalate** on a fix the author may not [make](../sdlc/SKILL.md#roles), such as a missing field in another's body, which is the delegator's [Frame](../sdlc/SKILL.md#phases), or on a version to adopt that no Publish carries and no registry serves. **Stop** when it is assigned to another, blocked but not stacked, under a closed parent, or past In progress.
@@ -59,7 +59,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 - The branch is [linked](../sdlc/SKILL.md#linking-an-issue-to-its-branch-and-pr), then pushed.
 - `gh pr create` opens the PR with the drafted body and `Closes #N`. One opened before its diff is verified is a draft (`--draft`) until `gh pr ready`: [review stops on a draft](../sdlc-review/SKILL.md#precheck).
 - The reviewers the remit names are requested.
-- Where the work blocks a [Publish](../sdlc/SKILL.md#mechanisms) itself, not through its Epic, it blocks the earliest open Publish that holds, filing the next version when none does: a blocker that is work ships in that Publish or an earlier one, and a blocker that is a Publish is strictly earlier. Versions compare only within one repository. Where its own change moves it to a later Publish, the work it blocks moves too.
+- Where the work blocks a Publish itself, not through its Epic, it joins one as [Joining a Publish](../sdlc/references/production.md#joining-a-publish) says.
 - Status is In review, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 
 **Escalate** before the first commit or push, unless the remit hands over the branch, and on moving work that is not the author's.
@@ -74,8 +74,8 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Land
 
-- The PR merges on the review's pass, [waiting](#waiting) without sleeping and recovering [a refused merge](#a-refused-merge).
-- A stack merges bottom first, a child after its parent and never into the parent's branch. Once the parent merges, the child retargets, `gh pr edit N --base <default>` confirmed by `gh pr view N --json baseRefName`, since GitHub retargets it only when the parent's branch is deleted. It then [syncs](#sync), an unreviewed child free to drop a squashed parent's commits instead (`git rebase --onto origin/<default> <parent's last commit>`), and merges once CI reruns on the new base.
+- The PR merges on the review's pass, [waiting](#waiting) without sleeping and recovering [a refused merge, or one landed by mistake](references/refused-merge.md).
+- A [stacked](../sdlc-crew/references/stack.md) PR merges after its bases, as Stack says.
 - Where it ships, it goes out in the Publish it or its Epic blocks, cut by [`sdlc-cut`](../sdlc-cut/SKILL.md), under its Release where one holds it; the author never tags.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).
 - Follow-up work is captured through [`sdlc-capture`](../sdlc-capture/SKILL.md).
@@ -98,20 +98,6 @@ A foreground `sleep` is blocked, and looking by hand spends a turn per look. Wai
 - **The loop exits on every terminal state**, failure and cancel among them: silence is not success.
 - **Stall watchdog**: it also exits once nothing has moved for about twice the run's usual length, naming what stalled. A run queued with no step output goes to [Where CI stops](../dev-ci-github/SKILL.md#where-ci-stops).
 - **A background agent notifies** when it finishes; its output is not polled, only checked by the watchdog past its bound.
-
-## A refused merge
-
-| The refusal says | Cause | Then |
-|---|---|---|
-| a required check is pending or failing | CI is not green | wait, or fix |
-| the head branch is behind | protection requires an up-to-date branch | [Sync](#sync), then wait |
-| a review is required | protection requires an approval | the [`reviewer`](../sdlc/SKILL.md#roles); never self-approve |
-| auto-merge is not allowed | the repository turned it off | merge once green, per [Where CI stops](../dev-ci-github/SKILL.md#where-ci-stops) |
-| the merge method is not allowed | the repository allows others | `gh api repos/O/R --jq '[.allow_squash_merge,.allow_merge_commit,.allow_rebase_merge]'`, then an allowed one |
-| a repository rule is violated | a ruleset | `gh api repos/O/R/rules/branches/<default>` names it: meet it, or hand it to an admin |
-| `gh pr merge` hits a GraphQL limit while `gh api rate_limit` shows room | GraphQL's own limit | REST: `gh api -X PUT repos/O/R/pulls/N/merge -f merge_method=squash` |
-| the agent's environment refuses the command | policy: the merge is a person's | hand them the one command per [`human-steps`' Commands](../human-steps/SKILL.md#commands); never route around it through REST, `--admin`, or another identity |
-| none: a merge landed on `<default>` by mistake | — | revert it in a PR of its own: `git revert -m 1 <merge commit>`, `git revert <squash commit>`, or `git revert <first>^..<last>` for a rebase merge; never force-push `<default>` |
 
 ## Without a pull request
 

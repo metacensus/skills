@@ -1,6 +1,6 @@
 ---
 name: sdlc-capture
-description: Records work found outside the current scope as an issue under the parent that owns it, so the agent carrying that parent picks it up, in the `sdlc` lifecycle. Trigger when a task turns up work it does not hold, when filing follow-up work or any issue, and when a person picks work to file.
+description: Record work found outside the current scope as an issue under the parent that owns it, so that parent's carrier picks it up. Trigger when a task turns up work it does not hold, when filing follow-up work or any issue, and when a person picks work to file.
 ---
 
 Capture runs as [the hub's protocol](../sdlc/SKILL.md#stages) says, under the names its [mapping](../sdlc/SKILL.md#the-mapping) gives. It adds work and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) keeps the set honest, so a captured issue need not be perfect: placed near its owner, it outlives the session that found it.

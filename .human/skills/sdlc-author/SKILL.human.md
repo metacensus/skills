@@ -33,7 +33,7 @@ Self-review runs [sync](#sync), Verification, the gate, `check-cells.mts --diff`
 |Text|commit [5C](../elegance/references/cells/5C-commit.human.md), PR [4C](../elegance/references/cells/4C-merges.human.md)|
 |Unverified|a draft until `gh pr ready`|
 
-Open blocks the earliest open Publish that holds, filing the next if none: a work blocker ships in it or earlier, a Publish blocker is strictly earlier, versions compared within one repo; moving later takes the work it blocks along.
+Work that blocks a Publish itself joins one as [production](../sdlc/references/production.human.md) says.
 
 ## Sync
 
@@ -41,25 +41,11 @@ Fetch and bring in main: rebase while alone and unreviewed, merge once shared; �
 
 ## Land
 
-Merge on the review's pass; a stack bottom first, each child retargeted, [synced](#sync) and rerun; it ships in the Publish it or its Epic blocks, through [`sdlc-cut`](../sdlc-cut/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
+Merge on the review's pass, recovering [a refused merge](references/refused-merge.human.md); a [stack](../sdlc-crew/references/stack.human.md) bottom first; it ships in the Publish it or its Epic blocks, through [`sdlc-cut`](../sdlc-cut/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
 
 ## Waiting
 
 ⚠️ Never `sleep`: wait on a background command that exits on every terminal state, or once stalled past twice the usual length.
-
-## A refused merge
-
-| Refused | Then |
-|---|---|
-| check pending or failing | wait, or fix |
-| branch behind | [sync](#sync) |
-| review required | the `reviewer`; never self-approve |
-| auto-merge off | merge once green |
-| method not allowed | an allowed one |
-| rule violated | meet it, or an admin |
-| GraphQL limit | REST |
-| environment refuses | ⛔ a person, per [`human-steps`](../human-steps/SKILL.human.md) |
-| merged by mistake | revert in a PR, whatever the merge method; ⚠️ never force-push |
 
 ## Without a pull request
 

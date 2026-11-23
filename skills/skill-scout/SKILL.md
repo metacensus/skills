@@ -1,6 +1,6 @@
 ---
 name: skill-scout
-description: Search a person's recent sessions, memory and skills for candidate new skills and edits to existing ones — repeated workflows, rare-but-recurring work, repeated corrections, friction, and where a skill was silent or wrong — through cheap parallel scouts, returned as directions with evidence, not designs. Trigger when the user asks what skills to write next, what a skill is missing, where agents keep needing correction, or to mine sessions or transcripts for skills.
+description: Search a person's recent sessions, memory and skills for new skills and edits to existing ones, through cheap parallel scouts returning directions with evidence. Trigger when the user asks what skills to write next, what a skill is missing, where agents keep needing correction, or to mine sessions or transcripts for skills.
 ---
 
 **A skill is written from evidence, not from memory of it.** Sessions hold what the person did by hand, said twice, and corrected; nobody rereads them. Cheap [`skill-scout-scan`](../../agents/skill-scout-scan.md) scouts flag whatever a class reaches without weighing it, and the orchestrator weighs, so a candidate is a direction backed by references, never a design.

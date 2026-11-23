@@ -1,6 +1,6 @@
 ---
 name: parallelize
-description: Organize a body of work across agents that share one working tree — cut it into units, schedule them in dependency order, and give each the coordination it needs and no more. Agnostic to the work — one skill's, several at once, or a request no skill covers — at a scale one context cannot hold. Trigger when the user asks to parallelize, fan out, orchestrate, or run work across subagents, or when a task spans more units than one agent should carry.
+description: Organize any body of work too large for one context across agents sharing one working tree — cut it into units, schedule them by dependency, and give each the coordination it needs and no more. Trigger when the user asks to parallelize, fan out, orchestrate, or run work across subagents, or when a task spans more units than one agent should carry.
 ---
 
 > Vision without execution is hallucination, but execution without coordination is chaos.

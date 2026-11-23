@@ -1,6 +1,6 @@
 ---
 name: human-steps
-description: Walk a person through steps one per turn, each checked before the next — code they read a block at a time, commands only their hands run checked against their pasted output, or a queue of open questions answered one by one, spoken or typed. Trigger when the user asks to understand, explain, or walk through a file, package, or pull request; on `terraform apply`; a change in AWS, Cloudflare or DNS; registering a GitHub App; `gh secret set`; anything the permission classifier refuses; when a person asks to run commands or take questions one at a time; and when questions for a person queue, as in a side session a carrier starts.
+description: Walk a person through steps one per turn, each checked before the next — code a block at a time, commands only their hands run checked against pasted output, or open questions answered one by one. Trigger when the user asks to understand, explain or walk through a file, package or PR; on `terraform apply`, a change in AWS, Cloudflare or DNS, registering a GitHub App, `gh secret set`, or anything the permission classifier refuses; when a person asks for commands or questions one at a time; and when questions for a person queue.
 ---
 
 **One step per turn; the next waits until this one is checked.**
@@ -76,5 +76,5 @@ The agent never asks for one, prints one, or repeats one pasted. A command takes
 - Each carries its issue, the question, options lettered, a recommendation, and the default its delegator takes on silence or a skip, so one word answers it: yes, a letter, skip, defer, discuss.
 - One issue's questions go together, issues ordered by what each unblocks.
 - The answer is read back in one line at the head of the next turn, then recorded on its issue as a `Decision:` comment quoting the person's words once that reply lets it stand. An amendment or a rejection is read back alone and waits for a yes. A note or new question the person raises goes beside it, never into the decision; new work goes through [`sdlc-capture`](../sdlc-capture/SKILL.md).
-- **Defer** records `Deferred:` on the issue and drops the question, undecided, until the person asks for it or it is sent back; its thread waits as [`sdlc-crew`'s Waiting on a person](../sdlc-crew/SKILL.md#waiting-on-a-person) says. **Discuss** starts a side session from a [handoff](../sdlc/SKILL.md#handoff), its Goal the issue, talked through in prose; its outcome is the issue's `Decision:`.
-- A side session started for the queue takes the [handoff](../sdlc/SKILL.md#handoff) it was given and reports its closing lines to whoever started it.
+- **Defer** records `Deferred:` on the issue and drops the question, undecided, until the person asks for it or it is sent back; its thread waits as [`sdlc-crew`'s Waiting on a person](../sdlc-crew/references/waiting.md) says. **Discuss** starts a side session from a [handoff](../sdlc/references/handoff.md), its Goal the issue, talked through in prose; its outcome is the issue's `Decision:`.
+- A side session started for the queue takes the [handoff](../sdlc/references/handoff.md) it was given and reports its closing lines to whoever started it.

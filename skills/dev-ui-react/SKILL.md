@@ -1,6 +1,6 @@
 ---
 name: dev-ui-react
-description: What a React app, or a plugin into a host, needs beyond what every UI shares — primitives from the design system and native elements, feature folders, the router's own routes, query options over the session seam, one field kit and one validator, the plugin contract, and lint and types as the gate. Trigger when scaffolding, reviewing, or changing a React app's or plugin's components, folders, routes, data fetching, forms, lint config or `tsconfig`, and when wiring a plugin into its host.
+description: What a React app, or a plugin into a host, needs beyond what every UI shares — design-system primitives, feature folders, routes, queries, one field kit, the plugin contract, lint and types. Trigger when scaffolding, reviewing or changing a React app's or plugin's components, folders, routes, data fetching, forms, lint config or `tsconfig`, and when wiring a plugin into its host.
 ---
 
 ## Components

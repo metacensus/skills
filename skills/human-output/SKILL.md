@@ -1,6 +1,6 @@
 ---
 name: human-output
-description: Shape what a person reads so its layout carries the information before its words do. Trigger before reporting status, proposing work or edits, laying out options, or summarizing for a person; before writing an issue or pull request body, or a document a person reads beside one an agent reads; and whenever the user asks for an outline, a table, a key, icons, an "austere" or "brutish" form, "terms and phrases", "at a glance", or a "human version", or calls a reply a wall of text; and when a page is worth revising with cold reviewers, or the user asks to wake a page up or critique it for a reader.
+description: Shape what a person reads so its layout carries the information before its words. Trigger before reporting status, proposing work or edits, laying out options or summarizing for a person; before writing an issue or PR body, or a document read beside one an agent reads; when the user asks for an outline, table, key, icons, an "austere" or "brutish" form, "terms and phrases", "at a glance" or a "human version", or calls a reply a wall of text; and when revising a page with cold reviewers, or asked to wake a page up or critique it for a reader.
 ---
 
 **A person sees the shape before reading the words.**

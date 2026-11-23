@@ -1,6 +1,6 @@
 ---
 name: dev-temporal
-description: Guides writing and testing Temporal workflows and activities in Go so they respect the PFI structure (proto → generated → implementation) and its security context (P1-P4), and are tested at each layer. Use when adding or modifying a workflow, activity, service, or Nexus operation, when a change derives credentials, resource paths, or access policies, or crosses a Nexus boundary, or when asked to write, plan, or improve tests for a workflow, activity, or client.
+description: How to write and test Temporal workflows and activities in Go to the PFI structure (proto → generated → implementation) and its security context (P1-P4). Trigger when adding or changing a workflow, activity, service or Nexus operation, when a change derives credentials, resource paths or access policies or crosses a Nexus boundary, and when writing, planning or improving tests for a workflow, activity or client.
 ---
 
 # Temporal

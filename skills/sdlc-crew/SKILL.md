@@ -1,9 +1,9 @@
 ---
 name: sdlc-crew
-description: Carry an Epic from its Design to closed with a crew of agents: an author per child, a fresh reviewer per pull request, and a delegator holding the plan. Trigger when running, orchestrating, or delegating an Epic's children across agents, when designing an Epic's children, when asking what the crew's delegator does next, when a thread waits on a person or every thread is about to halt, and when a person will be away while agents run.
+description: Carry an Epic from its Design to closed with a crew — an author per child, a fresh reviewer per PR, a delegator holding the plan. Trigger when running, orchestrating or delegating an Epic's children across agents, designing an Epic's children, asking what the crew's delegator does next, when a thread waits on a person or every thread is about to halt, and when a person will be away while agents run.
 ---
 
-The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. Under an Initiative, its delegator is [`sdlc-fleet`](../sdlc-fleet/SKILL.md), and the Initiative's Decided and Stops bind it as its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says, and while a thread waits on a person, or the person is away, runs [Waiting on a person](#waiting-on-a-person). It starts from a [handoff](../sdlc/SKILL.md#handoff).
+The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Epic. The agent running them is every author's [`delegator`](../sdlc/SKILL.md#roles), and whoever handed it the Epic is its own. Under an Initiative, its delegator is [`sdlc-fleet`](../sdlc-fleet/SKILL.md), and the Initiative's Decided and Stops bind it as its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), and carries no child itself. It reports up as [the hub's Reporting](../sdlc/SKILL.md#reporting) says, and while a thread waits on a person, or the person is away, runs [Waiting on a person](references/waiting.md). It starts from a [handoff](../sdlc/references/handoff.md).
 
 ## Precheck
 
@@ -26,8 +26,8 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 `parallelize` answered: units are the children; edges their `blocked by` and the contracts their write-sets share, a renamed term grepped across the repository before any brief; the action is [`sdlc-author`](../sdlc-author/SKILL.md); done is [the hub's Closing](../sdlc/SKILL.md#closing); the checks, [`sdlc-review`](../sdlc-review/SKILL.md) per PR.
 
-- Every `blocked by` edge is inside the Epic, set by its Initiative's Plan, or to a [Publish, Release or Rollout](../sdlc/SKILL.md#mechanisms), and the graph has no cycle.
-- The Epic blocks the earliest open Publish that holds, as [`sdlc-author`'s Open](../sdlc-author/SKILL.md#open) picks one, filing the next version when none does; its Tasks do instead where they ship in different Publishes, or where [the deadlock rule](../sdlc/SKILL.md#mechanisms) moves the edges.
+- Every `blocked by` edge is inside the Epic, set by its Initiative's Plan, or to a [Publish, Release or Rollout](../sdlc/references/production.md), and the graph has no cycle.
+- The Epic blocks the earliest open Publish that holds, as [Joining a Publish](../sdlc/references/production.md#joining-a-publish) says; its Tasks do instead where they ship in different Publishes, or where [the deadlock rule](../sdlc/references/production.md#shipping) moves the edges.
 - The contract lands first, pinned in a file its consumers read, and merged before a consumer starts.
 - No two write-sets in a wave overlap; a line no child owns goes to one, or to a child filed for it.
 - The comment lists the waves, each child's write-set and contracts.
@@ -37,7 +37,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Delegate
 
 - Each child is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), under the remit, before its brief, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes: its Verification exits 0 on the default branch.
-- A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](#stack): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
+- A child is briefed only in [Ready](../sdlc/SKILL.md#status), or [stacked](references/stack.md): nothing else is authored ahead of its blockers, and an escalation's answer is waited for, never guessed.
 - Each author's brief is `parallelize`'s, opening with its remit; a criterion's number is pointed at in the issue's Verification, never restated. Its frictions ride its return, nowhere else.
 - Every author works in a tree of its own, Design-only included, or reads only through `git show`.
 - Every author is split at Design: one agent runs Precheck and Design, then returns; the delegator confirms its Design and applies `designed`, citing its remit, unless the Design settles one of the remit's [stops](../sdlc/SKILL.md#roles); a second, briefed with the confirmed Design, runs Implement through Land. A child already `designed` skips the first.
@@ -71,27 +71,3 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
 **Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation, and its rollout record goes to its delegator for [Accept](../sdlc/SKILL.md#phases). Escalate any question the sweep leaves.
-
-## Stack
-
-A child whose open blockers each have an open PR may start on their branch, its own PR based on theirs, when nothing still pending on them, a person's choice or a contract [Plan](#plan) merges first, reaches what it uses. [`sdlc-author`'s Precheck](../sdlc-author/SKILL.md#precheck) takes it as unblocked, and [its Land](../sdlc-author/SKILL.md#land) merges it after its bases; a base whose review stops, or that closes unmerged, parks it as Blocked.
-
-## Waiting on a person
-
-**What waits on a person is a choice, never the work around it.** A question halts only the thread it rules on, and only when it is one of the remit's [stops](../sdlc/SKILL.md#roles).
-
-- Every other choice, plan, scope, wording or order, is the delegator's: it takes its own recommendation, records it on the issue as `Decided, reversible:` with what would flip it, and keeps going.
-- While a question waits, each move can be undone: a draft, a branch, a provisional PR, a `Proposed decision:` comment. None applies `designed`, re-plans, merges what the remit keeps, or touches production or another person.
-  - **Build the options**, each far enough that the person picks by looking: the copy drafted, the screenshot taken, the provisional PR open. The pick is then a merge or a close; none merges before it.
-  - **[Stack](#stack)** the children its answer does not reach.
-  - **Push the neighbours**: the work beside a finding that its answer cannot change goes ahead, a notice drafted with a placeholder for each fact only the person knows. The merge waits, not the work.
-  - **Run discovery**: the read-only spikes, inventories and scans the next decisions need, each returning its evidence to its question.
-- What waits on the person, a question or a step only their hands run, reaches them through [`human-queues`](../human-queues/SKILL.md), whose queues the carrier the person delegates to opens at kickoff.
-
-### Away
-
-When the person will be away, the run starts from a handoff set before they go:
-
-- Its Grants are quoted in every brief beneath it.
-- Its Stop is a clock time after which no thread starts, early enough that each running thread lands or parks where it can be undone before the person returns.
-- On their return, one [status outline](../sdlc/SKILL.md#reporting): their queue first, only the remit's stops, ordered by what each unblocks; a line per thread; then what was decided for them, reversible.

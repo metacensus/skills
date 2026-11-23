@@ -13,9 +13,7 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
 |Bug|`type: Bug`|as a Task|
-|Publish (version)|`type: Publish`|one version of one repo, by `sdlc-cut`; alone, or under a Release|
-|Release (cross-project release)|`type: Release`|optional, where Publishes span repos, it deploys, or a yes needs its own record: Publishes plus deploys in one go, by `sdlc-ship`|
-|Rollout|`type: Rollout`|optional, where Releases need ordering: Releases with conditions between, by `sdlc-campaign`|
+|Publish · Release · Rollout|`type: Publish`, …|production: [its tiers](references/production.human.md)|
 |Sub-task|·|a Task wanting children is an Epic|
 
 ![Issue types: code changes, Initiative over Epic over Task and Bug, and production changes, Rollout over Release over Publish; a Publish is blocked by the Epic it ships, and a consumer's Task by the Publish it adopts](../../../skills/sdlc/figures/types.svg)
@@ -25,7 +23,6 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Mechanism|Carries|
 |---|---|
 |Dependency|`blocked by`; a Publish, Release or Rollout read by title and state only|
-|Production|a Publish blocked by an Epic, or a Task where its Epic ships apart, closed once served; a consumer's adoption blocked by it; no Epic both blocks a Publish and waits on it or its Release; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Releases, never blocked by one, and closes after its Publishes and their Releases|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
@@ -59,7 +56,7 @@ A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down 
 
 ## Handoff
 
-A fresh session starts from one: Goal, linked · Decided, do not reopen · Grants, quoted · Stop · Environment.
+A fresh session starts from a [handoff](references/handoff.human.md).
 
 ## Reporting
 
@@ -113,6 +110,4 @@ The issue holds the problem, its Design the solution: a Design settling what the
 
 ## Setup
 
-Once per repository: `sdlc-setup.sh OWNER/REPO`; act on each `TODO`.
-
-Add a missing column in the board's settings; replacing Status options through the API clears every card's Status, which `--apply` restores.
+Once per repository, before filing: [setup](references/setup.human.md).

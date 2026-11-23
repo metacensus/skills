@@ -3,7 +3,7 @@ name: sdlc-campaign
 description: Carry a Rollout, Releases with time and conditions between them, from its plan to its end state live, across days or weeks mostly spent waiting. Trigger when planning, running, waking, resuming or closing a Rollout, and when a change to production needs time or a condition between its Releases.
 ---
 
-The campaign's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Rollout. One long-lived agent carries one Rollout; it is each Release's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. A change needing no time or condition between its Releases is one Release, carried by [`sdlc-ship`](../sdlc-ship/SKILL.md) alone, or a Publish alone where [the ladder](../sdlc/SKILL.md#the-ladder) needs no Release.
+The campaign's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Rollout. One long-lived agent carries one Rollout; it is each Release's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. A change needing no time or condition between its Releases is one Release, carried by [`sdlc-ship`](../sdlc-ship/SKILL.md) alone, or a Publish alone where [the production tiers](../sdlc/references/production.md#the-tiers) needs no Release.
 
 Its state lives on the Rollout, so a replacement agent resumes from there:
 
