@@ -42,6 +42,18 @@ Run every unit with no unfinished dependency; cap agents by review capacity.
 
 Remit · items · write-set · read-set · skills · contracts · neighbours · done · return. A delegated runner runs checks inline; git stays the orchestrator's.
 
+## The model
+
+The caller passes it, by what the agent does:
+
+|Agent|Model|
+|---|---|
+|flags spans from a list|haiku|
+|builds to a confirmed Design · reads work against what is written|sonnet|
+|makes a Design · the check a merge or publish waits on|opus|
+
+Named agents carry theirs in `model:`. A handoff's Environment or the person overrides.
+
 ## Integrate and land
 
 Run the whole-system check. Report as [`sdlc`'s Reporting](../sdlc/SKILL.human.md#reporting) says; given the branch, commit each unit per [`sdlc-author`'s Open](../sdlc-author/SKILL.human.md#open).

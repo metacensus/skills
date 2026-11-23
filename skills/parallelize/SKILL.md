@@ -59,6 +59,18 @@ A wave is every unit with no unfinished dependency, run in parallel; the real pa
 
 Each brief opens with the agent's **remit**: the choices it owns, and where the rest escalate — to the orchestrator, and through it to whoever handed the orchestrator the work. Then come its **items**, listed, its **write-set**, its **read-set**, the **skills** it loads — every one that governs its items, and each check's standard, named rather than left to trigger — the **contracts** it honours, its **neighbours** (who owns the items it may propose changes to, and how to reach them), its **done** check, and a **return** of a compact summary: what it did, contract changes it proposes, open questions. Nothing in a brief may assume a tool the agent type lacks. The runner decides whether each check runs as an agent or inline; a runner that is itself a delegated agent runs them inline, because a nested agent's findings never reach the orchestrator. Git stays the orchestrator's unless the remit hands it down.
 
+## The model
+
+The caller passes each agent's model, chosen by what the agent does:
+
+| The agent | Model | Such as |
+|---|---|---|
+| flags every span a list reaches, weighing none | haiku | a scout, a scanner |
+| builds to a confirmed Design, or reads work against what is written | sonnet | an author's Implement, `design-check`, `delivery-review`, `sdlc-sweep` |
+| makes a Design, or is the check a merge or a publish waits on | opus | a Design agent, `code-review`, `elegance-review`, `plan-check`, `live-check` |
+
+A named agent's definition sets its `model:` by this table, so the caller passes none for it. A handoff's Environment, or the person, overrides either.
+
 ## Integrate and land
 
 The orchestrator decides what reaches it at a cap and applies proposals to the files it stewards, then runs the whole-system check. What it relays to a person goes as [`sdlc`'s Reporting](../sdlc/SKILL.md#reporting) says: each item once, the outline only on request or when all work waits on them. When the user has handed it the branch, it commits each unit as it lands, following [`sdlc-author`'s Open](../sdlc-author/SKILL.md#open), so the pull request is a live view of the work in dependency order.
