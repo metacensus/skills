@@ -39,7 +39,7 @@ description: What a React app, or a plugin into a host, needs beyond what every 
 
 - **A plugin's entry exports one default component taking one host object**, which carries its base, navigation and data; it brings no router and no client of its own, so the host owns each.
 - **The host's build plugin fails the build when host and plugin code cross.**
-- **The host owns resets and global styles; a plugin scopes its CSS under its own root class.** A host style a plugin must undo is fixed in the host or its plugin kit, never in each plugin.
+- **The host owns resets and global styles; a plugin scopes its CSS under its own root class.** A host style a plugin must undo is fixed in the host or the library it gives its plugins, never in each plugin.
 
 ## Lint and types
 
