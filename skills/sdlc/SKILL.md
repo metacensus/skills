@@ -129,7 +129,7 @@ Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's 
 | Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) |
 | Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) |
 
-Each carrier names the agents its stages start. A production tier runs Plan, Change and Verify instead, as [production](references/production.md#phases) says.
+A production tier runs Plan, Change and Verify instead, as [production](references/production.md#phases) says.
 
 A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. `sdlc-review` and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
 
