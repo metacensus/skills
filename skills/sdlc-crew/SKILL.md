@@ -86,7 +86,7 @@ A child whose open blockers each have an open PR may start on their branch, its 
   - **[Stack](#stack)** the children its answer does not reach.
   - **Push the neighbours**: the work beside a finding that its answer cannot change goes ahead, a notice drafted with a placeholder for each fact only the person knows. The merge waits, not the work.
   - **Run discovery**: the read-only spikes, inventories and scans the next decisions need, each returning its evidence to its question.
-- Once more than one question queues, or the person returns to a queue, the carrier the person delegates to starts a [`human-steps`](../human-steps/SKILL.md#questions) side session from a [handoff](../sdlc/SKILL.md#handoff): its Goal the queue, each question's issue linked; its Grants this remit; its Stop the queue empty or the person stopping. Threads run on meanwhile, each `Decision:` read from its issue. Where no side session can start, the carrier runs `human-steps`' Questions itself.
+- What waits on the person, a question or a step only their hands run, reaches them through [`human-queues`](../human-queues/SKILL.md), whose queues the carrier the person delegates to opens at kickoff.
 
 ### Away
 
