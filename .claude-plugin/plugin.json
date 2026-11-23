@@ -1,6 +1,6 @@
 {
   "name": "metacensus",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "General-purpose agent skills",
   "author": { "name": "MetaCensus" },
   "repository": "https://github.com/metacensus/skills",
