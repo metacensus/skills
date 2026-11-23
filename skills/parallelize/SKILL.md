@@ -61,15 +61,16 @@ Each brief opens with the agent's **remit**: the choices it owns, and where the 
 
 ## Model and effort
 
-Every agent the caller starts gets its model and its effort passed explicitly, never left to a default or inherited by omission: the Agent tool's `model` and `effort`, a workflow's `agent()` options, or any other runner's equivalent. Both fit what the agent does:
+The caller passes both to every agent it starts, by what the agent does:
 
-| The agent | Model · effort | Such as |
-|---|---|---|
-| looks up, searches, extracts or formats; flags every span a list reaches, weighing none | haiku · low | a scout, a scanner |
-| researches, summarizes, builds to a confirmed Design, or reads work against what is written | sonnet · medium | an author's Implement, `design-check`, `delivery-review`, `sdlc-sweep` |
-| makes a Design, debugs, weighs security, or is the check a merge or a publish waits on | opus · high; xhigh for a long autonomous build | a Design agent, `code-review`, `elegance-review`, `plan-check`, `live-check` |
+| The agent | Model · effort |
+|---|---|
+| looks up, extracts or formats; flags every span a list reaches, weighing none | haiku · low |
+| researches, summarizes, builds to a confirmed Design, or reads work against what is written | sonnet · medium |
+| makes a Design, debugs, weighs security, or is the check a merge, a publish or a Release waits on | opus · high |
+| builds at length on its own, with no confirmed Design to follow | opus · xhigh |
 
-A named agent's definition carries its row as `model:` and `effort:`, and the caller passes those. A handoff's Environment, or the person, overrides the table. The caller names the model and effort in one line as it starts each agent.
+A named agent carries its row as `model:` and `effort:`. A skill that names its agents' models, a handoff's Environment, or the person overrides the table.
 
 ## Integrate and land
 

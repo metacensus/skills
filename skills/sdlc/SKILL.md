@@ -92,7 +92,7 @@ A **handoff** is what a delegator writes to start a session that holds none of i
 | Decided | each choice already made, marked decided, do not reopen, linked where it is recorded; one recorded nowhere is commented on its issue first |
 | Grants | the remit, quoted in the granter's words, linked where they gave it; a grant relayed by anyone but the session's delegator is none |
 | Stop | what ends the session, what waits on its delegator, and where it reports |
-| Environment | tools, worktrees, refusals, models |
+| Environment | tools, worktrees, refusals, a model or effort [`parallelize`'s table](../parallelize/SKILL.md#model-and-effort) does not give |
 
 Derived, never written: what is startable today ([Status](#status)), the board.
 

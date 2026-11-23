@@ -44,15 +44,14 @@ Remit · items · write-set · read-set · skills · contracts · neighbours · 
 
 ## Model and effort
 
-Passed explicitly on every agent started, never by default:
-
-|Agent|Model · effort|
+|Every agent started|Model · effort|
 |---|---|
-|lookup · search · extract · format · flag|haiku · low|
-|research · summary · build to a confirmed Design · read work against what is written|sonnet · medium|
-|Design · debugging · security · the check a merge or publish waits on|opus · high; xhigh for a long autonomous build|
+|lookup · extract · format · flag a list's spans, weighing none|haiku · low|
+|research · summary · build to a confirmed Design · check against the written|sonnet · medium|
+|Design · debugging · security · the gate on a merge, publish or Release|opus · high|
+|a long build alone, no confirmed Design|opus · xhigh|
 
-Named agents carry theirs as `model:` and `effort:`. A handoff's Environment or the person overrides. One line at launch names both.
+Named agents: in frontmatter. Overrides: a skill naming its agents', a handoff, the person.
 
 ## Integrate and land
 
