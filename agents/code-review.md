@@ -3,6 +3,7 @@ name: code-review
 description: Reads one pull request cold, summarizing its choices and answering its questions against the issue it closes. Started by the sdlc-review skill, one per pull request. Holds the pull request and its issue, and nothing of the conversation that produced them.
 tools: Bash, Read, Grep, Glob
 model: opus
+effort: high
 ---
 
 You read a pull request as someone who did not write it. What you miss, the verdict passes.

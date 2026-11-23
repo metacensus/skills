@@ -59,17 +59,17 @@ A wave is every unit with no unfinished dependency, run in parallel; the real pa
 
 Each brief opens with the agent's **remit**: the choices it owns, and where the rest escalate — to the orchestrator, and through it to whoever handed the orchestrator the work. Then come its **items**, listed, its **write-set**, its **read-set**, the **skills** it loads — every one that governs its items, and each check's standard, named rather than left to trigger — the **contracts** it honours, its **neighbours** (who owns the items it may propose changes to, and how to reach them), its **done** check, and a **return** of a compact summary: what it did, contract changes it proposes, open questions. Nothing in a brief may assume a tool the agent type lacks. The runner decides whether each check runs as an agent or inline; a runner that is itself a delegated agent runs them inline, because a nested agent's findings never reach the orchestrator. Git stays the orchestrator's unless the remit hands it down.
 
-## The model
+## Model and effort
 
-The caller passes each agent's model, chosen by what the agent does:
+Every agent the caller starts gets its model and its effort passed explicitly, never left to a default or inherited by omission: the Agent tool's `model` and `effort`, a workflow's `agent()` options, or any other runner's equivalent. Both fit what the agent does:
 
-| The agent | Model | Such as |
+| The agent | Model · effort | Such as |
 |---|---|---|
-| flags every span a list reaches, weighing none | haiku | a scout, a scanner |
-| builds to a confirmed Design, or reads work against what is written | sonnet | an author's Implement, `design-check`, `delivery-review`, `sdlc-sweep` |
-| makes a Design, or is the check a merge or a publish waits on | opus | a Design agent, `code-review`, `elegance-review`, `plan-check`, `live-check` |
+| looks up, searches, extracts or formats; flags every span a list reaches, weighing none | haiku · low | a scout, a scanner |
+| researches, summarizes, builds to a confirmed Design, or reads work against what is written | sonnet · medium | an author's Implement, `design-check`, `delivery-review`, `sdlc-sweep` |
+| makes a Design, debugs, weighs security, or is the check a merge or a publish waits on | opus · high; xhigh for a long autonomous build | a Design agent, `code-review`, `elegance-review`, `plan-check`, `live-check` |
 
-A named agent's definition sets its `model:` by this table, so the caller passes none for it. A handoff's Environment, or the person, overrides either.
+A named agent's definition carries its row as `model:` and `effort:`, and the caller passes those. A handoff's Environment, or the person, overrides the table. The caller names the model and effort in one line as it starts each agent.
 
 ## Integrate and land
 

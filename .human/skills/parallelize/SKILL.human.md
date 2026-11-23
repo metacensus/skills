@@ -42,17 +42,17 @@ Run every unit with no unfinished dependency; cap agents by review capacity.
 
 Remit · items · write-set · read-set · skills · contracts · neighbours · done · return. A delegated runner runs checks inline; git stays the orchestrator's.
 
-## The model
+## Model and effort
 
-The caller passes it, by what the agent does:
+Passed explicitly on every agent started, never by default:
 
-|Agent|Model|
+|Agent|Model · effort|
 |---|---|
-|flags spans from a list|haiku|
-|builds to a confirmed Design · reads work against what is written|sonnet|
-|makes a Design · the check a merge or publish waits on|opus|
+|lookup · search · extract · format · flag|haiku · low|
+|research · summary · build to a confirmed Design · read work against what is written|sonnet · medium|
+|Design · debugging · security · the check a merge or publish waits on|opus · high; xhigh for a long autonomous build|
 
-Named agents carry theirs in `model:`. A handoff's Environment or the person overrides.
+Named agents carry theirs as `model:` and `effort:`. A handoff's Environment or the person overrides. One line at launch names both.
 
 ## Integrate and land
 

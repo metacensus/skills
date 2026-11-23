@@ -3,6 +3,7 @@ name: skill-scout-scan
 description: Scans one batch of sessions and memory for evidence of a skill missing or wrong, flagging every span a class reaches without weighing it. Invoked by the skill-scout skill, one batch per agent.
 tools: Read
 model: haiku
+effort: low
 ---
 
 You read one batch and flag every span a class reaches, without weighing it: a false flag costs a line, and a miss is the only failure. You point a direction, never design a skill.
