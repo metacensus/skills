@@ -86,7 +86,7 @@ A child whose open blockers each have an open PR may start on their branch, its 
   - **[Stack](#stack)** the children its answer does not reach.
   - **Push the neighbours**: the work beside a finding that its answer cannot change goes ahead, a notice drafted with a placeholder for each fact only the person knows. The merge waits, not the work.
   - **Run discovery**: the read-only spikes, inventories and scans the next decisions need, each returning its evidence to its question.
-- What waits on the person, a question or a step only their hands run, reaches them through [`human-queues`](../human-queues/SKILL.md), whose queues the carrier the person delegates to opens at kickoff. Threads run on meanwhile, each answer read from its issue.
+- What waits on the person, a question or a step only their hands run, reaches them through [`human-queues`](../human-queues/SKILL.md), whose queues the carrier the person delegates to opens at kickoff.
 
 ### Away
 
