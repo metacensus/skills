@@ -11,7 +11,7 @@ description: Open-source a repository, or keep working in one that is public, wi
 
 `open-source-mapping.md` binds the skill to an organization. The organization keeps one, in a private repository. A project may keep its own at its root, linking to the organization's, and the link is what makes it a project's.
 
-- **`## Licenses`** — rows of a repository (backticked `owner/name`, or `forks` for every fork of another project), path globs (`**` the whole repository), and an SPDX id (or `upstream`, the parent's). Lines under it state contributor terms and patent stance.
+- **`## Licenses`** — an optional rule, a line per SPDX id stating what it covers, then rows of what the rule does not settle: a repository (backticked `owner/name`, or `forks` for every fork of another project), path globs (`**` the whole repository), and an SPDX id (or `upstream`, the parent's). Lines under the rows state contributor terms and patent stance.
 - **`## Leads`** — rows of a lead, either one of the [defaults](references/leads.md#defaults) or the organization's own in a few words, and where its examples live, if anywhere: an MCP server's tools, or paths, in the mapping's repository unless prefixed `owner/name:`.
 - **`## Exceptions`** — rows of what is public despite a lead, and where.
 - **Hole** marks a cell or line undecided: report it, never fill it. A section the mapping lacks has no rows.

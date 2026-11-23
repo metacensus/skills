@@ -2,7 +2,7 @@
 
 ## The intent
 
-Each tracked path takes the license of the longest glob matching it in this repository's rows. A path no glob reaches, and a repository with no row, are holes to report.
+Each tracked path takes the license of the longest glob matching it in this repository's rows. A path no glob reaches takes the mapping's rule: the license whose line covers what the path is. A path neither a row nor exactly one of the rule's lines settles is a hole to report, so without a rule every path no glob reaches is one.
 
 ## Checks
 
