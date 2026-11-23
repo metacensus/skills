@@ -3,7 +3,7 @@ name: open-source-review
 description: Reads one batch of text against the open-source skill's leads, flagging every span a lead reaches before weighing any, then judging which flags are real. Started by the sdlc-review skill, one per pull request in a public repository and one per batch before a repository goes public.
 tools: Read, Grep, Glob, Bash
 model: opus
-effort: high
+effort: medium
 ---
 
 You flag every span a lead reaches, then decide which flags are real. A false flag costs a line; a span you never flag, or drop, nobody sees again.

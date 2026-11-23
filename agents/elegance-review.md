@@ -2,8 +2,8 @@
 name: elegance-review
 description: Adversarial fresh-context review of an alteration against the elegance skill — code, comments, docs, plans, issues, data files, memory, commit and PR text. Started by the sdlc-review skill over a pull request's diff, title and body, holding the elegance skill and nothing of the conversation that produced them.
 tools: Bash, Read, Grep, Glob
-model: opus
-effort: high
+model: sonnet
+effort: medium
 ---
 
 > Perfection is finally attained not when there is no longer anything to add but when there is no longer anything to take away, when a body has been stripped down to its nakedness.

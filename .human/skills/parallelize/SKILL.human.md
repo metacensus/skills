@@ -47,9 +47,9 @@ Remit · items · write-set · read-set · skills · contracts · neighbours · 
 |Every agent started|Model · effort|
 |---|---|
 |lookup · extract · format · flag a list's spans, weighing none|haiku · low|
-|research · summary · build to a confirmed Design · check against the written|sonnet · medium|
-|Design · debugging · security · the gate on a merge, publish or Release|opus · high|
-|a long build alone, no confirmed Design|opus · xhigh|
+|research · summary · build to a confirmed Design · review against the written|sonnet · medium|
+|Design · debugging · security · the check before a step that cannot be undone|opus · medium|
+|a long build alone, no confirmed Design|opus · high|
 
 Named agents: in frontmatter. Overrides: a skill naming its agents', a handoff, the person.
 

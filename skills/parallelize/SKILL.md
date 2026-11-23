@@ -66,9 +66,9 @@ The caller passes both to every agent it starts, by what the agent does:
 | The agent | Model · effort |
 |---|---|
 | looks up, extracts or formats; flags every span a list reaches, weighing none | haiku · low |
-| researches, summarizes, builds to a confirmed Design, or reads work against what is written | sonnet · medium |
-| makes a Design, debugs, weighs security, or is the check a merge, a publish or a Release waits on | opus · high |
-| builds at length on its own, with no confirmed Design to follow | opus · xhigh |
+| researches, summarizes, builds to a confirmed Design, or reviews work against what is written | sonnet · medium |
+| makes a Design, debugs, weighs security, or is the check before a step that cannot be undone | opus · medium |
+| builds at length on its own, with no confirmed Design to follow | opus · high |
 
 A named agent carries its row as `model:` and `effort:`. A skill that names its agents' models, a handoff's Environment, or the person overrides the table.
 
