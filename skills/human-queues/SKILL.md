@@ -20,5 +20,5 @@ Where no side session can start, the carrier runs `human-steps` itself, commands
 
 - One carrier owns the queues; a carrier beneath it escalates to it, and it routes.
 - Each item goes to its queue as it arises, its issue linked and enough beside it to act on without the run's context: the quoted span, the record, why it matters.
-- A deferred question comes back to the Decisions queue when it alone holds all work; the owning carrier sees that and sends it.
+- A deferred question returns to the Decisions queue, sent by the owning carrier, when it alone holds all work.
 - Answers are read from the issues, never from the queue sessions; threads run on meanwhile, as [`sdlc-crew`'s Waiting on a person](../sdlc-crew/SKILL.md#waiting-on-a-person) says.
