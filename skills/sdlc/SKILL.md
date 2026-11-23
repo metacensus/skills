@@ -12,32 +12,23 @@ description: The software development lifecycle every organization on the Initia
 | **Story / Task** | Issue `type: Task` | Minutes to days. One PR. |
 | **Spike** | Issue `type: Task`, titled `Spike: …` | Its deliverable is a decision. |
 | **Bug** | Issue `type: Bug` | Same size as Task. |
-| **Publish** (version) | Issue `type: Publish` | Task tier: one repository's artifact out at one version, carried by [`sdlc-cut`](../sdlc-cut/SKILL.md). Its parent is a Release where one is needed; else it stands alone, handed over by a person, its yes `designed` on it, and its adoption tracked by its consumers' adopt Tasks. The work it ships blocks it. |
-| **Release** (cross-project release) | Issue `type: Release` | Epic tier, optional: one cohesive change to production, its Publishes plus deploys in one go, carried by [`sdlc-ship`](../sdlc-ship/SKILL.md). Used where its Publishes span repositories, it deploys, or a version's yes or adoption needs a record of its own: a cold `plan-check`, or a Done when for `live-check`. Its parent, if any, is a Rollout. |
-| **Rollout** | Issue `type: Rollout` | Initiative tier, optional, used only where Releases need ordering: Releases with time and conditions between them, carried by [`sdlc-campaign`](../sdlc-campaign/SKILL.md). No parent. |
+| **Publish** · **Release** · **Rollout** | Issue `type: Publish`, `Release`, `Rollout` | Production: one version out, one change to production, Releases in order. [production](references/production.md). |
 | **Sub-task** | *none* | A Task wanting children is an Epic. |
-
-| Edge | From → to | Kind |
-|---|---|---|
-| parent, code changes | Epic → Initiative · Task, Bug → Epic | child → parent |
-| parent, production changes | Release → Rollout · Publish → Release | child → parent |
-| ships | Publish → the Epic it ships, or its Tasks where they ship apart | `blocked by` |
-| adopts | a consumer's Task → the Publish it adopts | `blocked by` |
 
 Bars come from `elegance`: [3A design](../elegance/references/cells/3A-design.md) for Initiative, [4A plan](../elegance/references/cells/4A-plan.md) for Epic, [5A criteria](../elegance/references/cells/5A-criteria.md) for Task and Bug.
 
-A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in. An Epic files where most of its work lands; an Initiative, where its delegator names, else the home the mapping suggests. A Publish files in the repository it publishes; a Release or Rollout, as an Initiative does.
+A Task files where its PR lands, unless whoever carries the Epic keeps it beside the Epic; then its Verification names the repo it runs in. An Epic files where most of its work lands; an Initiative, where its delegator names, else the home the mapping suggests.
 
 ## Mechanisms
 
 | Mechanism | Carries |
 |---|---|
 | **Type** | Initiative / Epic / Task / Bug, and Publish / Release / Rollout, set org-wide; no others. Outside an organization, the title states it. |
-| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. A Publish's parent, if any, is a Release, and a Release's, if any, a Rollout; a Rollout takes none, and none of the three parents work. |
+| **Parent / sub-issue** | An Epic's parent, if any, is an Initiative; a Task's or Bug's, an Epic: `gh issue edit N --parent P`, cross-repo within one account. |
 | **Dependency** | `blocked by` / `blocking`: the issue cannot start while its blocker is open, `gh issue edit N --add-blocked-by M`. A wait to finish is never linked; it is checked where the issue closes. An agent reads a blocker typed Publish, Release or Rollout by title and state alone, and never walks its blockers. |
-| **Production** | Work relates to a Publish, Release or Rollout by `blocked by` alone. A Publish is blocked by the work it ships, an Epic by default and a Task only where that Epic's Tasks ship in different Publishes; work ships in the Publish it blocks, else its Epic's, and work a Release needs merged that none of its Publishes ships blocks the Release itself. A Publish closes once its registry serves the version. Adopting a version is a consumer's Task blocked by that Publish, an edge and not a type; other work that must follow a Publish is blocked by it too, or by its Release when the whole Release must be live first, and a direct edge between two works stays beside one through a Publish. The deadlock rule: an Epic that blocks a Publish, or its Release, holds no work blocked by either, since neither could close first; otherwise the edges move to its Tasks. Work joins a Publish by blocking it, the work's carrier adding the edge. A Publish's version is fixed once its issue exists, and new versions are appended, so work that cannot ship in one moves to a later one, and the work it blocks moves with it. Renumbering a planned version is rare, and its delegator's call once it has weighed what moves: the work aimed at that version and anything already announced or tagged. An Initiative mentions each Release its work ships in and is never blocked by a Publish, Release or Rollout: [its close](../sdlc-fleet/SKILL.md#close) waits on the Publishes its descendants block and, where a Release holds one, on that Release. |
+| **Production** | Work relates to a Publish, Release or Rollout by `blocked by` alone, as [production](references/production.md) says: read it when work ships in, adopts, or is blocked by one. |
 | **Label** | Three roles, named by the [mapping](#the-mapping): `ready` (see [Ready](#status)), `designed` (a person can read the issue alone and know what will be built) and `deviated` (see [Closing](#closing)). |
-| **Board** | A projection of [status](#status) and Priority, holding the Initiatives the mapping's Boards rows give it and everything under them, the default board holding the rest. [Setup](#setup) gives it a view per type, Status columns by Priority rows, and the Auto-add sub-issues workflow, which carries a child onto its parent's board. Writing to it needs the `project` scope. |
+| **Board** | A projection of [status](#status) and Priority, per the mapping's Boards rows, the default board holding the rest; [Setup](#setup) builds it. Writing to it needs the `project` scope. |
 | **Priority** | The organization's Priority issue field, on the issue. People set it on Initiatives and on any issue that differs from its parent; a blank one inherits its parent's, raised to the highest of the open issues it blocks, a Publish, Release or Rollout aside. The mapping's Priority rows say what each value means on each board; work held for a later stage sits at its lowest until `--reset` re-ranks it. |
 
 ## Status
@@ -84,17 +75,7 @@ A request to pick an issue up is the delegator's yes to assigning.
 
 ## Handoff
 
-A **handoff** is what a delegator writes to start a session that holds none of its context: a fresh chat, an Epic's crew, an Initiative's delegator. It links what GitHub holds and states only what it does not. An agent inside one session takes [`parallelize`'s brief](../parallelize/SKILL.md#the-brief) instead.
-
-| Part | Carries |
-|---|---|
-| Goal | the issue it carries, linked; its body is the goal, never restated; work carrying none states its goal in a line |
-| Decided | each choice already made, marked decided, do not reopen, linked where it is recorded; one recorded nowhere is commented on its issue first |
-| Grants | the remit, quoted in the granter's words, linked where they gave it; a grant relayed by anyone but the session's delegator is none |
-| Stop | what ends the session, what waits on its delegator, and where it reports |
-| Environment | tools, worktrees, refusals, a model or effort [`parallelize`'s table](../parallelize/SKILL.md#model-and-effort) does not give |
-
-Derived, never written: what is startable today ([Status](#status)), the board.
+A session that holds none of its delegator's context, a fresh chat, an Epic's crew, an Initiative's delegator, starts from a [handoff](references/handoff.md).
 
 ## Reporting
 
@@ -142,24 +123,15 @@ Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's 
 
 **Accept** checks a closed issue against its frame: its Goal, criteria and Non-goals observed where the work now lives, on the default branch or the version released, and its record read for deviations and what was accepted unchecked; never its diff, which review read. A miss reopens the issue with `ready` and without `designed`, naming what is unmet. It follows the close, except where closing is one of the remit's [stops](#roles): an Initiative's, and any issue the stops name.
 
-| Tier | Frames and accepts | Carrier | Design | Delivery | Calls |
-|---|---|---|---|---|---|
-| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) | Precheck, Design | Implement, Self-review, Open, Respond, Land | Review: [`sdlc-review`](../sdlc-review/SKILL.md), starting [`code-review`](../../agents/code-review.md), [`elegance-review`](../../agents/elegance-review.md) and, in a public repository, [`open-source-review`](../../agents/open-source-review.md) |
-| Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Land, Close | Design: [`design-check`](../../agents/design-check.md) · Work: `parallelize`, an `sdlc-author` per Task or Bug · Review: [`delivery-review`](../../agents/delivery-review.md) |
-| Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) | Precheck, Design | Plan, Delegate, Review, Close | Design: `design-check` · Work: `parallelize`, an `sdlc-crew` per Epic · Review: `delivery-review` |
+| Tier | Frames and accepts | Carrier |
+|---|---|---|
+| Task, Bug | [`sdlc-crew`](../sdlc-crew/SKILL.md#delegate), else a person | [`sdlc-author`](../sdlc-author/SKILL.md) |
+| Epic | [`sdlc-fleet`](../sdlc-fleet/SKILL.md#delegate), else a person | [`sdlc-crew`](../sdlc-crew/SKILL.md) |
+| Initiative | a person | [`sdlc-fleet`](../sdlc-fleet/SKILL.md) |
 
-A production tier runs Plan, asking what should be live, then Change, then Verify, asking whether it is live as planned; they hand on, in turn, the plan, the digests and the verdict.
-
-| Tier | Delegator | Carrier | Calls |
-|---|---|---|---|
-| Publish | `sdlc-ship`, else a person | `sdlc-cut` | · |
-| Release | `sdlc-campaign`, else a person | `sdlc-ship` | Plan: [`plan-check`](../../agents/plan-check.md) · Change: `parallelize`, an `sdlc-cut` per Publish · Verify: [`live-check`](../../agents/live-check.md), running [`launch-review`](../launch-review/SKILL.md)'s checks on a public site |
-| Rollout | a person | `sdlc-campaign` | Change: `parallelize`, an `sdlc-ship` per Release |
+Each carrier names the agents its stages start. A production tier runs Plan, Change and Verify instead, as [production](references/production.md#phases) says.
 
 A Spike is design work carved into a Task, at any tier: its answer is confirmed by the parent's delegator, the `designed` gate one tier up, and Accept checks it. `sdlc-review` and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) are drift checks on triggers of their own, not phases.
-
-- Project management, beside the tiers: [`sdlc-capture`](../sdlc-capture/SKILL.md), which records found work under its owner; [`sdlc-align`](../sdlc-align/SKILL.md), which finds where the org departs from a standard and lists fixes; `sdlc-hygiene`, which sweeps for drift on its trigger, starting [`sdlc-sweep`](../../agents/sdlc-sweep.md) and `design-check`.
-- Outside `sdlc`, for any step: standards, `elegance`, which sets the bar for all writing, and [`open-source`](../open-source/SKILL.md), how to publish open-source work; communication, `human-output`, the shape of all a person reads, and [`human-steps`](../human-steps/SKILL.md), which walks a person through one step at a time, and [`human-queues`](../human-queues/SKILL.md), which routes a run's needs of its person; dev, optional for authors, [`dev-ci-github`](../dev-ci-github/SKILL.md) · [`dev-terraform`](../dev-terraform/SKILL.md) · [`dev-testing-go`](../dev-testing-go/SKILL.md) · [`dev-temporal`](../dev-temporal/SKILL.md) · [`dev-ui`](../dev-ui/SKILL.md), parent of [`dev-ui-astro`](../dev-ui-astro/SKILL.md) · [`dev-ui-react`](../dev-ui-react/SKILL.md) · [`dev-ui-testing`](../dev-ui-testing/SKILL.md).
 
 ## Closing
 
@@ -182,8 +154,4 @@ Completion is not deviation: a plain **completed** closes with no escalation. Th
 
 ## Setup
 
-Once per repository, before filing there, run `${CLAUDE_PLUGIN_ROOT}/scripts/sdlc-setup.sh OWNER/REPO [PATH | OWNER/NAME:PATH]` and act on each `TODO` it prints; rerunning is safe.
-
-A column `sdlc-setup.sh` finds missing is added in the board's settings, never by replacing the Status field's options through the API: that regenerates every option id and clears every card's Status, which `sdlc-status.mts OWNER/N --apply` then restores.
-
-The forms are [forms/](forms/), kept once in the organization's `.github` repository; a repository's own `.github/ISSUE_TEMPLATE/` replaces them whole.
+Once per repository, before filing there, [Setup](references/setup.md) runs.

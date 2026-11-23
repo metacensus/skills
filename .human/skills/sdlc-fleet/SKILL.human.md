@@ -1,10 +1,10 @@
-> One orchestrator carries an Initiative from outline to finish line: a crew per Epic, no Epic or Task of its own. Starts from a [handoff](../sdlc/SKILL.human.md#handoff).
+> One orchestrator carries an Initiative from outline to finish line: a crew per Epic, no Epic or Task of its own. Starts from a [handoff](../sdlc/references/handoff.human.md).
 
 Fires: outlining, filing, running, orchestrating or closing an Initiative; asking what its orchestrator does next.
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Initiative. Crews link its Decided and Stops, never copy them.
 
-A thread waiting on a person, or the person away: [`sdlc-crew`'s Waiting on a person](../sdlc-crew/SKILL.human.md#waiting-on-a-person).
+A thread waiting on a person, or the person away: [`sdlc-crew`'s Waiting on a person](../sdlc-crew/references/waiting.human.md).
 
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|

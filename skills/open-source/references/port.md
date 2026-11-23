@@ -17,4 +17,4 @@ Everything no lead reaches. Shortening, merging files, renaming beyond case and 
 
 ## Where the map goes
 
-In the pull request body, where the reviewer reads the sources beside the diff. It is host text, so review's leads read it too. It names source paths relative to their repository and never the repository, which [the hub](../../sdlc/SKILL.md#stages) keeps to private comments; the reviewer's [brief](../../parallelize/SKILL.md#the-brief) or [handoff](../../sdlc/SKILL.md#handoff) names it.
+In the pull request body, where the reviewer reads the sources beside the diff. It is host text, so review's leads read it too. It names source paths relative to their repository and never the repository, which [the hub](../../sdlc/SKILL.md#stages) keeps to private comments; the reviewer's [brief](../../parallelize/SKILL.md#the-brief) or [handoff](../../sdlc/references/handoff.md) names it.

@@ -1,23 +1,10 @@
-> A delegator carries an Epic from Design to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child. Starts from a [handoff](../sdlc/SKILL.human.md#handoff). Under an Initiative, its delegator is [`sdlc-fleet`](../sdlc-fleet/SKILL.human.md), the Initiative's Decided and Stops binding it.
+> A delegator carries an Epic from Design to closed: an author per child, a fresh reviewer per pull request, the plan held by the delegator, who carries no child. Starts from a [handoff](../sdlc/references/handoff.human.md). Under an Initiative, its delegator is [`sdlc-fleet`](../sdlc-fleet/SKILL.human.md), the Initiative's Decided and Stops binding it.
 
 Fires: orchestrating or delegating an Epic's children across agents; designing an Epic's children; asking what the delegator does next.
 
 Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the Epic, composing [`parallelize`](../parallelize/SKILL.human.md).
 
-## Waiting on a person
-
-> A choice waits on a person, never the work around it.
-
-|Question|Then|
-|---|---|
-|one of the remit's [stops](../sdlc/SKILL.human.md#roles)|⛔ to the person|
-|any other|`Decided, reversible:`, keep going|
-
-While it waits, only what can be undone: build the options · stack on PRs in review · push the neighbours · run discovery.
-
-What waits on the person goes through [`human-queues`](../human-queues/SKILL.human.md), opened at kickoff by the carrier the person delegates to.
-
-Away, from a handoff: grants quoted in every brief · a clock-time stop · a status outline on return.
+A thread waiting on a person, or a person away: [waiting](references/waiting.human.md).
 
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
