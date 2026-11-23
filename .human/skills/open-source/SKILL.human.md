@@ -16,7 +16,7 @@ Fires: going public; writing a commit, PR, issue or comment in a public repo; le
 
 | Section | Rows |
 |---|---|
-| `## Licenses` | repo · glob · SPDX id ([licensing](references/licensing.human.md)) |
+| `## Licenses` | optional rule (SPDX id · what it covers), then exceptions: repo · glob · SPDX id ([licensing](references/licensing.human.md)) |
 | `## Leads` | lead · examples |
 | `## Exceptions` | public despite a lead |
 
