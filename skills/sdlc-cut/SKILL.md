@@ -1,6 +1,6 @@
 ---
 name: sdlc-cut
-description: Carry a Publish from its plan to served — one repository's artifact out at one version, tagged at a pinned commit, built by CI, and read back from its registry. Trigger when cutting, tagging or publishing a version, when a Release starts a cut or a person hands over a Publish, when a release run fails, and when checking what a registry serves.
+description: Carry a Publish from its plan to served — one repository's artifact at one version, tagged at a pinned commit, built by CI, read back from its registry. Trigger when cutting, tagging or publishing a version, when a Release starts a cut or a person hands over a Publish, when a release run fails, and when checking what a registry serves.
 ---
 
 The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes and is never [one-way](../sdlc-ship/SKILL.md#plan), since the version before it stays served. Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person.

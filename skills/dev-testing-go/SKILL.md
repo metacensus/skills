@@ -1,6 +1,6 @@
 ---
 name: dev-testing-go
-description: How to test a Go service — test names, table-driven tests, validation apart from execution, generated mocks, the layers a test can run at, seams, conventions as tests, and container-backed integration tests. Trigger when writing, reviewing, or planning tests for Go code, adding a seam or test double, or deciding what a change needs tested and at which layer.
+description: How to test a Go service — names, tables, mocks, seams, the layers a test runs at, and container-backed integration tests. Trigger when writing, reviewing or planning tests for Go code, adding a seam or test double, or deciding what a change needs tested and at which layer.
 ---
 
 ## Names run from scope to detail

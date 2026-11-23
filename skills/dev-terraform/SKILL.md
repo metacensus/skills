@@ -1,6 +1,6 @@
 ---
 name: dev-terraform
-description: How to write and operate Terraform — roots and state, one source per version, module interfaces, plan-time knowability, stateful lifecycle, secrets kept out of state and logs, least privilege, Kubernetes through Terraform, and terraform test. Trigger when writing or reviewing Terraform or OpenTofu code (`.tf`, `.tftest.hcl`, `.tfvars`), a module, a root, a backend or environment layout, a terraform test, or the Makefile and scripts that run them, and before any plan, apply, import or destroy.
+description: How to write and operate Terraform — roots and state, modules, plan-time knowability, secrets, least privilege, Kubernetes, and terraform test. Trigger when writing or reviewing Terraform or OpenTofu (`.tf`, `.tftest.hcl`, `.tfvars`), a module, root, backend or environment layout, a terraform test, or the scripts that run them, and before any plan, apply, import or destroy.
 ---
 
 ## Done is an empty second plan

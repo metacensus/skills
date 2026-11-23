@@ -1,6 +1,6 @@
 ---
 name: sdlc
-description: The software development lifecycle every organization on the Initiative/Epic/Task/Bug ladder shares, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards, or status work here, or whether an issue is ready, or reporting up to a person, and when handing work to a fresh session or writing its prompt.
+description: The issue lifecycle on the Initiative/Epic/Task/Bug ladder, and the `sdlc-mapping.md` that binds it. Trigger when setting a repository up for issues, writing or auditing an `sdlc-mapping.md`, asking how issues, labels, boards or status work or whether an issue is ready, reporting up to a person, and handing work to a fresh session or writing its prompt.
 ---
 
 ## The ladder

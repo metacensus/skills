@@ -1,6 +1,6 @@
 ---
 name: sdlc-author
-description: Carry an issue from pickup to closed, and any change in a shared repository from its first edit to merged. Trigger when picking up, starting, working, finishing, or landing an issue, when answering its review, and when asking what work is ready to start; before the first edit of a change, and before any commit, push or pull request; when waiting on CI or a background agent; and when merging a PR or a stack, or a merge is refused.
+description: Carry an issue from pickup to closed, and any change in a shared repository from its first edit to merged. Trigger when picking up, starting, working, finishing or landing an issue, answering its review, or asking what work is ready; before the first edit of a change, and before any commit, push or PR; when waiting on CI or a background agent; and when merging a PR or a stack, or a merge is refused.
 ---
 
 The author's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, the mapping's Checks rows included. A stage fixes what it can before it reports, in an earlier stage's work if that is where the fix lies. A change with no issue runs Implement, Self-review and Open's checks, and stops where Open escalates.

@@ -1,6 +1,6 @@
 ---
 name: dev-ui-testing
-description: How to test a web UI — the layer each test runs at, accessibility in a real browser on every route, the built image probed, SSR safety, contrast from the tokens, and one shared browser harness. Trigger when writing, reviewing, or planning tests for a front end, choosing where a UI test runs, adding a browser suite or an accessibility check, or smoke-testing a UI image.
+description: How to test a web UI — the layer each test runs at, accessibility in a real browser, the built image, SSR safety, contrast, one browser harness. Trigger when writing, reviewing or planning front-end tests, choosing where a UI test runs, adding a browser suite or accessibility check, or smoke-testing a UI image.
 ---
 
 ## Choose the layer by what a failure would mean

@@ -1,6 +1,6 @@
 ---
 name: dev-ui
-description: What every web UI shares, and which child skill holds the rest — one image for every environment, one base path, caching and headers, tokens from one source, one version line, generated clients only, how a form submits, and the build as the gate. Trigger when scaffolding, reviewing, or changing a front-end repository's build config, base path, Dockerfile, web server config, styling foundation, dependencies, API calls, or a form's submit, when deciding how two UIs share tokens or components, when aligning a surface to a design system, and before any work that reaches for `dev-ui-astro`, `dev-ui-react` or `dev-ui-testing`.
+description: What every web UI shares, and which child skill holds the rest — one image, one base path, caching and headers, tokens, one version line, generated clients, form submits, the build as gate. Trigger when scaffolding, reviewing or changing a front end's build config, base path, Dockerfile, web server config, styling, dependencies, API calls or a form's submit, when two UIs share tokens or components or a surface aligns to a design system, and before work reaching for `dev-ui-astro`, `dev-ui-react` or `dev-ui-testing`.
 ---
 
 | Skill | Holds |

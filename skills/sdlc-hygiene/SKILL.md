@@ -1,6 +1,6 @@
 ---
 name: sdlc-hygiene
-description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle: fix what it may and escalate the rest, each family's open questions among them. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted, after a pivot, when asking what is left to decide, and when scheduling the sweep.
+description: Sweep an organization's issues, labels and boards for drift from the `sdlc` lifecycle, fixing what it may and escalating the rest. Trigger when grooming, sweeping or cleaning up a backlog or board, when asking what has gone stale or drifted or what is left to decide, after a pivot, and when scheduling the sweep.
 ---
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).

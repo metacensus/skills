@@ -1,6 +1,6 @@
 ---
 name: dev-ui-astro
-description: How a static site is built with Astro beyond what every UI shares — islands, content collections, MDX, the build's gate wired, sitemaps and icons, a form on a static page, and styles scoped to their components. Trigger when writing or reviewing an Astro site's pages, components, content, integrations or `astro.config`, when choosing a `client:` directive, when adding a collection, an MDX plugin, a route or a form, and when wiring a static site's gate.
+description: What an Astro static site needs beyond what every UI shares — islands, collections, MDX, its gate, sitemaps, forms, scoped styles. Trigger when writing or reviewing an Astro site's pages, components, content, integrations or `astro.config`, choosing a `client:` directive, adding a collection, MDX plugin, route or form, or wiring a static site's gate.
 ---
 
 What every UI shares is in [`dev-ui`](../dev-ui/SKILL.md); how a site is tested, in [`dev-ui-testing`](../dev-ui-testing/SKILL.md).

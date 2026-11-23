@@ -1,6 +1,6 @@
 ---
 name: open-source
-description: Open-source a repository, or keep working in one that is public, without leaking internal information or drifting from its intended license. Trigger when making a repository public or open source, when writing a commit, pull request, issue, or comment in a public repository, when auditing one for leaks, secrets, or licensing, when porting a sample, a skill or a file from a private repository into a public one, and whenever the user asks whether something is safe to push or publish.
+description: Open-source a repository, or work in a public one, without leaking internal information or drifting from its license. Trigger when making a repository public; when writing a commit, PR, issue or comment in a public repository; when auditing one for leaks, secrets or licensing; when porting a sample, skill or file from a private repository into a public one; and when asked whether something is safe to push or publish.
 ---
 
 **Publishing cannot be undone**: copies spread within minutes of a push and no rewrite reaches them. So secrets, which a machine can catch, are caught before the push by [`dev-ci-github`'s check](../dev-ci-github/SKILL.md#before-a-public-push); private names are caught by the writer while writing, and by the cold read at Review.

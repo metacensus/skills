@@ -1,6 +1,6 @@
 ---
 name: sdlc-align
-description: Find where an organization departs from a standard (a skill, a pin, a setting, a file) and hand each place to fix to `sdlc-capture`, in the `sdlc` lifecycle. Trigger when a pin, a label set, a workflow, a plugin install or a repository setting must hold in several repositories, when asking which repositories still lack one, and when asking whether the organization meets a skill.
+description: Find where an organization departs from a standard (a skill, pin, setting or file) and hand each fix to `sdlc-capture`. Trigger when a pin, label set, workflow, plugin install or repository setting must hold in several repositories, when asking which still lack one, and when asking whether the organization meets a skill.
 ---
 
 A standard is a set of checks, and one probe answers both the survey and each fix's Verification, so "departs" and "fixed" cannot drift apart. The stages run as [the hub's protocol](../sdlc/SKILL.md#stages) says, commented on the asking issue, else to the session.

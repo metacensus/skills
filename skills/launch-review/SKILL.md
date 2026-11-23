@@ -1,6 +1,6 @@
 ---
 name: launch-review
-description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, favicons, private links, accessibility, privacy notice, copy compliance, domain records, a visual pass, and staging after merge. Trigger before such a surface goes live, before a domain cutover moves it to new builds, and when asked whether it is ready.
+description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, accessibility, privacy, copy, domain records, a visual pass, staging. Trigger before such a surface goes live, before a domain cutover moves it to new builds, and when asked whether it is ready.
 ---
 
 The surface is what a signed-out visitor reaches; the signed-in app and a full security review are out.

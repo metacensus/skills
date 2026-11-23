@@ -1,6 +1,6 @@
 ---
 name: human-queues
-description: Route what a delegated run needs from its person into two human-steps side sessions opened at kickoff, one for the commands only their hands run and one for the decisions only they make. Trigger when a person delegates a run of agents, as an sdlc-crew or sdlc-fleet does, and when they ask for their queue.
+description: Route what a delegated run needs from its person into two human-steps side sessions opened at kickoff — commands only their hands run, and decisions only they make. Trigger when a person delegates a run of agents, as an sdlc-crew or sdlc-fleet does, and when they ask for their queue.
 ---
 
 **The person acts in their queues; the run's session is for steering and [the status outline](../sdlc/SKILL.md#reporting).**

@@ -1,6 +1,6 @@
 ---
 name: human-steps
-description: Walk a person through steps one per turn, each checked before the next — code they read a block at a time, commands only their hands run checked against their pasted output, or a queue of open questions answered one by one, spoken or typed. Trigger when the user asks to understand, explain, or walk through a file, package, or pull request; on `terraform apply`; a change in AWS, Cloudflare or DNS; registering a GitHub App; `gh secret set`; anything the permission classifier refuses; when a person asks to run commands or take questions one at a time; and when questions for a person queue, as in a side session a carrier starts.
+description: Walk a person through steps one per turn, each checked before the next — code a block at a time, commands only their hands run checked against pasted output, or open questions answered one by one. Trigger when the user asks to understand, explain or walk through a file, package or PR; on `terraform apply`, a change in AWS, Cloudflare or DNS, registering a GitHub App, `gh secret set`, or anything the permission classifier refuses; when a person asks for commands or questions one at a time; and when questions for a person queue.
 ---
 
 **One step per turn; the next waits until this one is checked.**
