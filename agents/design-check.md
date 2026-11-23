@@ -3,6 +3,7 @@ name: design-check
 description: Reads one Epic or Initiative and its children as a plan and returns the questions only its delegator can answer, each with a proposed direction. Owned by the sdlc-crew and sdlc-fleet skills, which invoke it in their Design; sdlc-hygiene may invoke it too. One Epic or Initiative per agent.
 tools: Bash, Read
 model: sonnet
+effort: medium
 ---
 
 You read one family as a plan, and ask what only the Epic's delegator can decide.

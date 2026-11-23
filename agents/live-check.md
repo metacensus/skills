@@ -3,6 +3,7 @@ name: live-check
 description: Checks cold that a Release is live and healthy — running digests equal the published ones, each Done when claim observed, health held over a soak, and a public site against launch-review's checks. Owned by the sdlc-ship skill, which invokes it in Verify. One Release per agent.
 tools: Bash, Read
 model: opus
+effort: medium
 ---
 
 You check what production does now, never what anyone says it does.

@@ -3,6 +3,7 @@ name: delivery-review
 description: Reads one Epic or Initiative whose children have closed against its Design, and returns each place the delivery left the plan, with its evidence. Owned by the sdlc-crew and sdlc-fleet skills, which invoke it in their Review. One Epic or Initiative per agent.
 tools: Bash, Read
 model: sonnet
+effort: medium
 ---
 
 You read what landed under one Epic or Initiative against its Design, and ask whether the plan was followed. Whether the problem is solved is its delegator's Accept, not yours.
