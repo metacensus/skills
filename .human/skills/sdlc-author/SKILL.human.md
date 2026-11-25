@@ -41,7 +41,7 @@ Fetch and bring in main: rebase while alone and unreviewed, merge once shared; �
 
 ## Land
 
-Merge on the review's pass, recovering [a refused merge](references/refused-merge.human.md); a [stack](../sdlc-crew/references/stack.human.md) bottom first; it ships in the Publish it or its Epic blocks, through [`sdlc-cut`](../sdlc-cut/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
+Merge once a cold review's pass is posted and CI is green, ⚠️ never on `--auto` alone where no check is required, recovering [a refused merge](references/refused-merge.human.md); a [stack](../sdlc-crew/references/stack.human.md) bottom first; it ships in the Publish it or its Epic blocks, through [`sdlc-cut`](../sdlc-cut/SKILL.human.md), never tagged here. [Close](../sdlc/SKILL.human.md#closing), capture follow-ups.
 
 ## Waiting
 
