@@ -2,8 +2,8 @@
 
 |Tier|Size|Carrier|Delegator|
 |---|---|---|---|
-|Publish|one version of one repo, closed once served|`sdlc-cut`|`sdlc-ship`, else a person|
-|Release|optional, where Publishes must hold order or rollback as one, an apply is one-way, or a yes needs its own record|`sdlc-ship`|`sdlc-campaign`, else a person|
+|Publish|one version of one repo, closed once served; under a Release where its plan names a one-way step|`sdlc-cut`|`sdlc-ship`, else a person|
+|Release|optional, where Publishes must hold order or rollback as one, or a yes needs its own record|`sdlc-ship`|`sdlc-campaign`, else a person|
 |Rollout|optional, where Releases need ordering|`sdlc-campaign`|a person|
 
 Plan → Change → Verify

@@ -3,7 +3,7 @@ name: sdlc-cut
 description: Carry a Publish from its plan to served — one repository's artifact or desired state at one version, tagged at a pinned commit, built by CI or applied, read back from where it serves. Trigger when cutting, tagging or publishing a version, when a Release starts a cut or a person hands over a Publish, when a release run fails, and when checking what a registry serves.
 ---
 
-The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes; it is [one-way](../sdlc-ship/SKILL.md#plan) only where a desired-state plan names a one-way step, and then always [under a Release](../sdlc/references/production.md#the-tiers). Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person for a yes.
+The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes; it is [one-way](../sdlc-ship/SKILL.md#plan) only where a desired-state plan names a one-way step, which [needs a Release](../sdlc/references/production.md#the-tiers). Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person for a yes.
 
 Each stage first checks whether its result already holds, and then does not act again. Plan's comment is Change's intent and Change's is Verify's, so a replacement agent resumes from the last comment and what the world shows.
 
@@ -30,7 +30,7 @@ Each repository's kind is its row in [`sdlc-mapping.md`](../sdlc/references/mapp
 - A first publish waits on [`dev-ci-github`'s first-release setup](../dev-ci-github/SKILL.md#release-from-a-tag).
 - **The survey** is the comment, and what a yes is given on: the version, the commit and the range; the notes; its kind's survey; what comes after it, as its kind says, each with what it must do, a consumer's as the adopt Task the Publish blocks; and what the tag sets in motion, the CI run and what serves a version that, once served, never moves.
 
-**Escalate** a lone Publish's survey until its yes, one an agent started with no Release, a lone one whose plan names a one-way step, a repository its mapping gives no kind, and a PR in the range outside the scope. **Stop** on the tag already on another commit, and, under a Release, on a version or commit the brief does not name.
+**Escalate** a lone Publish's survey until its yes, one an agent started with no Release, a repository its mapping gives no kind, and a PR in the range outside the scope. **Stop** on the tag already on another commit, a lone Publish whose plan names a one-way step, and, under a Release, on a version or commit the brief does not name.
 
 ## Change
 
