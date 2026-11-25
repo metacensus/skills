@@ -25,7 +25,7 @@ A Release takes hours, in one go. It rests only before a Publish, a consumer Tas
 
 [`parallelize`](../parallelize/SKILL.md) answered: units are the Publishes; edges their `blocked by`, through the consumer Tasks between them; the action is an [`sdlc-cut`](../sdlc-cut/SKILL.md) sub-agent, briefed with its Publish and the plan's version and commit; done is its Publish closed and its registry serving the version; the checks, the cut's own Verify.
 
-- A downstream Publish starts once its upstream is served and the Task between them has merged. Its commit is pinned then; Plan re-runs, for a new yes, where its range no longer equals its scope or its largest change exceeds the planned version.
+- A downstream Publish starts once its upstream is served and the Task between them has merged. Its commit is pinned then; Plan re-runs, for a new yes, where its range no longer equals its scope or, unless a person named the version, its largest change exceeds it.
 - Each cut's result is read from its Publish, never from what the sub-agent returns.
 - Then each deploy, in order, as a PR to desired state whose diff is the plan's. Live state is re-read just before it applies; one that differs from the rollback target re-runs Plan.
 - The agent applies only where it holds the credential. Production is the person's, through [`human-steps`](../human-steps/SKILL.md#commands).
