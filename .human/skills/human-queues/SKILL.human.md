@@ -1,10 +1,6 @@
-> The person acts in their queues; the run's session is for steering.
+> One queue, in the session the person talks to: the delegator, or a parent whose child orchestrates.
 
-Fires: a delegated run that will need the person's hands or judgment; "my queue"; named beside another skill.
+Fires: a delegated run needing the person; "my queue".
 
-|Queue|`human-steps` kind|Takes|
-|---|---|---|
-|Commands|Commands|steps only their hands run|
-|Decisions|Questions|the remit's stops; merges kept for them|
-
-Both start at kickoff, owned by the top carrier. Items carry their issue and context; answers are read from issues.
+- Grants stay in their session; a step needing one runs there, or by hand.
+- Ordered by what each unblocks, never split by kind; one at a time.

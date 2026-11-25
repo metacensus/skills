@@ -37,7 +37,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 ## Delegate
 
-- One `sdlc-crew` per Epic, run as a sub-agent, a sub-session only when the person asks, split at Design [as a crew splits its authors](../sdlc-crew/SKILL.md#delegate): the orchestrator applies `designed`, citing its remit, unless the Design settles one of the Initiative's Stops or the remit's [stops](../sdlc/SKILL.md#roles). Those that do go to the person as one outline per wave.
+- One `sdlc-crew` per Epic, run as a sub-agent, a sub-session only when the person asks, the person's grants [staying in the session they gave them](../human-queues/SKILL.md#grants), split at Design [as a crew splits its authors](../sdlc-crew/SKILL.md#delegate): the orchestrator applies `designed`, citing its remit, unless the Design settles one of the Initiative's Stops or the remit's [stops](../sdlc/SKILL.md#roles). Those that do go to the person as one outline per wave.
 - Every crew and author works in a worktree and branch namespace of its own; nothing commits in the orchestrator's checkout.
 - The orchestrator writes no Epic's Design: one it wrote would go to the person.
 - The person steers, halts or queries in the orchestrator's own session; a change to the plan is mirrored as a comment on the Initiative.
