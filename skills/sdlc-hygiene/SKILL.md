@@ -5,9 +5,9 @@ description: Sweep an organization's issues, labels and boards for drift from th
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
-A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh issue list ... --jq '.[].number' | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO --json number --jq '.[].number' -- ... | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
 
-Its calls go by REST where REST serves as GraphQL does, sparing the GraphQL budget `gh issue`, `gh pr` and `gh project` spend: `gh search issues` reads, and `gh api repos/OWNER/REPO/issues/N` writes.
+Its calls go by REST where REST serves as GraphQL does, sparing the GraphQL budget `gh issue`, `gh pr` and `gh project` spend.
 
 ## Precheck
 
@@ -62,7 +62,7 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 - After the outline, the commands a person runs, one per line, by repository: each `merged-branches` deletion, `gh api -X DELETE repos/OWNER/REPO/git/refs/heads/BRANCH`, and each `wrong-home` in an archived repository, its move between `gh repo unarchive OWNER/REPO --yes` and `gh repo archive OWNER/REPO --yes`.
 - A request naming a class's fix, a standing grant among them only where the request quotes it, answers that class's lines yes, but never a choice of goal, scope or parent, or anything irreversible: those stay in the list.
 - It closes no issue: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
-- Its own writes batch, and go out back to back: one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` carries every type, assignee and label change an issue takes, `labels[]` its whole set. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
+- Its own writes go in as few calls as hold them, one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` per issue, `assignees[]` and `labels[]` each replacing the whole set, sent in sequence, never concurrently: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a burst, and a write it refuses waits out its `retry-after` and resumes. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
 
 **Stop** on a rate limit; a rerun once it resets skips what is written.
 
