@@ -20,4 +20,4 @@ Calls chosen for the most per unit of cost, as [hygiene's](../sdlc-hygiene/SKILL
 
 **Defer**: a person's word; moves to an issue with reason and trigger; drop is not planned; removal commented; its enforcement comes off; not asked again.
 
-**Pickup**: its Epic's crew re-plans over it at Land; unparented, Adopt; else hygiene's missing `ready` raises it.
+**Pickup**: its Epic's crew re-plans over it at Land; else hygiene's missing `ready` raises it.
