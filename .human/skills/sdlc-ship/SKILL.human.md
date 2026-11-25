@@ -8,11 +8,11 @@ Plan → ⛔ yes → Change → Verify
 
 |Stage|Holds|⛔|🛑|
 |---|---|---|---|
-|Plan|work merged; Publish order; each scope and `sdlc-cut` survey (pending behind a consumer Task); deploys, non-production first, one one-way step at most, last; rollback target from live; every state safe; `plan-check` passes|until the yes, `designed`|needs a Rollout|
+|Plan|work merged; Publish order; each scope and `sdlc-cut` survey (pending behind a consumer Task); deploys, non-production first, a root's apply a Publish, one one-way step at most, last; rollback target from live; every state safe; live reads first, independent ones together; `plan-check` passes|until the yes, `designed`|needs a Rollout|
 |Change|a cut per Publish, downstream once upstream is served; then each deploy as a PR, live re-read first; production applied by the person|failure|·|
 |Verify|`live-check` passes after the soak; record: environment, asset, version, digest; close|escalate: the person, row by row; fail: Failure|·|
 
-The delegator applies `designed` on each survey, each environment's diff and any one-way step with its precondition, quoting the person. Under a Rollout carrying the person's `designed`, `sdlc-campaign` gives a Release with no one-way step its yes. One-way: no rollback undoes it, such as a destructive migration or a removed API; never a Publish.
+The delegator applies `designed` on each survey, each environment's diff and any one-way step with its precondition, quoting the person. Under a Rollout carrying the person's `designed`, `sdlc-campaign` gives a Release with no one-way step its yes. One-way: no rollback undoes it, such as a destructive migration or a removed API; never a Publish of code.
 
 ## Failure
 

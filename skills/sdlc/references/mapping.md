@@ -10,6 +10,7 @@
 | `## Inherited fields` | Field (single-select), Boards as space-separated `OWNER/N` | no board field inherits |
 | `## Status` | Status, Column (`—`: card archived) | each column named for its status |
 | `## Checks` | Stage, Paths, Check | the stage's own checks only |
+| `## Publishes` | Repository as `OWNER/REPO`, [Kind](../../sdlc-cut/SKILL.md#kinds), Tags as `repository` (`vX.Y.Z`) or `root` (`ROOT/vX.Y.Z`) | tags per repository |
 | `## Cadence` | Threshold, Value | `sweep` every 7 days, read by [`sdlc-hygiene`'s schedule](../../sdlc-hygiene/SKILL.md#schedule); `stale` after 14 days without activity; `backlog` after 90 days in Backlog |
 
 - Rows are read as [one parser](../../../scripts/mapping.mts) states: a row with a cell beginning with `Hole` is undecided, takes the default, and is reported, never filled; `—` is an empty cell.

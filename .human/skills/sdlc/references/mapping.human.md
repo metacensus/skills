@@ -8,6 +8,7 @@
 |Inherited fields|Field, Boards|
 |Status|Status, Column|
 |Checks|Stage, Paths, Check|
+|Publishes|Repository, Kind, Tags|
 |Cadence|Threshold, Value|
 
 `Hole`: undecided; default applies, reported.

@@ -12,10 +12,11 @@ A Release takes hours, in one go. It rests only before a Publish, a consumer Tas
 - The Release is open and its work merged: every issue blocking it or a Publish is closed, save a consumer Task between two of its Publishes. The acting identity is assigned, then [`sdlc-status --apply`](../sdlc/SKILL.md#status).
 - **Order:** the Publishes, sorted by their `blocked by` edges. A consumer Task between two is named and waited on, never done.
 - **Each Publish:** its scope, and its survey, as [`sdlc-cut`'s Plan](../sdlc-cut/SKILL.md#plan) derives it, its commit and range pending where a consumer Task precedes it. Merged work in a range that no scope covers joins that Publish as a blocker, or stops the Release.
-- **Deploys:** the environments in order, non-production first; each one's diff to desired state, images pinned by digest; and at most one one-way step, last, with the precondition it needs, as the campaign's brief names it where a Rollout holds the Release. A step is **one-way** when no rollback undoes its effect: a data migration that drops or rewrites, removing a contract or API others use, deleting what others read. A Publish is not one, since the version before it stays served.
+- **Deploys:** the environments in order, non-production first; each one's diff to desired state, images pinned by digest, a root's apply a [desired-state Publish](../sdlc-cut/SKILL.md#kinds); and at most one one-way step, last, with the precondition it needs, as the campaign's brief names it where a Rollout holds the Release. A step is **one-way** when no rollback undoes its effect: a data migration that drops or rewrites, removing a contract or API others use, deleting what others read. A Publish of code is not one, since the version before it stays served.
 - **Rollback target:** each environment's running version and digest, read from what is live, never from git; where it runs no image, the desired-state commit last applied.
 - Every state between two steps is safe. A change that needs two things live at once is a Rollout.
-- [`plan-check`](../../agents/plan-check.md) passes, given the Release and the plan comment.
+- Every live reading is gathered before the first [`plan-check`](../../agents/plan-check.md): independent reads as one step, serial only where one result feeds the next.
+- `plan-check` passes, given the Release and the plan comment.
 - **The yes:** `designed` on the Release, given on the plan and its verdict: each Publish's [survey](../sdlc-cut/SKILL.md#plan), each environment's diff to desired state, and any one-way step with its precondition. The Release's delegator applies it, never the ship. It carries the person's words, quoted, save on a Release with no one-way step under a Rollout carrying the person's `designed`, which `sdlc-campaign` applies on the strength of theirs. A yes relayed by anyone but the delegator counts for nothing, and a changed plan loses it.
 
 **Escalate** until the yes. **Stop** on a change that needs a Rollout.
@@ -24,7 +25,7 @@ A Release takes hours, in one go. It rests only before a Publish, a consumer Tas
 
 [`parallelize`](../parallelize/SKILL.md) answered: units are the Publishes; edges their `blocked by`, through the consumer Tasks between them; the action is an [`sdlc-cut`](../sdlc-cut/SKILL.md) sub-agent, briefed with its Publish and the plan's version and commit; done is its Publish closed and its registry serving the version; the checks, the cut's own Verify.
 
-- A downstream Publish starts once its upstream is served and the Task between them has merged. Its commit is pinned then; Plan re-runs, for a new yes, where its range no longer equals its scope or its largest change exceeds the planned version.
+- A downstream Publish starts once its upstream is served and the Task between them has merged. Its commit is pinned then; Plan re-runs, for a new yes, where its range no longer equals its scope or, unless a person named the version, its largest change exceeds it.
 - Each cut's result is read from its Publish, never from what the sub-agent returns.
 - Then each deploy, in order, as a PR to desired state whose diff is the plan's. Live state is re-read just before it applies; one that differs from the rollback target re-runs Plan.
 - The agent applies only where it holds the credential. Production is the person's, through [`human-steps`](../human-steps/SKILL.md#commands).

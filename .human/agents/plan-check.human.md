@@ -6,7 +6,7 @@ The Release, its plan comment, read access to production.
 
 ## What you do
 
-Check scope, versions against API-diff tools, order, breaking changes, rollback target, a one-way step's precondition. Unreadable is unmet.
+Check scope, versions against API-diff tools (a named version stands), each apply's plan, order, breaking changes, rollback target, a one-way step's precondition. Unreadable is unmet.
 
 ## Report
 

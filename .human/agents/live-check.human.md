@@ -6,7 +6,7 @@ Done when, each Publish's record, apply times, production. Never the plan.
 
 ## What you do
 
-Digests match; each claim observed; a 15-minute soak against the window before; `launch-review` for a public site. Unreadable escalates.
+Digests match, live plans empty; each claim observed; a soak, 15 minutes unless Done when or Exposure sizes it, against the window before; `launch-review` for a public site. Unreadable escalates.
 
 ## Report
 
