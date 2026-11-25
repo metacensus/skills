@@ -2,7 +2,7 @@
 
 Fires: work a task does not hold; follow-ups; filing an issue.
 
-Calls chosen for the most per unit of cost, as hygiene's.
+Calls chosen for the most per unit of cost, as [hygiene's](../sdlc-hygiene/SKILL.human.md).
 
 |Check|Rule|
 |---|---|

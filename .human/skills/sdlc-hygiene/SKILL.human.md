@@ -10,7 +10,7 @@ Lists reach a loop a line at a time, `while read -r`, never as an unquoted varia
 |Sweep|`sdlc-sweep` per repo|`short` line|repo unreadable|
 |Read|`design-check` per Epic, with `family` or `body-drift`|·|Epic unreadable|
 |Adopt|parent proposals|the outline|·|
-|Act|in scope: board; setup on repos, org; sweep-named type, assignee, failing `ready`, `no <field>`, boarded card, closed issue's labels, own-ancestor blocker|one yes/no list|rate limit|
+|Act|in scope: board; setup on repos, org; sweep-named type, assignee, failing `ready`, `no <field>`, boarded card, closed issue's labels, own-ancestor blocker|one yes/no list|rate limit, no retry-after|
 |Report|comment per Epic, no question twice; each answer on its issue that turn; a handoff per answered family|open flags|·|
 
 ## Adopt

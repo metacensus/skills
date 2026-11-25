@@ -5,9 +5,9 @@ description: Sweep an organization's issues, labels and boards for drift from th
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
-A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO -L 1000 --json number --jq '.[].number' -- ... | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO -L 1000 --json number --jq '.[].number' -- ... | while read -r n; do …; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
 
-Each call is the one that does the most per unit of its cost: REST where REST serves as GraphQL does, since GraphQL, which `gh issue`, `gh pr` and `gh project` use, spends a points budget; a search over a paged listing; one write per issue carrying every change to it.
+Each call is the one that does the most per unit of its cost: REST over GraphQL where both serve, since GraphQL, which `gh issue`, `gh pr` and `gh project` use, spends a points budget; a search over a paged listing; one write per issue carrying every change to it.
 
 ## Precheck
 
@@ -64,7 +64,7 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 - It closes no issue: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
 - Its own writes are one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` per issue, `assignees[]` and `labels[]` each replacing the whole set. A write refused for a rate limit waits out its `retry-after`; one refused for anything else is reported with its flag, and the rest go on.
 
-**Stop** on a rate limit; a rerun once it resets skips what is written.
+**Stop** on a rate limit with no `retry-after`; a rerun once it resets skips what is written.
 
 ## Report
 
