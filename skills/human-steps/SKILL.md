@@ -74,7 +74,6 @@ The agent never asks for one, prints one, or repeats one pasted. A command takes
 
 - Before each is put, its issue and the session's earlier answers are reread; one answered since, or whose answer changes nothing, is dropped.
 - Each carries its issue, the question, options lettered, a recommendation, and the default its delegator takes on silence or a skip, so one word answers it: yes, a letter, skip, defer, discuss.
-- One issue's questions go together, issues ordered by what each unblocks.
+- Questions come in the [queue](../human-queues/SKILL.md#the-queue)'s order.
 - The answer is read back in one line at the head of the next turn, then recorded on its issue as a `Decision:` comment quoting the person's words once that reply lets it stand. An amendment or a rejection is read back alone and waits for a yes. A note or new question the person raises goes beside it, never into the decision; new work goes through [`sdlc-capture`](../sdlc-capture/SKILL.md).
 - **Defer** records `Deferred:` on the issue and drops the question, undecided, until the person asks for it or it is sent back; its thread waits as [`sdlc-crew`'s Waiting on a person](../sdlc-crew/references/waiting.md) says. **Discuss** starts a side session from a [handoff](../sdlc/references/handoff.md), its Goal the issue, talked through in prose; its outcome is the issue's `Decision:`.
-- A side session started for the queue takes the [handoff](../sdlc/references/handoff.md) it was given and reports its closing lines to whoever started it.
