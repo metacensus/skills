@@ -18,6 +18,6 @@ Calls chosen for the most per unit of cost, as [hygiene's](../sdlc-hygiene/SKILL
 
 **Close-out**: every follow-up named filed or dropped before done; the return lists them.
 
-**Defer**: a person's word; moves to an issue with reason and trigger; drop is not planned; removal commented; its enforcement comes off; not asked again.
+**Defer**: a person's word; moves to an issue with reason and trigger; drop is not planned; removal commented; its enforcement comes off; not asked again, as [human-steps](../human-steps/SKILL.human.md)' questions.
 
 **Pickup**: its Epic's crew re-plans over it at Land; else hygiene's missing `ready` raises it.

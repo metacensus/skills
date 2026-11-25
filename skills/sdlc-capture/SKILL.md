@@ -31,7 +31,7 @@ Before a run reports done or closes its parent, every follow-up it named, in cha
 
 ## Defer
 
-Deferred work, a criterion, child or gate, moves to an open issue that states the reason and what brings it back; dropped work closes **not planned**, or its criterion is deleted. A criterion's removal is commented on its issue, never a silent rewrite. Whatever still enforces the deferred item, a required check or a default, comes off in the same move. A deferred item is not asked about again. Deferring is [a person's word](../sdlc/SKILL.md#roles).
+Deferred work, a criterion, child or gate, moves to an open issue that states the reason and what brings it back; dropped work closes **not planned**, or its criterion is deleted. A criterion's removal is commented on its issue, never a silent rewrite. Whatever still enforces the deferred item, a required check or a default, comes off in the same move. A deferred item is not asked about again, as a deferred question is not in [`human-steps`](../human-steps/SKILL.md#questions). Deferring is [a person's word](../sdlc/SKILL.md#roles).
 
 ## Pickup
 
