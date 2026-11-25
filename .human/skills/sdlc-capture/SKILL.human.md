@@ -2,7 +2,7 @@
 
 Fires: work a task does not hold; follow-ups; filing an issue.
 
-REST where it serves; writes batched.
+Calls chosen for the most per unit of cost, as hygiene's.
 
 |Check|Rule|
 |---|---|

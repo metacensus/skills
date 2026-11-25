@@ -7,7 +7,7 @@ The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) sa
 
 A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO -L 1000 --json number --jq '.[].number' -- ... | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
 
-Its calls go by REST where REST serves as GraphQL does, sparing the GraphQL budget `gh issue`, `gh pr` and `gh project` spend.
+Each call is the one that does the most per unit of its cost: REST where REST serves as GraphQL does, since GraphQL, which `gh issue`, `gh pr` and `gh project` use, spends a points budget; a search over a paged listing; one write per issue carrying every change to it.
 
 ## Precheck
 
@@ -62,7 +62,7 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 - After the outline, the commands a person runs, one per line, by repository: each `merged-branches` deletion, `gh api -X DELETE repos/OWNER/REPO/git/refs/heads/BRANCH`, and each `wrong-home` in an archived repository, its move between `gh repo unarchive OWNER/REPO --yes` and `gh repo archive OWNER/REPO --yes`.
 - A request naming a class's fix, a standing grant among them only where the request quotes it, answers that class's lines yes, but never a choice of goal, scope or parent, or anything irreversible: those stay in the list.
 - It closes no issue: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
-- Its own writes go in as few calls as hold them, one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` per issue, `assignees[]` and `labels[]` each replacing the whole set, sent in sequence, never concurrently: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a burst, and a write it refuses waits out its `retry-after` and resumes. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
+- Its own writes are one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` per issue, `assignees[]` and `labels[]` each replacing the whole set. A write refused for a rate limit waits out its `retry-after`; one refused for anything else is reported with its flag, and the rest go on.
 
 **Stop** on a rate limit; a rerun once it resets skips what is written.
 

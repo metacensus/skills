@@ -3,7 +3,7 @@ name: sdlc-capture
 description: Record work found outside the current scope as an issue under the parent that owns it, so that parent's carrier picks it up. Trigger when a task turns up work it does not hold, when filing follow-up work or any issue, and when a person picks work to file.
 ---
 
-Capture runs as [the hub's protocol](../sdlc/SKILL.md#stages) says, under the names its [mapping](../sdlc/SKILL.md#the-mapping) gives. Its calls go by REST where REST serves as GraphQL does, sparing the GraphQL budget `gh issue` and `gh pr` spend, and its writes batch, each call carrying every change it can. It adds work and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) keeps the set honest, so a captured issue need not be perfect: placed near its owner, it outlives the session that found it.
+Capture runs as [the hub's protocol](../sdlc/SKILL.md#stages) says, under the names its [mapping](../sdlc/SKILL.md#the-mapping) gives. Each call is the one that does the most per unit of its cost, as [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) chooses its own. It adds work and [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) keeps the set honest, so a captured issue need not be perfect: placed near its owner, it outlives the session that found it.
 
 ## Capture
 
