@@ -1,5 +1,5 @@
 name: Rollout
-description: Releases across repositories, held as sub-issues.
+description: Releases with time and conditions between them, held as sub-issues.
 type: Rollout
 body:
   - type: markdown
@@ -7,12 +7,20 @@ body:
       value: |
         Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
 
-        Its Releases are sub-issues (`gh issue edit RELEASE --parent THIS`); it takes no parent.
+        Its Releases are sub-issues (`gh issue edit RELEASE --parent THIS`); it takes no parent. Its plan lives in the body.
 
   - type: textarea
     id: goal
     attributes:
       label: Goal
-      description: One sentence — what is true when every Release has shipped.
+      description: One sentence — the end state once every Release is live.
+    validations:
+      required: true
+
+  - type: textarea
+    id: conditions
+    attributes:
+      label: Conditions
+      description: What must hold between its Releases, each a wait, a threshold over a window, or work done first.
     validations:
       required: true

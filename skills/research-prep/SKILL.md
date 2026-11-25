@@ -1,6 +1,6 @@
 ---
 name: research-prep
-description: Frame a research question before parallel research fans out — the decision it serves, the criteria that judge options, the lanes, what each lane returns, and how returns merge into one recommendation. Trigger when asked to research, compare, or survey options — vendors, funders, tools, design directions — across several sources or agents, and before handing research to `parallelize`.
+description: Frame a research question before research fans out — the decision it serves, the criteria, the lanes, what each returns, and how returns merge into one recommendation. Trigger when asked to research, compare or survey options (vendors, funders, tools, design directions) across several sources or agents, and before handing research to `parallelize`.
 ---
 
 **What a lane returns is decided by what the decision needs.** Lanes sent out before the decision is named come back in shapes nothing can compare, and the merge becomes a second round of research.

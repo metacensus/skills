@@ -1,8 +1,8 @@
-> Publishing cannot be undone, so the check runs before the push.
+> Publishing cannot be undone: a machine catches secrets before the push, the cold read private names at Review.
 
-Fires: going public; any commit, push, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
+Fires: going public; writing a commit, PR, issue or comment in a public repo; leak or license audit; porting from a private repo.
 
-⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check; scanners flag, `open-source-triage` judges.
+⚠️ Internal is a kind of information, not a list. [Leads](references/leads.human.md) drive the check: flag every span, then judge each in context.
 
 | Mode | Scope | Outcome |
 |---|---|---|
@@ -10,11 +10,13 @@ Fires: going public; any commit, push, PR, issue or comment in a public repo; le
 | [review](references/review.human.md) | diff, commits, host text | 🟢 fixes, then tells |
 | [port](references/port.human.md) | listed sources, copied whole | 🟢 strips, then maps |
 
+`sdlc-review` runs init before going public, and review at a PR's Review.
+
 `open-source-mapping.md`, one per organization in a private repo, holds:
 
 | Section | Rows |
 |---|---|
-| `## Licenses` | repo · glob · SPDX id ([licensing](references/licensing.human.md)) |
+| `## Licenses` | optional rule (SPDX id · what it covers), then exceptions: repo · glob · SPDX id ([licensing](references/licensing.human.md)) |
 | `## Leads` | lead · examples |
 | `## Exceptions` | public despite a lead |
 

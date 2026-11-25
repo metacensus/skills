@@ -13,18 +13,16 @@ Backlog → Ready → In progress → In review → Done (↘ Blocked, Dropped)
 |Story / Task|`type: Task`|days, one PR|
 |Spike|Task titled `Spike: …`|a decision|
 |Bug|`type: Bug`|as a Task|
-|Release|`type: Release`|one version of one repo|
-|Cross-project release|`type: Rollout`|Releases across repos|
+|Publish · Release · Rollout|`type: Publish`, …|production: [its tiers](references/production.human.md)|
 |Sub-task|·|a Task wanting children is an Epic|
 
-![Issue types: parents point up, blocked by is dashed](../../../skills/sdlc/figures/types.svg)
+![Issue types: code changes, Initiative over Epic over Task and Bug, and production changes, Rollout over Release over Publish; a Publish is blocked by the Epic it ships, and a consumer's Task by the Publish it adopts](../../../skills/sdlc/figures/types.svg)
 
 ## Mechanisms
 
 |Mechanism|Carries|
 |---|---|
-|Dependency|`blocked by`; a Release or Rollout read by title and state only|
-|Release|blocked by an Epic, or a Task where its Epic ships apart; versions fixed and appended, so work moves later; renumbering rare, its cost weighed; an Initiative mentions its Rollouts, never blocked by one|
+|Dependency|`blocked by`; a Publish, Release or Rollout read by title and state only|
 |Label|`ready`, `designed`, `deviated`|
 |Board|status and Priority, projected|
 |Priority|set on Initiatives; blank inherits|
@@ -58,11 +56,11 @@ A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down 
 
 ## Handoff
 
-A fresh session starts from one: Goal, linked · Decided, do not reopen · Grants, quoted · Stop · Environment.
+A fresh session starts from a [handoff](references/handoff.human.md).
 
 ## Reporting
 
-A person's attention is spent once per item: name it once, led by ⛔ waits on them · 🟢 ready for them · ✅ done.
+Each item goes up once, when it arises or changes; nothing unchanged repeats, and a notice that changes nothing gets no line. A status outline only when asked, or when all waits on the person: their queue first, by what it unblocks; product, not process. Shape: [`human-output`](../human-output/SKILL.human.md).
 
 ## Stages
 
@@ -80,13 +78,21 @@ A stage runs its checks and posts one comment:
 
 ## Phases
 
-![Gates mirrored around the work: each step's owner and what closes it; nobody confirms their own](../../../skills/sdlc/figures/gates.svg)
+![The flows: a code tier runs Frame, Design, Work, Review, Accept, a finding returning to Work and a miss reopening to Design; a production tier runs Plan, Change, Verify; each pairs its mirrored questions](../../../skills/sdlc/figures/flows.svg)
 
-![Inside sdlc, each tier's Work funnels into the tier below, each step names who runs it, cold reviewers dashed; project management and the standards any step may use stand apart, and skills that fit no step yet wait at the foot](../../../skills/sdlc/figures/carriers.svg)
+![Inside sdlc, each code and production tier's carrier and the agents its steps start, its Work fanning out to the tier below; project management beside them; the standards, communication and dev skills outside](../../../skills/sdlc/figures/carriers.svg)
+
+The delegator frames and accepts; the carrier designs, works and reviews.
+
+|Tier|Frames and accepts|Carrier|
+|---|---|---|
+|Task, Bug|[`sdlc-crew`](../sdlc-crew/SKILL.human.md#delegate), else a person|`sdlc-author`|
+|Epic|[`sdlc-fleet`](../sdlc-fleet/SKILL.human.md), else a person|`sdlc-crew`|
+|Initiative|a person|`sdlc-fleet`|
 
 **Frame**: the delegator applies `ready` once the body meets its type, parent, repository, form, bar and problem first; `designed` too when it settles every choice short of a stop.
 
-**Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it. It follows the close, but an Initiative's, and any a stop names, wait on it.
+**Accept**: the delegator checks a closed issue against its frame, never its diff; a miss reopens it with `ready` and without `designed`. It follows the close, but an Initiative's, and any a stop names, wait on it.
 
 ## Closing
 
@@ -104,6 +110,4 @@ The issue holds the problem, its Design the solution: a Design settling what the
 
 ## Setup
 
-Once per repository: `sdlc-setup.sh OWNER/REPO`; act on each `TODO`.
-
-Add a missing column in the board's settings; replacing Status options through the API clears every card's Status, which `--apply` restores.
+Once per repository, before filing: [setup](references/setup.human.md).

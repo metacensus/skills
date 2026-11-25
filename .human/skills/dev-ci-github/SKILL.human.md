@@ -37,6 +37,10 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 
 - Private packages reach an image build as a BuildKit secret.
 
+## Before a public push
+
+⛔ on a `gitleaks` finding in outgoing commits or the tree; CI scans all history.
+
 ## Where each build publishes
 
 | Build | Docker Hub | ECR |
@@ -48,7 +52,7 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.
 
-- A Release issue tracks the tag; its title follows.
+- A Publish issue tracks the tag; its title follows.
 - 🩷 Before the first OIDC publish: create the Docker Hub repository (private repo → private); publish the npm package by hand.
 - A second registry copies by digest.
 

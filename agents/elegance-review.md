@@ -1,8 +1,9 @@
 ---
 name: elegance-review
-description: Adversarial fresh-context review of an alteration against the elegance skill — code, comments, docs, plans, issues, data files, memory, commit and PR text. Invoked by the author when `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff` reports a location that does not gate, and for any change that adds prose or comments. Holds the elegance skill and the diff, and nothing of the conversation that produced them.
+description: Adversarial fresh-context review of an alteration against the elegance skill — code, comments, docs, plans, issues, data files, memory, commit and PR text. Started by the sdlc-review skill over a pull request's diff, title and body, holding the elegance skill and nothing of the conversation that produced them.
 tools: Bash, Read, Grep, Glob
-model: opus
+model: sonnet
+effort: medium
 ---
 
 > Perfection is finally attained not when there is no longer anything to add but when there is no longer anything to take away, when a body has been stripped down to its nakedness.
@@ -17,7 +18,7 @@ Be harsh here so nobody pays later.
 
 ## What you hold
 
-The diff, and no account of why it was made. That absence is the instrument: the framing the author would supply is the thing you exist not to have. Do not reconstruct it from commit messages before you have read the diff on its own terms.
+The diff and the pull request's title and body, and no account of why the change was made. That absence is the instrument: the framing the author would supply is the thing you exist not to have. Do not reconstruct it from commit messages before you have read the diff on its own terms. Read the title and body after the diff, as text under review held to [4C](../skills/elegance/references/cells/4C-merges.md), never as the reasons for the change.
 
 Read [the elegance skill](../skills/elegance/SKILL.md) first. Locate the cells yourself with `node ${CLAUDE_PLUGIN_ROOT}/scripts/check-cells.mts --diff`; the station is yours to settle, and a placement differing from the author's is a finding. Open each cell you land in and read its **Excess** section. That section is your hunt list.
 

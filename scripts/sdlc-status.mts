@@ -170,7 +170,7 @@ const pick = (v: Values, name: string) => v.nodes.find((n) => n.field?.name === 
 const stored = (i: Issue) => pick(i.issueFieldValues, "Priority");
 const own = (i: Issue) => (below.has(i.url) ? null : stored(i));
 const higher = (a: string | null, b: string | null) => (!a ? b : !b ? a : rank.get(a)! <= rank.get(b)! ? a : b);
-const raises = (b: Ref) => b.state === "OPEN" && !["Release", "Rollout"].includes(b.issueType?.name ?? "");
+const raises = (b: Ref) => b.state === "OPEN" && !["Publish", "Release", "Rollout"].includes(b.issueType?.name ?? "");
 const inherited = new Map<string, string | null>();
 const inherit = (url: string, seen = new Set<string>()): string | null => {
   if (inherited.has(url)) return inherited.get(url)!;

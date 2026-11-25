@@ -1,6 +1,6 @@
 ---
 name: dev-ci-github
-description: How to run CI and release on GitHub Actions for Go and Node repositories. Trigger when writing or reviewing a workflow, Makefile target, pre-commit hook, Dockerfile build step, or release process, or when deciding what CI should gate.
+description: How to run CI and release on GitHub Actions for Go and Node repositories. Trigger when writing or reviewing a workflow, Makefile target, pre-commit or pre-push hook, Dockerfile build step, or release process, or when deciding what CI should gate.
 ---
 
 ## CI runs `make`
@@ -49,6 +49,10 @@ A job that reads a secret runs on pushes and same-repository pull requests only.
 
 An image build that fetches private packages receives the credential as a BuildKit secret (`RUN --mount=type=secret`) through the build action's `secrets:` input: a `.netrc` under `GOPRIVATE` for Go, an `.npmrc` for Node.
 
+## Before a public push
+
+In a public repository (`gh repo view --json visibility`), `gitleaks git --log-opts="origin/<default>..HEAD"` over the outgoing commits and `gitleaks dir` over the working tree exit 0 before the push. A `pre-push` hook may run both, opt-in as pre-commit hooks are. CI repeats `gitleaks git` over the whole history: checkout takes `fetch-depth: 0`, and the step runs the gitleaks image pinned by digest, since gitleaks-action needs a license key in an organization's repository.
+
 ## Where each build publishes
 
 - **Every push to `main` publishes each image to the app's private ECR repository** once CI passes, tagged `sha-<7>` and `main`, logging in over OIDC to a push role that a preflight step requires. The `main` tag moves only while the commit is still `main`'s head (`git ls-remote`), so a re-run of an older run never moves it back; a re-run finding its `sha-` tag already in ECR repoints `main` rather than rebuilding.
@@ -58,7 +62,7 @@ An image build that fetches private packages receives the credential as a BuildK
 ## Release from a tag
 
 - **`make release TYPE=patch|minor|major`** derives the next semver, refuses an empty result, and refuses a tag that exists on `origin`.
-- **A Release issue tracks the tag**, and its title follows it.
+- **A Publish issue tracks the tag**, and its title follows it.
 - **The release triggers only on a pushed semver tag**: `on: push: tags: ['v[0-9]+.[0-9]+.[0-9]+']`.
 - **The release re-runs CI at the tagged commit** through `workflow_call` and gates every publish on it.
 - **Images** publish multi-arch, tagged by ref, short sha, and `latest`; the Dockerfile compiles on `$BUILDPLATFORM` and cross-compiles to `TARGETOS/TARGETARCH`.

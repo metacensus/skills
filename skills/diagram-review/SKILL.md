@@ -1,6 +1,6 @@
 ---
 name: diagram-review
-description: Iterate a figure (architecture, sequence, before/after) to done — render, screenshot, apply grid-snap and uniform-box rules, re-host, compare before and after, export SVG. Trigger when drawing, revising or reviewing a diagram or figure, and when a person corrects a diagram's layout.
+description: Iterate a figure (architecture, sequence, before/after) to done — render, screenshot, snap to the grid, re-host, compare, export SVG. Trigger when drawing, revising or reviewing a diagram or figure, and when a person corrects a diagram's layout.
 ---
 
 **Every round applies every rule to the whole figure, not only the defect a person named.**

@@ -1,6 +1,6 @@
 ---
 name: launch-review
-description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, favicons, private links, accessibility, privacy notice, copy compliance, domain records, a visual pass, and staging after merge. Trigger before such a surface goes live, before a domain cutover moves it to new builds, and when asked whether it is ready.
+description: How to review a public site, blog or form before it goes live — headers, canonical host, robots and sitemap, accessibility, privacy, copy, domain records, a visual pass, staging. Trigger before such a surface goes live, before a domain cutover moves it to new builds, and when asked whether it is ready.
 ---
 
 The surface is what a signed-out visitor reaches; the signed-in app and a full security review are out.
@@ -45,7 +45,7 @@ Every response carries them, the 404 included.
 
 ## Accessibility
 
-- **axe over every built page**, failing on a serious or critical WCAG 2.2 AA violation.
+- **axe over every built page**, at [`dev-ui-testing`'s floor](../dev-ui-testing/SKILL.md#every-route-in-a-real-browser).
 - A skip link, shown on focus, targets `<main id="main">`; headings nest without skipping a level.
 - **Proof**: the gate, plus one browser run for contrast, light and dark, with hidden sections shown, since jsdom lays nothing out.
 

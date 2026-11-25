@@ -6,15 +6,11 @@ Outcome → key → your queue → tree → questions
 
 - Each line: mark · number · terms and phrases
 - Proposals share the tree
-- Product state, not process
+- Same shape each time
 
 ## Tables
 
 Text in one or two columns, marks in the rest; numbered rows; a tally; key agreed first.
-
-## Cadence
-
-Unprompted, only on change; a status outline when asked, or when nothing proceeds without the person.
 
 ## Session titles
 

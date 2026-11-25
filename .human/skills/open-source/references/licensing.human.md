@@ -1,6 +1,6 @@
-> A path no mapping row reaches is a hole to report.
+> A path no mapping row reaches takes the rule's line that covers it; with none, or two, it is a hole to report.
 
-Longest glob wins; none → ⛔ hole.
+Longest glob wins; else the rule's one fitting line; else ⛔ hole.
 
 | Check | Passes when |
 |---|---|

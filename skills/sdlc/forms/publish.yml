@@ -1,0 +1,18 @@
+name: Publish
+description: One repository's artifact out at one version.
+type: Publish
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Conventions: [the `sdlc` skill](https://github.com/metacensus/skills/blob/main/skills/sdlc/SKILL.md).
+
+        Title it with its version. The work it ships blocks it (`gh issue edit THIS --add-blocked-by N`), and a consumer adopting it is blocked by it; its parent, where one is needed, is a Release (`gh issue edit THIS --parent RELEASE`); alone, a person's `designed` on it is its yes.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: One sentence — what this version delivers.
+    validations:
+      required: true

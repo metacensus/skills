@@ -1,6 +1,6 @@
 ---
 name: parallelize
-description: Organize a body of work across agents that share one working tree — cut it into units, schedule them in dependency order, and give each the coordination it needs and no more. Agnostic to the work — one skill's, several at once, or a request no skill covers — at a scale one context cannot hold. Trigger when the user asks to parallelize, fan out, orchestrate, or run work across subagents, or when a task spans more units than one agent should carry.
+description: Organize any body of work too large for one context across agents sharing one working tree — cut it into units, schedule them by dependency, and give each the coordination it needs and no more. Trigger when the user asks to parallelize, fan out, orchestrate, or run work across subagents, or when a task spans more units than one agent should carry.
 ---
 
 > Vision without execution is hallucination, but execution without coordination is chaos.
@@ -59,6 +59,19 @@ A wave is every unit with no unfinished dependency, run in parallel; the real pa
 
 Each brief opens with the agent's **remit**: the choices it owns, and where the rest escalate — to the orchestrator, and through it to whoever handed the orchestrator the work. Then come its **items**, listed, its **write-set**, its **read-set**, the **skills** it loads — every one that governs its items, and each check's standard, named rather than left to trigger — the **contracts** it honours, its **neighbours** (who owns the items it may propose changes to, and how to reach them), its **done** check, and a **return** of a compact summary: what it did, contract changes it proposes, open questions. Nothing in a brief may assume a tool the agent type lacks. The runner decides whether each check runs as an agent or inline; a runner that is itself a delegated agent runs them inline, because a nested agent's findings never reach the orchestrator. Git stays the orchestrator's unless the remit hands it down.
 
+## Model and effort
+
+The caller passes both to every agent it starts, by what the agent does:
+
+| The agent | Model · effort |
+|---|---|
+| looks up, extracts or formats; flags every span a list reaches, weighing none | haiku · low |
+| researches, summarizes, builds to a confirmed Design, or reviews work against what is written | sonnet · medium |
+| makes a Design, debugs, weighs security, or is the check before a step that cannot be undone | opus · medium |
+| builds at length on its own, with no confirmed Design to follow | opus · high |
+
+A named agent carries its row as `model:` and `effort:`. A skill that names its agents' models, a handoff's Environment, or the person overrides the table.
+
 ## Integrate and land
 
-The orchestrator decides what reaches it at a cap and applies proposals to the files it stewards, then runs the whole-system check. What it relays to a person goes as [`sdlc`'s Reporting](../sdlc/SKILL.md#reporting) says: each item once, the outline only on request or when all work waits on them. When the user has handed it the branch, it commits each unit as it lands, following [`checkin`](../checkin/SKILL.md), so the pull request is a live view of the work in dependency order.
+The orchestrator decides what reaches it at a cap and applies proposals to the files it stewards, then runs the whole-system check. What it relays to a person goes as [`sdlc`'s Reporting](../sdlc/SKILL.md#reporting) says: each item once, the outline only on request or when all work waits on them. When the user has handed it the branch, it commits each unit as it lands, following [`sdlc-author`'s Open](../sdlc-author/SKILL.md#open), so the pull request is a live view of the work in dependency order.

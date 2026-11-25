@@ -30,4 +30,4 @@ Open work never stays in memory; the tracker is where someone else can pick it u
 
 ## Landing
 
-The audit proposes and the person decides: memory is theirs, and a deleted memory is not in version control. Give one verdict per memory, naming the destination, and the evidence behind each retire. Each migration lands through its destination's own path, following [`checkin`](../checkin/SKILL.md), or as a proposal to its owner where you cannot write. Retire a migrated memory once its destination has merged, since until then it is the only copy.
+The audit proposes and the person decides: memory is theirs, and a deleted memory is not in version control. Give one verdict per memory, naming the destination, and the evidence behind each retire. Each migration lands through its destination's own path, following [`sdlc-author`'s Open](../sdlc-author/SKILL.md#open), or as a proposal to its owner where you cannot write. Retire a migrated memory once its destination has merged, since until then it is the only copy.
