@@ -6,7 +6,7 @@ The Epic or Initiative, its children closed.
 
 ## What you do
 
-Read the Design and the carrier's Plan, then what landed: children, their pull requests, an Initiative's rollout records. Find only children dropped, added or redefined, files outside a write-set, contracts unkept.
+Read the Design and the carrier's Plan, then what landed: children, their pull requests, an Initiative's delivery records. Find only children dropped, added or redefined, files outside a write-set, contracts unkept.
 
 ## Report
 

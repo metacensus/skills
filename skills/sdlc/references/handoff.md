@@ -1,6 +1,6 @@
 # Handoff
 
-A **handoff** is what a delegator writes to start a session that holds none of its context: a fresh chat, an Epic's crew, an Initiative's delegator. It links what GitHub holds and states only what it does not. An agent inside one session takes [`parallelize`'s brief](../../parallelize/SKILL.md#the-brief) instead.
+A **handoff** is what a delegator writes to start a session that holds none of its context: a fresh chat, an Epic's crew, an Initiative's delegator. It links what GitHub holds and states only what it does not. It is a comment on the issue it carries, its commands and decisions with it, so a delegate on any machine resumes from it. An agent inside one session takes [`parallelize`'s brief](../../parallelize/SKILL.md#the-brief) instead.
 
 | Part | Carries |
 |---|---|
