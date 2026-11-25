@@ -10,7 +10,7 @@ Read when a thread waits on a person, and before the person goes away.
   - **[Stack](stack.md)** the children its answer does not reach.
   - **Push the neighbours**: the work beside a finding that its answer cannot change goes ahead, a notice drafted with a placeholder for each fact only the person knows. The merge waits, not the work.
   - **Run discovery**: the read-only spikes, inventories and scans the next decisions need, each returning its evidence to its question.
-- What waits on the person, a question or a step only their hands run, is held on GitHub: a comment on its issue, the issue's labels and its [status](../../sdlc/SKILL.md#status). The top delegator surfaces it in its own session, the one the person talks to, one item at a time.
+- What waits on the person, a question or a step only their hands run, is held on GitHub: a comment on its issue, the issue's labels and its [status](../../sdlc/SKILL.md#status). It is surfaced in the session the person talks to, one item at a time.
 
 ## Away
 
