@@ -10,4 +10,4 @@ Read every issue in scope in one paged list, comments included where a class nee
 
 ## Report
 
-One flag per line, then a count of what it read, the root issues, and any short read.
+One flag per line, less those a comment it read already answers, then a count of what it read, the root issues, and any short read.
