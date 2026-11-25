@@ -46,9 +46,8 @@ Once `designed` is applied, and not before, the Releases file per [`sdlc-capture
 
 A Release starts once its blockers are closed and Verify finds its phase's conditions holding:
 
-- Every live reading is gathered before the first `plan-check`: independent reads as one step, serial only where one result feeds the next.
 - One `sdlc-ship` sub-agent per Release, under [`parallelize`](../parallelize/SKILL.md) where the phase holds more than one: units its Releases, edges their `blocked by`, the action `sdlc-ship`, done each Release closed and accepted.
-- A reversible Release's yes is the Rollout's `designed`: once its plan matches its phase and passes [`plan-check`](../../agents/plan-check.md), the campaign applies `designed` to it, citing the Rollout's.
+- A reversible Release's yes is the Rollout's `designed`: once its plan matches its phase and passes [`plan-check`](../../agents/plan-check.md), the campaign applies `designed` to it, citing the Rollout's, its live readings gathered as [`sdlc-ship`'s Plan](../sdlc-ship/SKILL.md#plan) says.
 - A Release is one-way when its plan names a one-way step, whatever its phase says. A plan that does not match its phase escalates, and the Release waits.
 - A one-way Release needs its own yes. Its brief names the phase's conditions as preconditions, `plan-check` confirms each from production evidence, and the person applies `designed` given that verdict. The campaign never certifies its own point of no return.
 - A Release already started resumes, never restarts.

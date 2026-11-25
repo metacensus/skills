@@ -8,7 +8,7 @@ Stages run [the hub protocol](../sdlc/SKILL.human.md#stages), commenting on the 
 |---|---|---|---|
 |Precheck|Rollout open, fields filled, assigned|·|closed|
 |Plan|Releases a graph, each blocked by exactly the Release or gate Task it needs; a phase per row: purpose, live conditions, wait, deadline, back-out, one-way; one-way few and late; cleanup last; gates sized to Exposure, `launch-review` and security audit before going public; filed once `designed`|the plan, until the person applies `designed`; one phase is a Release|·|
-|Change|live reads first, independent ones together; an `sdlc-ship` per Release, `parallelize`d within a phase; a reversible Release's yes is the Rollout's `designed`; a one-way one, whose plan names a one-way step, needs the person's, given `plan-check`'s verdict on its conditions; each Release accepted on live digests|what a Release escalates; a plan unmatched to its phase|carrying a gate Task: it authors no code|
+|Change|an `sdlc-ship` per Release, `parallelize`d within a phase; a reversible Release's yes is the Rollout's `designed`; a one-way one, whose plan names a one-way step, needs the person's, given `plan-check`'s verdict on its conditions; each Release accepted on live digests|what a Release escalates; a plan unmatched to its phase|carrying a gate Task|
 |Verify|every wake: earlier phases still live, gates read live from the apply time once propagated, status updated, next wake set; a regression backs out at once|deadline, stall (past the wait, no gate newly met), unreadable check, changed world|·|
 |Close|every Release accepted; cleanup holds; 3C record|always: the person accepts|·|
 

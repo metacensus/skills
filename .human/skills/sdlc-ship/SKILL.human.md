@@ -8,7 +8,7 @@ Plan → ⛔ yes → Change → Verify
 
 |Stage|Holds|⛔|🛑|
 |---|---|---|---|
-|Plan|work merged; Publish order; each scope and `sdlc-cut` survey (pending behind a consumer Task); deploys, non-production first, a root's apply a Publish, one one-way step at most, last; rollback target from live; every state safe; live reads first; `plan-check` passes|until the yes, `designed`|needs a Rollout|
+|Plan|work merged; Publish order; each scope and `sdlc-cut` survey (pending behind a consumer Task); deploys, non-production first, a root's apply a Publish, one one-way step at most, last; rollback target from live; every state safe; live reads first, independent ones together; `plan-check` passes|until the yes, `designed`|needs a Rollout|
 |Change|a cut per Publish, downstream once upstream is served; then each deploy as a PR, live re-read first; production applied by the person|failure|·|
 |Verify|`live-check` passes after the soak; record: environment, asset, version, digest; close|escalate: the person, row by row; fail: Failure|·|
 

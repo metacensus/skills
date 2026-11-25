@@ -29,6 +29,6 @@ body:
     id: exposure
     attributes:
       label: Exposure
-      description: Who a fault reaches, such as greenfield, live users or regulated; every gate is sized to it.
+      description: Who a fault reaches, such as greenfield, live users or regulated.
     validations:
       required: true

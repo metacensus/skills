@@ -3,7 +3,7 @@ name: sdlc-cut
 description: Carry a Publish from its plan to served — one repository's artifact or desired state at one version, tagged at a pinned commit, built by CI or applied, read back from where it serves. Trigger when cutting, tagging or publishing a version, when a Release starts a cut or a person hands over a Publish, when a release run fails, and when checking what a registry serves.
 ---
 
-The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes, and only one of desired state whose plan names a [one-way](../sdlc-ship/SKILL.md#plan) step is one-way, since any other leaves the version before it served. Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person for a yes.
+The cut's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Publish. Its [`delegator`](../sdlc/SKILL.md#roles) is whoever started it: an `sdlc-ship` run under a Release, else the person who handed it the Publish. A Publish takes minutes; it is [one-way](../sdlc-ship/SKILL.md#plan) only where a desired-state plan names a one-way step. Under a Release it has no gate of its own: the Release's yes covers its tag, and a cut never asks a person for a yes.
 
 Each stage first checks whether its result already holds, and then does not act again. Plan's comment is Change's intent and Change's is Verify's, so a replacement agent resumes from the last comment and what the world shows.
 
@@ -16,7 +16,7 @@ Each repository's kind is its row in [`sdlc-mapping.md`](../sdlc/references/mapp
 | Library | the API diff | the registry serves the version | CI | consumers adopt, each by a Task |
 | Image | the change range | the registry serves the digest | CI | a deploy or an apply Publish |
 | Plugin or skills | the change range | the marketplace lists the version | CI | consumers update, only on a version change |
-| Desired state | the plan | the live plan is empty | the person, for production | nothing: it is the change |
+| Desired state, one Terraform root | the plan | the live plan is empty | the person, for production | nothing: it is the change |
 
 ## Plan
 

@@ -1,4 +1,4 @@
-> A cut carries one Publish: one repository's artifact or desired state out at one version. Minutes, one-way only where an apply's plan says so. Its yes is its Release's, or, alone, the person's `designed` on its survey; the agent then pushes the tag.
+> A cut carries one Publish: one repository's artifact or desired state out at one version. Minutes; one-way only where a desired-state plan names a one-way step. Its yes is its Release's, or, alone, the person's `designed` on its survey; the agent then pushes the tag.
 
 Fires: cutting, tagging or publishing a version; a person handing over a Publish; a release run failing; checking what a registry serves.
 
@@ -8,10 +8,10 @@ Plan → Change → Verify
 
 |Kind|Survey|Served when|Credential|After|
 |---|---|---|---|---|
-|Library|API diff|registry has version|CI|adopt Tasks|
-|Image|change range|registry has digest|CI|deploy or apply|
-|Plugin|change range|marketplace lists it|CI|update on version change|
-|Desired state|plan|live plan empty|person, production|nothing|
+|Library|API diff|registry serves version|CI|consumers adopt by Task|
+|Image|change range|registry serves digest|CI|a deploy or apply Publish|
+|Plugin or skills|change range|marketplace lists version|CI|consumers update on a version change|
+|Desired state|plan|live plan empty|the person, for production|nothing: it is the change|
 
 |Stage|Holds|⛔|⏸️|
 |---|---|---|---|
