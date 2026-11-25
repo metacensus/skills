@@ -5,7 +5,7 @@ description: Sweep an organization's issues, labels and boards for drift from th
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
-A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO --json number --jq '.[].number' -- ... | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO -L 1000 --json number --jq '.[].number' -- ... | while read -r n; do gh api -X PATCH "repos/OWNER/REPO/issues/$n" ...; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
 
 Its calls go by REST where REST serves as GraphQL does, sparing the GraphQL budget `gh issue`, `gh pr` and `gh project` spend.
 
@@ -38,7 +38,7 @@ The scope is the first row that holds. The first four list issues, each with its
 
 ## Read
 
-- With `family` or `body-drift` among the classes, one [`design-check`](../../agents/design-check.md) agent per open Epic and Initiative in scope, `body-drift` alone keeping only that finding, those on the list when the scope lists issues, else `gh issue list -R OWNER/REPO --search type:Epic,Initiative`, through `parallelize`, answered as Sweep.
+- With `family` or `body-drift` among the classes, one [`design-check`](../../agents/design-check.md) agent per open Epic and Initiative in scope, `body-drift` alone keeping only that finding, those on the list when the scope lists issues, else `gh search issues --repo OWNER/REPO --state open -L 1000 --json number -- type:Epic,Initiative`, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
