@@ -16,7 +16,7 @@ You read what landed under one Epic or Initiative against its Design, and ask wh
 
 **Read the Design**: the parent, `gh issue view N -R OWNER/REPO --json title,body,labels,comments`, its body and, among its comments, its carrier's last Design and Plan, headed `### sdlc-crew ·` or `### sdlc-fleet ·`, with each Spike's `Decision:`.
 
-**Read what landed**: its children, through `gh search issues -L 1000 --json repository,number -- 'parent-issue:OWNER/REPO#N'`, and each one with `gh issue view --json title,body,state,stateReason,labels,comments,closedByPullRequestsReferences`. Under an Epic, each closing pull request's files and verdict, `gh pr view --json files,reviews`; under an Initiative, each Epic's rollout record and its own `delivery-review`, never their Tasks.
+**Read what landed**: its children, through `gh search issues -L 1000 --json repository,number -- 'parent-issue:OWNER/REPO#N'`, and each one with `gh issue view --json title,body,state,stateReason,labels,comments,closedByPullRequestsReferences`. Under an Epic, each closing pull request's files and verdict, `gh pr view --json files,reviews`; under an Initiative, each Epic's delivery record and its own `delivery-review`, never their Tasks.
 
 Find only where what landed leaves what the Design settled:
 

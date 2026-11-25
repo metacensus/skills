@@ -56,7 +56,7 @@ A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down 
 
 ## Handoff
 
-A fresh session starts from a [handoff](references/handoff.human.md).
+A fresh session starts from a [handoff](references/handoff.human.md) on its issue. A decision made in chat goes on its issue the same turn.
 
 ## Reporting
 

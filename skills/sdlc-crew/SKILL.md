@@ -17,7 +17,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Design
 
 - The comment proposes the Epic's plan, to the bar [the ladder](../sdlc/SKILL.md#the-ladder) names: a human version, then its children, filed or to file, each a line with its type, goal and `blocked by`; its non-goals; the contracts its children share; and each change it asks of the Epic's body.
-- It answers each of `design-check`'s questions.
+- It answers each of `design-check`'s questions. An open question holds only the children it rules on; the rest file and proceed on its recommended direction, recorded on the issue as `Decided, reversible:`.
 - Once its delegator applies `designed`, the children file per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [4A plan](../elegance/references/cells/4A-plan.md), each blocker before what it blocks, `--parent` the Epic and `--blocked-by` each stated blocker: at least one, a lone Spike enough.
 
 **Escalate** until its own delegator applies `designed`; nothing files before. **Stop** when the Epic fails its bar.
@@ -50,7 +50,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 - A fresh `sdlc-review` per PR, run by the delegator, never inside an author, its remit cited in the verdict.
 - A check the environment cannot run stays unchecked, so the verdict escalates; the delegator takes it where its remit accepts that check unchecked.
 - Findings go to the author's [Respond](../sdlc-author/SKILL.md#respond), in [the review loop](../elegance/SKILL.md#the-review-loop).
-- Once every child closes, the delegator starts a fresh [`delivery-review`](../../agents/delivery-review.md) over the Epic, as it starts `sdlc-review`. A deviation the Epic's goal still needs is captured as [Land](#land) captures work found in execution; the rest go in the rollout record, in its words, and escalate the close as `deviated`.
+- Once every child closes, the delegator starts a fresh [`delivery-review`](../../agents/delivery-review.md) over the Epic, as it starts `sdlc-review`. A deviation the Epic's goal still needs is captured as [Land](#land) captures work found in execution; the rest go in the delivery record, in its words, and escalate the close as `deviated`.
 
 **Escalate** a finding whose choice is not the delegator's, and the loop's cap.
 
@@ -65,9 +65,9 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Close
 
 - Every child is closed, completed or, past a dead end, not planned.
-- The rollout record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words.
+- The delivery record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words.
 - Each Spike's `Decision:` is in the Epic's body, confirmed by the Epic's delegator.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
-**Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation, and its rollout record goes to its delegator for [Accept](../sdlc/SKILL.md#phases). Escalate any question the sweep leaves.
+**Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation, and its delivery record goes to its delegator for [Accept](../sdlc/SKILL.md#phases). Escalate any question the sweep leaves.
