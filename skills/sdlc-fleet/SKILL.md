@@ -3,7 +3,7 @@ name: sdlc-fleet
 description: Carry an Initiative from its outline to its finish line with a crew per Epic. Trigger when outlining, filing, running, orchestrating or closing an Initiative, when asking what an Initiative's orchestrator does next, and when its person will be away while it runs.
 ---
 
-The orchestrator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Initiative. One orchestrator session carries one Initiative and no Epic or Task, nor any Publish, Release or Rollout: it stops at the `blocked by` edge to one and reads only whether it has closed, never surveying, cutting or applying; it is every crew's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), starts from a [handoff](../sdlc/references/handoff.md), and while a thread waits on a person, or the person is away, runs [`sdlc-crew`'s Waiting on a person](../sdlc-crew/references/waiting.md). Orchestrators of parallel Initiatives coordinate only through `blocked by` edges and the board.
+The orchestrator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says, their comments on the Initiative. One orchestrator session carries one Initiative and no Epic or Task, nor any Publish, Release or Rollout: it reads one by [title and state](../sdlc/SKILL.md#mechanisms) at its `blocked by` edge, [Plan](#plan)'s environment lock the one read beyond, and never surveys, cuts or applies; it is every crew's [`delegator`](../sdlc/SKILL.md#roles), and a person is its own. It composes the sdlc flows and [`parallelize`](../parallelize/SKILL.md), starts from a [handoff](../sdlc/references/handoff.md), and while a thread waits on a person, or the person is away, runs [`sdlc-crew`'s Waiting on a person](../sdlc-crew/references/waiting.md). Orchestrators of parallel Initiatives coordinate only through `blocked by` edges and the board.
 
 ## Context
 
@@ -19,7 +19,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 ## Design
 
 - One [`human-output`](../human-output/SKILL.md) outline: Initiative → Epics → known Tasks and Spikes; new, existing and moving marked; blockers on their lines.
-- An open question holds only the children it rules on, an Epic holding only its Spike where it rules on the whole Epic; the rest file and proceed on its recommended direction, recorded on the issue as `Decided, reversible:`.
+- An open question holds only what it rules on, as [Waiting on a person](../sdlc-crew/references/waiting.md) says, an Epic holding only its Spike where it rules on the whole Epic.
 - [`design-check`](../../agents/design-check.md) has read each existing Epic it would adopt.
 - Once the person approves the outline, they apply `designed`, and each item files per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [3A design](../elegance/references/cells/3A-design.md), blockers first, the Initiative's body filled per [Context](#context).
 
@@ -29,9 +29,8 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 
 `parallelize` answered: units are the Epics whose [blockers](../sdlc/SKILL.md#mechanisms) are closed; edges their `blocked by` and the contracts they share; the action is [`sdlc-crew`](../sdlc-crew/SKILL.md).
 
-- Overlap is checked at each scope's own grain and no finer, as [`sdlc-crew`'s write-sets](../sdlc-crew/SKILL.md#plan) are at theirs: an author's, functions; a crew's, the files and packages its children's write-sets touch; the fleet's, areas and repositories across Epics; a campaign's, environments and assets.
-- Before a wave, the areas and repositories its Epics touch are read, renamed names and the workflows naming them grepped; two Epics touching one area take a `blocked by` edge or a split Task.
-- Before a wave, open Releases In progress whose Deploys name an environment its Epics' desired state touches are read. Each locks that environment: a crew's merge to that desired state waits on it, or takes a `blocked by` edge to it. The fleet merges desired state and never applies it; each apply is targeted.
+- Before a wave, overlap is checked at the fleet's grain and no finer, the areas and repositories its Epics touch, renamed names and the workflows naming them grepped: two Epics touching one area take a `blocked by` edge or a split Task. Each scope checks at its own, as [`sdlc-crew`'s write-sets](../sdlc-crew/SKILL.md#plan) do: an author's, functions; a crew's, the files and packages its children's write-sets touch; a campaign's, environments and assets.
+- Before a wave, open Releases In progress whose Deploys name an environment its Epics' desired state touches are read. Each locks that environment: a crew's merge to that desired state waits on it, or takes a `blocked by` edge to it, and the Release holding the lock applies, scoped to its own change.
 - A Task that builds on another Epic's Task is `blocked by` it, never prose in a PR body.
 
 **Escalate** a contract two Epics both shape. **Stop** on a cycle.

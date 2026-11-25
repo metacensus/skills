@@ -56,11 +56,11 @@ A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down 
 
 ## Handoff
 
-A fresh session starts from a [handoff](references/handoff.human.md) on its issue. A decision made in chat goes on its issue the same turn.
+A fresh session starts from a [handoff](references/handoff.human.md).
 
 ## Reporting
 
-Each item goes up once, when it arises or changes; nothing unchanged repeats, and a notice that changes nothing gets no line. A status outline only when asked, or when all waits on the person: their queue first, by what it unblocks; product, not process. Shape: [`human-output`](../human-output/SKILL.human.md).
+Each item goes up once, when it arises or changes; nothing unchanged repeats, and a notice that changes nothing gets no line. A status outline only when asked, or when all waits on the person: their queue first, by what it unblocks; product, not process. A decision made in chat goes on its issue the same turn. Shape: [`human-output`](../human-output/SKILL.human.md).
 
 ## Stages
 

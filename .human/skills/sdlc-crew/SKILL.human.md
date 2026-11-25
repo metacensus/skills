@@ -9,7 +9,7 @@ A thread waiting on a person, or a person away: [waiting](references/waiting.hum
 |Stage|Must hold|⛔|🛑|
 |---|---|---|---|
 |Precheck|Epic open, `ready`; remit and stops cited; `design-check` run|not framed, its delegator's; a fix not the delegator's, a `design-check` question Design skips|Epic closed|
-|Design|plan proposed: children, non-goals, contracts; an open question holds only its children; children filed once `designed`|until `designed`|fails its bar|
+|Design|plan proposed: children, non-goals, contracts; an open question holds only what it rules on; children filed once `designed`|until `designed`|fails its bar|
 |Plan|children acyclic; the Epic blocks its Publish, or its Tasks do; contracts land first; no write-sets overlap|contract not the delegator's|cycle; cannot cut|
 |Delegate|each child framed, briefed only when Ready or stacked, in its own tree, accepted once closed|Design settles a stop|an author stops|
 |Review|fresh `sdlc-review` per PR; once children close, `delivery-review` over the Epic|a choice not the delegator's|·|

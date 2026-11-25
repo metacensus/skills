@@ -2,11 +2,11 @@
 
 |Question|Then|
 |---|---|
-|one of the remit's [stops](../../sdlc/SKILL.human.md#roles)|⛔ to the person|
+|one of the remit's [stops](../../sdlc/SKILL.human.md#roles)|⛔ to the person, holding only what it rules on|
 |any other|`Decided, reversible:`, keep going|
 
 While it waits, only what can be undone: build the options · stack on PRs in review · push the neighbours · run discovery.
 
-What waits on the person is held on its issue on GitHub, and surfaced one item at a time in the orchestrator's own session.
+What waits on the person is held on its issue on GitHub, and surfaced one item at a time in the session the person talks to.
 
 Away, from a handoff: grants quoted in every brief · a clock-time stop · a status outline on return.
