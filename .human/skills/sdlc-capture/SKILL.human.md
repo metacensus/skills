@@ -2,10 +2,12 @@
 
 Fires: work a task does not hold; follow-ups; filing an issue.
 
+Calls chosen for the most per unit of cost, as [hygiene's](../sdlc-hygiene/SKILL.human.md).
+
 |Check|Rule|
 |---|---|
 |Scope|the current issue's criteria keep their own; a sibling's ruling reaches it|
-|Connections|search open issues, PRs; a match takes a comment|
+|Connections|`gh search` open issues, PRs; a match takes a comment|
 |Type|Task, Bug or Spike; ⛔ Epic, Initiative|
 |Parent|nearest open Epic it serves; none: hygiene's [Adopt](../sdlc-hygiene/SKILL.human.md#adopt)|
 |Repository|where its PR lands|

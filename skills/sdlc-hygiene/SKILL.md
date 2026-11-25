@@ -5,7 +5,9 @@ description: Sweep an organization's issues, labels and boards for drift from th
 
 The hygiene stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages) says: an escalation or stop goes to the session as it arises, and the rest is said once, in [the summary](#act).
 
-A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh issue list ... --jq '.[].number' | while read -r n; do gh issue edit "$n" ...; sleep 1; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+A list of issues, boards or repositories reaches a loop or a command a line at a time, `gh search issues --repo OWNER/REPO -L 1000 --json number --jq '.[].number' -- ... | while read -r n; do …; done`, or as words written out, never through an unquoted variable, which zsh passes whole as one word.
+
+Each call is the one that does the most per unit of its cost: REST over GraphQL where both serve, since GraphQL, which `gh issue`, `gh pr` and `gh project` use, spends a points budget; a search over a paged listing; one write per issue carrying every change to it.
 
 ## Precheck
 
@@ -36,7 +38,7 @@ The scope is the first row that holds. The first four list issues, each with its
 
 ## Read
 
-- With `family` or `body-drift` among the classes, one [`design-check`](../../agents/design-check.md) agent per open Epic and Initiative in scope, `body-drift` alone keeping only that finding, those on the list when the scope lists issues, else `gh issue list -R OWNER/REPO --search type:Epic,Initiative`, through `parallelize`, answered as Sweep.
+- With `family` or `body-drift` among the classes, one [`design-check`](../../agents/design-check.md) agent per open Epic and Initiative in scope, `body-drift` alone keeping only that finding, those on the list when the scope lists issues, else `gh search issues --repo OWNER/REPO --state open -L 1000 --json number -- type:Epic,Initiative`, through `parallelize`, answered as Sweep.
 
 **Stop** when an Epic cannot be read.
 
@@ -60,9 +62,9 @@ A request for a sweep is the delegator's yes to the fixes below, as [a request t
 - After the outline, the commands a person runs, one per line, by repository: each `merged-branches` deletion, `gh api -X DELETE repos/OWNER/REPO/git/refs/heads/BRANCH`, and each `wrong-home` in an archived repository, its move between `gh repo unarchive OWNER/REPO --yes` and `gh repo archive OWNER/REPO --yes`.
 - A request naming a class's fix, a standing grant among them only where the request quotes it, answers that class's lines yes, but never a choice of goal, scope or parent, or anything irreversible: those stay in the list.
 - It closes no issue: a yes to a close is commented on the issue, for its carrier's Land or Close, else the delegator, to make.
-- Its own writes go out a second apart: GitHub's secondary limit, which `gh api rate_limit` does not show, refuses a faster burst. A write GitHub refuses, but for a rate limit, is reported with its flag, and the rest go on.
+- Its own writes are one `gh api -X PATCH repos/OWNER/REPO/issues/N -f type=T -f 'assignees[]=A' -f 'labels[]=L'` per issue, `assignees[]` and `labels[]` each replacing the whole set. A write refused for a rate limit waits out its `retry-after`; one refused for anything else is reported with its flag, and the rest go on.
 
-**Stop** on a rate limit; a rerun once it resets skips what is written.
+**Stop** on a rate limit with no `retry-after`; a rerun once it resets skips what is written.
 
 ## Report
 

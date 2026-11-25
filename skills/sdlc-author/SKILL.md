@@ -74,7 +74,7 @@ Ready work: [the hub's query](../sdlc/SKILL.md#status).
 
 ## Land
 
-- The PR merges on the review's pass, [waiting](#waiting) without sleeping and recovering [a refused merge, or one landed by mistake](references/refused-merge.md).
+- The PR merges once [`sdlc-review`](../sdlc-review/SKILL.md)'s cold pass is posted on it and its checks are green, [waiting](#waiting) without sleeping and recovering [a refused merge, or one landed by mistake](references/refused-merge.md). Where no check is required `--auto` merges at once, so `gh pr checks N --watch` runs first; where the repository runs no check, the review's pass alone gates.
 - A [stacked](../sdlc-crew/references/stack.md) PR merges after its bases, as Stack says.
 - Where it ships, it goes out in the Publish it or its Epic blocks, cut by [`sdlc-cut`](../sdlc-cut/SKILL.md), under its Release where one holds it; the author never tags.
 - The issue is closed per [the hub's Closing table](../sdlc/SKILL.md#closing).

@@ -27,6 +27,5 @@ A standard is a set of checks, and one probe answers both the survey and each fi
 - A label or setting is an action Task, its command and the probe before and after, as [`sdlc-author`](../sdlc-author/SKILL.md)'s Without a pull request says.
 - Two or more places want an Epic: the asking one, else one escalated per `sdlc-capture`'s Type.
 - Order is `blocked by`: a pilot repository first, and a repository others consume (a shared workflow, a template, a published package) before its consumers.
-- Writes go out a second apart: GitHub's secondary limit refuses a faster burst.
 
 Run on a Spike, the confirmed list is its `Decision:`.
