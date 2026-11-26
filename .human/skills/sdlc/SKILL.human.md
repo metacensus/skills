@@ -52,7 +52,7 @@ Work starts on a Ready Task or Bug, highest Priority first.
 |`delegator`|what the delegate cannot own; default, whoever handed over the work|
 |`reviewer`|a PR's review; default `CODEOWNERS`|
 
-A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down short of its **stops**: by default a person's fact, canon, policy, a message to others, a decided choice, closing an Initiative. `designed` comes from the delegator, never the Design's author. An agent acts on a Task or Bug, ⛔ on an Epic or Initiative; assigning and editing another's issue ⛔.
+A delegate ⛔ escalates a choice it cannot own; a **remit** hands choices down short of its **stops**: by default a person's fact, canon, policy, a message to others, a decided choice, closing an Initiative. Deferring scope is a person's; a reversible operational call inside the remit is the agent's own. `designed` comes from the delegator, never the Design's author. An agent acts on a Task or Bug, ⛔ on an Epic or Initiative; assigning and editing another's issue ⛔.
 
 ## Handoff
 
