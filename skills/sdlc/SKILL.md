@@ -83,6 +83,8 @@ A session that holds none of its delegator's context, a fresh chat, an Epic's cr
 
 **The status outline** goes out only when the person asks for status, or when all work waits on them. Their queue leads it, their acts alone, ordered by what each unblocks; the rest is the product's state, never the orchestration's: no agent names, PR churn or process narration.
 
+A decision made in chat is recorded on its issue the same turn.
+
 [`human-output`](../human-output/SKILL.md) gives each item, and the outline, its shape.
 
 ## Stages
@@ -117,7 +119,7 @@ Every tier runs three phases. Its delegator frames and accepts; the skill that c
 
 Each step hands on, in turn, the issue, the Design, the PR or the children, and the record. Two steps send work back: a Review finding to Work, and a miss at Accept, reopening the issue, to Design.
 
-Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Delivery ends in a record of what happened, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative, which Accept reads.
+Design meets the bar [the ladder](#the-ladder) names; an Epic's or Initiative's Delivery is its children's whole lifecycle; Delivery ends in a delivery record, which Accept reads: what landed and where it left the plan, in [4C](../elegance/references/cells/4C-merges.md), or [3C](../elegance/references/cells/3C-release.md) for an Initiative.
 
 **Frame** checks an issue's body before it is `ready`: its type, parent and repository as [the ladder](#the-ladder) and [Mechanisms](#mechanisms) say; its [form](forms/)'s required fields; the bar its type takes, a Spike's decision standing as its criterion; the problem first, with its evidence, naming a solution only where one is decided or is itself the constraint; no emojis, nothing its evidence does not supply, and no line breaks inside a paragraph; and everything that must hold before an [irreversible step](../../agents/code-review.md), each its own criterion. On a pass the `delegator`, or a delegate whose [remit](#roles) names it, applies `ready`, with `designed` when the body settles every choice and none is a [stop](#roles), then [`sdlc-status --apply`](#status); anyone else escalates the pass. A parent's children are framed only once all are filed, so Frame reads the whole set.
 

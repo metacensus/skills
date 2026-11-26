@@ -31,4 +31,4 @@ body:
     id: deploys
     attributes:
       label: Deploys
-      description: Each environment it changes and the desired state that changes it; none for a library or plugin.
+      description: Each environment it changes and the desired state that changes it, a Terraform root's apply as a Publish; none for a library or plugin.
