@@ -41,7 +41,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 - Every crew and author works in a worktree and branch namespace of its own; nothing commits in the orchestrator's checkout.
 - The orchestrator writes no Epic's Design: one it wrote would go to the person.
 - The person steers, halts or queries in the orchestrator's own session; a change to the plan is mirrored as a comment on the Initiative.
-- Each Epic is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), before its crew starts, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes, from its delivery record against its Goal and Non-goals.
+- Each Epic is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), before its crew starts, and checked against the Initiative's Goal and Non-goals: one out of scope leaves through [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), under no forced parent. Each is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes, from its delivery record against its Goal and Non-goals.
 - As each Epic closes, Plan re-runs over the Epics it unblocks.
 
 **Escalate** a Design that settles a stop. **Stop** when a crew stops.
@@ -59,8 +59,10 @@ Once every Epic closes, a fresh [`delivery-review`](../../agents/delivery-review
 - Every Publish its descendants block has closed, and the Release holding each, read from each descendant's `blocking` and each Publish's parent by title and state; their own blockers are never walked.
 - A criterion met under another Epic closes **completed** with a link to where.
 - Open children move back to the parent that owns their blocker, or to one [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) proposes.
+- Each loose end is tested against the Goal: one the finish line needs is in scope and gets done, a child added for it citing the Goal it serves; the rest are captured per [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), unparented for [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) where no owner is obvious, or dropped, and never become children.
+- [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Initiative finds nothing: the tree is true in its labels, edges, cards and status, whatever it holds still open.
 - The roadmap entry names the Initiative as done.
-- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, and what was accepted unchecked.
+- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was deferred, each with its link and what brings it back, work the orchestrator or a crew parked among it, and what was accepted unchecked.
 
 **Escalate** the close: closing an Initiative is a default stop, and its Accept is the person's.
 

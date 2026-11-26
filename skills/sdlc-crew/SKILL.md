@@ -17,6 +17,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Design
 
 - The comment proposes the Epic's plan, to the bar [the ladder](../sdlc/SKILL.md#the-ladder) names: a human version, then its children, filed or to file, each a line with its type, goal and `blocked by`; its non-goals; the contracts its children share; and each change it asks of the Epic's body.
+- Each child, filed or to file, is checked against the Epic's goal and, under an Initiative, its Goal and Non-goals: one out of scope leaves through [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), under no forced parent.
 - It answers each of `design-check`'s questions; one left open holds only what it rules on, as [Waiting on a person](references/waiting.md) says.
 - Once its delegator applies `designed`, the children file per [`sdlc-capture`'s File](../sdlc-capture/SKILL.md#file), against [4A plan](../elegance/references/cells/4A-plan.md), each blocker before what it blocks, `--parent` the Epic and `--blocked-by` each stated blocker: at least one, a lone Spike enough.
 
@@ -57,7 +58,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Land
 
 - Each child lands through its author's [Land](../sdlc-author/SKILL.md#land), as its remit allows; an escalated merge or close is the delegator's where its remit reaches, a shared identity's approval never counts as one.
-- A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest is captured under the Epic through [`sdlc-capture`](../sdlc-capture/SKILL.md), and Plan re-runs over the children unblocked at that moment, any captured under the Epic since among them, or Design, on an Epic not yet `designed`. A gap that changes the Epic's goal re-plans within the remit, else escalates.
+- A child's ruling, a Spike's decision among them, or work found in execution, is written into the criteria of each child it rules on, and sent to that child's author once briefed; the rest is captured through [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), under the Epic only where it serves the Epic's goal, and Plan re-runs over the children unblocked at that moment, any captured under the Epic since among them, or Design, on an Epic not yet `designed`. A gap that changes the Epic's goal re-plans within the remit, else escalates.
 - After a child lands, the delegator may re-estimate the children not yet briefed, adding, dropping, reordering or redefining them within the remit.
 
 **Escalate** a merge the environment refuses, and a deviation the remit does not accept. **Stop** when a child's author stops on something that reopens the Epic's plan.
@@ -65,9 +66,10 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 ## Close
 
 - Every child is closed, completed or, past a dead end, not planned.
-- The delivery record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words.
+- Each loose end is tested against the Epic's goal: one the goal needs is in scope and gets done, a child added for it citing the goal it serves; the rest are captured as [Land](#land) captures, or dropped, and never become children.
+- The delivery record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words; what dropped, and what was deferred, each with its link and what brings it back, work the delegator parked among it.
 - Each Spike's `Decision:` is in the Epic's body, confirmed by the Epic's delegator.
-- [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing.
+- [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing: the tree is true in its labels, edges, cards and status, whatever it holds still open.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.
 
 **Escalate** the close only on a dead end or a deviation; an Epic completed as planned closes with no escalation, and its delivery record goes to its delegator for [Accept](../sdlc/SKILL.md#phases). Escalate any question the sweep leaves.

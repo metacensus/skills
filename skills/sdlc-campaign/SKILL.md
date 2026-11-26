@@ -40,7 +40,7 @@ At every Exposure, the phase that first goes public has its Releases blocked by 
 
 **Escalate** the plan: the person approves it once by applying `designed`, which turns each reversible start of a phase into a rule the agent applies. A change to the plan takes `designed` off and escalates again. A plan of one phase escalates as a Release with no Rollout.
 
-Once `designed` is applied, and not before, the Releases file per [`sdlc-capture`](../sdlc-capture/SKILL.md#file), `--parent` the Rollout, the gate Tasks under the parents that own them, and then each Release's edges.
+Once `designed` is applied, and not before, the Releases file per [`sdlc-capture`](../sdlc-capture/SKILL.md#file), `--parent` the Rollout, the gate Tasks under the parents that own them, and then each Release's edges. A Release never files as a record of a change already made.
 
 ## Change
 
