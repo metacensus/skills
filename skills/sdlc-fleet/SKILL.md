@@ -62,7 +62,7 @@ Once every Epic closes, a fresh [`delivery-review`](../../agents/delivery-review
 - Each loose end is tested as [`sdlc-crew`'s Close](../sdlc-crew/SKILL.md#close) tests it, against the Initiative's Goal and its finish line.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Initiative finds nothing, as [the Epic's Close](../sdlc-crew/SKILL.md#close) means it.
 - The roadmap entry names the Initiative as done.
-- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was deferred, each with its link and what brings it back, parked work included, and what was accepted unchecked.
+- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was [deferred](../sdlc-capture/SKILL.md#defer), each with its link and what brings it back, parked work included, and what was accepted unchecked.
 
 **Escalate** the close: closing an Initiative is a default stop, and its Accept is the person's.
 
