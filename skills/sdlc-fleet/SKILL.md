@@ -59,10 +59,10 @@ Once every Epic closes, a fresh [`delivery-review`](../../agents/delivery-review
 - Every Publish its descendants block has closed, and the Release holding each, read from each descendant's `blocking` and each Publish's parent by title and state; their own blockers are never walked.
 - A criterion met under another Epic closes **completed** with a link to where.
 - Open children move back to the parent that owns their blocker, or to one [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) proposes.
-- Each loose end is tested against the Goal: one the finish line needs is in scope and gets done, a child added for it citing the Goal it serves; the rest are captured per [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), unparented for [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt) where no owner is obvious, or dropped, and never become children.
-- [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Initiative finds nothing: the tree is true in its labels, edges, cards and status, whatever it holds still open.
+- Each loose end is tested as [`sdlc-crew`'s Close](../sdlc-crew/SKILL.md#close) tests it, against the Initiative's Goal and its finish line.
+- [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Initiative finds nothing, as [the Epic's Close](../sdlc-crew/SKILL.md#close) means it.
 - The roadmap entry names the Initiative as done.
-- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was deferred, each with its link and what brings it back, work the orchestrator or a crew parked among it, and what was accepted unchecked.
+- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was deferred, each with its link and what brings it back, parked work included, and what was accepted unchecked.
 
 **Escalate** the close: closing an Initiative is a default stop, and its Accept is the person's.
 
