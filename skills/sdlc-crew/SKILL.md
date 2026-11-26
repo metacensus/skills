@@ -67,7 +67,7 @@ The delegator's stages, each run as [the hub's protocol](../sdlc/SKILL.md#stages
 
 - Every child is closed, completed or, past a dead end, not planned.
 - Each loose end is tested against the Epic's goal: one the goal needs is in scope and gets done, a child added for it citing the goal it serves; the rest are captured, unparented where no owner is obvious, for [`sdlc-hygiene`'s Adopt](../sdlc-hygiene/SKILL.md#adopt), or dropped, never made children.
-- The delivery record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words; what dropped, and what was [deferred](../sdlc-capture/SKILL.md#defer), each with its link and what brings it back, parked work included.
+- The delivery record is on the Epic: each child, its PR, who landed it, what was accepted unchecked, its Accept, and how each `deviated` child departed, in its verdict's words; what dropped, and what was [deferred](../sdlc-capture/SKILL.md#defer), each with its link and what brings it back; and each follow-up the run named, per [`sdlc-capture`'s Close-out](../sdlc-capture/SKILL.md#close-out).
 - Each Spike's `Decision:` is in the Epic's body, confirmed by the Epic's delegator.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Epic finds nothing: the tree is true in its labels, edges, cards and status, whatever it holds still open.
 - The Epic is closed per [Closing](../sdlc/SKILL.md#closing): **completed** when its goal is met, **not planned** when a Spike shows the goal cannot or should not be met.

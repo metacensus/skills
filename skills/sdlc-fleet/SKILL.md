@@ -41,7 +41,7 @@ The Initiative's body is [its form](../sdlc/forms/initiative.yml)'s fields, whic
 - Every crew and author works in a worktree and branch namespace of its own; nothing commits in the orchestrator's checkout.
 - The orchestrator writes no Epic's Design: one it wrote would go to the person.
 - The person steers, halts or queries in the orchestrator's own session; a change to the plan is mirrored as a comment on the Initiative.
-- Each Epic is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), before its crew starts, and checked against the Initiative's Goal and Non-goals: one out of scope leaves through [`sdlc-capture`](../sdlc-capture/SKILL.md#capture), under no forced parent. Each is accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes, from its delivery record against its Goal and Non-goals.
+- Each Epic is framed, per [the hub's Frame](../sdlc/SKILL.md#phases), and checked against the Initiative's Goal and Non-goals before its crew starts, one out of scope leaving through [`sdlc-capture`](../sdlc-capture/SKILL.md#capture) under no forced parent, and accepted, per [the hub's Accept](../sdlc/SKILL.md#phases), once it closes, from its delivery record against the same.
 - As each Epic closes, Plan re-runs over the Epics it unblocks.
 
 **Escalate** a Design that settles a stop. **Stop** when a crew stops.
@@ -62,7 +62,7 @@ Once every Epic closes, a fresh [`delivery-review`](../../agents/delivery-review
 - Each loose end is tested as [`sdlc-crew`'s Close](../sdlc-crew/SKILL.md#close) tests it, against the Initiative's Goal and its finish line.
 - [`sdlc-hygiene`](../sdlc-hygiene/SKILL.md) scoped to the Initiative finds nothing, as [the Epic's Close](../sdlc-crew/SKILL.md#close) means it.
 - The roadmap entry names the Initiative as done.
-- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what dropped and where it moved, what was [deferred](../sdlc-capture/SKILL.md#defer), each with its link and what brings it back, parked work included, and what was accepted unchecked.
+- The delivery record is one comment on the Initiative, to [3C](../elegance/references/cells/3C-release.md): each Epic, its state, what landed, what was accepted unchecked, what dropped and where it moved, what was [deferred](../sdlc-capture/SKILL.md#defer), each with its link and what brings it back, and each follow-up the run named, per [`sdlc-capture`'s Close-out](../sdlc-capture/SKILL.md#close-out).
 
 **Escalate** the close: closing an Initiative is a default stop, and its Accept is the person's.
 
