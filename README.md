@@ -45,6 +45,23 @@ To pin a release, name its tag as the `ref` in both places the marketplace is de
 
 This repository's gate and `dev-ci-github`'s pre-push check scan for secrets with [gitleaks](https://github.com/gitleaks/gitleaks#installing): `brew install gitleaks`.
 
+### Auto mode
+
+Under Claude Code [auto mode](https://code.claude.com/docs/en/auto-mode-config), the permission check trusts only the working repository and its remotes, so it refuses routine work these skills do across an organization's other repositories: filing an issue in one, linking a blocker in another. Each contributor lists the organization in `autoMode.environment` in their user settings, `~/.claude/settings.json`; the check reads no `autoMode` from project settings.
+
+```json
+{
+  "autoMode": {
+    "environment": [
+      "$defaults",
+      "Source control: github.com/OWNER and all repos under it"
+    ]
+  }
+}
+```
+
+`"$defaults"` keeps the built-in entries, and `claude auto-mode config` shows the result. The check still runs on every call: the entry only marks those repositories as trusted infrastructure, not their actions as approved.
+
 ## Changing a skill
 
 Run `claude --plugin-dir .` from a checkout to load your working tree in place of the installed plugin. A change reaches consumers only in a release, which raises `version` in [`plugin.json`](.claude-plugin/plugin.json).

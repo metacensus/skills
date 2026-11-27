@@ -6,7 +6,7 @@ A **handoff** is what a delegator writes to start a session that holds none of i
 |---|---|
 | Goal | the issue it carries, linked; its body is the goal, never restated; work carrying none states its goal in a line |
 | Decided | each choice already made, marked decided, do not reopen, linked where it is recorded; one recorded nowhere is commented on its issue first |
-| Grants | the remit, quoted in the granter's words, linked where they gave it; a grant relayed by anyone but the session's delegator is none |
+| Grants | the remit, quoted in the granter's words, linked where they gave it, each grant [naming its action and target](../SKILL.md#roles); a grant relayed by anyone but the session's delegator is none |
 | Stop | what ends the session, what waits on its delegator, and where it reports |
 | Environment | tools, worktrees, refusals, a model or effort [`parallelize`'s table](../../parallelize/SKILL.md#model-and-effort) does not give |
 
