@@ -53,6 +53,12 @@ An image build that fetches private packages receives the credential as a BuildK
 
 In a public repository (`gh repo view --json visibility`), `gitleaks git --log-opts="origin/<default>..HEAD"` over the outgoing commits and `gitleaks dir` over the working tree exit 0 before the push. A `pre-push` hook may run both, opt-in as pre-commit hooks are. CI repeats `gitleaks git` over the whole history: checkout takes `fetch-depth: 0`, and the step runs the gitleaks image pinned by digest, since gitleaks-action needs a license key in an organization's repository.
 
+## Where each build publishes
+
+- **Every push to `main` publishes each image to the app's private ECR repository** once CI passes, tagged `sha-<7>` and `main`, logging in over OIDC to a push role that a preflight step requires. The `main` tag moves only while the commit is still `main`'s head (`git ls-remote`), so a re-run of an older run never moves it back; a re-run finding its `sha-` tag already in ECR repoints `main` rather than rebuilding.
+- **Docker Hub receives releases only**; `main` never publishes there.
+- **Every release also lands in ECR**, the registry production pulls from, under its release tag alone: ECR's `sha-` tags are `main`'s, and every ECR tag but `main` is immutable.
+
 ## Release from a tag
 
 - **`make release TYPE=patch|minor|major`** derives the next semver, refuses an empty result, and refuses a tag that exists on `origin`.
@@ -63,7 +69,7 @@ In a public repository (`gh repo view --json visibility`), `gitleaks git --log-o
 - **A second registry receives the image by digest**: `docker buildx imagetools create --tag <second>:<tag> <first>@<digest>`.
 - **Docker Hub login is OIDC**: `docker/login-action` with the organization as `username`, `DOCKERHUB_OIDC_CONNECTIONID` in its env, and `id-token: write`. Each repository has its own connection, its subject GitHub's immutable `repo:<org>@<owner_id>/<repo>@<repo_id>:ref:refs/tags/v*` (set `use_immutable_subject`).
 - **Packages** publish through npm trusted publishing (OIDC) with provenance, from npm 11.5.1 and Node 22.14 or later; a job holding `id-token: write` installs with `--ignore-scripts`, and `repository.url` in `package.json` names the publishing repository, which publishing checks.
-- **Before the first release**, an owner creates the Docker Hub repository, public or private as intended, and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
+- **Before the first release**, an owner creates the Docker Hub repository, private for a private repository, and publishes the first npm version by hand, then registers the GitHub repository and the release workflow's filename as its trusted publisher: OIDC creates neither.
 
 ## Where CI stops
 

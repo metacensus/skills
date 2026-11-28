@@ -41,12 +41,19 @@ The aggregate job is the only required check: ⛔ unless all `success`; ⚠️ s
 
 ⛔ on a `gitleaks` finding in outgoing commits or the tree; CI scans all history.
 
+## Where each build publishes
+
+| Build | Docker Hub | ECR |
+|---|---|---|
+| `main` | — | `sha-<7>`; `main` while head |
+| release | tag, short sha, `latest` | tag only |
+
 ## Release from a tag
 
 `make release TYPE=` ⛔ on an empty result or existing tag; publish waits on CI.
 
 - A Publish issue tracks the tag; its title follows.
-- 🩷 Before the first OIDC publish: create the Docker Hub repository; publish the npm package by hand.
+- 🩷 Before the first OIDC publish: create the Docker Hub repository (private repo → private); publish the npm package by hand.
 - A second registry copies by digest.
 
 ## Where CI stops
